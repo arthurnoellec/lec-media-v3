@@ -1,0 +1,178 @@
+.Hero_Header {
+  width: 100vw;
+  height: calc(100vw-48px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Hero_header_gauche>div {
+  padding: 5px 0px;
+}
+
+.contenaire_gradient {
+  height: 100vh;
+  width: 50vw;
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.Hero_header_gauche>div>h1 {
+  font-size: xxx-large;
+  font-family: Helvetica;
+  color: #fcfcff;
+  text-transform: uppercase;
+  background-color: rgba(47, 86, 223, 0.2);
+  /* blue background for the highlight */
+  padding: 0.1em 0.2em;
+  /* adjust padding to control the spacing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  display: inline;
+  /* this ensures the background wraps line breaks */
+  line-height: 1.5;
+  position: relative;
+}
+
+.hl2 {
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  color: transparent !important;
+}
+
+.Hero_header_gauche>div>p {
+  color: white;
+  font-family: Helvetica;
+  font-size: 18px;
+  position: relative;
+}
+
+.highlight {
+  position: relative;
+  /* Ensures that pseudo-elements are positioned relative to this element */
+  display: inline;
+  /* Keep it inline for text */
+  /* The text color */
+  padding: 0.5em 0em;
+  /* Adjust padding to your preference */
+  box-decoration-break: clone;
+  /* Ensures backgrounds and borders wrap each line */
+  -webkit-box-decoration-break: clone;
+}
+
+
+.hl1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  /* Aligns to the left edge of the .highlight span */
+  top: 42%;
+  width: 20px;
+  /* Width of the stick */
+  height: 100%;
+  transform: translate(-85%, -50%) scale(0.9);
+  /* Adjusts the position to before the element */
+  background: url('../stick\ top.png') no-repeat center center;
+}
+
+.hl2::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  /* Aligns to the right edge of the .highlight span */
+  top: 58%;
+  width: 20px;
+  /* Width of the stick */
+  height: 100%;
+  transform: translate(90%, -50%) scale(0.9);
+  /* Adjusts the position to after the element */
+  background: url('../stick\ bottom.png') no-repeat center center;
+}
+
+.Hero_header_gauche {
+  width: 80%;
+}
+
+@media screen and (max-width: 900px) {
+  .Hero_Header {
+    flex-direction: column;
+    margin-top: 140px;
+  }
+
+  .Notifications {
+    height: fit-content;
+    min-height: 500px;
+    width: 95%;
+  }
+
+  .Hero_header_gauche>div>h1 {
+    font-size: 40px;
+  }
+
+  .contenaire_gradient {
+    display: none;
+  }
+
+
+  .bookmarkBtn, .text {
+    width: 100%;
+    max-width: 439px;
+  }
+
+  .btn_call_hero{
+    display: flex;
+    justify-content: center;
+    padding: 0px 5px !important;
+  }
+
+  .Hero_header_gauche {
+    width: 95%;
+}
+
+ul.Notifications__List {
+  max-height: 40vh;
+}
+
+ul.Notifications__List {
+  margin-top: -120px;
+}
+
+.Notifications__removeBtn {
+  margin-top: -70px;
+}
+
+.highlight {
+  padding: 30px 0em;
+}
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .Hero_header_gauche>div>h1 {
+    font-size: 35px;
+  }
+
+  .Hero_header_gauche>div>p {
+    color: white;
+    font-family: Helvetica;
+    font-size: 15px;
+  }
+
+}
+
+
+@media screen and (max-width: 380px) {
+
+  ul.Notifications__List {
+    margin-top: -170px;
+  }
+  
+
+}
+
+

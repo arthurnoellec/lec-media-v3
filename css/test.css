@@ -1,0 +1,17 @@
+.stepHeader{
+    height: fit-content;
+}
+
+.stepHeader>img{
+    width: 100%;
+}
+
+
+.stepHeader{
+    height: 50vh;
+}
+
+
+.stepHeader>img{
+    height: 80%;
+}

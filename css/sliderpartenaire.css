@@ -1,0 +1,86 @@
+.div1>div{
+    width: 100%;
+}
+
+
+.logo-slider {
+	background: transparent;
+	-webkit-box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
+	box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+  height: 100%;
+}
+
+.logo-slider::before, .logo-slider::after {
+	content: "";
+	height: 200px;
+	position: absolute;
+	width: 180px;
+	z-index: 2;
+  background: -webkit-gradient(linear, left top, right top, from(#000), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(to right, #000 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.logo-slider::after {
+	right: 0;
+	top: 0;
+	-webkit-transform: rotateZ(180deg);
+	transform: rotateZ(180deg);
+}
+
+.logo-slider::before {
+	left: 0;
+	top: 0;
+}
+
+.logo-slider .logo-slide-track {
+	-webkit-animation: logo-scroll 60s linear infinite;
+	animation: logo-scroll 60s linear infinite;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	width: calc(180px * 14);
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  height: 100%;
+}
+
+.logo-slider .slide {
+  height: 100%;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+@-webkit-keyframes logo-scroll {
+	0% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	100% {
+		-webkit-transform: translateX(calc(-180px * 7));
+		transform: translateX(calc(-180px * 7));
+	}
+}
+
+@keyframes logo-scroll {
+	0% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	100% {
+		-webkit-transform: translateX(calc(-180px * 7));
+		transform: translateX(calc(-180px * 7));
+	}
+}
+
+.card-content>div>div{
+	width: 100%;
+}

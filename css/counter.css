@@ -1,0 +1,134 @@
+.resultat-droit > div,
+.resultat-gauche {
+  border: solid 2px #4caf50;
+  margin: 10px;
+}
+
+.resultat-droit {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.div2 > div > div > div > p {
+  margin: 0 !important;
+}
+
+.div3 > div > div,
+.div4 > div > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.parent > div > div > p,
+.parent > div > div > div > p,
+.parent > div > div > div > span {
+  color: #04f791;
+  margin: 0 !important;
+}
+
+.titreHEAD {
+  display: flex;
+  align-items: end;
+  padding: 15px;
+}
+
+.titreHEAD > h3 {
+  font-size: 35px;
+  color: #04f791;
+  margin: 0px;
+}
+
+.resultat-gauche > p {
+  padding: 0 15px;
+
+  color: #04f791;
+  font-weight: 100;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 22px;
+  grid-row-gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px 0;
+}
+
+.parent > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  left: 0.5px;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 7 / 7;
+}
+
+.div2 {
+  grid-area: 1 / 7 / 4 / 10;
+}
+
+.div3 {
+  grid-area: 1 / 10 / 4 / 13;
+}
+
+.div4 {
+  grid-area: 4 / 7 / 7 / 13;
+}
+
+@media screen and (max-width: 900px) {
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 020px;
+    grid-row-gap: 020px;
+  }
+
+  .div1 {
+    grid-area: 1 / 1 / 5 / 13;
+  }
+  .div2 {
+    grid-area: 5 / 1 / 7 / 7;
+  }
+  .div3 {
+    grid-area: 5 / 7 / 7 / 13;
+  }
+  .div4 {
+    grid-area: 7 / 1 / 9 / 13;
+  }
+}
+
+.parent > div > .card-content > div > div > * {
+  font-size: 60px;
+  color: #04f791;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.parent > div > .card-content > div > div:not(.parent > .div1 > .card-content > div > div) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 450px) {
+  .parent > div > .card-content > div > div > * {
+    font-size: 45px;
+    padding-bottom: 10px;
+  }
+  .listItem::after {
+    height: 58%;
+  }
+}
