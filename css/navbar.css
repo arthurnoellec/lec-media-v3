@@ -1,220 +1,225 @@
 .nav {
-    height: 60px;
-    width: 90%;
-    max-width: 1200px;
-    background-color: #4d4d4d;
-    position: fixed;
-    top: 20px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 0px 10px 0 rgba(238, 238, 238, 0.15);
-    /* backdrop-filter: blur(4px); */
+  height: 60px;
+  width: 90%;
+  max-width: 1200px;
+  background-color: #4d4d4d;
+  position: fixed;
+  top: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0px 10px 0 rgba(238, 238, 238, 0.15);
+  /* backdrop-filter: blur(4px); */
+  /* -webkit-backdrop-filter: blur(4px); */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  font-size: 18px;
+  height: 100%;
+  margin-right: 10px;
+  font-family: Helvetica;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 19px 0px 0px 0px;
+  }
+
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 32px;
+    height: 7px;
+    border-top: 3px solid #eee;
+  }
+
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 95%;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 70px;
+    left: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* backdrop-filter: blur(30px); */
     /* -webkit-backdrop-filter: blur(4px); */
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-}
+    left: 50%;
+    transform: translate(-50%);
+    align-content: space-evenly;
+  }
 
-.nav>.nav-header {
-    display: inline;
-}
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 
-.nav>.nav-header>.nav-title {
-    display: inline-block;
-    font-size: 22px;
-    color: #fff;
-    padding: 10px 10px 10px 10px;
-}
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
 
-.nav>.nav-btn {
-    display: none;
-}
-
-.nav>.nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    float: right;
-    font-size: 18px;
-    height: 100%;
-    margin-right: 10px;
-    font-family: Helvetica;
-}
-
-.nav>.nav-links>a {
-    display: inline-block;
-    padding: 13px 10px 13px 10px;
-    text-decoration: none;
-    color: #efefef;
-}
-
-
-.nav>#nav-check {
-    display: none;
-}
-
-@media (max-width:600px) {
-    .nav>.nav-btn {
-        display: inline-block;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-    }
-
-    .nav>.nav-btn>label {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        padding: 19px 0px 0px 0px;
-    }
-
-
-    .nav>.nav-btn>label>span {
-        display: block;
-        width: 32px;
-        height: 7px;
-        border-top: 3px solid #eee;
-    }
-
-    .nav>.nav-links {
-        position: absolute;
-        display: block;
-        width: 95%;
-        height: 0px;
-        transition: all 0.3s ease-in;
-        overflow-y: hidden;
-        top: 70px;
-        left: 0px;
-        display: flex;
-        flex-wrap: wrap;
-        background: rgba(0, 0, 0, 1);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        /* backdrop-filter: blur(30px); */
-        /* -webkit-backdrop-filter: blur(4px); */
-        border-radius: 20px;
-        left: 50%;
-        transform: translate(-50%);
-        align-content: space-evenly;
-    }
-
-    .nav>.nav-links>a {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav>#nav-check:not(:checked)~.nav-links {
-        height: 0px;
-    }
-
-    .nav>#nav-check:checked~.nav-links {
-        height: 23vh;
-        overflow-y: auto;
-    }
-
-
+  .nav > #nav-check:checked ~ .nav-links {
+    height: 23vh;
+    overflow-y: auto;
+  }
 }
 
 /* === removing default button_nav style ===*/
 .button_nav {
-    margin: 0;
-    height: auto;
-    background: transparent;
-    padding: 0;
-    border: none;
-    cursor: pointer;
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
 }
 
 /* button_nav styling */
 .button_nav {
-    --border-right: 4px;
-    --animation-color: #37FF8B;
-    font-size: 15px !important;
-    letter-spacing: 3px;
-    text-decoration: none;
-    font-size: var(--fs-size);
-    font-family: "Arial";
-    position: relative;
-    text-transform: uppercase;
-    color: white;
-    -webkit-text-stroke: 1px var(--text-stroke-color);
+  --border-right: 4px;
+  --animation-color: #37ff8b;
+  font-size: 15px !important;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: white;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
 }
-
 
 /* this is the text, when you hover on button_nav */
 .hover-text {
-    position: absolute;
-    box-sizing: border-box;
-    content: attr(data-text);
-    color: var(--animation-color);
-    width: 0%;
-    inset: 0;
-    border-right: var(--border-right) solid var(--animation-color);
-    overflow: hidden;
-    transition: 0.5s;
-    -webkit-text-stroke: 1px var(--animation-color);
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
 }
 
 /* hover */
 .button_nav:hover .hover-text {
-    width: 100%;
-    filter: drop-shadow(0 0 23px var(--animation-color))
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
 .glow-on-hover {
-    border: none;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    z-index: 0;
-    border-radius: 10px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  z-index: 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px 5px rgba(255, 255, 255, 0.2);
+}
+
+.glow-on-hover:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 0.5;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
   }
-  
-  .glow-on-hover:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .5s ease-in-out;
-    border-radius: 10px;
+
+  50% {
+    background-position: 400% 0;
   }
-  
-  
-  .glow-on-hover:hover:before {
-    opacity: 0.5;
+
+  100% {
+    background-position: 0 0;
   }
-  
-  .glow-on-hover:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 0, 0);
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-  }
-  
-  @keyframes glowing {
-    0% {
-      background-position: 0 0;
-    }
-  
-    50% {
-      background-position: 400% 0;
-    }
-  
-    100% {
-      background-position: 0 0;
-    }
-  }
-  
+}

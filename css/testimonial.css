@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 #chat-container {
@@ -72,20 +73,6 @@
   height: 1em;
   border-right: 0.5em solid #007aff;
   border-bottom-right-radius: 1em 0.5em;
-}
-
-.message::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 50px;
-  border-radius: 30px;
-  background-image: url(url_de_votre_image.jpg);
-  background-size: cover;
-  background-position: center;
-  border: 2px solid red;
-  transform: translate(-80px, -40px);
 }
 
 .text-input-eggs {
@@ -203,4 +190,17 @@ textarea:focus {
   -moz-tap-highlight-color: transparent; /* Firefox */
   -ms-touch-action: manipulation; /* Edge */
   touch-action: manipulation; /* Chrome et Firefox */
+}
+
+#contact-list::-webkit-scrollbar {
+  width: 6px; /* Largeur de la barre de défilement */
+}
+
+#contact-list::-webkit-scrollbar-thumb {
+  background-color: #333; /* Couleur de fond de la poignée */
+  border-radius: 6px; /* Rayon de la bordure de la poignée */
+}
+
+#contact-list::-webkit-scrollbar-track {
+  background-color: #171717; /* Couleur de fond de la piste */
 }

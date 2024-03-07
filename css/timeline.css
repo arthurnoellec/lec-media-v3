@@ -35,9 +35,8 @@
 
 .stepHeaderOrdi {
   padding: 100px 0px 0px 0px !important;
-  box-shadow: 500px 30px 30px -33px rgb(0, 0, 0),
-    -500px 30px 30px -33px rgb(0, 0, 0), 300px -50px 0px -50px #000000,
-    -300px -50px 0px -50px #000000;
+  box-shadow: 500px 30px 30px -33px rgb(0, 0, 0), -500px 30px 30px -33px rgb(0, 0, 0),
+    300px -50px 0px -50px #000000, -300px -50px 0px -50px #000000;
 }
 
 .step2 {
@@ -84,7 +83,7 @@
   content: "";
   position: absolute;
   width: 3px;
-  height: 52%;
+  height: 55%;
   background: #07e187;
   left: 50%;
   transform: translate(-8690%);
@@ -184,9 +183,8 @@ p.me::after {
   .stepHeaderOrdi.Tel {
     display: block;
     padding-top: 40px !important;
-    box-shadow: 100px 30px 30px -33px rgb(0, 0, 0),
-      -100px 30px 30px -33px rgb(0, 0, 0), 300px -50px 0px -50px #000000,
-      -300px -50px 0px -50px #000000;
+    box-shadow: 100px 30px 30px -33px rgb(0, 0, 0), -100px 30px 30px -33px rgb(0, 0, 0),
+      300px -50px 0px -50px #000000, -300px -50px 0px -50px #000000;
   }
 
   .stepHeaderOrdi.Tel > img {
