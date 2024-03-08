@@ -212,14 +212,6 @@ function addRandomNotification() {
   addNotification(newNotification);
 }
 
-$(document).ready(function () {
-  resizeChildDiv();
-
-  $(window).resize(function () {
-    resizeChildDiv();
-  });
-});
-
 function resizeChildDiv() {
   var parentWidth = $(".parent").width(); // Largeur du parent
   var childHeight = parentWidth * (95 / 440); // Calcul de la hauteur basée sur le ratio
