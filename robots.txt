@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lec-media.agency/sitemap.xml

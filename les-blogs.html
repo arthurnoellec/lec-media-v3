@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y5HZZ1PFR9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y5HZZ1PFR9');
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Blogs - LËC MEDIA</title>
+    <meta name="description" content="">
+    <link rel="icon" href="">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LËC MEDIA">
+    <meta property="og:description"
+        content="Expert en stratégie marketing, création de sites e-commerce optimisés et branding unique. Révolutionnez votre présence en ligne avec nos solutions sur mesure. Contactez-nous pour transformer votre vision en réalité et dominer votre marché.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LËC MEDIA">
+    <meta name="twitter:description"
+        content="Expert en stratégie marketing, création de sites e-commerce optimisés et branding unique. Révolutionnez votre présence en ligne avec nos solutions sur mesure. Contactez-nous pour transformer votre vision en réalité et dominer votre marché.">
+</head>
+
+<body>
+    <a href="https://lec-media.agency" style="z-index: 10; position:absolute; top:20px; left:20px">
+        <img src="./logo-lec-media-blanc.png" style="width: 150px;">
+    </a>
+
+    <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <a href="https://lec-media.agency/">
+                    <li>Accueil</li>
+                </a>
+                <a href="https://lec-media.agency/e-commerce">
+                    <li>Service E-commerce</li>
+                </a>
+                <a href="https://lec-media.agency/branding">
+                    <li>Service Branding</li>
+                </a>
+                <a href="https://lec-media.agency/stategie-marketing">
+                    <li>Service Marketing</li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+
+    <style>
+        #menuToggle {
+            display: block;
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            z-index: 12;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        li{
+            font-family: inter;
+            font-weight: 600;
+        }
+
+        #menuToggle a {
+            text-decoration: none;
+            
+            color: #0424fe;
+
+            transition: color 0.3s ease;
+        }
+
+        #menuToggle a:hover {
+            color: #232323;
+        }
+
+
+        #menuToggle input {
+            display: block;
+            width: 40px;
+            height: 32px;
+            position: absolute;
+            top: -7px;
+            left: -5px;
+            cursor: pointer;
+            opacity: 0;
+            z-index: 2;
+            -webkit-touch-callout: none;
+        }
+
+        #menuToggle span {
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            background: #ededed;
+            border-radius: 3px;
+            z-index: 1;
+            transform-origin: 4px 0px;
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+        }
+
+        #menuToggle span:first-child {
+            transform-origin: 0% 0%;
+        }
+
+        #menuToggle span:nth-last-child(2) {
+            transform-origin: 0% 100%;
+        }
+
+        #menuToggle input:checked~span {
+            opacity: 1;
+            transform: rotate(45deg) translate(-2px, -1px);
+            background: #0424fe;
+        }
+
+
+        #menuToggle input:checked~span:nth-last-child(3) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2, 0.2);
+        }
+
+        #menuToggle input:checked~span:nth-last-child(2) {
+            transform: rotate(-45deg) translate(0, -1px);
+        }
+
+        #menu {
+            position: fixed;
+            width: 360px;
+            margin: -100px 0 0 0;
+            padding: 50px;
+            padding-top: 125px;
+            border-radius: 0 20px;
+
+            background: #ededed;
+            list-style-type: none;
+            -webkit-font-smoothing: antialiased;
+            /* to stop flickering of text in safari */
+
+            transform-origin: 0% 0%;
+            transform: translate(30%, 0);
+
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        }
+
+        #menu li {
+            padding: 10px 0;
+            font-size: 22px;
+        }
+
+        /*
+ * And let's slide it in from the left
+ */
+        #menuToggle input:checked~ul {
+            transform: translate(-70%, 0);
+        }
+    </style>
+
+    <header>
+        <div>
+            <h1>Retrouvez gratuitement une grande partie de notre savoir</h1>
+            <div class="author">
+                <svg width="70" height="32" viewBox="0 0 70 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 0V30H70" stroke="#F2F2F2" stroke-width="3" />
+                </svg>
+                <p>Expert en stratégie marketing, création de sites e-commerce optimisés et branding unique.
+                    Révolutionnez votre présence en ligne avec nos solutions sur mesure. Contactez-nous pour transformer
+                    votre vision en réalité et dominer votre marché.</p>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="InputContainer">
+        <select id="categoryFilter">
+            <option value="all">Toutes les catégories</option>
+            <option value="branding">Branding</option>
+            <option value="marketing">Marketing</option>
+            <option value="e-commerce">E-commerce</option>
+            <!-- Ajoutez d'autres catégories ici -->
+        </select>
+
+        <input type="text" id="searchBar" name="text" class="input" placeholder="Recherchez...">
+
+        <label for="input" class="labelforsearch">
+            <svg viewBox="0 0 512 512" class="searchIcon">
+                <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                </path>
+            </svg>
+        </label>
+    </div>
+
+    <style>
+        #categoryFilter {
+            height: 100%;
+            border: none;
+            background: blue;
+            color: white;
+            font-weight: 900;
+            width: 18%;
+            min-width: fit-content;
+            text-align: center;
+            border-right: 16px solid transparent;
+            border-radius: 10px;
+            transform: scale(1.01);
+        }
+
+        ::placeholder {
+            color: rgba(4, 36, 253, 0.8);
+        }
+
+        .searchIcon path {
+            fill: #0425ff !important;
+        }
+
+        .InputContainer {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+            max-width: 1200px;
+            margin: 30px auto;
+            width: calc(90% - 20px);
+            border: solid 3px #0424fe;
+            background-color: #e8e8e8;
+        }
+
+        .input {
+            width: 170px;
+            height: 100%;
+            border: none;
+            outline: none;
+            font-size: 0.9em;
+            caret-color: #0424fe;
+            width: inherit;
+            margin-left: 20px;
+            background-color: #e8e8e8;
+        }
+
+        .labelforsearch {
+            cursor: text;
+            padding: 0px 12px;
+        }
+
+        .searchIcon {
+            width: 13px;
+        }
+
+        .border {
+            height: 40%;
+            width: 1.3px;
+            background-color: rgb(223, 223, 223);
+        }
+
+        .micIcon {
+            width: 12px;
+        }
+
+        .micButton {
+            padding: 0px 15px 0px 12px;
+            border: none;
+            background-color: transparent;
+            height: 40px;
+            cursor: pointer;
+            transition-duration: .3s;
+        }
+
+        .searchIcon path {
+            fill: rgb(114, 114, 114);
+        }
+
+        .micIcon path {
+            fill: rgb(0, 229, 255);
+        }
+
+        .micButton:hover {
+            background-color: rgb(255, 230, 230);
+            transition-duration: .3s;
+        }
+    </style>
+
+
+    <section>
+        <div id="blogContainer">
+            <!-- Les blogs seront affichés ici -->
+        </div>
+    </section>
+
+
+    <script src="./js/filtrage-blogs.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        @font-face {
+            font-family: 'Gavency-Free-Regular';
+            src: url('/Gavency-Free-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: inter;
+        }
+
+        body {
+            background-color: #ededed;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: 'Gavency-Free-Regular', sans-serif;
+            font-weight: 100;
+        }
+
+        section {
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .carte {
+            width: calc(25% - 30px);
+            margin: 10px;
+            background-color: #ededed;
+            border-radius: 17px;
+            border: solid 4px #0424fe;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .carte>* {
+            width: 100%;
+        }
+
+        h2 {
+            margin: 0px !important;
+            color: #0424fe;
+            font-size: 1.5em;
+            font-weight: 700;
+            padding-bottom: 20px;
+        }
+
+        .contenu {
+            padding: 20px;
+        }
+
+        .contenu>p {
+            color: #2c356e;
+            font-size: 1em;
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        .test {
+            width: calc(100% - 16px);
+            margin: 10px;
+            border-radius: 15px;
+        }
+
+        .img-blog {
+            background-color: #0424fe;
+            border-radius: 17px 17px 0px 0px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .lecture-div {
+            background-color: #0424fe;
+            color: #ededed;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding-bottom: 10px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .lecture-div>a {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .lecture-div>p {
+            margin: 2px;
+            width: calc(100% - 16px);
+        }
+
+        button {
+            width: calc(100% - 16px);
+        }
+
+        button {
+            padding: 0.6em 0.6em;
+            border: unset;
+            border-radius: 10px;
+            color: #0424fe;
+            z-index: 1;
+            background: #ededed;
+            position: relative;
+            font-weight: 1000;
+            font-size: 1.2em;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+            transition: all 250ms;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            border-radius: 0px;
+            background-color: #0424fe;
+            z-index: -1;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+            transition: all 250ms
+        }
+
+        button:hover {
+            color: #e8e8e8;
+            background-color: #0424fe;
+        }
+
+        button:hover::before {
+            width: 100%;
+        }
+
+        .btn_reverse {
+            background: transparent !important;
+            border: 3px solid #212121;
+            padding: 0.32em 0.6em;
+            color: #212121;
+            margin-left: 10px;
+        }
+
+        .btn_reverse:hover {
+            border: 3px solid #0424fe;
+        }
+
+        .lecture-div>a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+        header {
+            background-image: url(./bg-blogs.jpeg);
+            height: 40vw;
+            background-position: top center;
+            background-size: cover;
+        }
+
+        header>div {
+            background-color: rgba(4, 36, 253, 0.62);
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        header>div>* {
+            width: 100%;
+            display: flex;
+            max-width: 1200px;
+            width: calc(90% - 80px);
+        }
+
+        header>div>a>p>svg {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        header>div>a>p {
+            display: flex;
+        }
+
+        header>div>h1 {
+            font-size: 3.5em;
+            padding: 30px 0;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author>p {
+            padding-top: 3px;
+            padding-left: 10px;
+        }
+
+        .author>svg {
+            width: 50px;
+        }
+
+        author {
+            font-weight: bold;
+        }
+
+        div#blogContainer {
+            flex-wrap: wrap;
+            display: flex;
+        }
+
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .carte {
+                width: calc(33% - 30px);
+            }
+        }
+
+
+        @media (max-width: 1000px) {
+            header {
+                height: 60vw;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .carte {
+                width: calc(50% - 30px);
+            }
+        }
+
+
+        @media (max-width: 830px) {
+
+            header {
+                height: 100vw;
+            }
+
+            header>div>h1 {
+                font-size: 2em;
+            }
+
+            header>div>* {
+                width: 100%;
+                display: flex;
+                max-width: 1200px;
+                width: 90%;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+            header {
+                height: 130vw;
+            }
+
+            .carte {
+                width: calc(100% - 30px);
+            }
+        }
+    </style>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+[
+    {
+        "title": "Triompher en ligne pendant les fêtes : stratégie gagnante !",
+        "description": "Les fêtes de fin d'année sont une période cruciale pour les entreprises en ligne, et la mise en place d'une stratégie gagnante peut faire toute la différence...",
+        "file": "./Triompher-en-ligne-pendant-les-fetes-strategie-gagnante.html",
+        "img":"./Triompher-en-ligne-pendant-les-fetes-strategie-gagnante.png",
+        "categories": ["e-commerce", "marketing"],
+        "date":"15/11/2023",
+        "readingTime":"10 min"
+    },
+    {
+        "title": "Guide Ultime: Obtenir la Subvention PCAN en un Clic",
+        "description": "Obtenez votre Subvention PCAN sans tracas, grâce à notre guide étape par étape en un clic.",
+        "file": "./Guide-Ultime-Obtenir-Subvention-PCAN-en-un-Clic.html",
+        "img":"./Guide-Ultime-Obtenir-Subvention-PCAN-en-un-Clic.png",
+        "categories": ["autre"],
+        "date":"19/11/2023",
+        "readingTime":"20 min"
+    },
+    {
+        "title": "Réussir en E-commerce en 2024 : Les Clés de la Réussite",
+        "description": "Les tendances à suivre pour briller en e-commerce en 2024. Les clés du succès à portée de main.",
+        "file": "./Reussir-en-ecommerce-en-2024.html",
+        "img":"./Reussir-en-ecommerce-en-2024.png",
+        "categories": ["e-commerce", "marketing", "branding"],
+        "date":"21/11/2023",
+        "readingTime":"13 min"
+    },
+    {
+        "title": "Réussir en E-commerce en 2024 : Les Clés de la Réussite",
+        "description": "Explorez notre liste exclusive des 15 outils de marketing numérique incontournables en 2022 ! 🚀 ",
+        "file": "./15-outils-marketing-incontournables-en-2024.html",
+        "img":"./15-outils-marketing-incontournables-en-2024.png",
+        "categories": ["e-commerce", "marketing", "branding"],
+        "date":"22/11/2023",
+        "readingTime":"13 min"
+    },
+    {
+        "title": "Le pouvoir du branding dans la vente",
+        "description": "Votre branding est-il à la hauteur ? Découvrez comment il peut propulser vos ventes.",
+        "file": "./le-pouvoir-du-branding.html",
+        "img":"./le-pouvoir-du-branding.png",
+        "categories": ["branding"],
+        "date":"23/11/2023",
+        "readingTime":"25 min"
+    },
+    {
+        "title": "L'agence de Montréal qui crée votre boutique en ligne ! 🚀",
+        "description": "Création et optimisation : Lëc Média l'agence a Montréal qui fait de votre boutique en ligne un leader du marché.",
+        "file": "./l-agence-montreal-boutique-en-ligne.html",
+        "img":"./l-agence-montreal-boutique-en-ligne.png",
+        "categories": ["e-commerce", "marketing", "branding"],
+        "date":"24/11/2023",
+        "readingTime":"11 min"
+    },
+    {
+        "title": "Marque distinctive: Clé du succès en niche compétitive",
+        "description": "Utilisez le pouvoir d'une marque distinctive pour dépasser la concurrence en niche compétitive.",
+        "file": "./marque-distinctive-cle-du-succes.html",
+        "img":"./marque-distinctive-cle-du-succes.png",
+        "categories": ["e-commerce", "branding"],
+        "date":"6/12/2023",
+        "readingTime":"16 min"
+    }
+]

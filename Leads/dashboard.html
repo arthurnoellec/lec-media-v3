@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de Bord</title>
+</head>
+
+<body>
+    <h2>Tableau de Bord</h2>
+    <div>
+        <form id="info-form">
+            <label for="name">Nom/Prénom:</label><br>
+            <input type="text" id="name" name="name" required><br>
+        
+            <label for="website">Site Web:</label><br>
+            <input type="url" id="website" name="website"><br>
+        
+            <label>Contact:</label><br>
+            <input type="checkbox" id="facebook" name="contact" value="facebook">
+            <label for="facebook">Facebook</label><br>
+            <input type="checkbox" id="linkedin" name="contact" value="linkedin">
+            <label for="linkedin">LinkedIn</label><br>
+            <input type="checkbox" id="email" name="contact" value="email">
+            <label for="email">Email</label><br>
+            <input type="checkbox" id="phone" name="contact" value="phone">
+            <label for="phone">Téléphone</label><br>
+        
+            <label>Réponse:</label><br>
+            <input type="radio" id="yes" name="response" value="yes">
+            <label for="yes">Oui</label><br>
+            <input type="radio" id="no" name="response" value="no">
+            <label for="no">Non</label><br>
+        
+            <div id="contact-details"></div>
+        
+            <button type="submit">Envoyer</button>
+        </form>        
+    </div>
+    <div>
+        <div>
+            <input type="text" id="search-input" placeholder="Rechercher..." minlength="3">
+            <button id="search-button">Rechercher</button>
+        </div>
+        <div id="search-results"></div>       
+    </div>
+
+    <!-- gestion du formulaire -->
+    <script>
+        document.querySelectorAll('input[name="contact"]').forEach(input => {
+            input.addEventListener('change', handleContactChange);
+        });
+        
+        function handleContactChange() {
+            const contactDetails = document.getElementById('contact-details');
+            contactDetails.innerHTML = ''; // Clear previous inputs
+        
+            if(document.getElementById('facebook').checked) {
+                contactDetails.innerHTML += '<label for="facebookLink">Lien profil Facebook:</label><br><input type="url" id="facebookLink" name="facebookLink"><br>';
+            }
+            if(document.getElementById('linkedin').checked) {
+                contactDetails.innerHTML += '<label for="linkedinLink">Lien profil LinkedIn:</label><br><input type="url" id="linkedinLink" name="linkedinLink"><br>';
+            }
+            if(document.getElementById('email').checked) {
+                contactDetails.innerHTML += '<label for="emailAddress">Email:</label><br><input type="email" id="emailAddress" name="emailAddress"><br>';
+            }
+            if(document.getElementById('phone').checked) {
+                contactDetails.innerHTML += '<label for="phoneNumber">Téléphone:</label><br><input type="tel" id="phoneNumber" name="phoneNumber"><br>';
+            }
+        }
+        </script>
+        
+<!-- add -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+        import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDy2QLsDptRvxhA3OOOYNM1dg3b9ITXR18",
+            authDomain: "leads-lec-media.firebaseapp.com",
+            databaseURL: "https://leads-lec-media-default-rtdb.firebaseio.com",
+            projectId: "leads-lec-media",
+            storageBucket: "leads-lec-media.appspot.com",
+            messagingSenderId: "246697801044",
+            appId: "1:246697801044:web:382848dd280300382744c1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getDatabase(app);
+
+        // Vérifier si l'utilisateur est connecté
+        onAuthStateChanged(auth, user => {
+            if (!user) {
+                // Si aucun utilisateur n'est connecté, rediriger vers la page de connexion
+                window.location.href = 'leads-connexion.html';
+            }
+        });
+
+        document.getElementById('info-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+        
+            const name = document.getElementById('name').value;
+            const website = document.getElementById('website').value;
+            const response = document.querySelector('input[name="response"]:checked').value;
+            
+            let contactDetails = {};
+            if(document.getElementById('facebook').checked) {
+                contactDetails.facebookLink = document.getElementById('facebookLink').value;
+            }
+            if(document.getElementById('linkedin').checked) {
+                contactDetails.linkedinLink = document.getElementById('linkedinLink').value;
+            }
+            if(document.getElementById('email').checked) {
+                contactDetails.emailAddress = document.getElementById('emailAddress').value;
+            }
+            if(document.getElementById('phone').checked) {
+                contactDetails.phoneNumber = document.getElementById('phoneNumber').value;
+            }
+        
+            try {
+                const db = getFirestore(app);
+                const docRef = await addDoc(collection(db, "yourCollectionName"), {
+                    name: name,
+                    website: website,
+                    response: response,
+                    contactDetails: contactDetails,
+                    userId: auth.currentUser.uid,
+                    timestamp: Date.now()
+                });
+                console.log("Document written with ID: ", docRef.id);
+                alert('Donnée ajoutée avec succès dans Firestore!');
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                alert('Erreur lors de l\'ajout des données dans Firestore.');
+            }
+        });
+        
+    </script>
+
+    <!-- recherche -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+        
+        const firebaseConfig2 = {
+            apiKey: "AIzaSyDy2QLsDptRvxhA3OOOYNM1dg3b9ITXR18",
+            authDomain: "leads-lec-media.firebaseapp.com",
+            databaseURL: "https://leads-lec-media-default-rtdb.firebaseio.com",
+            projectId: "leads-lec-media",
+            storageBucket: "leads-lec-media.appspot.com",
+            messagingSenderId: "246697801044",
+            appId: "1:246697801044:web:382848dd280300382744c1"
+        };
+    
+        const app2 = initializeApp(firebaseConfig2);
+        const db2 = getFirestore(app2);
+    
+        document.getElementById('search-button').addEventListener('click', async function () {
+            const searchText = document.getElementById('search-input').value.toLowerCase();
+        
+            try {
+                let results = [];
+        
+                if (searchText === "3756") {
+                    // Requête spéciale pour afficher tous les résultats
+                    const q = query(collection(db2, "yourCollectionName"));
+                    const querySnapshot = await getDocs(q);
+                    results = querySnapshot.docs.map(doc => doc.data());
+                } else if (searchText.length >= 3) {
+                    // Recherche normale
+                    const q = query(collection(db2, "yourCollectionName"));
+                    const querySnapshot = await getDocs(q);
+                    results = querySnapshot.docs.map(doc => doc.data())
+                        .filter(doc => {
+                            const cleanName = doc.name.toLowerCase();
+                            const cleanWebsite = cleanURL(doc.website);
+        
+                            return cleanName.includes(searchText) || 
+                                   cleanWebsite.includes(searchText) ||
+                                   (doc.contactDetails && doc.contactDetails.emailAddress && doc.contactDetails.emailAddress.toLowerCase().includes(searchText)) ||
+                                   (doc.contactDetails && doc.contactDetails.phoneNumber && doc.contactDetails.phoneNumber.includes(searchText));
+                        });
+                } else {
+                    alert("Veuillez entrer au moins 3 caractères pour la recherche");
+                    return;
+                }
+        
+                displaySearchResults(results);
+            } catch (error) {
+                console.error("Erreur de recherche:", error);
+                alert("Erreur lors de l'exécution de la recherche.");
+            }
+        });
+        
+        function cleanURL(url) {
+            return url.replace(/^(https?:\/\/)?(www\.)?/, '')
+                      .replace(/(\.com|\.fr|\.ca)(\\)?$/, '')
+                      .toLowerCase();
+        }
+        
+        
+    
+        function displaySearchResults(results) {
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+    
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p>Aucun résultat trouvé.</p>';
+                return;
+            }
+    
+            results.forEach(result => {
+                resultsContainer.innerHTML += `<div>
+                    <p>Nom: ${result.name}</p>
+                    <p>Site Web: ${result.website}</p>
+                    <p>Email: ${result.contactDetails.emailAddress}</p>
+                    <p>Téléphone: ${result.contactDetails.phoneNumber}</p>
+                </div>`;
+            });
+        }
+    </script>
+</body>
+
+</html>
