@@ -24,6 +24,24 @@
   </head>
 
   <body style="overflow-x: hidden">
+    <style>
+      .grain-overflow {
+        position: fixed;
+        width: 100vw;
+        height: 200vh;
+        background-image: url(./texture-7.png);
+        background-position: 0px 0px;
+        background-size: 396px;
+        opacity: 1;
+      }
+      .grain {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <div class="grain">
+      <div class="grain-overflow"></div>
+    </div>
     <div class="ready">
       <span style="display: flex; justify-content: center; align-items: center"></span>
       <img src="./ready.png" style="width: 13px; padding: 0 10px" />
@@ -87,7 +105,7 @@
               </div>
               <div>
                 <p>
-                  On augmente votre chiffre d'affaires d'au moins 20 %, sinon... on vous rembourse.
+                  On augmente votre chiffre d'affaires d'au moins 20 %, sinon... On vous rembourse.
                   Eh oui, nos magiciens du design UX et du CRO s'occupent des résultats.
                 </p>
               </div>
@@ -153,7 +171,6 @@
         width: 100vw;
         display: flex;
         justify-content: center;
-        background: rgb(0, 0, 0);
         align-items: center;
       ">
       <div class="parent" id="cards">
@@ -164,7 +181,7 @@
               <img src="./HEAD.png" />
             </div>
             <p style="color: #04f791; padding: 0 20px">
-              Les résultats moyens observés Chez nos clients sur l’accompagnement de 6 mois.
+              Les résultats moyens observés chez nos clients sur l’accompagnement de 6 mois.
             </p>
             <div style="height: 100px; width: calc(100% - 20px); margin: 10px; border-radius: 15px">
               <div class="logo-slider">
@@ -271,12 +288,34 @@
     <div class="container">
       <div
         class="stepHeaderOrdi Ordi"
-        style="height: 50vh; display: flex; justify-content: center; align-items: end">
+        style="
+          height: 50vh;
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: center;
+          align-items: end;
+        ">
+        <div style="width: 100%; display: flex; justify-content: center">
+          <h2 class="titre-section graph" style="text-align: center; width: fit-content; margin: 0">
+            Notre Stratégie
+          </h2>
+        </div>
         <img src="./graph.png" style="height: 80%" />
       </div>
       <div
         class="stepHeaderOrdi Tel"
-        style="height: 50vh; display: flex; justify-content: center; align-items: end">
+        style="
+          height: 50vh;
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: center;
+          align-items: end;
+        ">
+        <div style="width: 100%; display: flex; justify-content: center">
+          <h2 class="titre-section graph" style="text-align: center; width: fit-content; margin: 0">
+            Notre Stratégie
+          </h2>
+        </div>
         <img src="./graphtel.png" style="height: 80%" />
       </div>
       <div class="listItem">
@@ -633,7 +672,7 @@
           </div>
         </div>
         <div class="div3comparative">
-          <div class="btn-comparative btn-notre-compa">
+          <div class="btn-comparative btn-notre-compa" style="z-index: 2 !important;">
             <a
               style="text-decoration: none; color: white"
               href="https://calendly.com/arthur-celleon/lec-media"
@@ -717,6 +756,7 @@
         width: 90%;
         max-width: 1000px;
         color: white;
+        z-index: 2;
       }
 
       .parentcomparative > div > h3 {
@@ -835,7 +875,7 @@
 
         // Définir les styles à réinitialiser
         const defaultStyles = {
-          body: { backgroundColor: "black" },
+          body: { backgroundColor: "#161616" },
           h2: { color: "white" }, // Style par défaut pour les éléments h2
         };
 
@@ -1076,7 +1116,7 @@
         </div>
         <div class="accordion-item">
           <div class="accordion-item-header">
-            Je ne comprends pas ces termes : SEO, UX, UI et CRO
+            Je ne comprends pas ces termes : SEO, UX, UI, CRO, A/B test
           </div>
           <div class="accordion-item-body">
             <div class="accordion-item-body-content">
@@ -1107,6 +1147,16 @@
                   Le <b>CRO</b>, c’est un travail d’analyse visant a etudier la data des utilisateur
                   afin d’en conclure des feedback qui vas nous mener a d’autre amelioration “minime”
                   mais qui font toute la difference
+                </li>
+                <li><br /></li>
+                <li>
+                  L’<b>AB-test</b>, également connu sous le nom de test fractionné, est une méthode
+                  d’expérimentation utilisée dans le cadre de notre stratégie de Conversion Rate
+                  Optimization (CRO). Il consiste à comparer deux versions différentes (A et B) d’un
+                  élément, tel qu’un bouton, un texte ou une animation, pour déterminer celle qui
+                  génère les meilleurs résultats en termes de taux de conversion. En analysant les
+                  données collectées, nous identifions les éléments les plus performants pour
+                  optimiser l’expérience utilisateur et augmenter notre taux de conversion
                 </li>
               </ul>
             </div>
@@ -1169,6 +1219,7 @@
         align-items: center;
         width: 100vw;
         flex-wrap: wrap;
+        z-index:2 !important;
       ">
       <div style="width: 100%; display: flex; justify-content: center">
         <h2 class="titre-section">Contactez-nous</h2>
@@ -1181,6 +1232,7 @@
           align-items: center;
           width: 90%;
           max-width: 1200px;
+          z-index:2 !important;
         ">
         <form
           style="
@@ -1190,6 +1242,7 @@
             gap: 15px;
             width: 100%;
             height: 100%;
+            z-index:2 !important;
           "
           action="https://submit-form.com/r6z39RJSA">
           <div style="width: 100%; display: grid; grid-auto-flow: column; gap: 15px">
@@ -1466,8 +1519,8 @@
           <p>En activité au Canada, France et États-unis</p>
         </div>
         <div class="div43">
-          <a href="https://wa.me/33603548596" target="_blank"
-            ><svg
+          <a href="https://wa.me/33603548596" target="_blank">
+            <svg
               style="padding: 0 10px"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -1475,10 +1528,10 @@
               height="30"
               fill="rgba(255,255,255,1)">
               <path
-                d="M7.25361 18.4944L7.97834 18.917C9.18909 19.623 10.5651 20 12.001 20C16.4193 20 20.001 16.4183 20.001 12C20.001 7.58172 16.4193 4 12.001 4C7.5827 4 4.00098 7.58172 4.00098 12C4.00098 13.4363 4.37821 14.8128 5.08466 16.0238L5.50704 16.7478L4.85355 19.1494L7.25361 18.4944ZM2.00516 22L3.35712 17.0315C2.49494 15.5536 2.00098 13.8345 2.00098 12C2.00098 6.47715 6.47813 2 12.001 2C17.5238 2 22.001 6.47715 22.001 12C22.001 17.5228 17.5238 22 12.001 22C10.1671 22 8.44851 21.5064 6.97086 20.6447L2.00516 22ZM8.39232 7.30833C8.5262 7.29892 8.66053 7.29748 8.79459 7.30402C8.84875 7.30758 8.90265 7.31384 8.95659 7.32007C9.11585 7.33846 9.29098 7.43545 9.34986 7.56894C9.64818 8.24536 9.93764 8.92565 10.2182 9.60963C10.2801 9.76062 10.2428 9.95633 10.125 10.1457C10.0652 10.2428 9.97128 10.379 9.86248 10.5183C9.74939 10.663 9.50599 10.9291 9.50599 10.9291C9.50599 10.9291 9.40738 11.0473 9.44455 11.1944C9.45903 11.25 9.50521 11.331 9.54708 11.3991C9.57027 11.4368 9.5918 11.4705 9.60577 11.4938C9.86169 11.9211 10.2057 12.3543 10.6259 12.7616C10.7463 12.8783 10.8631 12.9974 10.9887 13.108C11.457 13.5209 11.9868 13.8583 12.559 14.1082L12.5641 14.1105C12.6486 14.1469 12.692 14.1668 12.8157 14.2193C12.8781 14.2457 12.9419 14.2685 13.0074 14.2858C13.0311 14.292 13.0554 14.2955 13.0798 14.2972C13.2415 14.3069 13.335 14.2032 13.3749 14.1555C14.0984 13.279 14.1646 13.2218 14.1696 13.2222V13.2238C14.2647 13.1236 14.4142 13.0888 14.5476 13.097C14.6085 13.1007 14.6691 13.1124 14.7245 13.1377C15.2563 13.3803 16.1258 13.7587 16.1258 13.7587L16.7073 14.0201C16.8047 14.0671 16.8936 14.1778 16.8979 14.2854C16.9005 14.3523 16.9077 14.4603 16.8838 14.6579C16.8525 14.9166 16.7738 15.2281 16.6956 15.3913C16.6406 15.5058 16.5694 15.6074 16.4866 15.6934C16.3743 15.81 16.2909 15.8808 16.1559 15.9814C16.0737 16.0426 16.0311 16.0714 16.0311 16.0714C15.8922 16.159 15.8139 16.2028 15.6484 16.2909C15.391 16.428 15.1066 16.5068 14.8153 16.5218C14.6296 16.5313 14.4444 16.5447 14.2589 16.5347C14.2507 16.5342 13.6907 16.4482 13.6907 16.4482C12.2688 16.0742 10.9538 15.3736 9.85034 14.402C9.62473 14.2034 9.4155 13.9885 9.20194 13.7759C8.31288 12.8908 7.63982 11.9364 7.23169 11.0336C7.03043 10.5884 6.90299 10.1116 6.90098 9.62098C6.89729 9.01405 7.09599 8.4232 7.46569 7.94186C7.53857 7.84697 7.60774 7.74855 7.72709 7.63586C7.85348 7.51651 7.93392 7.45244 8.02057 7.40811C8.13607 7.34902 8.26293 7.31742 8.39232 7.30833Z"></path></svg
-          ></a>
-          <a href="https://www.linkedin.com/company/lec-media-agency" target="_blank"
-            ><svg
+                d="M7.25361 18.4944L7.97834 18.917C9.18909 19.623 10.5651 20 12.001 20C16.4193 20 20.001 16.4183 20.001 12C20.001 7.58172 16.4193 4 12.001 4C7.5827 4 4.00098 7.58172 4.00098 12C4.00098 13.4363 4.37821 14.8128 5.08466 16.0238L5.50704 16.7478L4.85355 19.1494L7.25361 18.4944ZM2.00516 22L3.35712 17.0315C2.49494 15.5536 2.00098 13.8345 2.00098 12C2.00098 6.47715 6.47813 2 12.001 2C17.5238 2 22.001 6.47715 22.001 12C22.001 17.5228 17.5238 22 12.001 22C10.1671 22 8.44851 21.5064 6.97086 20.6447L2.00516 22ZM8.39232 7.30833C8.5262 7.29892 8.66053 7.29748 8.79459 7.30402C8.84875 7.30758 8.90265 7.31384 8.95659 7.32007C9.11585 7.33846 9.29098 7.43545 9.34986 7.56894C9.64818 8.24536 9.93764 8.92565 10.2182 9.60963C10.2801 9.76062 10.2428 9.95633 10.125 10.1457C10.0652 10.2428 9.97128 10.379 9.86248 10.5183C9.74939 10.663 9.50599 10.9291 9.50599 10.9291C9.50599 10.9291 9.40738 11.0473 9.44455 11.1944C9.45903 11.25 9.50521 11.331 9.54708 11.3991C9.57027 11.4368 9.5918 11.4705 9.60577 11.4938C9.86169 11.9211 10.2057 12.3543 10.6259 12.7616C10.7463 12.8783 10.8631 12.9974 10.9887 13.108C11.457 13.5209 11.9868 13.8583 12.559 14.1082L12.5641 14.1105C12.6486 14.1469 12.692 14.1668 12.8157 14.2193C12.8781 14.2457 12.9419 14.2685 13.0074 14.2858C13.0311 14.292 13.0554 14.2955 13.0798 14.2972C13.2415 14.3069 13.335 14.2032 13.3749 14.1555C14.0984 13.279 14.1646 13.2218 14.1696 13.2222V13.2238C14.2647 13.1236 14.4142 13.0888 14.5476 13.097C14.6085 13.1007 14.6691 13.1124 14.7245 13.1377C15.2563 13.3803 16.1258 13.7587 16.1258 13.7587L16.7073 14.0201C16.8047 14.0671 16.8936 14.1778 16.8979 14.2854C16.9005 14.3523 16.9077 14.4603 16.8838 14.6579C16.8525 14.9166 16.7738 15.2281 16.6956 15.3913C16.6406 15.5058 16.5694 15.6074 16.4866 15.6934C16.3743 15.81 16.2909 15.8808 16.1559 15.9814C16.0737 16.0426 16.0311 16.0714 16.0311 16.0714C15.8922 16.159 15.8139 16.2028 15.6484 16.2909C15.391 16.428 15.1066 16.5068 14.8153 16.5218C14.6296 16.5313 14.4444 16.5447 14.2589 16.5347C14.2507 16.5342 13.6907 16.4482 13.6907 16.4482C12.2688 16.0742 10.9538 15.3736 9.85034 14.402C9.62473 14.2034 9.4155 13.9885 9.20194 13.7759C8.31288 12.8908 7.63982 11.9364 7.23169 11.0336C7.03043 10.5884 6.90299 10.1116 6.90098 9.62098C6.89729 9.01405 7.09599 8.4232 7.46569 7.94186C7.53857 7.84697 7.60774 7.74855 7.72709 7.63586C7.85348 7.51651 7.93392 7.45244 8.02057 7.40811C8.13607 7.34902 8.26293 7.31742 8.39232 7.30833Z"></path></svg>
+              </a>
+          <a href="https://www.linkedin.com/company/lec-media-agency" target="_blank">
+            <svg
               style="padding: 0 10px"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -1486,8 +1539,7 @@
               height="30"
               fill="rgba(255,255,255,1)">
               <path
-                d="M4.00098 3H20.001C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3ZM5.00098 5V19H19.001V5H5.00098ZM7.50098 9C6.67255 9 6.00098 8.32843 6.00098 7.5C6.00098 6.67157 6.67255 6 7.50098 6C8.3294 6 9.00098 6.67157 9.00098 7.5C9.00098 8.32843 8.3294 9 7.50098 9ZM6.50098 10H8.50098V17.5H6.50098V10ZM12.001 10.4295C12.5854 9.86534 13.2665 9.5 14.001 9.5C16.072 9.5 17.501 11.1789 17.501 13.25V17.5H15.501V13.25C15.501 12.2835 14.7175 11.5 13.751 11.5C12.7845 11.5 12.001 12.2835 12.001 13.25V17.5H10.001V10H12.001V10.4295Z"></path></svg
-          ></a>
+                d="M4.00098 3H20.001C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3ZM5.00098 5V19H19.001V5H5.00098ZM7.50098 9C6.67255 9 6.00098 8.32843 6.00098 7.5C6.00098 6.67157 6.67255 6 7.50098 6C8.3294 6 9.00098 6.67157 9.00098 7.5C9.00098 8.32843 8.3294 9 7.50098 9ZM6.50098 10H8.50098V17.5H6.50098V10ZM12.001 10.4295C12.5854 9.86534 13.2665 9.5 14.001 9.5C16.072 9.5 17.501 11.1789 17.501 13.25V17.5H15.501V13.25C15.501 12.2835 14.7175 11.5 13.751 11.5C12.7845 11.5 12.001 12.2835 12.001 13.25V17.5H10.001V10H12.001V10.4295Z"></path></svg></a>
           <a href="mailto:arthurlecmedia@gmail.com" target="_blank"
             ><svg
               style="padding: 0 10px"
@@ -1497,8 +1549,7 @@
               height="30"
               fill="rgba(255,255,255,1)">
               <path
-                d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path></svg
-          ></a>
+                d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path></svg></a>
         </div>
         <div class="div53" id="copyright" style="text-align: center">
           LËC MÉDIA AGENCY Copyright ©2024 Lëc Média Montreal - Tous droits réservés
@@ -1589,6 +1640,32 @@
         }
       }
     </style>
+    <script>
+      // Define the rotation positions
+      const positions = [
+        { x: 0, y: 0 },
+        { x: -200, y: 0 },
+        { x: -200, y: -200 },
+        { x: 0, y: -200 },
+      ];
+      let currentIndex = 0; // Start with the first position
+
+      // Function to update the position of the grain element
+      function updatePosition() {
+        // Get the grain-overflow element
+        const grainOverflow = document.querySelector(".grain-overflow");
+        if (grainOverflow) {
+          // Update the transform property to move the element
+          const position = positions[currentIndex];
+          grainOverflow.style.transform = `translate3d(${position.x}px, ${position.y}px, 0px)`;
+          // Increment the index to move to the next position
+          currentIndex = (currentIndex + 1) % positions.length; // Loop back to the start when we reach the end
+        }
+      }
+
+      // Start updating the position every 0.3 seconds
+      setInterval(updatePosition, 300);
+    </script>
 
     <script>
       // Obtenir l'année actuelle

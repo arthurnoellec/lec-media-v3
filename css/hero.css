@@ -25,7 +25,7 @@
   font-family: Helvetica;
   color: #fcfcff;
   text-transform: uppercase;
-  background-color: rgba(47, 86, 223, 0.2);
+  background-color: rgb(47 86 223 / 37%);
   /* blue background for the highlight */
   padding: 0.1em 0.2em;
   /* adjust padding to control the spacing */

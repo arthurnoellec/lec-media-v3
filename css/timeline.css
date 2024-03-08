@@ -29,14 +29,14 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  background-color: #000;
+  background-color: #161616;
   max-width: 1200px;
 }
 
 .stepHeaderOrdi {
-  padding: 100px 0px 0px 0px !important;
-  box-shadow: 500px 30px 30px -33px rgb(0, 0, 0), -500px 30px 30px -33px rgb(0, 0, 0),
-    300px -50px 0px -50px #000000, -300px -50px 0px -50px #000000;
+  /* padding: 100px 0px 0px 0px !important; */
+  box-shadow: 500px 30px 30px -33px #161616, -500px 30px 30px -33px #161616,
+    300px -50px 0px -50px #161616, -300px -50px 0px -50px #161616;
 }
 
 .step2 {
@@ -182,7 +182,7 @@ p.me::after {
 
   .stepHeaderOrdi.Tel {
     display: block;
-    padding-top: 40px !important;
+    /* padding-top: 40px !important; */
     box-shadow: 100px 30px 30px -33px rgb(0, 0, 0), -100px 30px 30px -33px rgb(0, 0, 0),
       300px -50px 0px -50px #000000, -300px -50px 0px -50px #000000;
   }
