@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.Hero_header_gauche>div {
+.Hero_header_gauche > div {
   padding: 5px 0px;
 }
 
@@ -20,8 +20,7 @@
   align-items: center;
 }
 
-
-.Hero_header_gauche>div>h1 {
+.Hero_header_gauche > div > h1 {
   font-size: xxx-large;
   font-family: Helvetica;
   color: #fcfcff;
@@ -44,7 +43,7 @@
   color: transparent !important;
 }
 
-.Hero_header_gauche>div>p {
+.Hero_header_gauche > div > p {
   color: white;
   font-family: Helvetica;
   font-size: 18px;
@@ -64,9 +63,8 @@
   -webkit-box-decoration-break: clone;
 }
 
-
 .hl1::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   /* Aligns to the left edge of the .highlight span */
@@ -76,11 +74,11 @@
   height: 100%;
   transform: translate(-85%, -50%) scale(0.9);
   /* Adjusts the position to before the element */
-  background: url('../stick\ top.png') no-repeat center center;
+  background: url("../stick\ top.png") no-repeat center center;
 }
 
 .hl2::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0;
   /* Aligns to the right edge of the .highlight span */
@@ -90,7 +88,7 @@
   height: 100%;
   transform: translate(90%, -50%) scale(0.9);
   /* Adjusts the position to after the element */
-  background: url('../stick\ bottom.png') no-repeat center center;
+  background: url("../stick\ bottom.png") no-repeat center center;
 }
 
 .Hero_header_gauche {
@@ -106,10 +104,10 @@
   .Notifications {
     height: fit-content;
     min-height: 500px;
-    width: 95%;
+    width: 100%;
   }
 
-  .Hero_header_gauche>div>h1 {
+  .Hero_header_gauche > div > h1 {
     font-size: 40px;
   }
 
@@ -117,13 +115,13 @@
     display: none;
   }
 
-
-  .bookmarkBtn, .text {
+  .bookmarkBtn,
+  .text {
     width: 100%;
     max-width: 439px;
   }
 
-  .btn_call_hero{
+  .btn_call_hero {
     display: flex;
     justify-content: center;
     padding: 0px 5px !important;
@@ -131,48 +129,43 @@
 
   .Hero_header_gauche {
     width: 95%;
-}
+  }
 
-ul.Notifications__List {
-  max-height: 40vh;
-}
+  ul.Notifications__List {
+    max-height: 40vh;
+  }
 
-ul.Notifications__List {
-  margin-top: -120px;
-}
+  ul.Notifications__List {
+    margin-top: -120px;
+  }
 
-.Notifications__removeBtn {
-  margin-top: -70px;
-}
+  .Notifications__removeBtn {
+    margin-top: -70px;
+  }
 
-.highlight {
-  padding: 30px 0em;
-}
-
+  .highlight {
+    padding: 30px 0em;
+  }
 }
 
 @media screen and (max-width: 500px) {
-
-  .Hero_header_gauche>div>h1 {
-    font-size: 35px;
+  .Hero_header_gauche > div > h1 {
+    font-size: 29px;
   }
 
-  .Hero_header_gauche>div>p {
+  .Hero_header_gauche > div > p {
     color: white;
     font-family: Helvetica;
     font-size: 15px;
   }
 
+  .btn_call_hero > a {
+    width: 100%;
+  }
 }
 
-
 @media screen and (max-width: 380px) {
-
   ul.Notifications__List {
     margin-top: -170px;
   }
-  
-
 }
-
-

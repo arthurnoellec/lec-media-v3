@@ -50,7 +50,6 @@
   padding-left: 10px;
 }
 
-
 .Notification__Icon {
   vertical-align: middle;
   height: 100%;
@@ -77,7 +76,7 @@
   padding-right: 5px;
   font-family: helvetica;
   font-size: 15px;
-  color: #D9D9D9;
+  color: #d9d9d9;
 }
 
 .Notification__App {
@@ -90,15 +89,13 @@
   height: 40px;
   padding-top: 5px;
   font-size: 18px;
-  color: #D9D9D9;
+  color: #d9d9d9;
 }
 
 .Notification__Title {
   padding-bottom: 0.25em;
   font-weight: bold;
 }
-
-
 
 .Notifications {
   height: 100vh;
@@ -120,7 +117,6 @@
   padding: 0.5em;
   box-sizing: border-box;
 }
-
 
 .Notifications__btns {
   height: 10%;
@@ -167,4 +163,19 @@ ul.Notifications__List {
 .Notifications__List {
   -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+@media screen and (max-width: 550px) {
+  .Notification__Name {
+    font-size: 15px;
+  }
+  .Notification__Content {
+    font-size: 13px;
+  }
+  .Notification__Body {
+    overflow: hidden;
+  }
+  .Notification__Time {
+    font-size: 12px;
+  }
 }

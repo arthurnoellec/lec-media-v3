@@ -225,3 +225,27 @@ body {
   color: white;
   transition: all 0.5s ease-in-out;
 }
+
+@media screen and (max-width: 500px) {
+  .sectiongridcomparative > div {
+    margin-bottom: 20px !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .message::after {
+    display: none !important;
+  }
+
+  #chat-container {
+    height: 70vh;
+    min-height: 600px;
+  }
+
+  form > div {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
