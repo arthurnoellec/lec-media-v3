@@ -194,7 +194,7 @@ function generateRandomOrder() {
     items +
     " article" +
     (items > 1 ? "s" : "") +
-    " pour un total de $" +
+    " pour un total de €" +
     amount
   );
 }
