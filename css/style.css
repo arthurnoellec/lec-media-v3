@@ -309,11 +309,21 @@ body {
 }
 
 h2.titre-section.graph {
-  padding: 35px 10px;
+  padding: 10px 10px;
+  font-size: 2.5rem;
 }
 
 #chat-container,
 .btn-comparative.btn-notre-compa,
 .accordion {
   z-index: 2;
+}
+
+.btn-notre-compa a {
+  transition: all 0.3s;
+}
+
+.btn-notre-compa:hover a,
+.button-wrapper-grid:hover .icon > a {
+  color: black !important;
 }
