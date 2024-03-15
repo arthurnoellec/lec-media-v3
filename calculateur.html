@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculateur de croissance</title>
+    <style>
+      * {
+        font-family: Helvetica, sans-serif;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #e7e7e7;
+      }
+    </style>
+    <script>
+      function updateCalculations() {
+        const chiffreAffairesActuel = parseFloat(
+          document.getElementById("chiffreAffairesActuel").value
+        );
+        const tauxConversionActuel = parseFloat(document.getElementById("tauxConversion").value);
+        const valeurPanierMoyen = parseFloat(document.getElementById("valeurPanierMoyen").value);
+
+        // Calcul du nombre de conversions
+        const nombreConversions = chiffreAffairesActuel / valeurPanierMoyen;
+
+        // Estimation du nombre de visites
+        const nombreVisitesEstime = nombreConversions / (tauxConversionActuel / 100);
+
+        // Calculs pour les nouvelles valeurs
+        const nouvelleValeurPanierMoyen = valeurPanierMoyen * 1.05;
+        const nouveauTauxConversion = tauxConversionActuel * 1.15;
+        const nouveauChiffreAffaires =
+          nombreVisitesEstime * (nouveauTauxConversion / 100) * nouvelleValeurPanierMoyen;
+        const augmentationMinimale = nouveauChiffreAffaires - chiffreAffairesActuel;
+
+        // Mise à jour de l'interface utilisateur
+        document.getElementById("nouvelleValeurPanierMoyen").innerText =
+          nouvelleValeurPanierMoyen.toFixed(2) + "€";
+        document.getElementById("nouveauChiffreAffaires").innerText =
+          nouveauChiffreAffaires.toFixed(2) + "€";
+        document.getElementById("nouveauTauxConversion").innerText =
+          nouveauTauxConversion.toFixed(2) + "%";
+        document.getElementById("augmentationMinimale").innerText =
+          augmentationMinimale.toFixed(2) + "€";
+      }
+    </script>
+  </head>
+  <body>
+    <section class="calculateur_container" onload="updateCalculations()">
+        
+      <div class="calculateur">
+        <div class="les_inputs_calculateur">
+          <!-- Utilisateurs mensuels -->
+          <div class="input_1_users input_du_calc">
+            <div class="gauche_calc">
+              <p>Chiffre d'affaires mensuel</p>
+              <input
+                type="range"
+                id="chiffreAffairesActuelRange"
+                min="2000"
+                max="1000000"
+                value="50000.00"
+                oninput="chiffreAffairesActuel.value = chiffreAffairesActuelRange.value"
+                onchange="updateCalculations()" />
+            </div>
+            <div class="droite_calc">
+              <input
+                type="number"
+                id="chiffreAffairesActuel"
+                min="2000"
+                max="1000000"
+                value="50000.00"
+                oninput="chiffreAffairesActuelRange.value = chiffreAffairesActuel.value"
+                onchange="updateCalculations()" />
+            </div>
+          </div>
+          <!-- Taux de conversion -->
+          <div class="input_2_conversion input_du_calc">
+            <div class="gauche_calc">
+              <p>Taux de conversion actuel (%)</p>
+              <input
+                type="range"
+                id="tauxConversionRange"
+                min="0.01"
+                max="15"
+                step="0.01"
+                value="1.61"
+                oninput="tauxConversion.value = tauxConversionRange.value"
+                onchange="updateCalculations()" />
+            </div>
+            <div class="droite_calc">
+              <input
+                type="number"
+                id="tauxConversion"
+                min="0.01"
+                max="15"
+                step="0.01"
+                value="1.61"
+                oninput="tauxConversionRange.value = tauxConversion.value"
+                onchange="updateCalculations()" />
+            </div>
+          </div>
+          <!-- Valeur du panier moyen -->
+          <div class="input_3_panier_moyen input_du_calc">
+            <div class="gauche_calc">
+              <p>Valeur du panier moyen</p>
+              <input
+                type="range"
+                id="valeurPanierMoyenRange"
+                min="5"
+                max="2000"
+                value="74.54"
+                oninput="valeurPanierMoyen.value = valeurPanierMoyenRange.value"
+                onchange="updateCalculations()" />
+            </div>
+            <div class="droite_calc">
+              <input
+                type="number"
+                id="valeurPanierMoyen"
+                min="5"
+                max="2000"
+                value="70.80"
+                oninput="valeurPanierMoyenRange.value = valeurPanierMoyen.value"
+                onchange="updateCalculations()" />
+            </div>
+          </div>
+        </div>
+        <div class="les_resultats_calculateur">
+          <h6>VOS FUTURS RESULTATS :</h6>
+          <div class="les_resultats_div parentCalc">
+            <!-- Résultats -->
+            <div class="div_resultats div1Calc">
+              <p>Nouvelle valeur du panier moyen:</p>
+              <span id="nouvelleValeurPanierMoyen">500.00€</span>
+            </div>
+            <div class="div_resultats div2Calc">
+              <p>Nouveau Chiffre d'affaires:</p>
+              <span id="nouveauChiffreAffaires">...</span>
+            </div>
+            <div class="div_resultats div3Calc">
+              <p>Nouveau taux de conversion:</p>
+              <span id="nouveauTauxConversion">1,2%</span>
+            </div>
+            <div class="div_resultats div4Calc">
+              <p>Soit une augmentation minimum de:</p>
+              <span id="augmentationMinimale">20%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <style>
+      .calculateur_container {
+        width: 100vw;
+        height: fit-content;
+        padding: 100px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .calculateur {
+        width: 90%;
+        max-width: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 40px 0;
+      }
+      .les_inputs_calculateur {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        border: #161616 3px solid;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .input_du_calc {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 15px;
+      }
+      .gauche_calc {
+        width: calc(100% - 110px);
+      }
+      .gauche_calc > input {
+        width: 90%;
+      }
+      .gauche_calc > p {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: small;
+      }
+
+      .parentCalc {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+      }
+
+      .div1Calc {
+        grid-area: 1 / 1 / 2 / 5;
+      }
+      .div2Calc {
+        grid-area: 1 / 5 / 2 / 9;
+      }
+      .div3Calc {
+        grid-area: 2 / 1 / 3 / 5;
+      }
+      .div4Calc {
+        grid-area: 2 / 5 / 3 / 9;
+      }
+
+      .les_resultats_calculateur {
+        width: calc(80% + 40px);
+        margin-top: 20px;
+      }
+
+      .les_resultats_calculateur > h6 {
+        font-size: large;
+        margin: 10px 0;
+      }
+
+      .div_resultats {
+        background-color: #161616;
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .div_resultats > p {
+        margin: 0;
+        color: white;
+        font-size: small;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .div_resultats > span {
+        margin: 0;
+        color: #48f791;
+        font-size: x-large;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+    </style>
+
+    <style>
+      /* === range theme and appearance === */
+      input[type="range"] {
+        font-size: 1.5rem;
+        width: 12.5em;
+      }
+
+      input[type="range"] {
+        color: #161616;
+        --thumb-height: 20px;
+        --track-height: 0.2em;
+        --track-color: #161616cc;
+        --brightness-hover: 180%;
+        --brightness-down: 80%;
+        --clip-edges: 0.125em;
+      }
+
+      input[type="range"].win10-thumb {
+        color: #2b2d42;
+
+        --thumb-height: 1.375em;
+        --thumb-width: 0.5em;
+        --clip-edges: 0.0125em;
+      }
+
+      /* === range commons === */
+      input[type="range"] {
+        position: relative;
+        background: #fff0;
+        overflow: hidden;
+      }
+
+      input[type="range"]:active {
+        cursor: grabbing;
+      }
+
+      input[type="range"]:disabled {
+        filter: grayscale(1);
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      /* === WebKit specific styles === */
+      input[type="range"],
+      input[type="range"]::-webkit-slider-runnable-track,
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
+        width: 90%;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track,
+      input[type="range"]::-webkit-slider-thumb {
+        position: relative;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+        --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+        --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+        --clip-further: calc(100% + 1px);
+        --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax
+          currentColor;
+
+        width: var(--thumb-width, var(--thumb-height));
+        background: linear-gradient(currentColor 0 0) scroll no-repeat left center / 50%
+          calc(var(--track-height) + 1px);
+        background-color: currentColor;
+        box-shadow: var(--box-fill);
+        border-radius: var(--thumb-width, var(--thumb-height));
+
+        filter: brightness(100%);
+        clip-path: polygon(
+          100% -1px,
+          var(--clip-edges) -1px,
+          0 var(--clip-top),
+          -100vmax var(--clip-top),
+          -100vmax var(--clip-bottom),
+          0 var(--clip-bottom),
+          var(--clip-edges) 100%,
+          var(--clip-further) var(--clip-further)
+        );
+      }
+
+      input[type="range"]:hover::-webkit-slider-thumb {
+        filter: brightness(var(--brightness-hover));
+        cursor: grab;
+      }
+
+      input[type="range"]:active::-webkit-slider-thumb {
+        filter: brightness(var(--brightness-down));
+        cursor: grabbing;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track {
+        background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center / 100%
+          calc(var(--track-height) + 1px);
+      }
+
+      input[type="range"]:disabled::-webkit-slider-thumb {
+        cursor: not-allowed;
+      }
+
+      /* === Firefox specific styles === */
+      input[type="range"],
+      input[type="range"]::-moz-range-track,
+      input[type="range"]::-moz-range-thumb {
+        appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
+      }
+
+      input[type="range"]::-moz-range-track,
+      input[type="range"]::-moz-range-thumb,
+      input[type="range"]::-moz-range-progress {
+        background: #fff0;
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        background: currentColor;
+        border: 0;
+        width: var(--thumb-width, var(--thumb-height));
+        border-radius: var(--thumb-width, var(--thumb-height));
+        cursor: grab;
+      }
+
+      input[type="range"]:active::-moz-range-thumb {
+        cursor: grabbing;
+      }
+
+      input[type="range"]::-moz-range-track {
+        width: 100%;
+        background: var(--track-color);
+      }
+
+      input[type="range"]::-moz-range-progress {
+        appearance: none;
+        background: currentColor;
+        transition-delay: 30ms;
+      }
+
+      input[type="range"]::-moz-range-track,
+      input[type="range"]::-moz-range-progress {
+        height: calc(var(--track-height) + 1px);
+        border-radius: var(--track-height);
+      }
+
+      input[type="range"]::-moz-range-thumb,
+      input[type="range"]::-moz-range-progress {
+        filter: brightness(100%);
+      }
+
+      input[type="range"]:hover::-moz-range-thumb,
+      input[type="range"]:hover::-moz-range-progress {
+        filter: brightness(var(--brightness-hover));
+      }
+
+      input[type="range"]:active::-moz-range-thumb,
+      input[type="range"]:active::-moz-range-progress {
+        filter: brightness(var(--brightness-down));
+      }
+
+      input[type="range"]:disabled::-moz-range-thumb {
+        cursor: not-allowed;
+      }
+
+      input[type="number"] {
+        width: 100px; /* Largeur */
+        height: 35px; /* Hauteur */
+        background-color: #161616; /* Couleur de fond */
+        color: #48f791; /* Couleur du texte */
+        font-size: medium;
+        border-radius: 10px; /* Rayon de la bordure */
+        border: 1px solid #161616; /* Pas de bordure */
+        text-align: center; /* Centrer le texte */
+
+        /* Supprimer les flèches pour différents navigateurs */
+        -moz-appearance: textfield;
+        ::-webkit-outer-spin-button,
+        ::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+
+      input[type="number"]:focus {
+        border: 1px solid red !important; /* Bordure rouge lors du focus */
+      }
+
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    </style>
+
+    <style>
+      @media only screen and (max-width: 600px) {
+        .les_resultats_calculateur {
+          background-color: #161616;
+          margin-top: 0px;
+          padding: 20px 0;
+          border: 3px solid #161616;
+          border-radius: 0 0 20px 20px;
+        }
+        .les_resultats_calculateur > h6 {
+          color: white;
+          font-size: larger;
+          padding: 0 20px;
+        }
+        .les_inputs_calculateur {
+          border-radius: 20px 20px 0 0;
+          padding: 10px 20px;
+        }
+        .gauche_calc > input {
+          display: none;
+        }
+        .gauche_calc {
+          width: 100%;
+        }
+        .gauche_calc > p {
+          font-size: medium;
+          margin: 5px;
+        }
+        input[type="number"],
+        .droite_calc {
+          width: 100%;
+          height: 45px;
+          font-size: large;
+        }
+
+        .input_du_calc {
+          margin: 15px 0;
+        }
+
+        .div_resultats {
+          padding: 0 10px;
+        }
+
+        .parentCalc {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(4, 1fr);
+          grid-column-gap: 10px;
+          grid-row-gap: 10px;
+          padding: 10px 10px;
+        }
+
+        .div1Calc {
+          grid-area: 1 / 1 / 2 / 5;
+        }
+        .div2Calc {
+          grid-area: 2 / 1 / 3 / 5;
+        }
+        .div3Calc {
+          grid-area: 3 / 1 / 4 / 5;
+        }
+        .div4Calc {
+          grid-area: 4 / 1 / 5 / 5;
+        }
+      }
+    </style>
+  </body>
+</html>

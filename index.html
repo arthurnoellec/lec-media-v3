@@ -28,18 +28,14 @@
     <meta
       property="og:description"
       content="Expert en stratégie marketing, création de sites e-commerce optimisés et branding unique. Révolutionnez votre présence en ligne avec nos solutions sur mesure. Contactez-nous pour transformer votre vision en réalité et dominer votre marché." />
-    <meta
-      property="og:image"
-      content="./content_open_graph.webp" />
+    <meta property="og:image" content="./content_open_graph.webp" />
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="LËC MEDIA" />
     <meta
       name="twitter:description"
       content="Expert en stratégie marketing, création de sites e-commerce optimisés et branding unique. Révolutionnez votre présence en ligne avec nos solutions sur mesure. Contactez-nous pour transformer votre vision en réalité et dominer votre marché." />
-    <meta
-      name="twitter:image"
-      content="./content_open_graph.webp" />
+    <meta name="twitter:image" content="./content_open_graph.webp" />
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/bouton.css" />
     <link rel="stylesheet" type="text/css" href="./css/notification.css" />
@@ -54,13 +50,46 @@
     <link rel="stylesheet" type="text/css" href="./css/card_hover.css" />
     <link rel="stylesheet" type="text/css" href="./css/footer.css" />
     <link rel="stylesheet" type="text/css" href="./css/mesFonts.css" />
+
+    <script>
+      function updateCalculations() {
+        const chiffreAffairesActuel = parseFloat(
+          document.getElementById("chiffreAffairesActuel").value
+        );
+        const tauxConversionActuel = parseFloat(document.getElementById("tauxConversion").value);
+        const valeurPanierMoyen = parseFloat(document.getElementById("valeurPanierMoyen").value);
+
+        // Calcul du nombre de conversions
+        const nombreConversions = chiffreAffairesActuel / valeurPanierMoyen;
+
+        // Estimation du nombre de visites
+        const nombreVisitesEstime = nombreConversions / (tauxConversionActuel / 100);
+
+        // Calculs pour les nouvelles valeurs
+        const nouvelleValeurPanierMoyen = valeurPanierMoyen * 1.05;
+        const nouveauTauxConversion = tauxConversionActuel * 1.15;
+        const nouveauChiffreAffaires =
+          nombreVisitesEstime * (nouveauTauxConversion / 100) * nouvelleValeurPanierMoyen;
+        const augmentationMinimale = nouveauChiffreAffaires - chiffreAffairesActuel;
+
+        // Mise à jour de l'interface utilisateur
+        document.getElementById("nouvelleValeurPanierMoyen").innerText =
+          nouvelleValeurPanierMoyen.toFixed(2) + "€";
+        document.getElementById("nouveauChiffreAffaires").innerText =
+          nouveauChiffreAffaires.toFixed(2) + "€";
+        document.getElementById("nouveauTauxConversion").innerText =
+          nouveauTauxConversion.toFixed(2) + "%";
+        document.getElementById("augmentationMinimale").innerText =
+          augmentationMinimale.toFixed(2) + "€";
+      }
+    </script>
   </head>
 
   <body style="overflow-x: hidden">
     <style>
       .grain-overflow {
         position: fixed;
-        width: 100vw;
+        width: 200vw;
         height: 200vh;
         background-image: url(./texture-7.png);
         background-position: 0px 0px;
@@ -75,11 +104,13 @@
     <div class="grain">
       <div class="grain-overflow"></div>
     </div>
-    <div class="ready">
-      <span style="display: flex; justify-content: center; align-items: center"></span>
-      <img src="./ready.png" style="width: 13px; padding: 0 10px" alt="nous sommes disponnible"/>
-      <span>Prêt a travailler</span>
-    </div>
+    <a href="#contact" class="smooth-scroll">
+      <div class="ready">
+        <span style="display: flex; justify-content: center; align-items: center"></span>
+        <img src="./ready.png" style="width: 13px; padding: 0 10px" alt="nous sommes disponnible" />
+        <span>Prêt à travailler</span>
+      </div>
+    </a>
     <section class="features_hero-wrapper">
       <div class="features_gradient-wrapper" style="transform: scale(0.7)">
         <div class="features_gradient features_gradient-1"></div>
@@ -92,7 +123,10 @@
             <input type="checkbox" id="nav-check" />
             <div class="nav-header">
               <div class="nav-title">
-                <img src="./logo-lec-media-blanc.png" style="height: 40px; padding-left: 10px" alt="logo blanc lëc média" />
+                <img
+                  src="./logo-lec-media-blanc.png"
+                  style="height: 40px; padding-left: 10px"
+                  alt="logo blanc lëc média" />
               </div>
             </div>
             <div class="nav-btn">
@@ -112,7 +146,7 @@
                   <span aria-hidden="true" class="hover-text"> &nbsp;&nbsp;Stratégie&nbsp; </span>
                 </button>
               </a>
-              <a href="#contact">
+              <a href="#contact" class="smooth-scroll">
                 <button class="button_nav" data-text="Awesome">
                   <span class="actual-text">&nbsp;&nbsp;Contact&nbsp;</span>
                   <span aria-hidden="true" class="hover-text"> &nbsp;&nbsp;Contact&nbsp; </span>
@@ -121,7 +155,9 @@
               <a href="https://www.sortlist.fr/agency/lec-media" target="_blank">
                 <button class="button_nav" data-text="Awesome">
                   <span class="actual-text">&nbsp;&nbsp;À&nbsp;propos&nbsp;</span>
-                  <span aria-hidden="true" class="hover-text"> &nbsp;&nbsp;À&nbsp;propos&nbsp; </span>
+                  <span aria-hidden="true" class="hover-text">
+                    &nbsp;&nbsp;À&nbsp;propos&nbsp;
+                  </span>
                 </button>
               </a>
             </div>
@@ -138,8 +174,8 @@
               </div>
               <div>
                 <p>
-                  On augmente ton chiffre d’affaires d’au moins 20 %, sinon… On te rembourse.
-                  Eh oui, nos magiciens du design UX et du CRO s’occupent des résultats.
+                  On augmente ton chiffre d’affaires d’au moins 20 %, sinon… On te rembourse. Eh
+                  oui, nos magiciens du design UX et du CRO s’occupent des résultats.
                 </p>
               </div>
               <div class="btn_call_hero">
@@ -149,7 +185,15 @@
                   target="_blank">
                   <button class="bookmarkBtn">
                     <span class="IconContainer">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="rgba(255,255,255,1)"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="32"
+                        height="32"
+                        fill="rgba(255,255,255,1)">
+                        <path
+                          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                      </svg>
                     </span>
                     <p class="text" style="text-transform: uppercase">Prendre un rendez-vous</p>
                   </button>
@@ -182,7 +226,10 @@
               <div class="Notifications__btns" style="z-index: 20">
                 <button class="Notifications__addBtn" style="opacity: 0">Add</button>
                 <button class="Notifications__removeBtn">
-                  <img src="./walt-shopify-partner.png" style="width: 100%" alt="logo shopify partner" />
+                  <img
+                    src="./walt-shopify-partner.png"
+                    style="width: 100%"
+                    alt="logo shopify partner" />
                 </button>
               </div>
             </div>
@@ -199,7 +246,7 @@
           <div class="card-content">
             <div class="titreHEAD">
               <h3>RÉSULTATS CONCRETS DE NOS CLIENTS.</h3>
-              <img src="./HEAD.png" alt="photo groupe client lëc média"/>
+              <img src="./HEAD.png" alt="photo groupe client lëc média" />
             </div>
             <p style="color: #04f791; padding: 0 20px">
               Les résultats moyens observés chez nos clients sur l’accompagnement de 6 mois.
@@ -306,7 +353,7 @@
       </div>
     </div>
 
-    <div class="container" style="margin-top: 100px;">
+    <div class="container" style="margin-top: 100px">
       <div
         class="stepHeaderOrdi Ordi"
         style="
@@ -316,12 +363,13 @@
           justify-content: center;
           align-items: end;
         ">
-        <div style="width: 100%; display: flex; justify-content: center;     padding: 25px 0px 20px 0px;">
+        <div
+          style="width: 100%; display: flex; justify-content: center; padding: 25px 0px 20px 0px">
           <h2 class="titre-section graph" style="text-align: center; width: fit-content; margin: 0">
-              Optimiser son site web c'est:
+            Optimiser son site web c'est:
           </h2>
         </div>
-        <img src="./graph.png" style="height: 80%" alt="graphique strategie lec media"/>
+        <img src="./graph.png" style="height: 80%" alt="graphique strategie lec media" />
       </div>
       <div
         class="stepHeaderOrdi Tel"
@@ -332,12 +380,14 @@
           justify-content: center;
           align-items: end;
         ">
-        <div style="width: 100%; display: flex; justify-content: center;     padding: 20px 0;">
-          <h2 class="titre-section graph" style="text-align: center; width: fit-content; margin: 0; font-size:25px">
+        <div style="width: 100%; display: flex; justify-content: center; padding: 20px 0">
+          <h2
+            class="titre-section graph"
+            style="text-align: center; width: fit-content; margin: 0; font-size: 25px">
             Lëc Média c'est:
           </h2>
         </div>
-        <img src="./graphtel.png" style="height: 80%" alt="graphique strategie lec media"/>
+        <img src="./graphtel.png" style="height: 80%" alt="graphique strategie lec media" />
       </div>
       <div class="listItem">
         <div class="itemHeder frist-itemHeder">
@@ -386,7 +436,7 @@
         </div>
         <div class="itemContents"></div>
       </div>
-      <div class="listItem">
+      <div class="listItem CItem">
         <div class="itemHeder">
           03
           <br />
@@ -410,7 +460,7 @@
         </div>
         <div class="itemContents"></div>
       </div>
-      <div class="listItem">
+      <div class="listItem lastItemList">
         <div class="itemHeder noafter">
           04
           <br />
@@ -428,8 +478,8 @@
             "></div>
           <p class="me">
             Les premiers résultats concrets arrivent en force. Mais nous continuons à vous
-            accompagner avec une série d'A/B tests et d'analyses sur 6 mois, plaçant ainsi
-            votre boutique Shopify au sommet de la performance.
+            accompagner avec une série d'A/B tests et d'analyses sur 6 mois, plaçant ainsi votre
+            boutique Shopify au sommet de la performance.
           </p>
         </div>
         <div class="itemContents"></div>
@@ -1115,6 +1165,501 @@
         });
       });
     </script>
+    <div id="calculateur"></div>
+    <section
+      class="calculateur_container"
+      onload="updateCalculations()"
+      style="z-index: 2; flex-wrap: wrap">
+      <div style="width: 90%; display: flex; justify-content: center">
+        <h2 class="titre-section" style="margin: 20px auto; width: 90%; text-align: center">
+          Calculateur d'optimisation
+        </h2>
+      </div>
+      <div style="width: 100%; display: flex; justify-content: center">
+        <h3
+          class="titre-section sous-titre-calculateur"
+          style="
+            text-align: center;
+            font-size: 1.2em;
+            max-width: 1000px;
+            margin-top: 0;
+            width: 90%;
+            text-align: center;
+          ">
+          Faites une estimation des résultats que vous pouvez obtenir suite à notre intervention.
+        </h3>
+        <style>
+          @media screen and (max-width: 550px){
+            h3.titre-section {
+              font-size: 1em !important;
+            }
+          } 
+        </style>
+      </div>
+      <div class="calculateur">
+        <div class="les_inputs_calculateur" style="z-index: 2">
+          <!-- Utilisateurs mensuels -->
+          <div class="input_1_users input_du_calc">
+            <div class="gauche_calc">
+              <p>Chiffre d'affaires mensuel</p>
+              <input
+                type="range"
+                id="chiffreAffairesActuelRange"
+                min="2000"
+                max="1000000"
+                value="50000.00"
+                oninput="chiffreAffairesActuel.value = chiffreAffairesActuelRange.value"
+                onchange="updateCalculations()" />
+            </div>
+            <div class="droite_calc">
+              <input
+                type="number"
+                id="chiffreAffairesActuel"
+                min="2000"
+                max="1000000"
+                value="50000.00"
+                oninput="chiffreAffairesActuelRange.value = chiffreAffairesActuel.value"
+                onchange="updateCalculations()" />
+            </div>
+          </div>
+          <!-- Taux de conversion -->
+          <div class="input_2_conversion input_du_calc">
+            <div class="gauche_calc">
+              <p>Taux de conversion actuel (%)</p>
+              <input
+                type="range"
+                id="tauxConversionRange"
+                min="0.01"
+                max="15"
+                step="0.01"
+                value="1.61"
+                oninput="tauxConversion.value = tauxConversionRange.value"
+                onchange="updateCalculations()" />
+            </div>
+            <div class="droite_calc">
+              <input
+                type="number"
+                id="tauxConversion"
+                min="0.01"
+                max="15"
+                step="0.01"
+                value="1.61"
+                oninput="tauxConversionRange.value = tauxConversion.value"
+                onchange="updateCalculations()" />
+            </div>
+          </div>
+          <!-- Valeur du panier moyen -->
+          <div class="input_3_panier_moyen input_du_calc">
+            <div class="gauche_calc">
+              <p>Valeur du panier moyen</p>
+              <input
+                type="range"
+                id="valeurPanierMoyenRange"
+                min="5"
+                max="2000"
+                value="74.54"
+                oninput="valeurPanierMoyen.value = valeurPanierMoyenRange.value"
+                onchange="updateCalculations()" />
+            </div>
+            <div class="droite_calc">
+              <input
+                type="number"
+                id="valeurPanierMoyen"
+                min="5"
+                max="2000"
+                value="70.80"
+                oninput="valeurPanierMoyenRange.value = valeurPanierMoyen.value"
+                onchange="updateCalculations()" />
+            </div>
+          </div>
+        </div>
+        <div class="les_resultats_calculateur" style="z-index: 2">
+          <h6>VOS FUTURS RESULTATS :</h6>
+          <div class="les_resultats_div parentCalc">
+            <!-- Résultats -->
+            <div class="div_resultats div1Calc">
+              <p>Nouvelle valeur du panier moyen:</p>
+              <span id="nouvelleValeurPanierMoyen">500.00€</span>
+            </div>
+            <div class="div_resultats div2Calc">
+              <p>Nouveau Chiffre d'affaires:</p>
+              <span id="nouveauChiffreAffaires">...</span>
+            </div>
+            <div class="div_resultats div3Calc">
+              <p>Nouveau taux de conversion:</p>
+              <span id="nouveauTauxConversion">1,2%</span>
+            </div>
+            <div class="div_resultats div4Calc">
+              <p>Soit une augmentation minimum de:</p>
+              <span id="augmentationMinimale">20%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <style>
+      .calculateur_container {
+        width: 100vw;
+        height: fit-content;
+        padding: 100px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .calculateur {
+        width: 90%;
+        max-width: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 40px 0;
+      }
+      .les_inputs_calculateur {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        border: #161616 3px solid;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .input_du_calc {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 15px;
+      }
+      .gauche_calc {
+        width: calc(100% - 110px);
+      }
+      .gauche_calc > input {
+        width: 90%;
+      }
+      .gauche_calc > p {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: small;
+      }
+
+      .parentCalc {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+      }
+
+      .div1Calc {
+        grid-area: 1 / 1 / 2 / 5;
+      }
+      .div2Calc {
+        grid-area: 1 / 5 / 2 / 9;
+      }
+      .div3Calc {
+        grid-area: 2 / 1 / 3 / 5;
+      }
+      .div4Calc {
+        grid-area: 2 / 5 / 3 / 9;
+      }
+
+      .les_resultats_calculateur {
+        width: calc(80% + 40px);
+        margin-top: 20px;
+      }
+
+      .les_resultats_calculateur > h6 {
+        font-size: large;
+        margin: 10px 0;
+      }
+
+      .div_resultats {
+        background-color: #161616;
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .div_resultats > p {
+        margin: 0;
+        color: white;
+        font-size: small;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .div_resultats > span {
+        margin: 0;
+        color: #48f791;
+        font-size: x-large;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+    </style>
+
+    <style>
+      /* === range theme and appearance === */
+      input[type="range"] {
+        font-size: 1.5rem;
+        width: 12.5em;
+      }
+
+      input[type="range"] {
+        color: #161616;
+        --thumb-height: 20px;
+        --track-height: 0.2em;
+        --track-color: #161616cc;
+        --brightness-hover: 180%;
+        --brightness-down: 80%;
+        --clip-edges: 0.125em;
+      }
+
+      input[type="range"].win10-thumb {
+        color: #2b2d42;
+
+        --thumb-height: 1.375em;
+        --thumb-width: 0.5em;
+        --clip-edges: 0.0125em;
+      }
+
+      /* === range commons === */
+      input[type="range"] {
+        position: relative;
+        background: #fff0;
+        overflow: hidden;
+      }
+
+      input[type="range"]:active {
+        cursor: grabbing;
+      }
+
+      input[type="range"]:disabled {
+        filter: grayscale(1);
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      /* === WebKit specific styles === */
+      input[type="range"],
+      input[type="range"]::-webkit-slider-runnable-track,
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
+        width: 90%;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track,
+      input[type="range"]::-webkit-slider-thumb {
+        position: relative;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+        --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+        --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+        --clip-further: calc(100% + 1px);
+        --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax
+          currentColor;
+
+        width: var(--thumb-width, var(--thumb-height));
+        background: linear-gradient(currentColor 0 0) scroll no-repeat left center / 50%
+          calc(var(--track-height) + 1px);
+        background-color: currentColor;
+        box-shadow: var(--box-fill);
+        border-radius: var(--thumb-width, var(--thumb-height));
+
+        filter: brightness(100%);
+        clip-path: polygon(
+          100% -1px,
+          var(--clip-edges) -1px,
+          0 var(--clip-top),
+          -100vmax var(--clip-top),
+          -100vmax var(--clip-bottom),
+          0 var(--clip-bottom),
+          var(--clip-edges) 100%,
+          var(--clip-further) var(--clip-further)
+        );
+      }
+
+      input[type="range"]:hover::-webkit-slider-thumb {
+        filter: brightness(var(--brightness-hover));
+        cursor: grab;
+      }
+
+      input[type="range"]:active::-webkit-slider-thumb {
+        filter: brightness(var(--brightness-down));
+        cursor: grabbing;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track {
+        background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center / 100%
+          calc(var(--track-height) + 1px);
+      }
+
+      input[type="range"]:disabled::-webkit-slider-thumb {
+        cursor: not-allowed;
+      }
+
+      /* === Firefox specific styles === */
+      input[type="range"],
+      input[type="range"]::-moz-range-track,
+      input[type="range"]::-moz-range-thumb {
+        appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
+      }
+
+      input[type="range"]::-moz-range-track,
+      input[type="range"]::-moz-range-thumb,
+      input[type="range"]::-moz-range-progress {
+        background: #fff0;
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        background: currentColor;
+        border: 0;
+        width: var(--thumb-width, var(--thumb-height));
+        border-radius: var(--thumb-width, var(--thumb-height));
+        cursor: grab;
+      }
+
+      input[type="range"]:active::-moz-range-thumb {
+        cursor: grabbing;
+      }
+
+      input[type="range"]::-moz-range-track {
+        width: 100%;
+        background: var(--track-color);
+      }
+
+      input[type="range"]::-moz-range-progress {
+        appearance: none;
+        background: currentColor;
+        transition-delay: 30ms;
+      }
+
+      input[type="range"]::-moz-range-track,
+      input[type="range"]::-moz-range-progress {
+        height: calc(var(--track-height) + 1px);
+        border-radius: var(--track-height);
+      }
+
+      input[type="range"]::-moz-range-thumb,
+      input[type="range"]::-moz-range-progress {
+        filter: brightness(100%);
+      }
+
+      input[type="range"]:hover::-moz-range-thumb,
+      input[type="range"]:hover::-moz-range-progress {
+        filter: brightness(var(--brightness-hover));
+      }
+
+      input[type="range"]:active::-moz-range-thumb,
+      input[type="range"]:active::-moz-range-progress {
+        filter: brightness(var(--brightness-down));
+      }
+
+      input[type="range"]:disabled::-moz-range-thumb {
+        cursor: not-allowed;
+      }
+
+      input[type="number"] {
+        width: 100px; /* Largeur */
+        height: 35px; /* Hauteur */
+        background-color: #161616; /* Couleur de fond */
+        color: #48f791; /* Couleur du texte */
+        font-size: medium;
+        border-radius: 10px; /* Rayon de la bordure */
+        border: 1px solid #161616; /* Pas de bordure */
+        text-align: center; /* Centrer le texte */
+
+        /* Supprimer les flèches pour différents navigateurs */
+        -moz-appearance: textfield;
+        ::-webkit-outer-spin-button,
+        ::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+
+      input[type="number"]:focus {
+        border: 1px solid red !important; /* Bordure rouge lors du focus */
+      }
+
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    </style>
+
+    <style>
+      @media only screen and (max-width: 600px) {
+        .les_resultats_calculateur {
+          background-color: #161616;
+          margin-top: 0px;
+          padding: 20px 0;
+          border: 3px solid #161616;
+          border-radius: 0 0 20px 20px;
+        }
+        .les_resultats_calculateur > h6 {
+          color: white;
+          font-size: larger;
+          padding: 0 20px;
+        }
+        .les_inputs_calculateur {
+          border-radius: 20px 20px 0 0;
+          padding: 10px 20px;
+        }
+        .gauche_calc > input {
+          display: none;
+        }
+        .gauche_calc {
+          width: 100%;
+        }
+        .gauche_calc > p {
+          font-size: medium;
+          margin: 5px;
+        }
+        input[type="number"],
+        .droite_calc {
+          width: 100%;
+          height: 45px;
+          font-size: large;
+        }
+
+        .input_du_calc {
+          margin: 15px 0;
+        }
+
+        .div_resultats {
+          padding: 0 10px;
+        }
+
+        .parentCalc {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(4, 1fr);
+          grid-column-gap: 10px;
+          grid-row-gap: 10px;
+          padding: 10px 10px;
+        }
+
+        .div1Calc {
+          grid-area: 1 / 1 / 2 / 5;
+        }
+        .div2Calc {
+          grid-area: 2 / 1 / 3 / 5;
+        }
+        .div3Calc {
+          grid-area: 3 / 1 / 4 / 5;
+        }
+        .div4Calc {
+          grid-area: 4 / 1 / 5 / 5;
+        }
+      }
+    </style>
 
     <section
       style="
@@ -1123,7 +1668,6 @@
         align-items: center;
         width: 100vw;
         flex-wrap: wrap;
-        margin-bottom: 100px;
       ">
       <div class="accordion">
         <h2 class="titre-section">F.A.Q</h2>
@@ -1247,6 +1791,8 @@
         width: 100vw;
         flex-wrap: wrap;
         z-index: 2 !important;
+        min-height: 80vh;
+        align-content: center;
       ">
       <div style="width: 100%; display: flex; justify-content: center">
         <h2 class="titre-section">Contactez-nous</h2>
@@ -1522,6 +2068,53 @@
       };
     </script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sélectionnez tous les liens avec la classe smooth-scroll
+        const links = document.querySelectorAll(".smooth-scroll");
+
+        // Bouclez sur chaque lien
+        links.forEach((each) => (each.onclick = scrollAnchors));
+      });
+
+      function scrollAnchors(e, respond = null) {
+        const distanceToTop = (el) => Math.floor(el.getBoundingClientRect().top);
+        e.preventDefault();
+        var targetID = respond ? respond.getAttribute("href") : this.getAttribute("href");
+        const targetAnchor = document.querySelector(targetID);
+        if (!targetAnchor) return;
+        const originalTop = distanceToTop(targetAnchor);
+        window.scrollBy({ top: originalTop, left: 0, behavior: "smooth" });
+        const checkIfDone = setInterval(function () {
+          const atBottom =
+            window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2;
+          if (distanceToTop(targetAnchor) === 0 || atBottom) {
+            targetAnchor.tabIndex = "-1";
+            targetAnchor.focus();
+            window.history.pushState("", "", targetID);
+            clearInterval(checkIfDone);
+          }
+        }, 100);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var lastItemList = document.querySelector(".listItem");
+        var itemHeader = lastItemList.querySelector(".itemHeder");
+
+        var headerHeight = itemHeader.offsetHeight; // Hauteur de itemHeader
+        var listItemHeight = lastItemList.offsetHeight; // Hauteur de lastItemList
+
+        var vh = window.innerHeight * 0.025; // Calcul de 5vh en pixels
+        var afterHeight = listItemHeight - headerHeight / 2 + vh; // Hauteur désirée pour ::after avec ajout de 5vh
+
+        // Création d'un style pour ::after avec la hauteur calculée
+        var styleElement = document.createElement("style");
+        document.head.appendChild(styleElement);
+        var styleSheet = styleElement.sheet;
+        styleSheet.insertRule(".lastItemList::after { height: " + afterHeight + "px; }", 0);
+      });
+    </script>
+
     <footer>
       <div class="parent3">
         <div class="div13">
@@ -1557,7 +2150,10 @@
                 d="M7.25361 18.4944L7.97834 18.917C9.18909 19.623 10.5651 20 12.001 20C16.4193 20 20.001 16.4183 20.001 12C20.001 7.58172 16.4193 4 12.001 4C7.5827 4 4.00098 7.58172 4.00098 12C4.00098 13.4363 4.37821 14.8128 5.08466 16.0238L5.50704 16.7478L4.85355 19.1494L7.25361 18.4944ZM2.00516 22L3.35712 17.0315C2.49494 15.5536 2.00098 13.8345 2.00098 12C2.00098 6.47715 6.47813 2 12.001 2C17.5238 2 22.001 6.47715 22.001 12C22.001 17.5228 17.5238 22 12.001 22C10.1671 22 8.44851 21.5064 6.97086 20.6447L2.00516 22ZM8.39232 7.30833C8.5262 7.29892 8.66053 7.29748 8.79459 7.30402C8.84875 7.30758 8.90265 7.31384 8.95659 7.32007C9.11585 7.33846 9.29098 7.43545 9.34986 7.56894C9.64818 8.24536 9.93764 8.92565 10.2182 9.60963C10.2801 9.76062 10.2428 9.95633 10.125 10.1457C10.0652 10.2428 9.97128 10.379 9.86248 10.5183C9.74939 10.663 9.50599 10.9291 9.50599 10.9291C9.50599 10.9291 9.40738 11.0473 9.44455 11.1944C9.45903 11.25 9.50521 11.331 9.54708 11.3991C9.57027 11.4368 9.5918 11.4705 9.60577 11.4938C9.86169 11.9211 10.2057 12.3543 10.6259 12.7616C10.7463 12.8783 10.8631 12.9974 10.9887 13.108C11.457 13.5209 11.9868 13.8583 12.559 14.1082L12.5641 14.1105C12.6486 14.1469 12.692 14.1668 12.8157 14.2193C12.8781 14.2457 12.9419 14.2685 13.0074 14.2858C13.0311 14.292 13.0554 14.2955 13.0798 14.2972C13.2415 14.3069 13.335 14.2032 13.3749 14.1555C14.0984 13.279 14.1646 13.2218 14.1696 13.2222V13.2238C14.2647 13.1236 14.4142 13.0888 14.5476 13.097C14.6085 13.1007 14.6691 13.1124 14.7245 13.1377C15.2563 13.3803 16.1258 13.7587 16.1258 13.7587L16.7073 14.0201C16.8047 14.0671 16.8936 14.1778 16.8979 14.2854C16.9005 14.3523 16.9077 14.4603 16.8838 14.6579C16.8525 14.9166 16.7738 15.2281 16.6956 15.3913C16.6406 15.5058 16.5694 15.6074 16.4866 15.6934C16.3743 15.81 16.2909 15.8808 16.1559 15.9814C16.0737 16.0426 16.0311 16.0714 16.0311 16.0714C15.8922 16.159 15.8139 16.2028 15.6484 16.2909C15.391 16.428 15.1066 16.5068 14.8153 16.5218C14.6296 16.5313 14.4444 16.5447 14.2589 16.5347C14.2507 16.5342 13.6907 16.4482 13.6907 16.4482C12.2688 16.0742 10.9538 15.3736 9.85034 14.402C9.62473 14.2034 9.4155 13.9885 9.20194 13.7759C8.31288 12.8908 7.63982 11.9364 7.23169 11.0336C7.03043 10.5884 6.90299 10.1116 6.90098 9.62098C6.89729 9.01405 7.09599 8.4232 7.46569 7.94186C7.53857 7.84697 7.60774 7.74855 7.72709 7.63586C7.85348 7.51651 7.93392 7.45244 8.02057 7.40811C8.13607 7.34902 8.26293 7.31742 8.39232 7.30833Z"></path>
             </svg>
           </a>
-          <a href="https://www.linkedin.com/company/lec-media-agency" target="_blank" alt="linkedin">
+          <a
+            href="https://www.linkedin.com/company/lec-media-agency"
+            target="_blank"
+            alt="linkedin">
             <svg
               style="padding: 0 10px"
               xmlns="http://www.w3.org/2000/svg"
