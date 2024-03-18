@@ -36,7 +36,7 @@
       name="twitter:description"
       content="Expert en stratégie marketing, création de sites e-commerce optimisés et branding unique. Révolutionnez votre présence en ligne avec nos solutions sur mesure. Contactez-nous pour transformer votre vision en réalité et dominer votre marché." />
     <meta name="twitter:image" content="./content_open_graph.webp" />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/bouton.css" />
     <link rel="stylesheet" type="text/css" href="./css/notification.css" />
@@ -487,9 +487,42 @@
       </div>
     </div>
     <div style="height: 50px; width: 100vw"></div>
+    <div class="btn_call_hero" style="display: flex; justify-content: center; align-items: center">
+      <a
+        style="text-decoration: none; color: white"
+        href="https://calendly.com/arthur-celleon/lec-media"
+        target="_blank">
+        <button class="bookmarkBtn btn_strat">
+          <span class="IconContainer" style="background-color: #0c7bfe">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="32"
+              height="32"
+              fill="rgba(255,255,255,1)">
+              <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+          </span>
+          <p class="text" style="text-transform: uppercase">Notre stratégie en détail</p>
+        </button>
+      </a>
+    </div>
     <div class="stepHeaderOrdi step2"></div>
 
     <style>
+      @media screen and (max-width: 900px) {
+        .bookmarkBtn,
+        .text {
+          width: 90%;
+          max-width: 439px;
+        }
+
+        .btn_call_hero > a {
+          display: flex;
+          justify-content: center;
+        }
+      }
       .comparative {
         width: 100%;
         display: flex;
@@ -1190,11 +1223,11 @@
           Faites une estimation des résultats que vous pouvez obtenir suite à notre intervention.
         </h3>
         <style>
-          @media screen and (max-width: 550px){
+          @media screen and (max-width: 550px) {
             h3.titre-section {
               font-size: 1em !important;
             }
-          } 
+          }
         </style>
       </div>
       <div class="calculateur">
@@ -1618,16 +1651,24 @@
         }
         .gauche_calc {
           width: 100%;
+          text-align: center;
         }
         .gauche_calc > p {
           font-size: medium;
           margin: 5px;
         }
-        input[type="number"],
+
         .droite_calc {
-          width: 100%;
+          width: 90%;
+          font-size: large;
+        }
+
+        .droite_calc > input {
+          padding: 0;
+          margin: 0;
           height: 45px;
           font-size: large;
+          width: 100%;
         }
 
         .input_du_calc {
