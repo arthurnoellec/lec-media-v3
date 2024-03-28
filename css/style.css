@@ -137,7 +137,6 @@ body {
 .ready {
   position: fixed;
   bottom: 20px;
-  right: 20px;
   color: white;
   display: flex;
   justify-content: center;
@@ -147,6 +146,12 @@ body {
   border-radius: 50px;
   z-index: 100;
   padding-left: 5px;
+}
+
+@media screen and (max-width: 900px) {
+  .ready1 {
+    display: none;
+  }
 }
 
 .ready > span > img {
