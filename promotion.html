@@ -438,7 +438,6 @@
           #legende-cercle {
             justify-content: center !important;
             width: 90%;
-            margin-top: -15vh !important;
           }
           .parent > div > span {
             font-size: 40px !important;
@@ -822,6 +821,9 @@
         #logo_nav{
           padding-bottom: 30px;
         }
+        .button{
+          padding: 30px 10px;
+        }
       }
 
       h2 {
@@ -872,7 +874,7 @@
         <div
           class="calendly-inline-widget"
           data-url="https://calendly.com/arthur-noellec/lec-media"
-          style="min-width: 320px; height: 700px; width: 100%"></div>
+          style="min-width: 320px; width: 100%"></div>
         <script
           type="text/javascript"
           src="https://assets.calendly.com/assets/external/widget.js"
@@ -881,9 +883,14 @@
       </div>
     </section>
     <style>
+      .calendly-inline-widget{
+        height: 100vh;
+        overflow: hidden !important;
+      }
+      
       @media (max-width: 1200px) {
         .calendly-inline-widget {
-          height: 130vh !important;
+          height: 180vh !important;
         }
       }
       @media (min-width: 740px) {
