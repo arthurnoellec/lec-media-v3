@@ -63,6 +63,9 @@
     <link rel="stylesheet" type="text/css" href="./css/footer.css" />
     <link rel="stylesheet" type="text/css" href="./css/mesFonts.css" />
     <link rel="stylesheet" type="text/css" href="./css/btn_LP.css" />
+
+    <!-- Lucky Orange -->
+    <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=6520780b"></script>
   </head>
 
   <body style="overflow-x: hidden">
@@ -158,6 +161,40 @@
           </div>
         </div>
       </div>
+    </section>
+    <section style="
+    display: flex;
+    justify-content: center;
+" class="video-section">
+      <style>
+      .video-container {
+        width: 95%; /* Largeur à 95% de l'écran */
+        max-width: 600px; /* Largeur maximale de 600px */
+        z-index: 2;
+      }
+    
+      video {
+        width: 100%; /* La vidéo prend toute la largeur du conteneur */
+        height: auto; /* Hauteur ajustée automatiquement */
+      }
+
+      .video-section{
+        margin-bottom: 30vh;
+        margin-top: -10vh;
+      }
+      @media screen and (max-width: 550px) {
+        .video-section{
+          margin-bottom: 20vh;
+          margin-top: 0vh;
+        }
+              }
+    </style>
+    <div class="video-container">
+      <video controls>
+        <source src="./VSL.mp4" type="video/mp4" poster="miniature-vsl.png">
+        Votre navigateur ne supporte pas la balise vidéo.
+      </video>
+    </div>
     </section>
     <section
       style="
