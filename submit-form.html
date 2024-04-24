@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Submission en cours</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Récupération des paramètres de l'URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var firstname = urlParams.get('firstname');
+    var response = urlParams.get('response');
+
+    // Préparation des données à soumettre
+    var formData = {
+        'entry.1607173411': firstname,
+        'entry.1844013916': response
+    };
+
+    // Soumission du formulaire Google Forms
+    $.ajax({
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLSfzKepCCaKJG4aJ0TTYSlDoiO0S4yGUexkeVSnMs5eLXo5rEw/formResponse',
+        type: 'POST',
+        data: formData,
+        dataType: 'xml',
+        statusCode: {
+            0: function() {
+                // Redirection après succès
+                window.location.href = "/thank-you.html";
+            },
+            200: function() {
+                // Redirection après succès
+                window.location.href = "/thank-you.html";
+            }
+        }
+    });
+});
+</script>
+</head>
+<body>
+<p>Envoi en cours, veuillez patienter...</p>
+</body>
+</html>
