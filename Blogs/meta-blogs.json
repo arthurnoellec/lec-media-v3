@@ -61,5 +61,14 @@
         "categories": ["e-commerce", "branding"],
         "date":"6/12/2023",
         "readingTime":"16 min"
+    },
+    {
+        "title": "Optimisez Votre Boutique en Ligne avec la Stratégie CRO : Une Approche Testée et Éprouvée",
+        "description": "Utilisez le pouvoir d'une marque distinctive pour dépasser la concurrence en niche compétitive.",
+        "file": "./optimisez-votre-boutique-en-ligne-CRO.html",
+        "img":"./miniature1.jpeg",
+        "categories": ["e-commerce"],
+        "date":"12/105/2024",
+        "readingTime":"7 min"
     }
 ]
