@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Réalisations | Agence Web</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --text: #1f2937;
+            --light: #f3f4f6;
+            --accent: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            padding: 6rem 0;
+            background: linear-gradient(to right, #f8fafc, #f1f5f9);
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .title-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .title-section p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #4b5563;
+        }
+
+        /* Case Study Grid */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .case-study {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .case-study:hover {
+            transform: translateY(-5px);
+        }
+
+        .case-study-image {
+            width: 100%;
+            height: 240px;
+            background: var(--light);
+            overflow: hidden;
+        }
+
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .case-study-content {
+            padding: 1.5rem;
+        }
+
+        .case-study h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .case-study p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            color: var(--primary);
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #6b7280;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title-section h1 {
+                font-size: 2rem;
+            }
+
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="title-section">
+                <h1>Nos Réalisations</h1>
+                <p>Découvrez comment nous transformons les visions de nos clients en réalités numériques exceptionnelles. Chaque projet raconte une histoire unique de collaboration et d'innovation.</p>
+            </div>
+        </header>
+
+        <section class="case-studies">
+            <article class="case-study">
+                <div class="case-study-image">
+                    <img src="/api/placeholder/400/320" alt="Crochetmilie - Refonte E-commerce" />
+                </div>
+                <div class="case-study-content">
+                    <h3>Crochetmilie</h3>
+                    <p>Refonte complète d'une boutique e-commerce artisanale, transformant une passion en une marque de référence.</p>
+                    <div class="tags">
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Shopify</span>
+                        <span class="tag">UX/UI</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="case-study">
+                <div class="case-study-image">
+                    <img src="/api/placeholder/400/320" alt="Projet 2" />
+                </div>
+                <div class="case-study-content">
+                    <h3>Innovation Tech</h3>
+                    <p>Application web moderne pour une startup tech, alliant performance et design intuitif.</p>
+                    <div class="tags">
+                        <span class="tag">Web App</span>
+                        <span class="tag">React</span>
+                        <span class="tag">API</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="case-study">
+                <div class="case-study-image">
+                    <img src="/api/placeholder/400/320" alt="Projet 3" />
+                </div>
+                <div class="case-study-content">
+                    <h3>Eco Solutions</h3>
+                    <p>Plateforme de sensibilisation environnementale avec dashboard interactif.</p>
+                    <div class="tags">
+                        <span class="tag">Dashboard</span>
+                        <span class="tag">WordPress</span>
+                        <span class="tag">SEO</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="testimonial">
+            <blockquote>
+                "Très heureuse d'avoir choisi cette agence pour la refonte de mon site web ! L'équipe m'a accompagnée bien au-delà de l'aspect technique. Leurs conseils stratégiques ont été précieux pour clarifier ma vision et définir mes objectifs."
+                <cite>- Émilie, Fondatrice de Crochetmilie</cite>
+            </blockquote>
+        </section>
+
+        <section class="stats">
+            <div class="stat-item">
+                <h4>50+</h4>
+                <p>Projets Réalisés</p>
+            </div>
+            <div class="stat-item">
+                <h4>98%</h4>
+                <p>Clients Satisfaits</p>
+            </div>
+            <div class="stat-item">
+                <h4>5⭐</h4>
+                <p>Note Moyenne</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

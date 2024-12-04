@@ -22,7 +22,6 @@
 
 .Hero_header_gauche > div > h1 {
   font-size: xxx-large;
-  font-family: Helvetica;
   color: #fcfcff;
   text-transform: uppercase;
   background-color: rgb(47 86 223 / 37%);
@@ -38,14 +37,13 @@
 }
 
 .hl2 {
-  -webkit-text-stroke-width: 1.5px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
-  color: transparent !important;
+  /* -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: rgb(255, 255, 255); */
+  color: white;
 }
 
 .Hero_header_gauche > div > p {
   color: white;
-  font-family: Helvetica;
   font-size: 18px;
   position: relative;
 }
@@ -155,7 +153,6 @@
 
   .Hero_header_gauche > div > p {
     color: white;
-    font-family: Helvetica;
     font-size: 15px;
   }
 
