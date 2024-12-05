@@ -290,6 +290,157 @@
       <h2
         class="titre-section"
         style="text-align: center; width: fit-content; margin: 30px 0px 30px">
+        Ils nous ont fait confiance :
+      </h2>
+    </div>
+    <section class="trusted-section">
+      <div class="logo-slider">
+        <div class="logo-slide-track">
+          <div class="slide">
+            <img src="./partenaire/auto.png" height="80" width="240" alt="Auto Company Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/body.png" height="80" width="240" alt="Body Wellness Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/O.png" height="80" width="240" alt="O Partner Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/decathlon.png" height="80" width="240" alt="Decathlon Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/clwr.png" height="80" width="240" alt="CLWR Logo" />
+          </div>
+          <div class="slide">
+            <img
+              src="./partenaire/crochetmilie (1).png"
+              height="80"
+              width="240"
+              alt="Crochetmilie Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/bleame.png" height="80" width="240" alt="Bleame Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/MTL.png" height="80" width="240" alt="MTL Board Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/kanaya.png" height="80" width="240" alt="Kanaya Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/kizik.png" height="80" width="240" alt="Kizik Logo" />
+          </div>
+          <div class="slide">
+            <img src="./partenaire/UQAM.png" height="80" width="240" alt="UQAM Logo" />
+          </div>
+        </div>
+      </div>
+      
+
+      <style>
+        .logo-slider {
+          -webkit-box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
+          box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
+          margin: auto;
+          overflow: hidden;
+          position: relative;
+          width: 100%;
+          padding: 30px 0;
+        }
+        .logo-slider::before,
+        .logo-slider::after {
+          background: -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            from(#151515),
+            to(rgba(255, 255, 255, 0))
+          );
+          background: linear-gradient(to right, #151515 0%, rgba(255, 255, 255, 0) 100%);
+          content: "";
+          height: 100%;
+          position: absolute;
+          width: 200px;
+          z-index: 2;
+        }
+        .logo-slider::after {
+          right: 0;
+          top: 0;
+          -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+        }
+        .logo-slider::before {
+          left: 0;
+          top: 0;
+        }
+        .logo-slider .logo-slide-track {
+          -webkit-animation: logo-scroll 40s linear infinite;
+          animation: logo-scroll 40s linear infinite;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: calc(250px * 14);
+        }
+        .logo-slider .slide {
+          height: 100px;
+          width: 250px;
+        }
+        .logo-slider {
+          max-width: 1200px;
+          border: solid white 2px;
+          border-radius: 1rem;
+        }
+        .logo-slider .slide {
+          height: 70px;
+          width: 180px;
+          border: dashed 2px white;
+          margin: 0 10px;
+          border-radius: 1rem;
+          background-color: #242424;
+        }
+
+        .slide > img {
+          width: 110px;
+          padding: 0 50px;
+          height: auto;
+        }
+
+        @-webkit-keyframes logo-scroll {
+          0% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+          }
+          100% {
+            -webkit-transform: translateX(calc(-250px * 7));
+            transform: translateX(calc(-250px * 7));
+          }
+        }
+
+        @keyframes logo-scroll {
+          0% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+          }
+          100% {
+            -webkit-transform: translateX(calc(-250px * 7));
+            transform: translateX(calc(-250px * 7));
+          }
+        }
+@media only screen and (max-width: 768px) {
+        .trusted-section {
+          width: 90%;
+          margin: auto;
+      }
+    }
+      </style>
+    </section>
+
+    <div style="height: 100px; width: 100%"></div>
+
+    <div style="width: 100%; display: flex; justify-content: center">
+      <h2
+        class="titre-section"
+        style="text-align: center; width: fit-content; margin: 30px 0px 30px">
         Nos services
       </h2>
     </div>
@@ -586,6 +737,10 @@
         padding: 0 30px;
       }
 
+      .expertise-section__item-icon > img {
+        margin-bottom: 10px;
+      }
+
       .expertise-section__item--red {
         grid-area: 2 / 9 / 3 / 10;
         background-color: rgba(231, 59, 47, 0.08);
@@ -610,7 +765,7 @@
       }
 
       .expertise-section__item--blue p::before {
-        color: #0C7BFF; /* Couleur du point */
+        color: #0c7bff; /* Couleur du point */
       }
 
       .expertise-section__item--purple p::before {
@@ -748,7 +903,7 @@
               <p class="card__job-title">Refonte Arico</p>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 12px">En cours de rédaction...</span>
+          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
           <div style="width: 100%; font-weight: 100">
             <p>
               Un site désordonné avec un objectif clair : multiplier le nombre de produits par 4 !
@@ -773,7 +928,7 @@
               <p class="card__job-title">Refonte Mtlbboard</p>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 12px">En cours de rédaction...</span>
+          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
           <div style="width: 100%; font-weight: 100">
             <p>
               Suite à leur passage à l’émission des Dragons, MTLBoard est rapidement devenu une
@@ -799,7 +954,7 @@
               <p class="card__job-title">Refonte Colourwear</p>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 12px">En cours de rédaction...</span>
+          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
           <div style="width: 100%; font-weight: 100">
             <p>
               Le site de ColourWear souffrait d’un manque de dynamisme et ne mettait pas
@@ -825,7 +980,7 @@
               <p class="card__job-title">Refonte Volzhenka</p>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 12px">En cours de rédaction...</span>
+          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
           <div style="width: 100%; font-weight: 100">
             <p>
               Volzhenka, une marque d’exception, propose des produits uniques alliant authenticité
@@ -847,7 +1002,8 @@
         <div class="card__footer">
           <div style="width: 100%; font-weight: 100">
             <p>
-              Les prochains résumés sont en cours de réalisation. Nous sommes occupés à développer les meilleurs sites e-commerce du marché.
+              Les prochains résumés sont en cours de réalisation. Nous sommes occupés à développer
+              les meilleurs sites e-commerce du marché.
             </p>
           </div>
         </div>

@@ -1124,3 +1124,8 @@ p.card__job-title {
 .card__job-summary {
   max-width: 50%;
 }
+
+.card__footer .button {
+  background: #151515;
+  color: white;
+}
