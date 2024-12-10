@@ -360,7 +360,7 @@
           margin: auto;
           overflow: hidden;
           position: relative;
-          width: 100%;
+          width: 95%;
           padding: 30px 0;
         }
         .logo-slider::before,
@@ -595,7 +595,7 @@
         grid-template-rows: repeat(2, 25vh);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-        width: 100%; /* Largeur pleine */
+        width: 95%; /* Largeur pleine */
         color: #fff;
         text-align: center;
         margin: auto;
@@ -800,7 +800,7 @@
         color: #e73a2f; /* Couleur du point */
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 1000px) {
         .expertise-section {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
@@ -852,6 +852,12 @@
         .nav.glow-on-hover {
           display: flex;
           justify-content: center;
+        }
+      }
+
+      @media only screen and (max-width: 1200px) {
+        .stat-icon {
+          display: none;
         }
       }
     </style>
