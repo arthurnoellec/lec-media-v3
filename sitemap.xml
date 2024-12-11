@@ -1,63 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lec-media.agency/submit-form</loc>
+    <lastmod>2024-04-24</lastmod>
+  </url>
+  <url>
     <loc>https://lec-media.agency/index</loc>
-    <lastmod>2023-11-19</lastmod>
+    <lastmod>2024-12-10</lastmod>
+  </url>
+  <url>
+    <loc>https://lec-media.agency/politique</loc>
+    <lastmod>2024-03-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lec-media.agency/promotion</loc>
+    <lastmod>2024-04-22</lastmod>
   </url>
   <url>
     <loc>https://lec-media.agency/les-blogs</loc>
-    <lastmod>2023-11-19</lastmod>
+    <lastmod>2024-04-18</lastmod>
   </url>
   <url>
     <loc>https://lec-media.agency/an_carte</loc>
-    <lastmod>2023-11-16</lastmod>
+    <lastmod>2024-03-10</lastmod>
   </url>
   <url>
-    <loc>https://lec-media.agency/e-commerce</loc>
-    <lastmod>2023-11-24</lastmod>
+    <loc>https://lec-media.agency/en</loc>
+    <lastmod>2024-04-19</lastmod>
   </url>
   <url>
-    <loc>https://lec-media.agency/stategie-marketing</loc>
-    <lastmod>2023-11-16</lastmod>
+    <loc>https://lec-media.agency/promotion copy</loc>
+    <lastmod>2024-04-22</lastmod>
   </url>
   <url>
-    <loc>https://lec-media.agency/branding</loc>
-    <lastmod>2023-11-16</lastmod>
+    <loc>https://lec-media.agency/thank-you</loc>
+    <lastmod>2024-04-24</lastmod>
   </url>
+  <url>
+    <loc>https://lec-media.agency/calculateur</loc>
+    <lastmod>2024-03-15</lastmod>
+  </url>
+  <url>
+    <loc>https://lec-media.agency/Blogs/contenus/comment-creer-bundles-amazon-shopify-gratuitement</loc>
+    <lastmod>2024-12-11</lastmod>
+  </url>
+
   <url>
     <loc>https://lec-media.agency/Blogs/contenus/Reussir-en-ecommerce-en-2024</loc>
-    <lastmod>2023-11-22</lastmod>
+    <lastmod>2024-03-10</lastmod>
   </url>
   <url>
     <loc>https://lec-media.agency/Blogs/contenus/marque-distinctive-cle-du-succes</loc>
-    <lastmod>2023-12-06</lastmod>
+    <lastmod>2024-03-10</lastmod>
   </url>
   <url>
     <loc>https://lec-media.agency/Blogs/contenus/Guide-Ultime-Obtenir-Subvention-PCAN-en-un-Clic</loc>
-    <lastmod>2023-11-22</lastmod>
+    <lastmod>2024-03-10</lastmod>
+  </url>
+
+  <url>
+    <loc>https://lec-media.agency/Blogs/contenus/Triompher-en-ligne-pendant-les-fetes-strategie-gagnante copy</loc>
+    <lastmod>2024-12-11</lastmod>
   </url>
   <url>
     <loc>https://lec-media.agency/Blogs/contenus/15-outils-marketing-incontournables-en-2024</loc>
-    <lastmod>2023-11-22</lastmod>
+    <lastmod>2024-03-10</lastmod>
   </url>
   <url>
+    <loc>https://lec-media.agency/Blogs/contenus/optimisez-votre-boutique-en-ligne-CRO</loc>
+    <lastmod>2024-05-13</lastmod>
+  </url>
+
+  <url>
     <loc>https://lec-media.agency/Blogs/contenus/l-agence-montreal-boutique-en-ligne</loc>
-    <lastmod>2023-11-25</lastmod>
+    <lastmod>2024-03-10</lastmod>
   </url>
   <url>
     <loc>https://lec-media.agency/Blogs/contenus/le-pouvoir-du-branding</loc>
-    <lastmod>2023-11-22</lastmod>
+    <lastmod>2024-03-10</lastmod>
+  </url>
+
+  <url>
+    <loc>https://lec-media.agency/Blogs/contenus/conseil-choisir-cms</loc>
+    <lastmod>2024-03-10</lastmod>
   </url>
   <url>
-    <loc>https://lec-media.agency/Blogs/contenus/Triompher-en-ligne-pendant-les-fetes-strategie-gagnante</loc>
-    <lastmod>2023-11-22</lastmod>
+    <loc>https://lec-media.agency/Leads/dashboard</loc>
+    <lastmod>2024-03-10</lastmod>
   </url>
-    <url>
-    <loc>https://lec-media.agency/Blogs/contenus/optimisez-votre-boutique-en-ligne-CRO</loc>
-    <lastmod>2024-05-12</lastmod>
+  <url>
+    <loc>https://lec-media.agency/Leads/leads-connexion</loc>
+    <lastmod>2024-03-10</lastmod>
   </url>
-      <url>
-    <loc>https://lec-media.agency/realisations/crochetmilie</loc>
-    <lastmod>2024-012-04</lastmod>
+  <url>
+    <loc>https://lec-media.agency/Realisations/nos-realisations</loc>
+    <lastmod>2024-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://lec-media.agency/Realisations/Crochetmilie</loc>
+    <lastmod>2024-12-04</lastmod>
   </url>
 </urlset>
