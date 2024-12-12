@@ -94,41 +94,43 @@
       }
     </script>
     <!-- Hotjar Tracking Code for Site 5020473 (nom manquant) -->
-<script>
-  (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:5020473,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 5020473, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
   </head>
   <body style="overflow-x: hidden">
     <a href="/">
-    <div class="nav-title"style="
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: auto;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 15px 35px;
-    background: black;
-    border-radius: 0 0 1rem 1rem;
-    z-index: 70;
-  ">
-
-      <img
-        src="./logo-lec-media-blanc.png"
-        style="height: 40px;"
-        alt="logo blanc lëc média" />
-
-    </div>
-  </a>
+      <div
+        class="nav-title"
+        style="
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          max-width: 1200px;
+          margin: auto;
+          position: fixed;
+          left: 50%;
+          transform: translate(-50%);
+          padding: 15px 35px;
+          background: black;
+          border-radius: 0 0 1rem 1rem;
+          z-index: 70;
+        ">
+        <img src="./logo-lec-media-blanc.png" style="height: 40px" alt="logo blanc lëc média" />
+      </div>
+    </a>
     <!-- <div class="grain">
       <div class="grain-overflow"></div>
     </div> -->
@@ -140,18 +142,7 @@
         <span>Ready to work</span>
       </a>
     </div>
-    <div class="ready" style="left: 20px">
-      <a
-        href="https://lec-media.agency/en"
-        style="text-decoration: none; color: white; z-index: 10">
-        <span style="display: flex; justify-content: center; align-items: center"></span>
-        <img
-          src="./usflag.png"
-          style="width: 13px; padding: 0 10px"
-          alt="nous sommes disponnible" />
-        <span>Switching to English</span>
-      </a>
-    </div>
+
     <section class="features_hero-wrapper">
       <div class="features_gradient-wrapper" style="transform: scale(0.7) translate(0px, -60px)">
         <div class="features_gradient features_gradient-1"></div>
@@ -160,7 +151,6 @@
       </div>
       <div>
         <div class="body_hero" style="display: flex; justify-content: center">
-
           <div class="Hero_Header" style="width: 90%; max-width: 1200px">
             <div class="Hero_header_gauche">
               <div>
@@ -351,7 +341,6 @@
           </div>
         </div>
       </div>
-      
 
       <style>
         .logo-slider {
@@ -442,12 +431,16 @@
             transform: translateX(calc(-250px * 7));
           }
         }
-@media only screen and (max-width: 768px) {
-        .trusted-section {
-          width: 90%;
-          margin: auto;
-      }
-    }
+        @media only screen and (max-width: 768px) {
+          .trusted-section {
+            width: 95%;
+            margin: auto;
+          }
+          .logo-slider {
+            margin: 0;
+            width: 100%;
+          }
+        }
       </style>
     </section>
 
@@ -854,6 +847,11 @@
           justify-content: center;
         }
       }
+      @media (min-width: 1000px) and (max-width: 1100px) {
+        #stat-number {
+          font-size: 35px;
+        }
+      }
 
       @media only screen and (max-width: 1200px) {
         .stat-icon {
@@ -866,7 +864,6 @@
     <div
       class="resultats"
       style="
-        width: 100vw;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -877,160 +874,547 @@
       <div style="width: 100%; display: flex; justify-content: center">
         <h2
           class="titre-section"
-          style="text-align: center; width: fit-content; margin: 30px 0px 10px">
+          style="text-align: center; width: fit-content; margin: 30px 0px 30px">
           Nos dernieres realisations
         </h2>
       </div>
-      <article class="card">
-        <section
-          class="card__hero"
-          style="
-            height: 150px;
-            background-image: url(./Realisations/images/miniature-crochetmilie.png);
-            background-size: cover;
-          "></section>
-        <div class="card__footer">
-          <div class="card__job-summary">
-            <div class="card__job">
-              <p class="card__job-title">Refonte Crochetmilie</p>
-            </div>
-          </div>
-          <button class="button" onclick="location.href='./Realisations/Crochetmilie.html';">
-            Voir ce projet
-          </button>
 
-          <div style="width: 100%; font-weight: 100">
-            <p>
-              Notre problématique venait du fait que le site était initialement orienté vers la
-              vente de produits physiques, alors que l'activité principale d'Émilie repose sur la
-              vente de cours en ligne. Nous avons donc réorganisé la plateforme pour la rendre
-              ludique, simple d'accès et parfaitement alignée avec l'écosystème de Crochetmilie.
-              Cette refonte met en lumière l'expertise et le dévouement d'Émilie tout en optimisant
-              ses ventes.
-            </p>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <section
-          class="card__hero"
-          style="
-            height: 150px;
-            background-image: url(./Realisations/images/miniature-arico.png);
-            background-size: cover;
-          "></section>
-        <div class="card__footer">
-          <div class="card__job-summary">
-            <div class="card__job">
-              <p class="card__job-title">Refonte Arico</p>
+      <div class="cartes-realisation">
+        <div class="carte-real">
+          <div class="carte-div-droite">
+            <div class="avis-client-real">
+              <div class="avis-gauche">
+                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de emilie.png" />
+              </div>
+              <div class="avis-droit">
+                <h4>Emilie</h4>
+                <p>Fondatrice de Crochetmilie</p>
+                <div class="etoile-avis">
+                  <img src="./etoile-avis-real.svg" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin: 0; margin-top: 30px">Une collaboration créative et efficace</h3>
+              <p class="avis-client-p">
+                Très heureuse d'avoir choisi Lëc Média pour la refonte de mon site web! En plus
+                d'être super sympathiques, Arthur et son équipe ont pris le temps de comprendre
+                l'univers de ma petite entreprise de crochet et ont créé l'ambiance visuelle que je
+                recherchais en plus d'optimiser l'expérience utilisateur grâce à plusieurs tests.
+                Shopify n'a aucun secret pour Arthur qui peut facilement modifier ou ajouter
+                n'importe quel codage. Merci énormément!!
+              </p>
+            </div>
+            <div class="stat-real">
+              <div class="parent-stat-real">
+                <div
+                  class="div1-stat-real"
+                  style="border: dashed #ffb792 2px; background: rgb(255 231 127 / 8%)">
+                  <div class="chiffre-stat"><span>+237%</span></div>
+                  <div class="texte-stat"><p>Taux de conversion</p></div>
+                </div>
+                <div
+                  class="div2-stat-real"
+                  style="border: dashed #ffb792 2px; background: rgb(255 231 127 / 8%)">
+                  <div class="chiffre-stat"><span>+7,0%</span></div>
+                  <div class="texte-stat"><p>Panier moyen</p></div>
+                </div>
+                <div
+                  class="div3-stat-real"
+                  style="border: dashed #ffb792 2px; background: rgb(255 231 127 / 8%)">
+                  <div class="chiffre-stat"><span>+316%</span></div>
+                  <div class="texte-stat"><p>CA généré</p></div>
+                </div>
+                <div
+                  class="div4-stat-real"
+                  style="border: dashed #ffb792 2px; background: rgb(255 231 127 / 8%)">
+                  <div class="chiffre-stat"><span>6 mois</span></div>
+                  <div class="texte-stat"><p>Temps de réalisation</p></div>
+                </div>
+              </div>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
-          <div style="width: 100%; font-weight: 100">
-            <p>
-              Un site désordonné avec un objectif clair : multiplier le nombre de produits par 4 !
-              Les utilisateurs se plaignaient déjà de la difficulté à trouver les bons produits
-              selon leurs besoins. Alors, imaginez avec 4 fois plus de choix. Nous avons décidé de
-              tout repenser à partir de zéro, et aujourd’hui, les résultats parlent d’eux-mêmes.
-            </p>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <section
-          class="card__hero"
-          style="
-            height: 150px;
-            background-image: url(./Realisations/images/miniature-mtlbboard.png);
-            background-size: cover;
-          "></section>
-        <div class="card__footer">
-          <div class="card__job-summary">
-            <div class="card__job">
-              <p class="card__job-title">Refonte Mtlbboard</p>
+          <div class="carte-div-gauche">
+            <img
+              style="max-width: calc(100% - 20px); padding-left: 20px"
+              src="./carte-real-crochetmilie.png" />
+            <div class="texte-carte-gauche">
+              <div>
+                <h3 style="margin-bottom: 10px !important; margin-top: 30px">
+                  Refonte partielle + Optimisation CRO
+                </h3>
+                <p>
+                  Notre problématique venait du fait que le site était initialement orienté vers la
+                  vente de produits physiques, alors que l'activité principale d'Émilie repose sur
+                  la vente de cours en ligne. Nous avons donc réorganisé la plateforme pour la
+                  rendre ludique, simple d'accès et parfaitement alignée avec l'écosystème de
+                  Crochetmilie. Cette refonte met en lumière l'expertise et le dévouement d'Émilie
+                  tout en optimisant ses ventes.
+                </p>
+              </div>
+              <button
+                class="button"
+                style="background-color: black; color: white; padding-bottom: 10px"
+                onclick="location.href='./Realisations/Crochetmilie.html';">
+                Voir le projet en details
+              </button>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
-          <div style="width: 100%; font-weight: 100">
-            <p>
-              Suite à leur passage à l’émission des Dragons, MTLBoard est rapidement devenu une
-              référence dans son domaine. Cependant, face à une concurrence rude, leur identité se
-              perdait dans la masse, entraînant une perte de ventes. Un rafraîchissement complet du
-              site s’imposait pour redéfinir leur position. Aujourd’hui, Nicolas et MTLBoard n’ont
-              plus rien à prouver.
-            </p>
-          </div>
         </div>
-      </article>
-      <article class="card">
-        <section
-          class="card__hero"
-          style="
-            height: 150px;
-            background-image: url(./Realisations/images/miniature-colourwear.png);
-            background-size: cover;
-          "></section>
-        <div class="card__footer">
-          <div class="card__job-summary">
-            <div class="card__job">
-              <p class="card__job-title">Refonte Colourwear</p>
+      </div>
+
+      <div class="cartes-realisation">
+        <div class="carte-real">
+          <div class="carte-div-droite">
+            <div class="avis-client-real">
+              <div class="avis-gauche">
+                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de emmanuel.png" />
+              </div>
+              <div class="avis-droit">
+                <h4>Emmanuel</h4>
+                <p>Fondateur de Arico</p>
+                <div class="etoile-avis">
+                  <img src="./etoile-avis-real.svg" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin: 0; margin-top: 30px">Juste incroyable comme experience ✨</h3>
+              <p class="avis-client-p">
+                Je ne peux que recommander Arthur. J’ai fait appel à lui pour la restructuration de
+                notre site et l’optimisation de nos KPI de vente. Professionnel et bienveillant, il
+                a su dépasser mes attentes. Son expertise est indéniable. Je suis ravi de
+                continuer à collaborer avec Lëc Média au quotidien.
+              </p>
+            </div>
+            <div class="stat-real">
+              <div class="parent-stat-real">
+                <div class="div1-stat-real">
+                  <div class="chiffre-stat"><span>+157%</span></div>
+                  <div class="texte-stat"><p>Taux de conversion</p></div>
+                </div>
+                <div class="div2-stat-real">
+                  <div class="chiffre-stat"><span>+12,6%</span></div>
+                  <div class="texte-stat"><p>Panier moyen</p></div>
+                </div>
+                <div class="div3-stat-real">
+                  <div class="chiffre-stat"><span>+216%</span></div>
+                  <div class="texte-stat"><p>CA généré</p></div>
+                </div>
+                <div class="div4-stat-real">
+                  <div class="chiffre-stat"><span>3 mois</span></div>
+                  <div class="texte-stat"><p>Temps de réalisation</p></div>
+                </div>
+              </div>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
-          <div style="width: 100%; font-weight: 100">
-            <p>
-              Le site de ColourWear souffrait d’un manque de dynamisme et ne mettait pas
-              suffisamment en valeur les produits emblématiques de la marque. L’expérience
-              utilisateur ne reflétait pas l’énergie et l’audace qui définissent ColourWear,
-              limitant ainsi l’impact visuel et les conversions. Une refonte s’imposait pour
-              redonner vie à leur identité et sublimer leurs collections.
-            </p>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <section
-          class="card__hero"
-          style="
-            height: 150px;
-            background-image: url(./Realisations/images/miniature-volzhenka.png);
-            background-size: cover;
-          "></section>
-        <div class="card__footer">
-          <div class="card__job-summary">
-            <div class="card__job">
-              <p class="card__job-title">Refonte Volzhenka</p>
+          <div class="carte-div-gauche">
+            <img
+              style="max-width: calc(100% - 20px); padding-left: 20px"
+              src="./carte-real-arico.png" />
+            <div class="texte-carte-gauche">
+              <div>
+                <h3 style="margin-bottom: 10px !important; margin-top: 30px">
+                  Refonte complète + Optimisation CRO
+                </h3>
+                <p>
+                  Un site désordonné avec un objectif clair : multiplier le nombre de produits par 4
+                  ! Les utilisateurs se plaignaient déjà de la difficulté à trouver les bons
+                  produits selon leurs besoins. Alors, imaginez avec 4 fois plus de choix. Nous
+                  avons décidé de tout repenser à partir de zéro, et aujourd’hui, les résultats
+                  parlent d’eux-mêmes.
+                </p>
+              </div>
+              <button
+                class="button-off"
+                style="background-color: black; color: white; padding-bottom: 10px">
+                En cours de rédaction ... 👷
+              </button>
             </div>
           </div>
-          <span class="" style="max-width: 50%; font-size: 15px">👷‍♂️ Rédaction...</span>
-          <div style="width: 100%; font-weight: 100">
-            <p>
-              Volzhenka, une marque d’exception, propose des produits uniques alliant authenticité
-              et raffinement. Cependant, leur site ne reflétait pas pleinement la richesse de leur
-              offre ni l’histoire derrière chaque produit. Avec une mise en avant insuffisante et un
-              manque de cohérence, l’expérience utilisateur peinait à captiver.
-            </p>
+        </div>
+      </div>
+
+      <div class="cartes-realisation">
+        <div class="carte-real">
+          <div class="carte-div-droite">
+            <div class="avis-client-real">
+              <div class="avis-gauche">
+                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de nicolas.png" />
+              </div>
+              <div class="avis-droit">
+                <h4>Nicolas</h4>
+                <p>Fondateur de MTLbboard</p>
+                <div class="etoile-avis">
+                  <img src="./etoile-avis-real.svg" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin: 0; margin-top: 30px">Une collaboration créative et efficace</h3>
+              <p class="avis-client-p">
+                Très bonne expérience avec Arthur, bosseur, à l'écoute qui a su trouver la solution
+                miracle qui convertis !! A recommander !
+              </p>
+            </div>
+            <div class="stat-real">
+              <div class="parent-stat-real">
+                <div
+                  class="div1-stat-real"
+                  style="border: dashed #715328 2px; background: rgb(115 87 49 / 8%)">
+                  <div class="chiffre-stat"><span>+809%</span></div>
+                  <div class="texte-stat"><p>Taux de conversion</p></div>
+                </div>
+                <div
+                  class="div2-stat-real"
+                  style="border: dashed #715328 2px; background: rgb(115 87 49 / 8%)">
+                  <div class="chiffre-stat"><span>+23,0%</span></div>
+                  <div class="texte-stat"><p>Panier moyen</p></div>
+                </div>
+                <div
+                  class="div3-stat-real"
+                  style="border: dashed #715328 2px; background: rgb(115 87 49 / 8%)">
+                  <div class="chiffre-stat"><span>+516%</span></div>
+                  <div class="texte-stat"><p>CA généré</p></div>
+                </div>
+                <div
+                  class="div4-stat-real"
+                  style="border: dashed #715328 2px; background: rgb(115 87 49 / 8%)">
+                  <div class="chiffre-stat"><span>4 mois</span></div>
+                  <div class="texte-stat"><p>Temps de réalisation</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carte-div-gauche">
+            <img
+              style="max-width: calc(100% - 20px); padding-left: 20px"
+              src="./carte-real-mtlbboard.png" />
+            <div class="texte-carte-gauche">
+              <div>
+                <h3 style="margin-bottom: 10px !important; margin-top: 30px">Refonte complète</h3>
+                <p>
+                  Suite à leur passage dans l’émission "Dans l'oeil du dragon", MTLBoard est
+                  rapidement devenu une référence dans son domaine. Cependant, face à une
+                  concurrence rude, leur identité se perdait dans la masse, entraînant une perte de
+                  ventes. Un rafraîchissement complet du site s’imposait pour redéfinir leur
+                  position.
+                </p>
+              </div>
+              <button
+                class="button-off"
+                style="background-color: black; color: white; padding-bottom: 10px">
+                En cours de rédaction ... 👷
+              </button>
+            </div>
           </div>
         </div>
-      </article>
-      <article class="card">
-        <section
-          class="card__hero"
-          style="
-            height: 150px;
-            background-image: url(./Realisations/images/miniature-temp.png);
-            background-size: cover;
-          "></section>
-        <div class="card__footer">
-          <div style="width: 100%; font-weight: 100">
-            <p>
-              Les prochains résumés sont en cours de réalisation. Nous sommes occupés à développer
-              les meilleurs sites e-commerce du marché.
-            </p>
+      </div>
+
+      <div class="cartes-realisation">
+        <div class="carte-real">
+          <div class="carte-div-droite">
+            <div class="avis-client-real">
+              <div class="avis-gauche">
+                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de Fredrik.png" />
+              </div>
+              <div class="avis-droit">
+                <h4>Fredrik</h4>
+                <p>Co-Fondateur de Colourwear</p>
+                <div class="etoile-avis">
+                  <img src="./etoile-avis-real.svg" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin: 0; margin-top: 30px">Une collaboration créative et efficace</h3>
+              <p class="avis-client-p">
+                Je suis ravi de collaborer avec LËC MÉDIA ! Leur créativité sans limites et leur
+                engagement constant pour l'amélioration ont ajouté une dimension unique à chacun de
+                mes projets. Leur soutien et leur capacité à trouver des solutions créatives, peu
+                importe les défis, en font des partenaires inestimables. Avec eux, je sais que mes
+                idées prennent vie rapidement et avec une qualité au rendez-vous.
+              </p>
+            </div>
+            <div class="stat-real">
+              <div class="parent-stat-real">
+                <div
+                  class="div1-stat-real"
+                  style="border: dashed #72bbe5 2px; background: rgb(114 187 229 / 8%)">
+                  <div class="chiffre-stat"><span>+29,1%</span></div>
+                  <div class="texte-stat"><p>Taux de conversion</p></div>
+                </div>
+                <div
+                  class="div2-stat-real"
+                  style="border: dashed #72bbe5 2px; background: rgb(114 187 229 / 8%)">
+                  <div class="chiffre-stat"><span>+23,5%</span></div>
+                  <div class="texte-stat"><p>Panier moyen</p></div>
+                </div>
+                <div
+                  class="div3-stat-real"
+                  style="border: dashed #72bbe5 2px; background: rgb(114 187 229 / 8%)">
+                  <div class="chiffre-stat"><span>+82%</span></div>
+                  <div class="texte-stat"><p>CA généré</p></div>
+                </div>
+                <div
+                  class="div4-stat-real"
+                  style="border: dashed #72bbe5 2px; background: rgb(114 187 229 / 8%)">
+                  <div class="chiffre-stat"><span>9 mois</span></div>
+                  <div class="texte-stat"><p>Temps de réalisation</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carte-div-gauche">
+            <img
+              style="max-width: calc(100% - 20px); padding-left: 20px"
+              src="./carte-real-colourwear.png" />
+            <div class="texte-carte-gauche">
+              <div>
+                <h3 style="margin-bottom: 10px !important; margin-top: 30px">
+                  Création à partir de 0
+                </h3>
+                <p>
+                  Une marque dynamique avec un besoin urgent ! L’ancien site de ColourWear manquait
+                  de dynamisme et ne mettait pas suffisamment en valeur les produits emblématiques
+                  de la marque. L’expérience utilisateur ne reflétait pas l’énergie et l’audace qui
+                  définissent ColourWear, ce qui limitait son impact visuel et les conversions. Le
+                  développement d’une nouvelle boutique s’imposait pour redonner vie à leur identité
+                  et sublimer leurs collections.
+                </p>
+              </div>
+              <button
+                class="button-off"
+                style="background-color: black; color: white; padding-bottom: 10px">
+                En cours de rédaction ... 👷
+              </button>
+            </div>
           </div>
         </div>
-      </article>
+      </div>
+
+      <div class="cartes-realisation">
+        <div class="carte-real">
+          <div class="carte-div-droite">
+            <div class="avis-client-real">
+              <div class="avis-gauche">
+                <img
+                  style="max-width: 100%; border-radius: 0.5rem"
+                  src="./photo de Ekaterina.png" />
+              </div>
+              <div class="avis-droit">
+                <h4>Ekaterina</h4>
+                <p>Fondatrice de Volzhenka</p>
+                <div class="etoile-avis">
+                  <img src="./etoile-avis-real.svg" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin: 0; margin-top: 30px">Une collaboration créative et efficace</h3>
+              <p class="avis-client-p">
+                La plupart des agences font belle impression et vous vendent des paillettes lors des
+                premiers échanges, mais cette illusion se dissipe rapidement une fois le contrat
+                signé. Avec Lëc Média, c'est différent. Arthur et Tristan sont professionnels et ont
+                vraiment à cœur de faire les choses bien et rapidement. Je les recommande vraiment.
+                Et c'est la première fois que je recommande une agence.
+              </p>
+            </div>
+            <div class="stat-real">
+              <div class="parent-stat-real">
+                <div
+                  class="div1-stat-real"
+                  style="    border: dashed #181818 2px;
+    background: rgb(30 30 30 / 8%);">
+                  <div class="chiffre-stat"><span>+103%</span></div>
+                  <div class="texte-stat"><p>Taux de conversion</p></div>
+                </div>
+                <div
+                  class="div2-stat-real"
+                  style="    border: dashed #181818 2px;
+    background: rgb(30 30 30 / 8%);">
+                  <div class="chiffre-stat"><span>+120%</span></div>
+                  <div class="texte-stat"><p>Panier moyen</p></div>
+                </div>
+                <div
+                  class="div3-stat-real"
+                  style="    border: dashed #181818 2px;
+    background: rgb(30 30 30 / 8%);">
+                  <div class="chiffre-stat"><span>+400%</span></div>
+                  <div class="texte-stat"><p>CA généré</p></div>
+                </div>
+                <div
+                  class="div4-stat-real"
+                  style="    border: dashed #181818 2px;
+    background: rgb(30 30 30 / 8%);">
+                  <div class="chiffre-stat"><span>6 mois</span></div>
+                  <div class="texte-stat"><p>Temps de réalisation</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carte-div-gauche">
+            <img
+              style="max-width: calc(100% - 20px); padding-left: 20px"
+              src="./carte-real-volzhenka.png" />
+            <div class="texte-carte-gauche">
+              <div>
+                <h3 style="margin-bottom: 10px !important; margin-top: 30px">Refonte complète</h3>
+                <p>
+                  Volzhenka, une marque d’exception, propose des produits uniques alliant
+                  authenticité et raffinement. Cependant, leur site ne reflétait pas pleinement la
+                  richesse de leur offre ni l’histoire derrière chaque produit. Avec une mise en
+                  avant insuffisante et un manque de cohérence, l’expérience utilisateur peinait à
+                  captiver.
+                </p>
+              </div>
+              <button
+                class="button-off"
+                style="background-color: black; color: white; padding-bottom: 10px">
+                En cours de rédaction ... 👷
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <style>
+      .cartes-realisation {
+        width: auto;
+        margin-bottom: 50px;
+      }
+      .carte-real {
+        margin: auto;
+        width: calc(95% - 10px);
+        max-width: 1000px;
+        background-color: #ffffff;
+        border-radius: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+      .carte-div-gauche {
+        max-width: calc(60% - 10px);
+        padding-left: 10px;
+      }
+      .carte-div-droite {
+        max-width: 40%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+      }
+      .avis-client-real {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+      .avis-gauche {
+        max-width: 30%;
+      }
+      .avis-droit {
+        padding-left: 10px;
+      }
+      .avis-droit > h4 {
+        font-size: 25px;
+        font-weight: 700;
+        margin: 0;
+      }
+      .avis-droit > p {
+        margin: 5px 0;
+      }
+      .avis-client-p {
+        margin-bottom: 30px;
+        margin-top: 10px;
+        line-height: 20px;
+      }
+      .texte-carte-gauche {
+        max-width: calc(100% - 20px);
+        padding-left: 20px;
+      }
+      .texte-carte-gauche > div > p {
+        max-width: calc(100% - 30px);
+        line-height: 20px;
+      }
+      .parent-stat-real {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+      }
+      .parent-stat-real > div {
+        border: dashed #097bff 2px;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 70px;
+        padding: 7px 10px 10px 10px;
+        background: rgba(12, 123, 255, 0.08);
+      }
+
+      .chiffre-stat {
+        margin: 3px 0;
+      }
+      .chiffre-stat > span {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0;
+        color: #272727;
+        margin-bottom: -20px;
+        font-family: "HelveticaNeueBold", sans-serif;
+        text-align: center;
+      }
+
+      .texte-stat > p {
+        margin: 0;
+        text-align: center;
+      }
+
+      .div1-stat-real {
+        grid-area: 1 / 1 / 2 / 3;
+      }
+      .div2-stat-real {
+        grid-area: 1 / 3 / 2 / 5;
+      }
+      .div3-stat-real {
+        grid-area: 2 / 1 / 3 / 3;
+      }
+      .div4-stat-real {
+        grid-area: 2 / 3 / 3 / 5;
+      }
+
+      @media only screen and (max-width: 768px) {
+        .carte-real {
+          flex-direction: column;
+          width: calc(90% - 10px);
+        }
+        .stat-real {
+          width: 100%;
+        }
+        .carte-div-droite {
+          max-width: 100%;
+        }
+        .avis-gauche > img {
+          max-height: 100px;
+        }
+        .carte-div-gauche {
+          max-width: 100%;
+          padding-left: 0;
+          margin-top: 20px;
+        }
+        .carte-div-gauche > img {
+          max-width: 100% !important;
+          padding-left: 0 !important;
+        }
+        .texte-carte-gauche {
+          max-width: 100%;
+          padding-left: 0;
+        }
+      }
+    </style>
     <div style="height: 50px; width: 100vw"></div>
 
     <!-- <div class="btn_call_hero" style="display: flex; justify-content: center; align-items: center">
