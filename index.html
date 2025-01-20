@@ -1560,7 +1560,160 @@
       }
     </style>
 
-    <div style="height: 50px; width: 100%"></div>
+
+    <div style="height: 100px; width: 100%"></div>
+
+    <div style="width: 100%; display: flex; justify-content: center">
+      <h2
+        class="titre-section"
+        style="text-align: center; width: fit-content; margin: 30px 0px 30px">
+        Qui sommes-nous ?
+      </h2>
+    </div>
+
+    <div
+      class="qui-sommes-nous"
+      style="
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: auto;
+        width: 95%;
+      ">
+      <div id="div-img-qui-sommes">
+        <img src="./qui-sommes-nous.png" />
+        <div class="logos">
+          <div class="logos-slide">
+            <img src="./logo shopify CRO.png" />
+            <img src="./Logo Hotjar CRO.png" />
+            <img src="./Logo cal.com CRO.png" />
+            <img src="./Logo G suite CRO.png" />
+            <img src="./Logo stripe CRO.png" />
+            <img src="./Logo trello CRO.png" />
+            <img src="./Logo VWO CRO.png" />
+            <img src="./Logo webflow CRO.png" />
+          </div>
+        </div>
+
+        <script>
+          var copy = document.querySelector(".logos-slide").cloneNode(true);
+          document.querySelector(".logos").appendChild(copy);
+        </script>
+
+        <style>
+          @keyframes slide {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-100%);
+            }
+          }
+
+          .logos {
+            overflow: hidden;
+            padding: 60px 0;
+            white-space: nowrap;
+            position: relative;
+          }
+
+          .logos:before,
+          .logos:after {
+            position: absolute;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            content: "";
+            z-index: 2;
+          }
+
+          .logos:before {
+            left: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0), #161616);
+          }
+
+          .logos:after {
+            right: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), #161616);
+          }
+
+          .logos:hover .logos-slide {
+            animation-play-state: paused;
+          }
+
+          .logos-slide {
+            display: inline-block;
+            animation: 35s slide infinite linear;
+          }
+
+          .logos-slide img {
+            height: 50px;
+            margin: 0 25px;
+          }
+        </style>
+      </div>
+      <div id="div-txt-qui-sommes">
+        <p>Chez <strong>Lëc Média</strong>, nous sommes convaincus que chaque clic compte.</p>
+        <p>
+          Notre mission : transformer vos visiteurs en clients grâce à une optimisation ciblée et
+          stratégique de vos conversions.
+        </p>
+        <p>
+          Notre approche repose sur une collaboration humaine et personnalisée basée sur notre
+          expérience et les données de votre site. Chaque membre de notre équipe apporte son
+          expertise unique, qu’il s’agisse d’analyser le comportement utilisateur, de concevoir des
+          expériences fluides ou de tester des hypothèses pour maximiser vos résultats.
+        </p>
+        <p>
+          Avec Lëc Média, chaque détail compte : de l’ergonomie de vos pages à
+          <strong>la psychologie de vos clients</strong>, nous mettons tout en œuvre pour améliorer
+          vos performances rapidement et durablement.
+        </p>
+        <p>
+          <strong>Notre promesse :</strong> des résultats mesurables et un accompagnement sur-mesure
+          pour atteindre vos objectifs de croissance.
+        </p>
+        <p>Faites équipe avec Lëc Média, et ensemble, faisons décoller vos conversions.</p>
+      </div>
+      <style>
+        #div-txt-qui-sommes > * {
+          color: white;
+          line-height: 20px;
+        }
+        #div-txt-qui-sommes > p > strong {
+          font-family: "Montserrat", sans-serif;
+        }
+        #div-txt-qui-sommes {
+          border-radius: 1rem;
+          border: 3px solid #404040;
+          background: #1a1a1a;
+          padding: 10px 20px;
+        }
+        #div-img-qui-sommes {
+          max-width: 65%;
+        }
+        #div-txt-qui-sommes {
+          max-width: 28%;
+        }
+        #div-img-qui-sommes > img {
+          width: 100%;
+        }
+
+        @media (max-width: 1000px) {
+          .qui-sommes-nous {
+            flex-direction: column;
+          }
+          #div-txt-qui-sommes,
+          #div-img-qui-sommes {
+            max-width: 100%;
+          }
+        }
+      </style>
+    </div>
+
+    <div style="height: 100px; width: 100%"></div>
     <div
       class="resultats"
       style="
@@ -1654,7 +1807,7 @@
               </div>
               <button
                 class="button"
-                style="background-color: black; color: white; padding-bottom: 10px"
+                style="background-color: #ffb792; color: black; padding-bottom: 10px"
                 onclick="location.href='./Realisations/Crochetmilie.html';">
                 Voir le projet en details
               </button>
@@ -1727,7 +1880,7 @@
               </div>
               <button
                 class="button"
-                style="background-color: black; color: white; padding-bottom: 10px"
+                style="background-color: #077bff; color: black; padding-bottom: 10px"
                 onclick="location.href='./Realisations/Arico.html';">
                 Voir le projet en details
               </button>
@@ -1985,11 +2138,18 @@
         margin: auto;
         width: calc(95% - 10px);
         max-width: 1000px;
-        background-color: #ffffff;
+        background-color: #1A1A1A;
         border-radius: 1rem;
         display: flex;
         flex-wrap: wrap;
-        padding: 10px;
+        padding: 20px;
+        border: 3px solid #404040;
+      }
+      .etoile-avis>img{
+        filter: invert();
+      }
+      .carte-real>*{
+        color: white;
       }
       .carte-div-gauche {
         max-width: calc(60% - 10px);
@@ -2059,7 +2219,7 @@
         font-size: 2rem;
         font-weight: 600;
         margin: 0;
-        color: #272727;
+        color: #dbdbdb;
         margin-bottom: -20px;
         font-family: "HelveticaNeueBold", sans-serif;
         text-align: center;
@@ -2860,16 +3020,16 @@
         width: 150px;
         height: max-content;
       }
-      .avisexterne>div {
+      .avisexterne > div {
         margin-top: 50px;
         margin-bottom: -100px;
       }
       @media (max-width: 768px) {
-      .avisexterne>div {
-        flex-direction: column;
-        gap: 20px;
-    }
-  }
+        .avisexterne > div {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
     </style>
     <div class="avisexterne">
       <div
