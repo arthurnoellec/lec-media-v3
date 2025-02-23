@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculateur de Tarification CRO</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0px;
+        padding: 0;
+        background-color: #212121;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input {
+        margin-bottom: 10px;
+        width: 100px;
+      }
+      button {
+        margin-top: 10px;
+      }
+      #result {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      #calculDetails {
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      .card-container {
+        position: relative;
+        width: 600px;
+        height: 520px;
+        border-radius: 1em;
+        margin-top: 100px;
+        max-width: 95%;
+        margin-bottom: 100px;
+      }
+
+      .card-border {
+        position: absolute;
+        inset: 0;
+        background: #0005;
+        border-radius: inherit;
+      }
+
+      .card {
+        position: absolute;
+        inset: 0.125em;
+        border-radius: 0.875em;
+        background: #111215;
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        overflow: hidden;
+        height: fit-content;
+      }
+
+      .prs {
+        margin: 12px;
+        height: calc(100% - 24px);
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        border: 1px solid #343539;
+        border-radius: 6px;
+        overflow: auto;
+        padding: 25px;
+      }
+
+      .backdrop {
+        position: absolute;
+        background: radial-gradient(circle at 50% 50%, #0000 0, #0000 20%, #111111aa 50%);
+        background-size: 3px 3px;
+        z-index: -1;
+        width: 100vw;
+        min-height: 100vh;
+        top: 0;
+        left: 0;
+      }
+
+      .spin {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        overflow: hidden;
+      }
+
+      .spin-blur {
+        filter: blur(3em) url(#unopaq);
+      }
+
+      .spin-intense {
+        inset: -0.125em;
+        filter: blur(0.5em) url(#unopaq2);
+        border-radius: 0.75em;
+      }
+
+      .spin-inside {
+        inset: -2px;
+        border-radius: inherit;
+        filter: blur(2px) url(#unopaq3);
+        z-index: 0;
+      }
+
+      .spin::before {
+        content: "";
+        position: absolute;
+        inset: -30%;
+        animation: speen 8s cubic-bezier(0.56, 0.15, 0.28, 0.86) infinite;
+      }
+
+      .spin-blur::before {
+        background: linear-gradient(-45deg, rgb(123, 255, 0), #0000 46% 54%, #05f);
+      }
+
+      .spin-intense::before {
+        background: linear-gradient(-45deg, rgb(133, 255, 85), #0000 35% 65%, #59f);
+      }
+
+      .spin-inside::before {
+        background: linear-gradient(-45deg, rgb(172, 255, 153), #0000 35% 65%, #9cf);
+      }
+
+      @keyframes speen {
+        0% {
+          rotate: 10deg;
+        }
+        50% {
+          rotate: 190deg;
+        }
+        to {
+          rotate: 370deg;
+        }
+      }
+
+      .pfp {
+        cursor: pointer;
+        display: flex;
+        width: 1.75em;
+        height: 1.75em;
+        border-radius: 100%;
+        background-color: #fff1;
+        background-size: cover;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA0GVYSWZJSSoACAAAAAoAAAEEAAEAAAAgAAAAAQEEAAEAAAAgAAAAAgEDAAMAAACGAAAAEgEDAAEAAAABAAAAGgEFAAEAAACMAAAAGwEFAAEAAACUAAAAKAEDAAEAAAADAAAAMQECAA0AAACcAAAAMgECABQAAACqAAAAaYcEAAEAAAC+AAAAAAAAAAgACAAIADcCAAAUAAAANwIAABQAAABHSU1QIDIuMTAuMzgAADIwMjQ6MTI6MTMgMTI6NTg6NTYAAQABoAMAAQAAAAEAAAAAAAAAJQVvNQAAAYRpQ0NQSUNDIHByb2ZpbGUAAHicfZE9SMNAHMVfU6UiLSJ2EHEIWF20i4o41ioUoUKoFVp1MLn0C5o0JC0ujoJrwcGPxaqDi7OuDq6CIPgB4uzgpOgiJf4vKbSI8eC4H+/uPe7eAUKjzDSrKwZoetVMJeJiJrsqBl4RRAj9GMG4zCxjTpKS8Bxf9/Dx9S7Ks7zP/TlCas5igE8kjjHDrBJvEM9sVg3O+8RhVpRV4nPiCZMuSPzIdcXlN84FhwWeGTbTqXniMLFY6GClg1nR1IiniSOqplO+kHFZ5bzFWSvXWOue/IXBnL6yzHWaw0hgEUuQIEJBDSWUUUWUVp0UCynaj3v4hxy/RC6FXCUwciygAg2y4wf/g9/dWvmpSTcpGAe6X2z7YxQI7ALNum1/H9t28wTwPwNXettfaQCzn6TX21rkCOjbBi6u25qyB1zuAINPhmzKjuSnKeTzwPsZfVMWGLgFetfc3lr7OH0A0tRV8gY4OATGCpS97vHuns7e/j3T6u8HyXtyycBnEAsAAA5baVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA0LjQuMC1FeGl2MiI+CiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIKICAgIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiCiAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICB4bWxuczpHSU1QPSJodHRwOi8vd3d3LmdpbXAub3JnL3htcC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgeG1wTU06RG9jdW1lbnRJRD0iZ2ltcDpkb2NpZDpnaW1wOjUyZGI4NjVkLTgzNzEtNGIwZi05MDVkLWZhOTRmN2NkOWFiNyIKICAgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1MDM4MDA5MC1hMTIyLTRhYTEtYTM3OC1hNWI2ZDljMTk2MmIiCiAgIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1MDJjZmExOC00Yzg4LTRiOGQtOWE5YS05MDkyZWU2NTZhYzgiCiAgIGRjOkZvcm1hdD0iaW1hZ2UvcG5nIgogICBHSU1QOkFQST0iMi4wIgogICBHSU1QOlBsYXRmb3JtPSJMaW51eCIKICAgR0lNUDpUaW1lU3RhbXA9IjE3MzQxMTI3MzY4Njg5NjYiCiAgIEdJTVA6VmVyc2lvbj0iMi4xMC4zOCIKICAgdGlmZjpPcmllbnRhdGlvbj0iMSIKICAgeG1wOkNyZWF0b3JUb29sPSJHSU1QIDIuMTAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQ6MTI6MTNUMTI6NTg6NTYtMDU6MDAiCiAgIHhtcDpNb2RpZnlEYXRlPSIyMDI0OjEyOjEzVDEyOjU4OjU2LTA1OjAwIj4KICAgPHhtcE1NOkhpc3Rvcnk+CiAgICA8cmRmOlNlcT4KICAgICA8cmRmOmxpCiAgICAgIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiCiAgICAgIHN0RXZ0OmNoYW5nZWQ9Ii8iCiAgICAgIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6NzI2OTAxZjItMzIwMS00Yjg3LTg5OGEtOGFkMzVlZjM2ZmVjIgogICAgICBzdEV2dDpzb2Z0d2FyZUFnZW50PSJHaW1wIDIuMTAgKExpbnV4KSIKICAgICAgc3RFdnQ6d2hlbj0iMjAyNC0wOS0wN1QxNTowODozNC0wNDowMCIvPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJzYXZlZCIKICAgICAgc3RFdnQ6Y2hhbmdlZD0iLyIKICAgICAgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDphN2MyMGQ3MS0yN2NmLTRjYjQtOTY3NS1kM2Q4MDNkZTg2MzQiCiAgICAgIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkdpbXAgMi4xMCAoTGludXgpIgogICAgICBzdEV2dDp3aGVuPSIyMDI0LTEyLTEzVDEyOjU4OjU2LTA1OjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/PnznhhgAAAAGYktHRAAAAAAAAPlDu38AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfoDA0ROjgRFqkzAAAD3UlEQVRYw+2XW2gcVRjHfzOzs5vNbvaSS5MQJLbEB5PUNiUX761WW8SKMVRFI7baYvFJfSiaJ/FBoS8qPlko+tAaqEJE8NI0aE1p7IutUVKaEkygrWmyySZ7n92dmXN8yL1BdsV5Mx+cmeHwn2/+8//P+c43sBH/91AKAd7/YqIiEKo6Zll5zxJYLh6Wz4vXUkqkBEXVsCzrQs9zlccL5XcVBLjcey/88Nmhc6ffW54LBILobvcaXCadxjAyCCEor6yl680vHwT+OwFAic9OorlWHpjOGJAxkFKiKCsiai43LkXBrask41GlGAvU4pyS62aanu7knfOD3H/kyFqklESjUYSURWUuqMCSv6uj42gPbfufJafr7HjlNeaSGUZ7T67BCOEkgdtyRa7f4M/ZBJrHA8Cd3YeIJtLMfNu3jLGdIiBYIVD26huY8RhTQmX2k4/Y9PwBlFI/AP79B4knM+QHzywqgEMKrHqTdCwOj3UCYMSiJHtPojduQzQ0gq4jOw8gUwbKpUEHFZALA0D0fU6ssYN8IAQuH96t91H24VEIlGO3P4JdXYe4p4OS0WHsIiUoTEAsWqC6SL3cg6EHwFhIngrVoXW/TWnvMbQf+9BW3WfbxSmgFlZAIqXEXx7m9bYmDteEISvYV6JT89Wn7NIz5O/ton77Dl549wMe7j7o7Edoi4XyWtfcQnJqAq8/TPjXy2x5aifarkdpfbKLb878zm7fPCN/XGRLS+u/IlBQAduWCCkZPddP3FXGz9/3o0VmuB63UWsamMxpkJUMRP0E25/g7IkTzlqwpEBpQytXLl6mun0PSjZNJB8kJkJcuRqBrKDMHeC37waoe+Ythy2wJUJITCOHVd7M5NgkgXA1M0P9TFduwx+spELxYk5Po9a2cXMq7ywByxZIKbEmRxi/ZRAY/hp1fgTpqSL30GYSOQ09l8KVTeKfOE/yrt2Ekc6VYkvIlTqQN5lrfpGKS8eJb32JnOKFTJbgtbNosTHU9F+Ebw4BStGVUC3WAoDSW1cxTZVI82EMNQCp9MLIpknW78MqbwE7s7x8HbJALicrGT9N5fwN5qsfAM290lDlTUoi13DNDDm/G1q2WCOnPv8LVclx4pV7MPQwbjuFnhgGkVlXwh1bBfI2ORVritDUKTy+nXhyY+sevtSYOFoJl5oDRVUXkwu8qZ9AUf5xE3OEgGma87V3P45/czOl4SBmIoHi82HnTcqCPmKROXRfKdLM4y3zYWYNUjMJvOH6lCME0sm5gWBt08chdfsmIUGGFhQRiy141R0r7biU4PJISgIKVi51auOvZyOKib8BAO3w3ya+4mEAAAAASUVORK5CYII=");
+      }
+
+      input {
+        border-radius: 10px;
+        border: none;
+        width: calc(100% - 20px);
+        height: 50px;
+        padding: 0 10px;
+        background-color: #2f2f2f;
+        color: white;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      label {
+        margin-bottom: 5px;
+        margin-left: 2px;
+      }
+
+      /* From Uiverse.io by adamgiebl */
+      button {
+        display: flex;
+        align-items: center;
+        font-family: inherit;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 17px;
+        padding: 0.8em 1.3em 0.8em 0.9em;
+        color: white;
+        background: #ad5389;
+        background: #033bff;
+        border: none;
+        letter-spacing: 0.05em;
+        border-radius: 16px;
+        justify-content: center;
+      }
+
+      button svg {
+        margin-right: 3px;
+        transform: rotate(30deg);
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+      }
+
+      button span {
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+      }
+
+      button:hover svg {
+        transform: translateX(5px) rotate(90deg);
+      }
+
+      button:hover span {
+        transform: translateX(7px);
+      }
+
+      span#prix-genere {
+        background: #0f9933;
+        padding: 4px 9px;
+        border-radius: 5px;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- From Uiverse.io by SelfMadeSystem -->
+    <svg style="position: absolute; width: 0; height: 0">
+      <filter id="unopaq" y="-100%" height="300%" x="-100%" width="300%">
+        <feColorMatrix
+          values="1 0 0 0 0 
+              0 1 0 0 0 
+              0 0 1 0 0 
+              0 0 0 5 0"></feColorMatrix>
+      </filter>
+      <filter id="unopaq2" y="-100%" height="300%" x="-100%" width="300%">
+        <feColorMatrix
+          values="1 0 0 0 0 
+              0 1 0 0 0 
+              0 0 1 0 0 
+              0 0 0 10 0"></feColorMatrix>
+      </filter>
+      <filter id="unopaq3" y="-100%" height="300%" x="-100%" width="300%">
+        <feColorMatrix
+          values="1 0 0 1 0 
+              0 1 0 1 0 
+              0 0 1 1 0 
+              0 0 0 2 0"></feColorMatrix>
+      </filter>
+    </svg>
+    <div class="card-container">
+      <div class="spin spin-blur"></div>
+      <div class="spin spin-intense"></div>
+      <div class="card-border">
+        <div class="spin spin-inside"></div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <div class="prs">
+            <h1 style="text-align: center">Calculateur de Tarification CRO</h1>
+
+            <label for="visites">Nombre de visites mensuelles :</label>
+            <input type="number" id="visites" placeholder="Ex : 7000" />
+
+            <label for="tauxConversion">Taux de conversion actuel (%) :</label>
+            <input type="number" id="tauxConversion" placeholder="Ex : 2" />
+
+            <label for="panierMoyen">Panier moyen (en €) :</label>
+            <input type="number" id="panierMoyen" placeholder="Ex : 25" />
+
+            <button onclick="calculerPrix()">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  fill="currentColor"></path>
+              </svg>
+              <span>Calculer le prix</span>
+            </button>
+
+            <div id="result"></div>
+            <div id="calculDetails"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="backdrop"></div>
+
+    <script>
+
+        // Fonction pour arrondir à xx0€ ou xx5€ en arrondissant toujours au plus bas
+        function arrondirPrix(prix) {
+            let arrondi = Math.floor(prix / 5) * 5; // Arrondi au multiple de 5 inférieur
+            return arrondi;
+        }
+        
+
+        function calculerPrix() {
+            const visites = parseInt(document.getElementById('visites').value);
+            const tauxConversion = parseFloat(document.getElementById('tauxConversion').value);
+            const panierMoyen = parseFloat(document.getElementById('panierMoyen').value);
+        
+            if (isNaN(visites) || isNaN(tauxConversion) || isNaN(panierMoyen)) {
+                alert('Veuillez saisir des valeurs valides.');
+                return;
+            }
+        
+            let prix = 400; // Prix de base
+            let prix_plein = 0;
+        
+            // Calcul du chiffre d'affaires généré
+            const CA = visites * tauxConversion / 100 * panierMoyen;
+            let CAImpact = CA * 0.008; // 0,8% du CA
+        
+            // Plafonner l'impact du CA à 1200€
+            if (CAImpact > 1200) {
+                CAImpact = 1200;
+            }
+        
+            // Ajouter l'impact du CA au prix de base
+            prix += CAImpact;
+        
+            // Calcul du prix en fonction du taux de conversion
+            let tauxConversionImpact = 0;
+            if (tauxConversion <= 1) {
+                tauxConversionImpact = 0; // Facile
+            } else if (tauxConversion <= 5) {
+                tauxConversionImpact = 100; // Normal
+            } else {
+                tauxConversionImpact = 300; // Difficile
+            }
+        
+            prix += tauxConversionImpact;
+        
+            // Calcul du prix en fonction du nombre de visites (réduit l'impact)
+            let visitesImpact = 0;
+            if (visites >= 500 && visites <= 10000) {
+                visitesImpact = 0; // Pas beaucoup de tests
+            } else if (visites <= 20000) {
+                visitesImpact = 50; // Impact réduit : quelques tests supplémentaires
+            } else {
+                visitesImpact = 100; // Impact réduit : plus de tests
+            }
+        
+            prix += visitesImpact;
+        
+            // Calcul du prix en fonction du panier moyen
+            let panierMoyenImpact = 0;
+            if (panierMoyen <= 35) {
+                panierMoyenImpact = 0; // Facile
+            } else if (panierMoyen <= 70) {
+                panierMoyenImpact = 50; // Normal
+            } else if (panierMoyen <= 150) {
+                panierMoyenImpact = 100; // Un peu dur
+            } else if (panierMoyen <= 500) {
+                panierMoyenImpact = 200; // Dur
+            } else {
+                panierMoyenImpact = 300; // Mega dur
+            }
+        
+            prix += panierMoyenImpact;
+        
+            // Assurer un prix minimum
+            const prixMinimum = 550;
+            if (prix < prixMinimum) {
+                prix = prixMinimum;
+            }
+
+            // Arrondi au plus bas (xx0 ou xx5)
+            prix_plein = prix;
+            prix = arrondirPrix(prix);
+
+        
+            // Afficher les détails du calcul
+            const details = `
+                <h3>Détails du calcul :</h3>
+                <ul>
+                    <li><strong>Prix des applications :</strong> 400€</li>
+                    <li><strong>Frais :</strong> ${CAImpact.toFixed(2)}€</li>
+                    <li><strong>Impact du taux de conversion :</strong> ${tauxConversionImpact}€</li>
+                    <li><strong>Impact des visites :</strong> ${visitesImpact}€</li>
+                    <li><strong>Impact du panier moyen :</strong> ${panierMoyenImpact}€</li>
+                    <li><strong><em>Total :</em></strong> ${prix_plein.toFixed(2)}€</li>
+                    <li><strong><em>Prix final arrondi :</em></strong> ${prix.toFixed(2)}€</li>
+                </ul>
+            `;
+        
+            // Modifie le contenu de #result avec un span autour du prix généré
+            document.getElementById('result').innerHTML = `Estimation du prix mensuel : <span id="prix-genere">${prix.toFixed(2)}€</span>`;
+            document.getElementById('calculDetails').innerHTML = details;
+            document.getElementById('result').style.marginTop = '35px';
+            updateBackdropHeight(); // Met à jour la hauteur du backdrop après le calcul
+
+
+        }
+        
+      // Récupérer les éléments
+      const card = document.querySelector(".card");
+      const cardContainer = document.querySelector(".card-container");
+
+      // Fonction pour mettre à jour la hauteur du conteneur
+      function updateCardContainerHeight() {
+        // Vérifier si l'élément .card existe
+        if (card && cardContainer) {
+          // Récupérer la hauteur de .card
+          const cardHeight = card.offsetHeight + 5;
+
+          // Appliquer la même hauteur à .card-container
+          cardContainer.style.height = `${cardHeight}px`;
+        }
+      }
+
+      // Observer les changements dans la taille de .card
+      const observer = new MutationObserver(() => {
+        updateCardContainerHeight();
+      });
+
+      // Configuration de l'observateur pour écouter les changements de style
+      observer.observe(card, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
+
+      // Appeler la fonction initiale pour définir la hauteur au chargement
+      document.addEventListener("DOMContentLoaded", updateCardContainerHeight);
+
+      function updateBackdropHeight() {
+        const card = document.querySelector('.card');
+        const backdrop = document.querySelector('.backdrop');
+    
+        if (card && backdrop) {
+            const cardHeight = card.offsetHeight;
+            backdrop.style.height = `${cardHeight + 230}px`;
+        }
+    }
+    
+    </script>
+
+    <script>
+        function adjustBackdropHeight() {
+          const card = document.querySelector('.card');
+          const backdrop = document.querySelector('.backdrop');
+      
+          if (card && backdrop) {
+            const cardHeight = card.offsetHeight;
+            backdrop.style.height = `${cardHeight + 300}px`;
+          }
+        }
+      
+        // Ajustement initial et à chaque redimensionnement de la fenêtre
+        window.addEventListener('load', adjustBackdropHeight);
+        window.addEventListener('resize', adjustBackdropHeight);
+      </script>
+      
+    <style>
+      /* From Uiverse.io by MuhammadHasann */
+      .button {
+        --black-700: hsla(0 0% 12% / 1);
+        --border_radius: 9999px;
+        --transtion: 0.3s ease-in-out;
+        --offset: 2px;
+
+        cursor: pointer;
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        transform-origin: center;
+
+        padding: 1rem 2rem;
+        background-color: transparent;
+
+        border: none;
+        border-radius: var(--border_radius);
+        transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+
+        transition: transform var(--transtion);
+      }
+
+      .button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        height: 100%;
+        background-color: var(--black-700);
+
+        border-radius: var(--border_radius);
+        box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
+          0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
+          0 0 0 calc(var(--active, 0) * 0.375rem) hsl(260 97% 50% / 0.75);
+
+        transition: all var(--transtion);
+        z-index: 0;
+      }
+
+      .button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        height: 100%;
+        background-color: hsla(260 97% 61% / 0.75);
+        background-image: radial-gradient(at 51% 89%, hsla(266, 45%, 74%, 1) 0px, transparent 50%),
+          radial-gradient(at 100% 100%, hsla(266, 36%, 60%, 1) 0px, transparent 50%),
+          radial-gradient(at 22% 91%, hsla(266, 36%, 60%, 1) 0px, transparent 50%);
+        background-position: top;
+
+        opacity: var(--active, 0);
+        border-radius: var(--border_radius);
+        transition: opacity var(--transtion);
+        z-index: 2;
+      }
+
+      .button:is(:hover, :focus-visible) {
+        --active: 1;
+      }
+      .button:active {
+        transform: scale(1);
+      }
+
+      .button .dots_border {
+        --size_border: calc(100% + 2px);
+
+        overflow: hidden;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: var(--size_border);
+        height: var(--size_border);
+        background-color: transparent;
+
+        border-radius: var(--border_radius);
+        z-index: -10;
+      }
+
+      .button .dots_border::before {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: left;
+        transform: rotate(0deg);
+
+        width: 100%;
+        height: 2rem;
+        background-color: white;
+
+        mask: linear-gradient(transparent 0%, white 120%);
+        animation: rotate 2s linear infinite;
+      }
+
+      @keyframes rotate {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .button .sparkle {
+        position: relative;
+        z-index: 10;
+
+        width: 1.75rem;
+      }
+
+      .button .sparkle .path {
+        fill: currentColor;
+        stroke: currentColor;
+
+        transform-origin: center;
+
+        color: hsl(0, 0%, 100%);
+      }
+
+      .button:is(:hover, :focus) .sparkle .path {
+        animation: path 1.5s linear 0.5s infinite;
+      }
+
+      .button .sparkle .path:nth-child(1) {
+        --scale_path_1: 1.2;
+      }
+      .button .sparkle .path:nth-child(2) {
+        --scale_path_2: 1.2;
+      }
+      .button .sparkle .path:nth-child(3) {
+        --scale_path_3: 1.2;
+      }
+
+      @keyframes path {
+        0%,
+        34%,
+        71%,
+        100% {
+          transform: scale(1);
+        }
+        17% {
+          transform: scale(var(--scale_path_1, 1));
+        }
+        49% {
+          transform: scale(var(--scale_path_2, 1));
+        }
+        83% {
+          transform: scale(var(--scale_path_3, 1));
+        }
+      }
+
+      .button .text_button {
+        position: relative;
+        z-index: 10;
+
+        background-image: linear-gradient(
+          90deg,
+          hsla(0 0% 100% / 1) 0%,
+          hsla(0 0% 100% / var(--active, 0)) 120%
+        );
+        background-clip: text;
+
+        font-size: 1rem;
+        color: transparent;
+      }
+    </style>
+  </body>
+</html>
