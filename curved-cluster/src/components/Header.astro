@@ -1,294 +1,517 @@
 ---
 // src/components/Header.astro
 ---
+<div style="height: 80px;"></div>
+<nav class="navbar">
+  <div class="nav-menu">
+    <!-- Hamburger menu for mobile -->
+    <button class="hamburger" id="hamburgerBtn">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
 
-<header class="header">
-    <nav class="nav">
-      <div class="logo">
-        <a href="/">
-          <span class="logo-text">CRO<span class="accent">Boost</span></span>
-        </a>
-      </div>
-      
-      <div class="nav-links" id="navLinks">
-        <a href="#benefits">Bénéfices</a>
-        <a href="#features">Services</a>
-        <a href="#calculateur">Tarifs</a>
-        <a href="#testimonials">Témoignages</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      
-      <div class="nav-cta">
-        <a href="#contact" class="btn btn-primary">Consultation Gratuite</a>
-      </div>
-      
-      <button class="burger-menu" id="burgerMenu" aria-label="Menu" aria-expanded="false">
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-      </button>
-      
-      <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-content">
-          <div class="mobile-nav-links">
-            <a href="#benefits">Bénéfices</a>
-            <a href="#features">Services</a>
-            <a href="#calculateur">Tarifs</a>
-            <a href="#testimonials">Témoignages</a>
-            <a href="#faq">FAQ</a>
-          </div>
-          <div class="mobile-nav-cta">
-            <a href="#contact" class="btn btn-primary">Consultation Gratuite</a>
-          </div>
+    <!-- Mobile menu container -->
+    <div class="nav-items-container" id="mobileMenu">
+      <div class="nav-item">
+        <div class="nav-link" id="servicesLink">Services</div>
+        <div class="dropdown" id="servicesDropdown">
+          <a href="/agence-cro" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20.24 12.24a6 6 0 0 1-8.49 8.49 6 6 0 1 1 8.49-8.49z"></path>
+              <path d="M8 14H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">CRO</div>
+              <div class="dropdown-description">Optimisez vos conversions</div>
+            </div>
+          </a>
+          <a href="/creation-boutique-shopify" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Création site Shopify</div>
+              <div class="dropdown-description">Développement de boutique en ligne</div>
+            </div>
+          </a>
+          <a href="/refonte-site-ecommerce" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Refonte Shopify</div>
+              <div class="dropdown-description">Modernisation de votre boutique</div>
+            </div>
+          </a>
+          <a href="/formation-intervention-entreprise-shopify" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 11v5"></path>
+              <path d="M9 18h6"></path>
+              <path d="m10 8 2-2 2 2"></path>
+              <circle cx="12" cy="5" r="3"></circle>
+              <path d="M3 22h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Formation en entreprise</div>
+              <div class="dropdown-description">Cours Shopify personnalisés</div>
+            </div>
+          </a>
         </div>
       </div>
-    </nav>
-  </header>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const burgerMenu = document.getElementById('burgerMenu');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-cta a');
+
+      <div class="nav-item">
+        <div class="nav-link" id="casLink">Cas d'usage</div>
+        <div class="dropdown" id="casDropdown">
+          <a href="/Realisations/Crochetmilie.html" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="7" y1="12" x2="17" y2="12"></line>
+              <line x1="12" y1="7" x2="12" y2="17"></line>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">B2C</div>
+              <div class="dropdown-description">Solutions grand public</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <div class="nav-link" id="blogsLink">Blogs</div>
+        <div class="dropdown" id="blogsDropdown">
+          <a href="/les-blogs" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Articles</div>
+              <div class="dropdown-description">Nos dernières publications</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo - centered on mobile -->
+    <a href="/" class="logo">
+      <img src="../../public/logo-lec-media-blanc.png" alt="LEC Media Logo" />
+    </a>
+
+    <!-- Contact button - on right side for mobile -->
+    <div class="contact-button-container">
+      <a href="/agence-cro#contact">
+        <button class="button" style="background-color: #08f791; border-radius: 50px; padding: 10px 20px; border: none; font-weight: 700; cursor: pointer;">
+          Nous contacter
+        </button>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 32rem;
+    max-width: 1200px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 30%;
+  }
+
+  .logo img {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .logo-text {
+    color: #4ca6ff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .nav-items-container {
+    display: flex;
+    width: 30%;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: color 0.3s, background-color 0.3s;
+    cursor: pointer;
+  }
+
+  .nav-link:hover {
+    color: #57ffb6;
+  }
+
+  .nav-link.active {
+    color: #08f791;
+    background-color: rgba(8, 247, 145, 0.1);
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2a2a2a;
+    min-width: 250px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    margin-top: 25px;
+  }
+
+  .dropdown.show {
+    display: block;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: background-color 0.3s;
+  }
+
+  .dropdown-item:hover {
+    background-color: rgba(8, 247, 145, 0.1);
+  }
+
+  .dropdown-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    stroke: #08f791;
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-title {
+    color: #08f791;
+    font-weight: 600;
+    margin-bottom: 3px;
+    font-size: 0.9rem;
+  }
+
+  .dropdown-description {
+    color: #a0a0a0;
+    font-size: 0.7rem;
+  }
+
+  .contact-btn {
+    background-color: #08f791;
+    color: #121212;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-btn:hover {
+    background-color: #08f78f8a;
+  }
+
+  .contact-btn svg {
+    stroke: #121212;
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Mobile menu */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: #08f791;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  /* Media queries for responsive design */
+  @media screen and (max-width: 992px) {
+    .navbar {
+      width: 95%;
+      padding: 8px 15px;
+      border-radius: 20px;
+    }
+
+    .nav-items-container {
+      width: auto;
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+      background-color: rgba(8, 247, 143, 0);
+    }
+  }
+
+  /* Tablet and smaller screens */
+  @media screen and (max-width: 768px) {
+    .navbar {
+      margin-top: 10px;
+    }
+
+    .hamburger {
+      display: block;
+      order: 1;
+      z-index: 1100;
+    }
+
+    .logo {
+      order: 2;
+      margin: 0 auto;
+    }
+
+    .nav-menu {
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .nav-items-container {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      flex-direction: column;
+      width: 80%;
+      height: 100vh;
+      padding: 70px 20px 20px;
+      background-color: rgba(30, 30, 30, 0.99);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+      z-index: 1050;
+      border-radius: 2rem;
+    }
+
+    .nav-items-container.active {
+      left: 0;
+      width: calc(100% - 40px);
+    }
+
+    .nav-item {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 15px;
+      font-size: 18px;
+    }
+
+    .dropdown {
+      position: static;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-shadow: none;
+    }
+
+    .contact-button-container {
+      order: 3;
+    }
+
+    button.button {
+      padding: 8px 12px !important;
+      font-size: 14px;
+    }
+  }
+
+  /* Small mobile screens */
+  @media screen and (max-width: 480px) {
+    .navbar {
+      width: 90%;
+      padding: 8px 10px;
+      border-radius: 15px;
+    }
+
+    .logo img {
+      height: 30px;
+    }
+
+    button.button {
+      padding: 6px 10px !important;
+      font-size: 12px;
+    }
+
+    .dropdown {
+      padding: 10px;
+    }
+
+    /* Adjust hamburger menu when open */
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .contact-button-container {
+      display: none;
+    }
+
+    .logo {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: -30px;
+    }
+  }
+</style>
+
+<script>
+  // Attendre que le DOM soit chargé
+  document.addEventListener('DOMContentLoaded', () => {
+    // Éléments du menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    // Éléments des dropdowns
+    const servicesLink = document.getElementById('servicesLink');
+    const casLink = document.getElementById('casLink');
+    const blogsLink = document.getElementById('blogsLink');
+    
+    const servicesDropdown = document.getElementById('servicesDropdown');
+    const casDropdown = document.getElementById('casDropdown');
+    const blogsDropdown = document.getElementById('blogsDropdown');
+    
+    // Gérer le menu mobile
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        if (mobileMenu) {
+          mobileMenu.classList.toggle('active');
+        }
+      });
+    }
+    
+    // Fonction pour fermer tous les dropdowns
+    const closeAllDropdowns = () => {
+      const allDropdowns = document.querySelectorAll('.dropdown');
+      const allNavLinks = document.querySelectorAll('.nav-link');
       
-      // Fonction pour ouvrir/fermer le menu mobile
-      function toggleMenu() {
-        const isExpanded = burgerMenu.getAttribute('aria-expanded') === 'true';
-        burgerMenu.setAttribute('aria-expanded', !isExpanded);
-        burgerMenu.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-      }
-      
-      // Event listener pour le bouton burger
-      if (burgerMenu) {
-        burgerMenu.addEventListener('click', toggleMenu);
-      }
-      
-      // Fermer le menu lorsqu'un lien est cliqué
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          toggleMenu();
-        });
+      allDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('show');
       });
       
-      // Fermer le menu au redimensionnement de la fenêtre
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 992 && mobileMenu.classList.contains('active')) {
-          burgerMenu.setAttribute('aria-expanded', 'false');
-          burgerMenu.classList.remove('active');
+      allNavLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+    };
+    
+    // Gérer les dropdowns
+    const setupDropdown = (linkElement, dropdownElement) => {
+      if (linkElement && dropdownElement) {
+        linkElement.addEventListener('click', (event) => {
+          event.stopPropagation();
+          
+          // Si ce dropdown est déjà ouvert, le fermer
+          if (dropdownElement.classList.contains('show')) {
+            dropdownElement.classList.remove('show');
+            linkElement.classList.remove('active');
+            return;
+          }
+          
+          // Fermer tous les dropdowns d'abord
+          closeAllDropdowns();
+          
+          // Afficher le dropdown actuel
+          dropdownElement.classList.add('show');
+          linkElement.classList.add('active');
+        });
+      }
+    };
+    
+    // Configurer chaque dropdown
+    setupDropdown(servicesLink, servicesDropdown);
+    setupDropdown(casLink, casDropdown);
+    setupDropdown(blogsLink, blogsDropdown);
+    
+    // Fermer les dropdowns quand on clique ailleurs sur la page
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.nav-item')) {
+        closeAllDropdowns();
+      }
+    });
+    
+    // Fermer le menu mobile quand on clique sur un lien
+    const mobileLinks = document.querySelectorAll('.nav-items-container a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu) {
           mobileMenu.classList.remove('active');
-          document.body.classList.remove('menu-open');
+        }
+        if (hamburgerBtn) {
+          hamburgerBtn.classList.remove('active');
         }
       });
     });
-  </script>
-  
-  <style>
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: rgba(5, 5, 5, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-  
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-  
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      z-index: 101;
-    }
-  
-    .logo-text .accent {
-      color: var(--accent);
-    }
-  
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-  
-    .nav-links a {
-      position: relative;
-      font-weight: 500;
-    }
-  
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-  
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: var(--accent);
-      transition: var(--transition);
-    }
-  
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-  
-    /* Burger Menu */
-    .burger-menu {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 21px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 101;
-      position: relative;
-    }
-  
-    .burger-line {
-      width: 100%;
-      height: 3px;
-      background-color: var(--text);
-      border-radius: 3px;
-      transition: var(--transition);
-    }
-  
-    .burger-menu.active .burger-line:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
-      background-color: var(--accent);
-    }
-  
-    .burger-menu.active .burger-line:nth-child(2) {
-      opacity: 0;
-    }
-  
-    .burger-menu.active .burger-line:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
-      background-color: var(--accent);
-    }
-  
-    /* Mobile Menu */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: var(--background);
-      z-index: 100;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      display: none;
-    }
-  
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-  
-    .mobile-menu-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      padding: 2rem;
-    }
-  
-    .mobile-nav-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-  
-    .mobile-nav-links a {
-      position: relative;
-      font-weight: 600;
-      font-size: 1.5rem;
-      position: relative;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-  
-    .mobile-menu.active .mobile-nav-links a {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  
-    /* Décalage de l'animation pour chaque lien */
-    .mobile-menu.active .mobile-nav-links a:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    .mobile-menu.active .mobile-nav-links a:nth-child(2) {
-      transition-delay: 0.15s;
-    }
-    .mobile-menu.active .mobile-nav-links a:nth-child(3) {
-      transition-delay: 0.2s;
-    }
-    .mobile-menu.active .mobile-nav-links a:nth-child(4) {
-      transition-delay: 0.25s;
-    }
-    .mobile-menu.active .mobile-nav-links a:nth-child(5) {
-      transition-delay: 0.3s;
-    }
-  
-    .mobile-nav-cta {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-  
-    .mobile-menu.active .mobile-nav-cta {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.35s;
-    }
-  
-    .mobile-nav-cta .btn {
-      padding: 1rem 2rem;
-      font-size: 1.125rem;
-    }
-  
-    /* Ajustement pour le corps de la page quand le menu est ouvert */
-    body.menu-open {
-      overflow: hidden;
-    }
-  
-    /* Media Queries pour Responsive */
-    @media (max-width: 992px) {
-      .nav-links, .nav-cta {
-        display: none;
-      }
-  
-      .burger-menu {
-        display: flex;
-      }
-  
-      .mobile-menu {
-        display: block;
-      }
-    }
-  
-    @media (max-width: 576px) {
-      .nav {
-        padding: 1.25rem 1.5rem;
-      }
-      
-      .mobile-nav-links a {
-        font-size: 1.25rem;
-      }
-    }
-  </style>
+  });
+</script>
