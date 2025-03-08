@@ -1,7 +1,8 @@
 ---
 // HeroRefonte.astro
 
-import beforeAfter from '../assets/CRO-agence-shopify.png';
+import before from '../assets/before.png';
+import after from '../assets/after.png';
 import performance from '../assets/performance.png';
 import mobile from '../assets/mobile.png';
 ---
@@ -19,8 +20,7 @@ import mobile from '../assets/mobile.png';
     </p>
 
     <div class="hero-cta">
-      <a href="#forfaits" class="btn btn-primary btn-lg">Découvrir nos forfaits</a>
-      <a href="#contact" class="btn btn-secondary btn-lg">Audit gratuit</a>
+      <a href="#contact" class="btn btn-primary btn-lg">Nous contacter</a>
     </div>
 
     <div class="hero-stats">
@@ -29,11 +29,11 @@ import mobile from '../assets/mobile.png';
         <span class="stat-label">conversion après refonte</span>
       </div>
       <div class="stat">
-        <span class="stat-number">+30</span>
+        <span class="stat-number">+25</span>
         <span class="stat-label">boutiques rénovées</span>
       </div>
       <div class="stat">
-        <span class="stat-number">x2.5</span>
+        <span class="stat-number">x7.5</span>
         <span class="stat-label">augmentation du CA moyen</span>
       </div>
     </div>
@@ -45,11 +45,11 @@ import mobile from '../assets/mobile.png';
         <div class="compare-view">
           <div class="view view-before">
             <div class="view-label">Avant</div>
-            <img src={beforeAfter.src} alt="Boutique avant refonte" />
+            <img src={before.src} alt="Boutique avant refonte" />
           </div>
           <div class="view view-after">
             <div class="view-label">Après</div>
-            <img src={beforeAfter.src} alt="Boutique après refonte" />
+            <img src={after.src} alt="Boutique après refonte" />
           </div>
         </div>
       </div>
@@ -63,14 +63,14 @@ import mobile from '../assets/mobile.png';
         <div class="data-icon">⚡</div>
         <div class="data-text">
           <span class="data-label">Performance</span>
-          <span class="data-value">+85%</span>
+          <span class="data-value">+120%</span>
         </div>
       </div>
       <div class="data-item">
         <div class="data-icon">📱</div>
         <div class="data-text">
           <span class="data-label">Mobile</span>
-          <span class="data-value">100%</span>
+          <span class="data-value">Approuve</span>
         </div>
       </div>
       <div class="data-item">
@@ -186,6 +186,7 @@ import mobile from '../assets/mobile.png';
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease;
+    padding-top: 25px;
   }
 
   .view:hover {
@@ -203,13 +204,14 @@ import mobile from '../assets/mobile.png';
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: var(--surface);
-    color: var(--text-primary);
+    background-color: rgb(255, 114, 114);
+    color: var(--surface);
     font-weight: 600;
     padding: 0.25rem 0.75rem;
     border-radius: var(--radius-sm);
     font-size: 0.75rem;
     z-index: 1;
+    border-radius: 5px;
   }
 
   .view-after .view-label {
