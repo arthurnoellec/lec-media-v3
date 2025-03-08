@@ -875,150 +875,134 @@ function toggleDropdown(element) {
         Ils nous ont fait confiance :
       </h2>
     </div>
-    <section class="trusted-section">
-      <div class="logo-slider">
-        <div class="logo-slide-track">
-          <div class="slide">
-            <img src="./partenaire/auto.png" height="80" width="240" alt="Auto Company Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/body.png" height="80" width="240" alt="Body Wellness Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/O.png" height="80" width="240" alt="O Partner Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/decathlon.png" height="80" width="240" alt="Decathlon Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/clwr.png" height="80" width="240" alt="CLWR Logo" />
-          </div>
-          <div class="slide">
-            <img
-              src="./partenaire/crochetmilie (1).png"
-              height="80"
-              width="240"
-              alt="Crochetmilie Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/bleame.png" height="80" width="240" alt="Bleame Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/MTL.png" height="80" width="240" alt="MTL Board Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/kanaya.png" height="80" width="240" alt="Kanaya Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/kizik.png" height="80" width="240" alt="Kizik Logo" />
-          </div>
-          <div class="slide">
-            <img src="./partenaire/UQAM.png" height="80" width="240" alt="UQAM Logo" />
-          </div>
+    <style>
+      :root {
+        --surface-light: #242424;
+        --surface: #1a1a1a;
+        --border: #333333;
+        --radius-lg: 12px;
+      }
+  
+      @keyframes slide {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+  
+      .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+  
+      .gradient-text {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+  
+      .logos {
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        background-color: var(--surface-light);
+        border-radius: var(--radius-lg);
+      }
+  
+      .logos:before,
+      .logos:after {
+        position: absolute;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        content: "";
+        z-index: 2;
+      }
+  
+      .logos:before {
+        left: 0;
+        background: linear-gradient(to left, rgba(255, 255, 255, 0), #161616);
+        border-radius: var(--radius-lg);
+      }
+  
+      .logos:after {
+        right: 0;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), #161616);
+        border-radius: var(--radius-lg);
+      }
+  
+      .logos-slide {
+        display: inline-block;
+        animation: 80s slide infinite linear;
+        padding: 0px 0px;
+        margin-right: 20px;
+        gap: 30px;
+      }
+  
+      .logos-slide img {
+        height: 90px;
+        margin: 0 20px;
+        background-color: #242424;
+        border-radius: var(--radius-lg);
+        padding: 10px 20px;
+        border: dashed 2px white;
+        border-radius: 1rem;
+      }
+
+      .client-logos{
+        width: 100%;
+    max-width: 1200px;
+    margin: auto;
+
+    max-width: 1200px;
+    border: solid white 2px;
+    border-radius: 1rem;
+
+    -webkit-box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 95%;
+    padding: 30px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="client-logos">
+  
+      <div class="logos">
+        <div class="logos-slide">
+          <img src="./partenaire/auto.png" alt="auto">
+          <img src="./partenaire/body.png" alt="body">
+          <img src="./partenaire/O.png" alt="O">
+          <img src="./partenaire/decathlon.png" alt="decathlon">
+          <img src="./partenaire/clwr.png" alt="clwr">
+          <img src="./partenaire/crochetmilie (1).png" alt="crochetmilie">
+          <img src="./partenaire/bleame.png" alt="bleame">
+          <img src="./partenaire/MTL.png" alt="MTL">
+          <img src="./partenaire/kanaya.png" alt="kanaya">
+          <img src="./partenaire/kizik.png" alt="kizik">
+          <img src="./partenaire/UQAM.png" alt="UQAM">
         </div>
       </div>
-
-      <style>
-        .logo-slider {
-          -webkit-box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
-          box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.125);
-          margin: auto;
-          overflow: hidden;
-          position: relative;
-          width: 95%;
-          padding: 30px 0;
-        }
-        .logo-slider::before,
-        .logo-slider::after {
-          background: -webkit-gradient(
-            linear,
-            left top,
-            right top,
-            from(#151515),
-            to(rgba(255, 255, 255, 0))
-          );
-          background: linear-gradient(to right, #151515 0%, rgba(255, 255, 255, 0) 100%);
-          content: "";
-          height: 100%;
-          position: absolute;
-          width: 200px;
-          z-index: 2;
-        }
-        .logo-slider::after {
-          right: 0;
-          top: 0;
-          -webkit-transform: rotateZ(180deg);
-          transform: rotateZ(180deg);
-        }
-        .logo-slider::before {
-          left: 0;
-          top: 0;
-        }
-        .logo-slider .logo-slide-track {
-          -webkit-animation: logo-scroll 40s linear infinite;
-          animation: logo-scroll 40s linear infinite;
-          display: -webkit-box;
-          display: -ms-flexbox;
-          display: flex;
-          width: calc(250px * 14);
-        }
-        .logo-slider .slide {
-          height: 100px;
-          width: 250px;
-        }
-        .logo-slider {
-          max-width: 1200px;
-          border: solid white 2px;
-          border-radius: 1rem;
-        }
-        .logo-slider .slide {
-          height: 70px;
-          width: 180px;
-          border: dashed 2px white;
-          margin: 0 10px;
-          border-radius: 1rem;
-          background-color: #242424;
-        }
-
-        .slide > img {
-          width: 110px;
-          padding: 0 50px;
-          height: auto;
-        }
-
-        @-webkit-keyframes logo-scroll {
-          0% {
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
-          }
-          100% {
-            -webkit-transform: translateX(calc(-250px * 7));
-            transform: translateX(calc(-250px * 7));
-          }
-        }
-
-        @keyframes logo-scroll {
-          0% {
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
-          }
-          100% {
-            -webkit-transform: translateX(calc(-250px * 7));
-            transform: translateX(calc(-250px * 7));
-          }
-        }
-        @media only screen and (max-width: 768px) {
-          .trusted-section {
-            width: 95%;
-            margin: auto;
-          }
-          .logo-slider {
-            margin: 0;
-            width: 100%;
-          }
-        }
-      </style>
     </section>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const logosSlide = document.querySelector(".logos-slide");
+        if (logosSlide) {
+          var copy = logosSlide.cloneNode(true);
+          const logosContainer = document.querySelector(".logos");
+          if (logosContainer) {
+            logosContainer.appendChild(copy);
+          }
+        }
+      });
+    </script>
 
     <div style="height: 100px; width: 100%"></div>
 
@@ -1489,7 +1473,6 @@ function toggleDropdown(element) {
 
           .logos {
             overflow: hidden;
-            padding: 60px 0;
             white-space: nowrap;
             position: relative;
           }
@@ -1514,9 +1497,6 @@ function toggleDropdown(element) {
             background: linear-gradient(to right, rgba(255, 255, 255, 0), #161616);
           }
 
-          .logos:hover .logos-slide {
-            animation-play-state: paused;
-          }
 
           .logos-slide {
             display: inline-block;
@@ -1525,8 +1505,12 @@ function toggleDropdown(element) {
 
           .logos-slide img {
             height: 50px;
-            margin: 0 25px;
+            margin: 0 15px;
           }
+
+
+        
+
         </style>
       </div>
       <div id="div-txt-qui-sommes">
@@ -2411,7 +2395,7 @@ function toggleDropdown(element) {
       :root {
         --background: #f8f9fa;
         --surface: #ffffff;
-        --surface-light: #f1f3f5;
+        --surface-light: #151515;
         --surface-lighter: #e9ecef;
         --text: #212529;
         --text-secondary: #6c757d;

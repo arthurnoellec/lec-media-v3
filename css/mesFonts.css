@@ -103,7 +103,7 @@ h1 > span,
 h1,
 h3,
 h2 {
-  font-family: "AlmarenaMedium";
+  font-family: "AlmarenaMedium", Helvetica, sans-serif;
 }
 
 .Hero_header_gauche > div > h1 {
