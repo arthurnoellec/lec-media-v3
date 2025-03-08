@@ -1,9 +1,9 @@
 ---
 // Portfolio.astro
 import { Image } from 'astro:assets';
-import baskets from '../assets/baskets.png';
-import casquette from '../assets/casquette.png';
-import tshirt from '../assets/t-shirt.png';
+import bleame from '../assets/bleame1.jpg';
+import colourwear from '../assets/colourwear.jpg';
+import arico from '../assets/arico1.webp';
 ---
 
 <section class="portfolio" id="portfolio">
@@ -30,7 +30,7 @@ import tshirt from '../assets/t-shirt.png';
         <div class="case-content">
           <div class="case-image">
             <Image 
-              src="https://storage.googleapis.com/buro-malaysia-storage/beta.buro247.my/2022/08/82392dfc-01a-standart_haireraser.jpg"
+            src={bleame.src}
               alt="Urban Kicks Sneakers Store" 
               width={500} 
               height={300} 
@@ -95,7 +95,7 @@ import tshirt from '../assets/t-shirt.png';
         <div class="case-content">
           <div class="case-image">
             <Image 
-              src="https://www.boardsportsource.com/wp-content/uploads/2024/02/Colourwear-MENS-image_2.jpg"
+            src={colourwear.src}
               alt="Style Accent Accessories" 
               width={500} 
               height={300} 
@@ -160,7 +160,7 @@ import tshirt from '../assets/t-shirt.png';
         <div class="case-content">
           <div class="case-image">
             <Image 
-              src="https://arico.ca/cdn/shop/files/DSC_9481_1200x1200.jpg?v=1728587761"
+            src={arico.src}
               alt="Green Threads Eco Fashion" 
               width={500} 
               height={300} 

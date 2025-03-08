@@ -1,5 +1,6 @@
 ---
 // src/components/Header.astro
+import logo from "../../public/logo-lec-media-blanc.png";
 ---
 <div style="height: 80px;"></div>
 <nav class="navbar">
@@ -102,7 +103,7 @@
 
     <!-- Logo - centered on mobile -->
     <a href="/" class="logo">
-      <img src="../../public/logo-lec-media-blanc.png" alt="LEC Media Logo" />
+      <img src={logo.src} alt="LEC Media Logo" />
     </a>
 
     <!-- Contact button - on right side for mobile -->
