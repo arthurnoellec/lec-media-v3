@@ -1,12 +1,13 @@
 ---
 // Footer.astro
+import logo from '../../public/logo-lec-media-blanc.png';
 ---
 
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col" style="    padding-top: 0px;">
-        <a href="#" class="logo"><img style="max-width: 150px; margin-bottom: 20px;" src="../../public/logo-lec-media-blanc.png"></a>
+        <a href="#" class="logo"><img style="max-width: 150px; margin-bottom: 20px;" src={logo.src}></a>
         <p style="line-height: normal;">
           Optimisez votre taux de conversion et maximisez vos revenus grâce à notre expertise en
           CRO.

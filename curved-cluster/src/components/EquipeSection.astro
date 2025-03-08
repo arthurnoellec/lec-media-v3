@@ -2,6 +2,8 @@
 // EquipeSection.astro
 
 import { Icon } from 'astro-icon/components';
+import arthur from '../../public/Arthur.png';
+import tristan from '../../public/tristan.jpeg';
 ---
 
 <section class="equipe-section" id="equipe">
@@ -17,7 +19,7 @@ import { Icon } from 'astro-icon/components';
     <div class="team-grid">
       <div class="team-member">
         <div class="member-photo">
-          <img src="../../public/Arthur.PNG" alt="Arthur Noëllec" />
+          <img src={arthur.src} alt="Arthur Noëllec" />
           <div class="member-social">
             <a href="https://www.linkedin.com/in/arthur-no%C3%ABllec/" class="social-link">
               <Icon name="tabler:brand-linkedin" />
@@ -43,7 +45,7 @@ import { Icon } from 'astro-icon/components';
 
       <div class="team-member">
         <div class="member-photo">
-          <img src="../../public/tristan.jpeg" alt="Tristan Noëllec" />
+          <img src={tristan.src} alt="Tristan Noëllec" />
           <div class="member-social">
             <a href="https://www.youtube.com/@soxusb" class="social-link">
               <Icon name="tabler:brand-youtube" />
