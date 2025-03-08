@@ -1,0 +1,207 @@
+---
+// Footer.astro
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col" style="    padding-top: 30px;">
+        <a href="#" class="logo"><img style="max-width: 150px;" src="../../public/logo-lec-media-blanc.png"></a>
+        <p>
+          Optimisez votre taux de conversion et maximisez vos revenus grâce à notre expertise en
+          CRO.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Abonnement CRO</a></li>
+          <li><a href="#">Audit UX</a></li>
+          <li><a href="#">Tests A/B</a></li>
+          <li><a href="#">Optimisation mobile</a></li>
+          <li><a href="#">Analytics avancés</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Ressources</h3>
+        <ul class="footer-links">
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Études de cas</a></li>
+          <li><a href="#">Webinaires</a></li>
+          <li><a href="#">Guide CRO</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Contact</h3>
+        <ul class="footer-links">
+          <li><a href="tel:+33123456789">+33 1 23 45 67 89</a></li>
+          <li><a href="mailto:contact@croboost.fr">contact@croboost.fr</a></li>
+          <li>123 Avenue de l'E-commerce<br />75001 Paris, France</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cities-section">
+      <div class="cities-list">
+        <a href="#" class="city-link">Paris</a>
+        <a href="#" class="city-link">Lyon</a>
+        <a href="#" class="city-link">Bordeaux</a>
+        <a href="#" class="city-link">Nantes</a>
+        <a href="#" class="city-link">Tours</a>
+        <a href="#" class="city-link">Aix-en-Provence</a>
+        <a href="#" class="city-link">Bretagne</a>
+        <a href="#" class="city-link">Montréal</a>
+        <a href="#" class="city-link">Québec</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 CROBoost. Tous droits réservés.</p>
+      <div class="footer-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 3rem 40px;
+    background: var(--dark-card);
+    border-top: 1px solid rgba(57, 255, 20, 0.1);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--neon-green);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(57, 255, 20, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon-green);
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background: var(--neon-green);
+    color: var(--dark-bg);
+  }
+
+  /* Section des villes simplifiée */
+  .cities-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(57, 255, 20, 0.1);
+  }
+
+  .cities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .city-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    background: rgba(57, 255, 20, 0.05);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .city-link:hover {
+    color: black;
+    background: var(--accent);
+  }
+
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(57, 255, 20, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-legal a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-legal a:hover {
+    color: var(--neon-green);
+  }
+
+  @media (max-width: 576px) {
+    .footer-bottom,
+    .footer-legal {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+    
+    .cities-list {
+      justify-content: center;
+    }
+  }
+</style>

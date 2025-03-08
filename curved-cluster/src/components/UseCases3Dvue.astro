@@ -1,0 +1,451 @@
+---
+// UseCases.astro
+---
+
+<section class="use-cases" id="exemples">
+    <div class="container">
+      <div class="section-header">
+        <h2>Intégration e-commerce <span class="gradient-text">simple et directe</span></h2>
+        <p class="section-subtitle">
+          Remplacez vos galeries d'images statiques par des configurateurs 3D interactifs directement liés à votre panier
+        </p>
+      </div>
+  
+      <div class="use-case-intro">
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-icon">🔄</div>
+            <div class="feature-content">
+              <h3>Remplacement direct des images produit</h3>
+              <p>Le configurateur 3D s'intègre à la place de vos galeries d'images traditionnelles sur vos fiches produit.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🛒</div>
+            <div class="feature-content">
+              <h3>Connexion directe au panier</h3>
+              <p>Les configurations personnalisées sont automatiquement ajoutées au panier avec toutes les options sélectionnées.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <div class="feature-content">
+              <h3>Suivi des commandes détaillé</h3>
+              <p>Recevez toutes les informations de configuration dans vos commandes pour une production précise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="use-case-cta">
+        <h3>Le processus de commande simplifié</h3>
+        <div class="process-steps">
+          <div class="process-step-simple">
+            <div class="step-icon">🔍</div>
+            <div class="step-text">
+              <h4>1. Personnalisation</h4>
+              <p>Le client configure son produit selon ses préférences</p>
+            </div>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step-simple">
+            <div class="step-icon">🛒</div>
+            <div class="step-text">
+              <h4>2. Ajout au panier</h4>
+              <p>La configuration complète est ajoutée au panier</p>
+            </div>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step-simple">
+            <div class="step-icon">💳</div>
+            <div class="step-text">
+              <h4>3. Commande</h4>
+              <p>Le client finalise sa commande</p>
+            </div>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step-simple">
+            <div class="step-icon">📋</div>
+            <div class="step-text">
+              <h4>4. Production</h4>
+              <p>Vous recevez les détails exacts de la configuration</p>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-lg">Demander une démo</a>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .use-cases {
+      padding: 6rem 0;
+      background-color: var(--surface-light);
+    }
+  
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+  
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+  
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  
+    .use-case-intro {
+      margin-bottom: 4rem;
+    }
+  
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+  
+    .feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+      border-color: var(--accent);
+    }
+  
+    .feature-icon {
+      font-size: 2rem;
+      min-width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .feature-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .feature-content p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  
+    .product-examples {
+      margin-bottom: 4rem;
+    }
+  
+    .example-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+  
+    .example-header h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+  
+    .example-header p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  
+    .product-card {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+  
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+      border-color: var(--accent);
+    }
+  
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background-color: var(--surface-light);
+      border-bottom: 1px solid var(--border);
+    }
+  
+    .product-category, .product-status {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+  
+    .product-status {
+      color: var(--accent);
+    }
+  
+    .product-3d-container {
+      padding: 1rem;
+    }
+  
+    .product-3d-placeholder {
+      height: 220px;
+      background-color: rgba(57, 255, 20, 0.05);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px dashed rgba(57, 255, 20, 0.3);
+    }
+  
+    .model-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .model-text {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+  
+    .model-cube {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      transform-style: preserve-3d;
+      animation: rotate 15s infinite linear;
+      opacity: 0.7;
+    }
+  
+    .cube-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+      border: 1px solid var(--accent);
+      background-color: rgba(57, 255, 20, 0.1);
+    }
+  
+    .cube-face.front {
+      transform: translateZ(40px);
+    }
+  
+    .cube-face.back {
+      transform: translateZ(-40px) rotateY(180deg);
+    }
+  
+    .cube-face.right {
+      transform: translateX(40px) rotateY(90deg);
+    }
+  
+    .cube-face.left {
+      transform: translateX(-40px) rotateY(-90deg);
+    }
+  
+    .cube-face.top {
+      transform: translateY(-40px) rotateX(90deg);
+    }
+  
+    .cube-face.bottom {
+      transform: translateY(40px) rotateX(-90deg);
+    }
+  
+    @keyframes rotate {
+      0% {
+        transform: rotateX(0) rotateY(0);
+      }
+      100% {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+  
+    .model-options {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+  
+    .option-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+  
+    .option-item.active {
+      border-color: var(--accent);
+      background-color: rgba(57, 255, 20, 0.05);
+    }
+  
+    .option-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+  
+    .option-name {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+  
+    .product-info {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+  
+    .product-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .product-price {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+  
+    .product-price span {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+  
+    .product-description {
+      margin-bottom: 1.5rem;
+    }
+  
+    .product-description p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+  
+    .btn-add-cart {
+      width: 100%;
+    }
+  
+    .use-case-cta {
+      text-align: center;
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      border: 1px solid var(--border);
+    }
+  
+    .use-case-cta h3 {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+  
+    .process-steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+  
+    .process-step-simple {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 180px;
+    }
+  
+    .step-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(57, 255, 20, 0.1);
+      border-radius: 50%;
+    }
+  
+    .step-text h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .step-text p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+  
+    .process-arrow {
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      color: var(--accent);
+    }
+  
+    @media (max-width: 992px) {
+      .feature-list {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+  
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+  
+      .process-steps {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+  
+      .process-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+  
+      .use-case-cta {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>

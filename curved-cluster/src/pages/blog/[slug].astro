@@ -1,0 +1,316 @@
+---
+// src/pages/blog/[slug].astro
+import Layout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Utilisez getCollection au lieu de Astro.glob pour plus de fiabilité
+export async function getStaticPaths() {
+  // Accès direct aux fichiers .md avec la Content Collections API
+  const blogEntries = await getCollection('blog');
+  
+  return blogEntries.map((entry: { slug: string }) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Récupération des propriétés
+import type { CollectionEntry } from 'astro:content';
+
+const { entry } = Astro.props as { entry: CollectionEntry<'blog'> };
+// Rendez le contenu Markdown en HTML de manière sûre
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title} theme="dark">
+  <article class="blog-post">
+    <header class="post-header">
+      <div class="container">
+        <div class="post-meta">
+          <div class="post-date">
+            {new Date(entry.data.date).toLocaleDateString('fr-FR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+          
+          {entry.data.tags && entry.data.tags.length > 0 && 
+            <div class="post-tags">
+              {entry.data.tags.map((tag: string) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          }
+        </div>
+        
+        <h1 class="post-title">{entry.data.title}</h1>
+        
+        {entry.data.excerpt && 
+          <p class="post-excerpt">{entry.data.excerpt}</p>
+        }
+      </div>
+    </header>
+    
+    {entry.data.image && 
+      <div class="post-featured-image">
+        <img src={entry.data.image} alt={entry.data.title} />
+      </div>
+    }
+    
+    <div class="post-content-wrapper">
+      <div class="container">
+        <div class="post-content">
+          <Content />
+        </div>
+      </div>
+    </div>
+    
+    <footer class="post-footer">
+      <div class="container">
+        <div class="post-nav">
+          <a href="/blog" class="back-to-blog">← Retour aux articles</a>
+        </div>
+        
+        <div class="share-section">
+          <p>Partager cet article</p>
+          <div class="share-buttons">
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(entry.data.title)}&url=${encodeURIComponent(`https://votresite.com/blog/${entry.slug}`)}`} target="_blank" rel="noopener noreferrer" class="share-button twitter">Twitter</a>
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://votresite.com/blog/${entry.slug}`)}`} target="_blank" rel="noopener noreferrer" class="share-button linkedin">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .post-header {
+    padding: 110px 0 40px;
+    text-align: center;
+  }
+  
+  .post-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+  }
+  
+  .post-date {
+    color: var(--text-secondary);
+  }
+  
+  .post-tags {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+  }
+  
+  .tag:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .post-title {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  .post-excerpt {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .post-featured-image {
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+  
+  .post-featured-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .post-content-wrapper {
+    padding-bottom: 60px;
+  }
+  
+  .post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .post-content h2 {
+    font-size: 1.8rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .post-content h3 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .post-content p {
+    margin-bottom: 25px;
+  }
+  
+  .post-content ul, .post-content ol {
+    margin-bottom: 25px;
+    padding-left: 25px;
+  }
+  
+  .post-content li {
+    margin-bottom: 10px;
+  }
+  
+  .post-content blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 25px;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+  
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 30px 0;
+  }
+  
+  .post-content pre {
+    background-color: var(--code-bg);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 30px 0;
+  }
+  
+  .post-content code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+  }
+  
+  .post-footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0 60px;
+  }
+  
+  .post-nav {
+    margin-bottom: 30px;
+  }
+  
+  .back-to-blog {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .back-to-blog:hover {
+    color: var(--primary);
+  }
+  
+  .share-section {
+    margin-top: 20px;
+  }
+  
+  .share-section p {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .share-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .share-button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  
+  .share-button:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+  
+  .twitter {
+    background-color: #1DA1F2;
+    color: white;
+  }
+  
+  .linkedin {
+    background-color: #0077B5;
+    color: white;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .post-header {
+      padding: 40px 0 30px;
+    }
+    
+    .post-title {
+      font-size: 2.2rem;
+    }
+    
+    .post-excerpt {
+      font-size: 1.1rem;
+    }
+    
+    .post-content {
+      font-size: 1rem;
+    }
+    
+    .post-content h2 {
+      font-size: 1.6rem;
+    }
+    
+    .post-content h3 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

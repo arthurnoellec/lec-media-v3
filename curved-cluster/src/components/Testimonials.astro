@@ -1,0 +1,204 @@
+---
+---
+
+<section id="testimonials" class="testimonials">
+    <div class="section-header">
+      <h2><span class="gradient-text">Ils nous font confiance</span></h2>
+      <p class="section-subtitle">
+        Découvrez comment notre abonnement CRO a transformé les performances 
+        de ces e-commerces.
+      </p>
+    </div>
+    
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Investissement le plus rentable de l'année. Notre taux de conversion a bondi de 43% et notre panier moyen de 27% après seulement 3 mois. Leur approche data-driven a transformé notre tunnel d'achat et explosé nos ventes mensuelles."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <div class="avatar-placeholder">SR</div>
+              </div>
+              <div class="author-info">
+                <h4>Sophie Renaud</h4>
+                <p>Directrice E-commerce, MODE+</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Nous avons découvert que 68% de nos clients abandonnaient au dernier stade du checkout. Après optimisation, notre taux de conversion a augmenté de 152% sur mobile. Résultat : 780% de ROI sur l'abonnement et un CA multiplié par 3 en 6 mois."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <div class="avatar-placeholder">TD</div>
+              </div>
+              <div class="author-info">
+                <h4>Thomas Dubois</h4>
+                <p>CEO, TechStore</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Nous dépensions 30 000€/mois en Google Ads sans résultats satisfaisants. Leur refonte de nos pages d'atterrissage a réduit notre coût d'acquisition de 47% et augmenté notre taux de conversion de 83%. Notre budget marketing est maintenant 2x plus efficace."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <div class="avatar-placeholder">LM</div>
+              </div>
+              <div class="author-info">
+                <h4>Laura Martin</h4>
+                <p>Marketing Manager, BeautyShop</p>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value">+127%</div>
+        <div class="metric-label">Taux de conversion moyen</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-value">-18%</div>
+        <div class="metric-label">Taux d'abandon panier</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-value">+27%</div>
+        <div class="metric-label">Panier moyen</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-value">+350%</div>
+        <div class="metric-label">ROI moyen</div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .testimonials {
+      background-color: var(--surface-light);
+      border-radius: var(--radius-lg);
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .testimonial-card {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+      border-color: var(--accent);
+    }
+    
+    .testimonial-content {
+      margin-bottom: 2rem;
+    }
+    
+    .testimonial-content p {
+      font-style: italic;
+      color: var(--text);
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: var(--accent);
+      color: var(--background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    
+    .author-info h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .author-info p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .metric-card {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+    
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    
+    .metric-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    
+    @media (max-width: 768px) {
+      .testimonials {
+        margin: 4rem 0;
+      }
+      
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>

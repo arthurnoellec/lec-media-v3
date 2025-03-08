@@ -1,0 +1,346 @@
+---
+
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>
+      Besoin d'une Agence <span class="gradient-text">CRO</span> ?
+    </h1>
+
+    <p class="hero-subtitle">
+      Augmentez votre taux de conversion et votre chiffre d'affaires grâce à une stratégie
+      d'optimisation continue, pilotée par des experts en CRO.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#calculateur" class="btn btn-primary btn-lg"> Découvrir l'abonnement </a>
+      <a href="#contact" class="btn btn-secondary btn-lg"> Consultation gratuite </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">+40%</span>
+        <span class="stat-label">de conversion en moyenne</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">+20</span>
+        <span class="stat-label">sites optimisés</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">+3M€</span>
+        <span class="stat-label">de CA généré</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="bento-box main-box">
+      <div class="chart-container">
+        <div class="chart-bar" style="height: 30%"><span>+30%</span></div>
+        <div class="chart-bar" style="height: 45%"><span>+45%</span></div>
+        <div class="chart-bar" style="height: 60%"><span>+60%</span></div>
+        <div class="chart-bar active" style="height: 90%"><span>+90%</span></div>
+      </div>
+    </div>
+    <div class="bento-box accent-box">
+      <div class="pulse-circle"></div>
+      <span class="box-text">Analyse en temps réel</span>
+    </div>
+    <div class="bento-box data-box">
+      <div class="data-item">
+        <div class="data-icon">📈</div>
+        <div class="data-text">
+          <span class="data-label">Taux de conversion</span>
+          <span class="data-value">8.4%</span>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-icon">🛒</div>
+        <div class="data-text">
+          <span class="data-label">Panier moyen</span>
+          <span class="data-value">127€</span>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-icon">💸</div>
+        <div class="data-text">
+          <span class="data-label">Chiffre d'affaires</span>
+          <span class="data-value">130 000€</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    min-height: calc(100vh - 80px);
+    padding-top: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .hero-image {
+    position: relative;
+    height: 600px;
+  }
+
+  .bento-box {
+    position: absolute;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition);
+  }
+
+  .bento-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(57, 255, 20, 0.15);
+    border-color: var(--accent);
+  }
+
+  .main-box {
+    width: 80%;
+    height: 70%;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .accent-box {
+    width: 40%;
+    height: 180px;
+    bottom: 40px;
+    left: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--surface-light);
+  }
+
+  .data-box {
+    width: 50%;
+    bottom: 70px;
+    right: 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--surface-light);
+  }
+
+  .pulse-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(57, 255, 20, 0.2);
+    position: relative;
+  }
+
+  @keyframes heroCirclePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(57, 255, 20, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(57, 255, 20, 0);
+  }
+}
+
+.pulse-circle::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+  animation: heroCirclePulse 2s infinite !important;
+}
+
+  .box-text {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .chart-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  .chart-bar {
+    flex: 1;
+    background: linear-gradient(to top, rgba(57, 255, 20, 0.1), rgba(57, 255, 20, 0.3));
+    border-radius: var(--radius) var(--radius) 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    transition: height 0.5s ease;
+  }
+
+  .chart-bar.active {
+    background: linear-gradient(to top, rgba(57, 255, 20, 0.4), rgba(57, 255, 20, 0.8));
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+  }
+
+  .chart-bar span {
+    position: absolute;
+    top: -25px;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .data-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .data-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+  }
+
+  .data-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .data-value {
+    display: block;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+
+  @media (max-width: 992px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero-image {
+      height: 500px;
+      order: -1;
+    }
+
+    .accent-box {
+      height: 130px;
+    }
+
+    .pulse-circle::after {
+      width: 20px;
+      height: 20px;
+    }
+
+    .pulse-circle {
+      width: 30px;
+      height: 30px;
+    }
+
+    .main-box {
+      width: 100% !important;
+      height: 50% !important;
+    }
+
+    .data-item:nth-child(3) {
+      display: none;
+    }
+
+    .hero-image {
+      height: 340px;
+    }
+
+    .accent-box {
+      bottom: 60px;
+      left: -10px;
+    }
+
+    .data-box {
+      right: -10px;
+      bottom: 25px;
+      width: 70%;
+    }
+
+    .box-text{
+        text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+  }
+</style>

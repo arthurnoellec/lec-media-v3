@@ -1,0 +1,26 @@
+---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/HeroFormationB2B.astro";
+import CTASection from "../components/CTASection.astro";
+import FAQ from "../components/FAQ.astro";
+import ServicesFormation from "../components/ServicesFormation.astro";
+import MethodologieFormation from "../components/MethodologieFormation.astro";
+---
+
+<Layout title="Abonnement CRO | Optimisation E-commerce | Boost de Conversion">
+  <main>
+    <Hero />
+    <ServicesFormation />
+    <MethodologieFormation />
+    <CTASection />
+    <FAQ />
+  </main>
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+    margin: 0 auto;
+  }
+</style>

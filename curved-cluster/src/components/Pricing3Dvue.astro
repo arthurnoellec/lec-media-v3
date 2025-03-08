@@ -1,0 +1,315 @@
+---
+// PricingSection.astro
+---
+
+<section class="pricing-section" id="tarifs">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nos <span class="gradient-text">tarifs par plateforme</span></h2>
+        <p class="section-subtitle">
+          Des solutions adaptées à votre plateforme avec 5 produits inclus
+        </p>
+      </div>
+  
+      <div class="pricing-grid">
+        <div class="pricing-card featured">
+          <div class="pricing-header">
+            <h3>Shopify</h3>
+            <div class="pricing-price">
+              <span>à partir de </span><span class="price">300€</span>
+            </div>
+            <p class="pricing-description">
+              Intégration optimisée pour les boutiques Shopify
+            </p>
+          </div>
+          
+          <div class="pricing-features">
+            <div class="plan-badge">Populaire</div>
+            <ul>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">5 produits configurables inclus</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">+15€ par produit supplémentaire</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Installation sur votre thème Shopify</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Connexion directe au panier</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Modélisation 3D de vos produits</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Support technique</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Mises à jour incluses</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>WordPress</h3>
+            <div class="pricing-price">
+                <span>à partir de </span><span class="price">450€</span>
+            </div>
+            <p class="pricing-description">
+              Compatible avec WooCommerce et autres plugins e-commerce
+            </p>
+          </div>
+          
+          <div class="pricing-features">
+            <ul>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">5 produits configurables inclus</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">+15€ par produit supplémentaire</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Extension WordPress personnalisée</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Connexion avec WooCommerce</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Modélisation 3D de vos produits</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Support prioritaire</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Statistiques d'utilisation avancées</span>
+              </li>
+            </ul>
+          </div>
+        
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Wix</h3>
+            <div class="pricing-price">
+                <span>à partir de </span><span class="price">600€</span>
+            </div>
+            <p class="pricing-description">
+              Solution compatible avec l'écosystème Wix et Wix Stores
+            </p>
+          </div>
+          
+          <div class="pricing-features">
+            <ul>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">5 produits configurables inclus</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">+15€ par produit supplémentaire</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Application Wix personnalisée</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Intégration avec Wix Stores</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Modélisation 3D premium</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Support dédié</span>
+              </li>
+              <li class="feature-included">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Hébergement 3D haute performance</span>
+              </li>
+            </ul>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .pricing-section {
+      padding: 6rem 0;
+      background-color: var(--surface-light);
+    }
+  
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+  
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+  
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+  
+    .pricing-card {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+  
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+      border-color: var(--accent);
+    }
+  
+    .pricing-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(57, 255, 20, 0.15);
+    }
+  
+    .plan-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, rgba(57, 255, 20, 0.9), rgba(57, 255, 20, 0.7));
+      color: #000000;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+  
+    .pricing-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+  
+    .pricing-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .pricing-price {
+      margin-bottom: 1rem;
+    }
+  
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+  
+    .pricing-description {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+  
+    .pricing-features {
+      padding: 2rem;
+    }
+  
+    .pricing-features ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+  
+    .feature-icon {
+      margin-right: 0.75rem;
+      width: 20px;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+  
+    .feature-included .feature-icon {
+      color: var(--accent);
+    }
+  
+    .feature-excluded .feature-icon {
+      color: #ff6b6b;
+    }
+  
+    .feature-excluded .feature-text {
+      color: var(--text-secondary);
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+  
+    .pricing-cta {
+      padding: 0 2rem 2rem;
+      text-align: center;
+    }
+  
+    @media (max-width: 992px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .pricing-section {
+        padding: 4rem 0;
+      }
+  
+      .section-header {
+        margin-bottom: 3rem;
+      }
+  
+      .section-header h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>

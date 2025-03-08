@@ -1,0 +1,26 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero3Dvue.astro';
+import Partnership from '../components/Partnership.astro';
+import UseCases from '../components/UseCases3Dvue.astro';
+import Pricing from '../components/Pricing3Dvue.astro';
+import ContactForm from '../components/ContactForm3Dvue.astro';
+---
+
+<Layout title="Abonnement CRO | Optimisation E-commerce | Boost de Conversion">
+  <main>
+    <Hero />
+    <Partnership />
+    <UseCases />
+    <Pricing />
+    <ContactForm />
+  </main>
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+    margin: 0 auto;
+  }
+</style>

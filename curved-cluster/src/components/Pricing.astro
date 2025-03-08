@@ -1,0 +1,910 @@
+---
+// src/components/CalculateurCRO.astro
+---
+
+<section id="calculateur" class="calculateur-section">
+  <div class="section-header">
+    <h2>Simulez votre <span class="gradient-text">abonnement CRO</span></h2>
+    <p class="section-subtitle">
+      Découvrez instantanément combien vous coûterait l'optimisation de votre taux de conversion en fonction de vos métriques actuelles
+    </p>
+  </div>
+
+  <div class="calculateur-container">
+    <div class="calculator-box">
+      <div class="calculator-content" id="calculator-content">
+        <div class="inputs-container">
+          <h3>Entrez vos données</h3>
+          
+          <div class="input-slider-group">
+            <div class="input-label">
+              <span>Visites mensuelles</span>
+              <div class="value-display">
+                <span id="visites-value">10000</span>
+                <span class="unit">visites</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input 
+                type="range" 
+                id="visites-slider" 
+                min="1000" 
+                max="100000" 
+                value="10000" 
+                step="1000" 
+                class="slider"
+              />
+              <div class="slider-values">
+                <span>1k</span>
+                <span>50k</span>
+                <span>100k</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="input-slider-group">
+            <div class="input-label">
+              <span>Taux de conversion actuel</span>
+              <div class="value-display">
+                <span id="conversion-value">2.0</span>
+                <span class="unit">%</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input 
+                type="range" 
+                id="conversion-slider" 
+                min="0.1" 
+                max="25" 
+                value="2" 
+                step="0.1" 
+                class="slider"
+              />
+              <div class="slider-values">
+                <span>0.1%</span>
+                <span>12,5%</span>
+                <span>25%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="input-slider-group">
+            <div class="input-label">
+              <span>Panier moyen</span>
+              <div class="value-display">
+                <span id="panier-value">75</span>
+                <span class="unit">€</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input 
+                type="range" 
+                id="panier-slider" 
+                min="10" 
+                max="1500" 
+                value="75" 
+                step="5" 
+                class="slider"
+              />
+              <div class="slider-values">
+                <span>10€</span>
+                <span>750</span>
+                <span>1500€</span>
+              </div>
+            </div>
+          </div>
+          
+          <button id="calculer-btn" class="btn-calculer">
+            <div class="btn-content">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 8l-8 8"></path>
+                <path d="M8 8l8 8"></path>
+              </svg>
+              <span>Calculer mon tarif</span>
+            </div>
+            <div class="btn-shine"></div>
+          </button>
+        </div>
+        
+        <div class="results-container" id="results-container">
+          <div class="result-header">
+            <h3>Votre abonnement CRO</h3>
+            <div class="accent-divider"></div>
+          </div>
+          
+          <div class="price-container">
+            <div class="price-box">
+              <div class="price-value" id="price-value">0</div>
+              <div class="price-period">€/mois</div>
+            </div>
+            <div class="price-badge">sans engagement</div>
+          </div>
+          
+          <div class="metrics-container">
+            <div class="metric-item">
+              <div class="metric-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20V10"></path>
+                  <path d="M18 20V4"></path>
+                  <path d="M6 20V16"></path>
+                </svg>
+              </div>
+              <div class="metric-content">
+                <div class="metric-label">Conversion moyenne estimée</div>
+                <div class="metric-value" id="conv-estimee">+43%</div>
+              </div>
+            </div>
+            
+            <div class="metric-item">
+              <div class="metric-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="metric-content">
+                <div class="metric-label">Rentabilité à</div>
+                <div class="metric-value" id="roi-months">3 mois</div>
+              </div>
+            </div>
+            
+            <div class="metric-item">
+              <div class="metric-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <div class="metric-content">
+                <div class="metric-label">CA additionnel estimé</div>
+                <div class="metric-value" id="ca-additionnel">+0€</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="calculation-details" id="calculation-details">
+            <!-- Le détail du calcul sera inséré ici par JavaScript -->
+          </div>
+          
+          <a href="#contact" class="btn btn-primary btn-reserve">
+            <span>Réserver ma consultation gratuite</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="glow-container">
+        <div class="glow-effect"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Éléments d'entrée
+    const visitesSlider = document.getElementById('visites-slider');
+    const conversionSlider = document.getElementById('conversion-slider');
+    const panierSlider = document.getElementById('panier-slider');
+    
+    // Éléments d'affichage des valeurs
+    const visitesValue = document.getElementById('visites-value');
+    const conversionValue = document.getElementById('conversion-value');
+    const panierValue = document.getElementById('panier-value');
+    
+    // Bouton et conteneurs
+    const calculerBtn = document.getElementById('calculer-btn');
+    const calculatorContent = document.getElementById('calculator-content');
+    const resultsContainer = document.getElementById('results-container');
+    
+    // Éléments de résultat
+    const priceValue = document.getElementById('price-value');
+    const convEstimee = document.getElementById('conv-estimee');
+    const roiMonths = document.getElementById('roi-months');
+    const caAdditionnel = document.getElementById('ca-additionnel');
+    const calculationDetails = document.getElementById('calculation-details');
+    
+    // État initial - la partie résultat est masquée au démarrage
+    let resultsVisible = false;
+    
+    // Initialiser les résultats comme masqués
+    resultsContainer.classList.add('hidden');
+    calculatorContent.classList.remove('expanded');
+    
+    // Mettre à jour les valeurs affichées lors du déplacement des sliders
+    function updateSliderDisplays() {
+      if (visitesSlider && visitesValue) {
+        visitesValue.textContent = formatNumber(visitesSlider.value);
+      }
+      
+      if (conversionSlider && conversionValue) {
+        conversionValue.textContent = conversionSlider.value;
+      }
+      
+      if (panierSlider && panierValue) {
+        panierValue.textContent = panierSlider.value;
+      }
+    }
+    
+    // Formater les nombres pour un affichage plus lisible
+    function formatNumber(num) {
+      if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+      } else if (num >= 1000) {
+        return (num / 1000).toFixed(0) + 'k';
+      }
+      return num;
+    }
+    
+    // Arrondi du prix au multiple de 5 inférieur
+    function arrondirPrix(prix) {
+      return Math.floor(prix / 5) * 5;
+    }
+    
+    // Animation des nombres qui s'incrémentent
+    function animateValue(element, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        let currentValue = Math.floor(progress * (end - start) + start);
+        
+        // Formatage selon le type d'élément
+        if (element.id === 'ca-additionnel') {
+          element.textContent = '+' + currentValue.toLocaleString('fr-FR') + '€';
+        } else if (element.id === 'conv-estimee') {
+          element.textContent = '+' + currentValue + '%';
+        } else if (element.id === 'roi-months') {
+          element.textContent = currentValue + ' mois';
+        } else {
+          element.textContent = currentValue;
+        }
+        
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+    
+    // Animation d'ouverture du conteneur de résultats
+    function expandResultsContainer() {
+      // Premièrement, ajouter la classe pour développer le conteneur
+      calculatorContent.classList.add('expanded');
+      
+      // Après une légère pause pour l'animation d'expansion
+      setTimeout(() => {
+        // Retirer la classe "hidden" pour afficher les résultats
+        resultsContainer.classList.remove('hidden');
+        // Ajouter la classe "show" pour l'animation d'entrée
+        resultsContainer.classList.add('show');
+      }, 400); // Délai correspondant à la transition d'expansion
+      
+      // Mise à jour de l'état
+      resultsVisible = true;
+    }
+    
+    // Calcul du prix
+    function calculerPrix() {
+      // Ajouter l'animation de pulsation sur le bouton pour le feedback visuel
+      calculerBtn.classList.add('pulse');
+      setTimeout(() => calculerBtn.classList.remove('pulse'), 600);
+      
+      // Récupération des valeurs des sliders
+      const visites = parseInt(visitesSlider.value);
+      const tauxConversion = parseFloat(conversionSlider.value);
+      const panierMoyen = parseFloat(panierSlider.value);
+      
+      // Calcul de base
+      let prix = 400; // Prix de base
+      
+      // Calcul du chiffre d'affaires généré
+      const CA = visites * tauxConversion / 100 * panierMoyen;
+      let CAImpact = CA * 0.008; // 0,8% du CA
+      
+      // Plafonner l'impact du CA à 1200€
+      if (CAImpact > 1200) {
+        CAImpact = 1200;
+      }
+      
+      // Ajouter l'impact du CA au prix de base
+      prix += CAImpact;
+      
+      // Calcul du prix en fonction du taux de conversion
+      let tauxConversionImpact = 0;
+      if (tauxConversion <= 1) {
+        tauxConversionImpact = 0; // Facile
+      } else if (tauxConversion <= 5) {
+        tauxConversionImpact = 100; // Normal
+      } else {
+        tauxConversionImpact = 300; // Difficile
+      }
+      
+      prix += tauxConversionImpact;
+      
+      // Calcul du prix en fonction du nombre de visites
+      let visitesImpact = 0;
+      if (visites >= 500 && visites <= 10000) {
+        visitesImpact = 0; // Pas beaucoup de tests
+      } else if (visites <= 20000) {
+        visitesImpact = 50; // Impact réduit : quelques tests supplémentaires
+      } else {
+        visitesImpact = 100; // Impact réduit : plus de tests
+      }
+      
+      prix += visitesImpact;
+      
+      // Calcul du prix en fonction du panier moyen
+      let panierMoyenImpact = 0;
+      if (panierMoyen <= 35) {
+        panierMoyenImpact = 0; // Facile
+      } else if (panierMoyen <= 70) {
+        panierMoyenImpact = 50; // Normal
+      } else if (panierMoyen <= 150) {
+        panierMoyenImpact = 100; // Un peu dur
+      } else if (panierMoyen <= 500) {
+        panierMoyenImpact = 200; // Dur
+      } else {
+        panierMoyenImpact = 300; // Mega dur
+      }
+      
+      prix += panierMoyenImpact;
+      
+      // Assurer un prix minimum
+      const prixMinimum = 550;
+      if (prix < prixMinimum) {
+        prix = prixMinimum;
+      }
+      
+      // Arrondi au plus bas (xx0 ou xx5)
+      const prixPlein = prix;
+      prix = arrondirPrix(prix);
+      
+      // Calcul des métriques additionnelles
+      const conversionEstimee = Math.min(43, Math.round(100 / tauxConversion));
+      const roiTime = Math.max(2, Math.min(6, Math.ceil(prix / (CA * conversionEstimee / 100))));
+      const caAdd = Math.round(CA * conversionEstimee / 100);
+      
+      // Si les résultats ne sont pas visibles, afficher le conteneur de résultats
+      if (!resultsVisible) {
+        expandResultsContainer();
+      } else {
+        // Réinitialiser les animations si déjà visible
+        resultsContainer.classList.remove('show');
+        setTimeout(() => {
+          resultsContainer.classList.add('show');
+        }, 50);
+      }
+      
+      // Animation des nombres après un court délai pour correspondre à l'animation d'ouverture
+      setTimeout(() => {
+        animateValue(priceValue, 0, prix, 1500);
+        animateValue(convEstimee, 0, conversionEstimee, 1500);
+        animateValue(roiMonths, 0, roiTime, 1500);
+        animateValue(caAdditionnel, 0, caAdd, 1500);
+      }, 500);
+      
+      // Affichage du détail du calcul
+      calculationDetails.innerHTML = `
+        <h4>Détail du calcul</h4>
+        <div class="calculation-item">
+          <span>Prix de base</span>
+          <span>400€</span>
+        </div>
+        <div class="calculation-item">
+          <span>Frais</span>
+          <span>${CAImpact.toFixed(2)}€</span>
+        </div>
+        <div class="calculation-item">
+          <span>Impact du taux de conversion</span>
+          <span>${tauxConversionImpact}€</span>
+        </div>
+        <div class="calculation-item">
+          <span>Impact des visites</span>
+          <span>${visitesImpact}€</span>
+        </div>
+        <div class="calculation-item">
+          <span>Impact du panier moyen</span>
+          <span>${panierMoyenImpact}€</span>
+        </div>
+        <div class="calculation-item total">
+          <span>Total avant arrondi</span>
+          <span>${prixPlein.toFixed(2)}€</span>
+        </div>
+      `;
+    }
+    
+    // Ajout des écouteurs d'événements
+    if (visitesSlider) visitesSlider.addEventListener('input', updateSliderDisplays);
+    if (conversionSlider) conversionSlider.addEventListener('input', updateSliderDisplays);
+    if (panierSlider) panierSlider.addEventListener('input', updateSliderDisplays);
+    if (calculerBtn) calculerBtn.addEventListener('click', calculerPrix);
+    
+    // Initialisation de l'affichage
+    updateSliderDisplays();
+  });
+</script>
+
+<style>
+  .calculateur-section {
+    padding: 6rem 2rem;
+    background-color: var(--background);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .calculateur-section .section-header {
+    max-width: 800px;
+    margin: auto;
+}
+
+  .calculateur-container {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    position: relative;
+  }
+
+  .calculator-box {
+    position: relative;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    z-index: 1;
+  }
+
+  .calculator-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(57, 255, 20, 0.1);
+    border-color: var(--accent);
+  }
+
+  .calculator-content {
+    display: grid;
+    grid-template-columns: 1fr 0fr; /* Initialement, la colonne de résultats a une largeur nulle */
+    gap: 0; /* Pas d'écart au départ */
+    padding: 0;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Transition avec rebond */
+  }
+  
+  /* Quand étendu, le conteneur affiche les deux colonnes */
+  .calculator-content.expanded {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .inputs-container {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.4s ease;
+    border-right: 1px solid transparent;
+  }
+  
+  /* Quand étendu, ajouter une bordure entre les colonnes */
+  .calculator-content.expanded .inputs-container {
+    border-right-color: var(--border);
+  }
+
+  .inputs-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .input-slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .input-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .input-label span {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  .value-display {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: var(--surface-light);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .unit {
+    color: var(--text-secondary);
+    font-weight: normal;
+  }
+
+  .slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--surface-light);
+    outline: none;
+    transition: var(--transition);
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+    transition: var(--transition);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+    transition: var(--transition);
+  }
+
+  .slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+  }
+
+  .slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+  }
+
+  .slider-values {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .btn-calculer {
+    position: relative;
+    margin-top: 1.5rem;
+    padding: 1rem 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: var(--radius);
+    transition: var(--transition);
+  }
+  
+  /* Animation de pulsation pour le bouton */
+  .btn-calculer.pulse {
+    animation: pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+
+  .btn-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--background);
+  }
+
+  .btn-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent), var(--accent-light));
+    z-index: 1;
+    transition: var(--transition);
+  }
+
+  .btn-calculer:hover .btn-shine {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+  }
+
+  .btn-calculer:hover .btn-content {
+    transform: scale(1.02);
+  }
+
+  .results-container {
+    padding: 2.5rem;
+    opacity: 0;
+    visibility: hidden; /* Masqué initialement */
+    transform: translateX(30px); /* Décalé vers la droite initialement */
+    transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s 0.6s;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow: hidden; /* Masquer le contenu débordant pendant l'animation */
+  }
+  
+  /* Classe pour masquer complètement le conteneur de résultats */
+  .results-container.hidden {
+    display: none;
+  }
+
+  .results-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s;
+  }
+
+  .result-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .result-header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .accent-divider {
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    border-radius: 1.5px;
+  }
+
+  .price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  .price-box {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .price-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .price-period {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+  }
+
+  .price-badge {
+    margin-top: 0.75rem;
+    background-color: rgba(57, 255, 20, 0.1);
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .metrics-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .metric-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--surface-light);
+    border-radius: var(--radius);
+    transition: var(--transition);
+  }
+
+  .metric-item:hover {
+    background-color: var(--surface-lighter);
+    transform: translateX(5px);
+  }
+
+  .metric-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    background-color: rgba(57, 255, 20, 0.1);
+    color: var(--accent);
+  }
+
+  .metric-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .metric-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .calculation-details {
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .calculation-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .calculation-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .calculation-item.total {
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .btn-reserve {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .btn-reserve svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-reserve:hover svg {
+    transform: translateX(5px);
+  }
+
+  .glow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .glow-effect {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(57, 255, 20, 0.08) 0%,
+      rgba(57, 255, 20, 0.05) 25%,
+      rgba(57, 255, 20, 0.01) 50%,
+      rgba(0, 0, 0, 0) 70%
+    );
+    pointer-events: none;
+    animation: rotateGlow 15s linear infinite;
+  }
+
+  @keyframes rotateGlow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .calculator-content, 
+    .calculator-content.expanded {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .inputs-container {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .calculator-content.expanded .inputs-container {
+      border-right-color: transparent;
+      border-bottom-color: var(--border);
+    }
+    
+    .results-container {
+      transform: translateY(30px);
+    }
+    
+    .results-container.show {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .calculateur-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .inputs-container,
+    .results-container {
+      padding: 2rem 1.5rem;
+    }
+
+    .price-value {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .input-label {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .value-display {
+      align-self: flex-start;
+    }
+  }
+</style>

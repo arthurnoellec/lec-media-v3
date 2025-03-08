@@ -1,0 +1,331 @@
+<section class="hero">
+  <div class="hero-content">
+    <h1>
+      Devenez un <span class="gradient-text">Expert Shopify</span> et CRO
+    </h1>
+
+    <p class="hero-subtitle">
+      Formation complète, gestion de boutique et coaching personnalisé pour maîtriser 
+      l'optimisation de conversion et devenir indépendant dans l'écosystème Shopify.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#formations" class="btn btn-primary btn-lg">Découvrir nos formations</a>
+      <a href="#contact" class="btn btn-secondary btn-lg">Réserver un appel gratuit</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">3</span>
+        <span class="stat-label">PME formées</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">21</span>
+        <span class="stat-label">Entrepeuneurs</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">97%</span>
+        <span class="stat-label">de reussite</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="journey-map">
+      <div class="journey-node" id="node-1">
+        <div class="node-icon">🔍</div>
+        <div class="node-content">
+          <h3>Formation CRO</h3>
+          <p>Maîtrisez l'analyse et l'optimisation de conversion</p>
+        </div>
+      </div>
+      <div class="journey-path"></div>
+      <div class="journey-node" id="node-2">
+        <div class="node-icon">🛍️</div>
+        <div class="node-content">
+          <h3>Gestion Shopify</h3>
+          <p>Apprenez à gérer efficacement votre boutique en ligne</p>
+        </div>
+      </div>
+      <div class="journey-path"></div>
+      <div class="journey-node" id="node-3">
+        <div class="node-icon">🚀</div>
+        <div class="node-content">
+          <h3>Indépendance</h3>
+          <p>Lancez votre activité de consultant ou créez votre agence</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-avatar">
+        <img src="/api/placeholder/80/80" alt="Photo de profil" />
+      </div>
+      <div class="testimonial-content">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Grâce à cette formation, j'ai pu lancer mon activité de consultant CRO et doubler mes revenus en moins de 6 mois."</p>
+        <div class="testimonial-author">
+          <strong>Thomas D.</strong> - Consultant indépendant
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    min-height: calc(100vh - 80px);
+    padding-top: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .hero-image {
+    position: relative;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  /* Nouvelle section de parcours */
+  .journey-map {
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .journey-node {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    background-color: var(--surface-light);
+    transition: var(--transition);
+    border: 1px solid var(--border);
+  }
+
+  .journey-node.active {
+    background-color: rgba(57, 255, 20, 0.1);
+    border: 1px solid var(--accent);
+  }
+
+  .journey-node:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .node-icon {
+    font-size: 1.75rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    flex-shrink: 0;
+  }
+
+  .active .node-icon {
+    background-color: var(--accent);
+    color: var(--surface);
+  }
+
+  .node-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .node-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .journey-path {
+    height: 20px;
+    width: 2px;
+    background-color: var(--border);
+    margin-left: 25px;
+  }
+
+  /* Témoignage */
+  .testimonial-card {
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: 2rem;
+  }
+
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+
+  .testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .testimonial-stars {
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .testimonial-content p {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .testimonial-author {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 992px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero-image {
+      height: auto;
+      order: -1;
+    }
+
+    .testimonial-card {
+      margin-left: 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .journey-map {
+      padding: 1.5rem;
+    }
+
+    .journey-node {
+      padding: 1rem;
+    }
+
+    .testimonial-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .testimonial-avatar {
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<script>
+  // Animation des cartes de parcours
+  document.addEventListener('DOMContentLoaded', () => {
+    const nodes = [
+      document.getElementById('node-1'),
+      document.getElementById('node-2'),
+      document.getElementById('node-3')
+    ];
+    
+    // État de l'animation
+    let step = 0;
+    
+    // Fonction d'animation qui gère la séquence complète
+    function animateJourney() {
+      // Réinitialiser toutes les cartes quand on atteint l'étape finale
+      if (step === 4) {
+        nodes.forEach(node => {
+          node.classList.remove('active');
+        });
+        step = 0;
+        setTimeout(animateJourney, 1000); // Pause avant de recommencer
+        return;
+      }
+      
+      if (step < 3) {
+        // Allumer progressivement chaque carte
+        nodes[step].classList.add('active');
+      }
+      
+      step++;
+      setTimeout(animateJourney, 1000);
+    }
+    
+    // Ajouter une transition CSS pour un allumage doux
+    nodes.forEach(node => {
+      node.style.transition = 'all 0.3s ease-in-out';
+    });
+    
+    // Démarrer l'animation
+    animateJourney();
+  });
+</script>

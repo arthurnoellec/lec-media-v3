@@ -1,0 +1,294 @@
+---
+// src/components/Header.astro
+---
+
+<header class="header">
+    <nav class="nav">
+      <div class="logo">
+        <a href="/">
+          <span class="logo-text">CRO<span class="accent">Boost</span></span>
+        </a>
+      </div>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="#benefits">Bénéfices</a>
+        <a href="#features">Services</a>
+        <a href="#calculateur">Tarifs</a>
+        <a href="#testimonials">Témoignages</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-primary">Consultation Gratuite</a>
+      </div>
+      
+      <button class="burger-menu" id="burgerMenu" aria-label="Menu" aria-expanded="false">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+      
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+          <div class="mobile-nav-links">
+            <a href="#benefits">Bénéfices</a>
+            <a href="#features">Services</a>
+            <a href="#calculateur">Tarifs</a>
+            <a href="#testimonials">Témoignages</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="mobile-nav-cta">
+            <a href="#contact" class="btn btn-primary">Consultation Gratuite</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const burgerMenu = document.getElementById('burgerMenu');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-cta a');
+      
+      // Fonction pour ouvrir/fermer le menu mobile
+      function toggleMenu() {
+        const isExpanded = burgerMenu.getAttribute('aria-expanded') === 'true';
+        burgerMenu.setAttribute('aria-expanded', !isExpanded);
+        burgerMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      }
+      
+      // Event listener pour le bouton burger
+      if (burgerMenu) {
+        burgerMenu.addEventListener('click', toggleMenu);
+      }
+      
+      // Fermer le menu lorsqu'un lien est cliqué
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          toggleMenu();
+        });
+      });
+      
+      // Fermer le menu au redimensionnement de la fenêtre
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 992 && mobileMenu.classList.contains('active')) {
+          burgerMenu.setAttribute('aria-expanded', 'false');
+          burgerMenu.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        }
+      });
+    });
+  </script>
+  
+  <style>
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+  
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+  
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      z-index: 101;
+    }
+  
+    .logo-text .accent {
+      color: var(--accent);
+    }
+  
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+  
+    .nav-links a {
+      position: relative;
+      font-weight: 500;
+    }
+  
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+  
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+  
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+  
+    /* Burger Menu */
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+      position: relative;
+    }
+  
+    .burger-line {
+      width: 100%;
+      height: 3px;
+      background-color: var(--text);
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+  
+    .burger-menu.active .burger-line:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+      background-color: var(--accent);
+    }
+  
+    .burger-menu.active .burger-line:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .burger-menu.active .burger-line:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+      background-color: var(--accent);
+    }
+  
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--background);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: none;
+    }
+  
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+  
+    .mobile-menu-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 2rem;
+    }
+  
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+  
+    .mobile-nav-links a {
+      position: relative;
+      font-weight: 600;
+      font-size: 1.5rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  
+    .mobile-menu.active .mobile-nav-links a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    /* Décalage de l'animation pour chaque lien */
+    .mobile-menu.active .mobile-nav-links a:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+    .mobile-menu.active .mobile-nav-links a:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    .mobile-menu.active .mobile-nav-links a:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+    .mobile-menu.active .mobile-nav-links a:nth-child(4) {
+      transition-delay: 0.25s;
+    }
+    .mobile-menu.active .mobile-nav-links a:nth-child(5) {
+      transition-delay: 0.3s;
+    }
+  
+    .mobile-nav-cta {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  
+    .mobile-menu.active .mobile-nav-cta {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.35s;
+    }
+  
+    .mobile-nav-cta .btn {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+  
+    /* Ajustement pour le corps de la page quand le menu est ouvert */
+    body.menu-open {
+      overflow: hidden;
+    }
+  
+    /* Media Queries pour Responsive */
+    @media (max-width: 992px) {
+      .nav-links, .nav-cta {
+        display: none;
+      }
+  
+      .burger-menu {
+        display: flex;
+      }
+  
+      .mobile-menu {
+        display: block;
+      }
+    }
+  
+    @media (max-width: 576px) {
+      .nav {
+        padding: 1.25rem 1.5rem;
+      }
+      
+      .mobile-nav-links a {
+        font-size: 1.25rem;
+      }
+    }
+  </style>

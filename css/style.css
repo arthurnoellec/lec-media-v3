@@ -36,7 +36,7 @@ body {
 }
 
 .features_gradient-1 {
-  background-color: cyan;
+  background-color: #08f791;
   width: 700px;
   height: 700px;
   z-index: -2;
@@ -50,7 +50,7 @@ body {
 }
 
 .features_gradient-2 {
-  background: violet;
+  background: #063aff;
   width: 600px;
   height: 600px;
   z-index: -1;
@@ -64,7 +64,7 @@ body {
 }
 
 .features_gradient-3 {
-  background-color: green;
+  /* background-color: green; */
   width: 500px;
   height: 500px;
   z-index: -3;
@@ -1066,15 +1066,15 @@ footer {
 
 .button:hover:before {
   top: -70%;
-  background-image: radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, transparent 20%, #063aff 20%, transparent 30%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #063aff 15%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%);
+  background-image: radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #08f791 20%, transparent 30%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #08f791 15%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%);
   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
   background-position: 50% 120%;
   animation: greentopBubbles 0.6s ease;
@@ -1100,13 +1100,13 @@ footer {
 
 .button:hover::after {
   bottom: -70%;
-  background-image: radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #063aff 15%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%),
-    radial-gradient(circle, #063aff 20%, transparent 20%);
+  background-image: radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #08f791 15%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%),
+    radial-gradient(circle, #08f791 20%, transparent 20%);
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
   background-position: 50% 0%;
   animation: greenbottomBubbles 0.6s ease;

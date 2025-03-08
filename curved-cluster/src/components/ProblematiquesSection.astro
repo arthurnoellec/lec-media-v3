@@ -1,0 +1,325 @@
+---
+// ProblematiquesSection.astro
+
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="problematiques-section" id="problematiques">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Pourquoi refondre ?</span>
+      <h2 class="section-title">Les signes qu'il est temps de <span class="gradient-text">refondre</span> votre boutique Shopify</h2>
+      <p class="section-subtitle">
+        De nombreux e-commerçants laissent échapper des opportunités de ventes sans même le savoir. Voici les signaux d'alerte à ne pas ignorer.
+      </p>
+    </div>
+
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="problem-icon">
+          <Icon name="tabler:clock" />
+        </div>
+        <h3 class="problem-title">Temps de chargement lents</h3>
+        <p class="problem-description">
+          53% des visiteurs abandonnent un site qui met plus de 3 secondes à charger. Votre boutique est-elle assez rapide ?
+        </p>
+        <div class="problem-impact">
+          <div class="impact-value">-35%</div>
+          <div class="impact-label">de conversions</div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-icon">
+          <Icon name="tabler:device-mobile-x" />
+        </div>
+        <h3 class="problem-title">Expérience mobile médiocre</h3>
+        <p class="problem-description">
+          Plus de 70% du trafic e-commerce provient des mobiles. Un design non-adaptatif fait fuir vos clients potentiels.
+        </p>
+        <div class="problem-impact">
+          <div class="impact-value">-42%</div>
+          <div class="impact-label">de taux de rebond</div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-icon">
+          <Icon name="tabler:shopping-cart-x" />
+        </div>
+        <h3 class="problem-title">Tunnel d'achat complexe</h3>
+        <p class="problem-description">
+          Chaque étape supplémentaire dans votre processus d'achat fait chuter vos conversions. Simplifier, c'est vendre plus.
+        </p>
+        <div class="problem-impact">
+          <div class="impact-value">+68%</div>
+          <div class="impact-label">d'abandon de panier</div>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-icon">
+          <Icon name="tabler:search-off" />
+        </div>
+        <h3 class="problem-title">Invisibilité sur Google</h3>
+        <p class="problem-description">
+          Sans optimisation SEO appropriée, votre boutique reste invisible pour des milliers de clients potentiels.
+        </p>
+        <div class="problem-impact">
+          <div class="impact-value">-75%</div>
+          <div class="impact-label">de trafic organique</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-container">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">
+          <Icon name="tabler:quote" />
+        </div>
+        <p class="testimonial-text">
+          "Ma boutique était jolie, mais elle ne convertissait pas. Les clients quittaient sans acheter et mes revenus stagnaient malgré de nombreuses visites. J'ai compris qu'il fallait une refonte complète quand j'ai réalisé que mon site mettait 7 secondes à charger..."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            <img src="/images/testimonial-avatar.jpg" alt="Thomas, propriétaire de Cyclop Eyewear" />
+          </div>
+          <div class="author-info">
+            <span class="author-name">Thomas B.</span>
+            <span class="author-business">Cyclop Eyewear</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-container">
+      <a href="#audit" class="btn btn-primary btn-lg">
+        <Icon name="tabler:rocket" />
+        <span>Obtenir un audit gratuit</span>
+      </a>
+      <p class="cta-hint">Découvrez les opportunités d'amélioration de votre boutique en 24h</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problematiques-section {
+    padding: 6rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background-color: rgba(57, 255, 20, 0.15);
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .problem-card {
+    background-color: var(--surface-light);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+  }
+
+  .problem-icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(57, 255, 20, 0.15);
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    font-size: 1.5rem;
+  }
+
+  .problem-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .problem-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .problem-impact {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .impact-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .impact-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .testimonial-container {
+    margin-bottom: 4rem;
+  }
+
+  .testimonial-card {
+    background-color: var(--surface-light);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .testimonial-quote {
+    position: absolute;
+    top: -1.5rem;
+    left: 2.5rem;
+    background-color: var(--accent);
+    color: var(--surface);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .testimonial-text {
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .author-name {
+    display: block;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .author-business {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .cta-container {
+    text-align: center;
+  }
+
+  .btn-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  .cta-hint {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1200px) {
+    .problems-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .problems-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .testimonial-quote {
+      left: 1.5rem;
+    }
+  }
+</style>

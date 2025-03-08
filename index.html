@@ -111,26 +111,306 @@
     </script>
   </head>
   <body style="overflow-x: hidden">
-    <a href="/">
-      <div
-        class="nav-title"
-        style="
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          max-width: 1200px;
-          margin: auto;
-          position: fixed;
-          left: 50%;
-          transform: translate(-50%);
-          padding: 15px 35px;
-          background: black;
-          border-radius: 0 0 1rem 1rem;
-          z-index: 70;
-        ">
-        <img src="./logo-lec-media-blanc.png" style="height: 40px" alt="logo blanc lëc média" />
+    <style>
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: rgba(30, 30, 30, 0.8);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        width: 75%;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 32rem;
+        max-width: 1200px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        width: 30%;
+      }
+
+      .logo img {
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .logo-text {
+        color: #4ca6ff;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        width: 100%;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        color: #b0b0b0;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 10px 15px;
+        border-radius: 8px;
+        transition: color 0.3s, background-color 0.3s;
+        cursor: pointer;
+      }
+
+      .nav-link:hover {
+        color: #57ffb6;
+      }
+
+      .nav-link.active {
+        color: #08f791;
+        background-color: rgba(8, 247, 145, 0.1);
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #2a2a2a;
+        min-width: 250px;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        margin-top: 25px;
+      }
+
+      .dropdown.show {
+        display: block;
+      }
+
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #e0e0e0;
+        transition: background-color 0.3s;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(8, 247, 145, 0.1);
+      }
+
+      .dropdown-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+        stroke: #08f791;
+        fill: none;
+        stroke-width: 2;
+      }
+
+      .dropdown-title {
+        color: #08f791;
+        font-weight: 600;
+        margin-bottom: 3px;
+        font-size: 0.9rem;
+      }
+
+      .dropdown-description {
+        color: #a0a0a0;
+        font-size: 0.7rem;
+      }
+
+      .contact-btn {
+        background-color: #08f791;
+        color: #121212;
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .contact-btn:hover {
+        background-color: #08f78f8a;
+      }
+
+      .contact-btn svg {
+        stroke: #121212;
+        width: 20px;
+        height: 20px;
+      }
+    </style>
+
+    <nav class="navbar">
+      <div class="nav-menu">
+        <div style="display: flex; width: 30%">
+          <div class="nav-item">
+            <div class="nav-link" onclick="toggleDropdown(this)">Services</div>
+            <div class="dropdown">
+              <a href="/agence-cro" class="dropdown-item">
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M20.24 12.24a6 6 0 0 1-8.49 8.49 6 6 0 1 1 8.49-8.49z"></path>
+                  <path d="M8 14H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path>
+                </svg>
+                <div class="dropdown-content">
+                  <div class="dropdown-title">CRO</div>
+                  <div class="dropdown-description">Optimisez vos conversions</div>
+                </div>
+              </a>
+              <a href="/creation-boutique-shopify" class="dropdown-item">
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+                <div class="dropdown-content">
+                  <div class="dropdown-title">Création site Shopify</div>
+                  <div class="dropdown-description">Développement de boutique en ligne</div>
+                </div>
+              </a>
+              <a href="/refonte-site-ecommerce" class="dropdown-item">
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                <div class="dropdown-content">
+                  <div class="dropdown-title">Refonte Shopify</div>
+                  <div class="dropdown-description">Modernisation de votre boutique</div>
+                </div>
+              </a>
+              <a href="/formation-intervention-entreprise-shopify" class="dropdown-item">
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12 11v5"></path>
+                  <path d="M9 18h6"></path>
+                  <path d="m10 8 2-2 2 2"></path>
+                  <circle cx="12" cy="5" r="3"></circle>
+                  <path
+                    d="M3 22h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path>
+                </svg>
+                <div class="dropdown-content">
+                  <div class="dropdown-title">Formation en entreprise</div>
+                  <div class="dropdown-description">Cours Shopify personnalisés</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-link" onclick="toggleDropdown(this)">Cas d'usage</div>
+            <div class="dropdown">
+              <!-- <a href="#" class="dropdown-item">
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <div class="dropdown-content">
+                  <div class="dropdown-title">B2B</div>
+                  <div class="dropdown-description">Solutions professionnelles</div>
+                </div>
+              </a> -->
+              <a href="/Realisations/Crochetmilie.html" class="dropdown-item">
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="7" y1="12" x2="17" y2="12"></line>
+                  <line x1="12" y1="7" x2="12" y2="17"></line>
+                </svg>
+                <div class="dropdown-content">
+                  <div class="dropdown-title">B2C</div>
+                  <div class="dropdown-description">Solutions grand public</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-link" onclick="toggleDropdown(this)">Blogs</div>
+            <div class="dropdown">
+              <a href="/les-blogs" class="dropdown-item">
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <div class="dropdown-content">
+                  <div class="dropdown-title">Articles</div>
+                  <div class="dropdown-description">Nos dernières publications</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/" class="logo">
+          <img src="./images/logo-lec-media-blanc copy.png" alt="LEC Media Logo" />
+        </a>
+
+        <button
+          class="button"
+          style="
+            background-color: #08f791;
+            color: black;
+            padding-bottom: 10px;
+            font-weight: 900;
+            font-family: 'AlmarenaMedium';
+            border-radius: 50px;
+          "
+          onclick="location.href='./Realisations/Arico.html';">
+          Nous contacter
+        </button>
       </div>
-    </a>
+    </nav>
+
+    <script>
+      function toggleDropdown(element) {
+        // Close all dropdowns
+        document.querySelectorAll(".dropdown").forEach((dropdown) => {
+          if (dropdown !== element.nextElementSibling) {
+            dropdown.classList.remove("show");
+            element.classList.remove("active");
+          }
+        });
+
+        // Toggle current dropdown
+        const dropdown = element.nextElementSibling;
+        dropdown.classList.toggle("show");
+        element.classList.toggle("active");
+      }
+
+      // Close dropdowns when clicking outside
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".navbar")) {
+          document.querySelectorAll(".dropdown").forEach((dropdown) => {
+            dropdown.classList.remove("show");
+          });
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.remove("active");
+          });
+        }
+      });
+    </script>
+
     <!-- <div class="grain">
       <div class="grain-overflow"></div>
     </div> -->
@@ -138,7 +418,10 @@
     <div class="ready ready1" style="right: 20px">
       <a href="#contact" class="smooth-scroll" style="text-decoration: none; color: white">
         <span style="display: flex; justify-content: center; align-items: center"></span>
-        <img src="./ready.png" style="width: 13px; padding: 0 10px" alt="nous sommes disponnible" />
+        <img
+          src="./images/ready.png"
+          style="width: 13px; padding: 0 10px"
+          alt="nous sommes disponnible" />
         <span>Ready to work</span>
       </a>
     </div>
@@ -154,6 +437,93 @@
           <div class="Hero_Header" style="width: 90%; max-width: 1200px">
             <div class="Hero_header_gauche">
               <div>
+                <style>
+                  .badge-container {
+                    /* Pour montrer la pastille en contexte */
+                    width: 100%;
+                    max-width: 800px;
+                    text-align: center;
+                    background-color: #333;
+                    padding: 20px;
+                  }
+
+                  .shopify-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 50px;
+                    padding: 8px 16px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    margin-bottom: 20px;
+                    backdrop-filter: blur(5px);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    margin-bottom: 30px;
+                    margin-left: -5px;
+                    padding-left: 8px;
+                  }
+
+                  .shopify-badge::after {
+                    content: "2024";
+                    position: absolute;
+                    right: 60px;
+                    top: -10px;
+                    background-color: #0037ffbb;
+                    padding: 2px 5px;
+                    border-radius: 50px;
+                    color: white;
+                    font-size: 12px;
+                  }
+                  .shopify-badge:before {
+                    content: "2025";
+                    position: absolute;
+                    right: 15px;
+                    top: -10px;
+                    font-size: 12px;
+                    background-color: #08f78fb5;
+                    padding: 2px 5px;
+                    border-radius: 50px;
+                  }
+
+                  .badge-text {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: white;
+                    margin: 0;
+                    padding-right: 12px;
+                    display: flex;
+                    align-items: center;
+                  }
+
+                  .badge-logo {
+                    height: 27px;
+                  }
+
+                  /* Styles exemple pour le hero header (pour démonstration) */
+                  .hero-title {
+                    color: white;
+                    font-size: 40px;
+                    font-weight: bold;
+                    margin: 0;
+                  }
+                </style>
+                <div>
+                  <!-- Pastille à copier -->
+                  <div class="shopify-badge">
+                    <p class="badge-text">
+                      <img style="max-width: 25px" src="./images/1er.png" />
+                      <i style="margin-left: 10px">Agence Shopify de Montréal</i>
+                    </p>
+                    <a
+                      target="_blank"
+                      href="https://hellodarwin.com/fr/agences/agences-experts-shopify/montreal"
+                      ><img
+                        class="badge-logo"
+                        src="./images/logo_-_dark_-_vertical.png"
+                        alt="Logo Shopify"
+                    /></a>
+                  </div>
+                </div>
+
                 <h1>
                   <span class="highlight hl1">Transformez </span>
                   chaque visite en
@@ -166,7 +536,7 @@
                   aux taux de rebond élevés et aux coûts d'acquisition en constante augmentation.
                 </p>
               </div>
-              <div class="btn_call_hero">
+              <div class="btn_call_hero" style="width: fit-content">
                 <a
                   style="text-decoration: none; color: white"
                   href="https://cal.com/arthur-noellec/appel-decouverte"
@@ -178,7 +548,7 @@
                         viewBox="0 0 24 24"
                         width="32"
                         height="32"
-                        fill="rgba(255,255,255,1)">
+                        fill="FFFFFF">
                         <path
                           d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                       </svg>
@@ -219,706 +589,10 @@
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap"
       rel="stylesheet" />
-    <div class="app-container" style="max-height: 80vh">
-      <!-- <div class="app-main">
-         <div class="video-call-wrapper">
-           <div class="video-participant">
-             <div class="participant-actions">
-               <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
-             </div>
-             <a href="#" class="name-tag">Andy Will</a>
-             <img src="https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="participant">
-           </div>
-           <div class="video-participant">
-             <div class="participant-actions">
-               <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
-             </div>
-             <a href="#" class="name-tag">Emmy Lou</a>
-             <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="participant">
-           </div>
-           <div class="video-participant">
-             <div class="participant-actions">
-               <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
-             </div>
-             <a href="#" class="name-tag">Tim Russel</a>
-             <img src="https://images.unsplash.com/photo-1576110397661-64a019d88a98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80" alt="participant">
-           </div>
-           <div class="video-participant">
-             <div class="participant-actions">
-               <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
-             </div>
-             <a href="#" class="name-tag">Jessica Bell</a>
-             <img src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="participant">
-           </div>
-           <div class="video-participant">
-             <div class="participant-actions">
-               <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
-             </div>
-             <a href="#" class="name-tag">Ryan Patrick</a>
-             <img src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80" alt="participant">
-           </div>
-           <div class="video-participant">
-             <div class="participant-actions">
-               <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
-             </div>
-             <a href="#" class="name-tag">Tina Cate</a>
-             <img src="https://images.unsplash.com/photo-1542596594-649edbc13630?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80" alt="participant">
-           </div>
-         </div>
-         <div class="video-call-actions ">
-           <button class="video-action-button mic"></button>
-           <button class="video-action-button camera"></button>
-           <button class="video-action-button maximize"></button>
-           <button class="video-action-button endcall">Leave</button>
-           <button class="video-action-button magnifier">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zoom-in" viewBox="0 0 24 24">
-               <circle cx="11" cy="11" r="8"/>
-               <path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
-             </svg>
-             <span>100%</span>
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zoom-out">
-                 <circle cx="11" cy="11" r="8"/>
-                 <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                 <line x1="8" y1="11" x2="14" y2="11"/>
-             </svg>
-             </button>
-         </div>
-       </div> -->
-
-      <!-- <button class="expand-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        </button>
-    
-        <style>
-    
-          
-          
-          button {
-            outline : none;
-            transition: .2s;
-            cursor: pointer;
-            
-            &:hover {
-              opacity: .7;
-            }
-          }
-          
-          body {
-            --app-background: #eaebf5;
-            --chat-background: #fff;
-            --link-color: #c0c1c5;
-            --navigation-bg: #fff;
-            --navigation-box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
-            --main-color: #3d42df;
-            --message-bg: #f3f4f9;
-            --message-bg-2: #3d42df;
-            --message-text: #2c303a;
-            --placeholder-text: #a2a4bc;
-            --button-bg: #fff;
-          }
-          
-          body.dark {
-            --app-background: #262a42;
-            --navigation-box-shadow: 0px 0px 8px 0px #282b33;
-            --chat-background: #3c3f56;
-            --message-bg: #2c3046;
-            --message-text: rgba(255,255,255,0.8);
-            --placeholder-text: #fff;
-            --navigation-bg: #3c3f56;
-            --button-bg: #3c3f56;
-            --main-color: #6f74ff;
-            --message-bg-2: #6f74ff;
-            
-            .mic {
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-mic-off' viewBox='0 0 24 24'%3E%3Cpath d='M1 1l22 22M9 9v3a3 3 0 005.12 2.12M15 9.34V4a3 3 0 00-5.94-.6'/%3E%3Cpath d='M17 16.95A7 7 0 015 12v-2m14 0v2a7 7 0 01-.11 1.23M12 19v4M8 23h8'/%3E%3C/svg%3E%0A");
-            }
-            
-            .camera {
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-camera-off' viewBox='0 0 24 24'%3E%3Cpath d='M1 1l22 22M21 21H3a2 2 0 01-2-2V8a2 2 0 012-2h3m3-3h6l2 3h4a2 2 0 012 2v9.34m-7.72-2.06a4 4 0 11-5.56-5.56'/%3E%3C/svg%3E%0A");
-            }
-            
-            .maximize {
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-maximize' viewBox='0 0 24 24'%3E%3Cpath d='M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3'/%3E%3C/svg%3E%0A");
-            }
-            
-            .magnifier {
-              color: #fff;
-            }
-            
-            .chat-header {
-              border-color: var(--message-bg);
-            }
-            
-            .btn-close-right {
-              color: #fff;
-            }
-          }
-          
-          a { text-decoration: none; }
-          
-          .app-container {
-            background-color: var(--app-background);
-            width: 100%;
-            height: 100%;
-            font-family: 'DM Sans', sans-serif;
-            display: flex;
-            transition: .2s;
-          }
-          
-          .left-side {
-            position: relative;
-            padding: 16px;
-            flex-basis: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-          }
-          
-          .navigation {
-            display: flex;
-            flex-direction: column;
-            background-color: var(--navigation-bg);
-            padding: 24px;
-            border-radius: 10px;
-            box-shadow: var(--navigation-box-shadow);
-          }
-          
-          .nav-link + .nav-link {
-            margin-top: 32px;
-          }
-          
-          .nav-link:hover svg {
-            color: #3d42df;
-          }
-          
-          .icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--link-color);
-            transition: .2s ease-in;
-          }
-          
-          .right-side {
-            margin-left: auto;
-            flex-basis: 400px;
-            height: 100%;
-            padding: 16px;
-            position: relative;
-            transition: all 300ms cubic-bezier(0.190, 1.000, 0.560, 1.000);
-            
-            &.show {
-              display: block;
-              transform: translateX(0);
-            }
-          }
-          
-          .chat-container {
-            background-color: var(--chat-background);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            height: calc(100% - 72px);
-          }
-          
-          .chat-header {
-            padding: 16px;
-            border-bottom: 1px solid #f5f5f5;
-          }
-          
-          .chat-header-button {
-            background-color: var(--main-color);
-            padding: 12px 16px 12px 40px;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' fill='%23fff'%3E%3Cpath d='M479.9 187.52l-90.19 68.53v-52.6a20 20 0 00-20-20H20a20 20 0 00-20 20V492a20 20 0 0020 20h349.71a20 20 0 0020-20v-52.6l90.18 68.52c13.05 9.91 32.1.67 32.1-15.92V203.45c0-16.5-18.94-25.92-32.1-15.93zM349.7 472H40V223.45h309.71zM472 451.68l-82.29-62.53V306.3L472 243.77zM87.96 79.24C129.62 28.88 190.86 0 256 0c65.13 0 126.37 28.88 168.03 79.24a20 20 0 01-30.82 25.5A177.6 177.6 0 00256 40a177.6 177.6 0 00-137.21 64.73 20 20 0 11-30.83-25.5zm240.36 32.21a20 20 0 11-21.02 34.03 97.57 97.57 0 00-51.3-14.53 97.6 97.6 0 00-51.31 14.53 20 20 0 11-21.02-34.03A137.53 137.53 0 01256 90.95c25.59 0 50.6 7.09 72.32 20.5zm0 0'/%3E%3C/svg%3E%0A");
-            background-repeat: no-repeat;
-            background-position: center left 12px;
-            background-size: 16px;
-            font-size: 14px;
-          }
-          
-          .chat-area {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-          }
-          
-          .profile-picture {
-            border-radius: 8px;
-            width: 32px;
-            height: 32px;
-            overflow: hidden;
-            margin-right: 12px;
-            flex-shrink: 0;
-            
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-          }
-          
-          .message-wrapper {
-            display: flex;
-          }
-          
-          .name {
-            margin : 0;
-            line-height: 16px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--message-text);
-          }
-          
-          .message {
-            margin-top: 8px;
-            background-color: var(--message-bg);
-            padding: 8px 16px;
-            border-radius: 0 12px 12px 12px;
-            font-size: 12px;
-            line-height: 16px;
-            max-width: calc(100% - 32px);
-            color: var(--message-text);
-          }
-          
-          .message-wrapper {
-            padding: 16px 0;
-            
-            &.reverse {
-              flex-direction: row-reverse;
-              
-              .message {
-                background-color: var(--message-bg-2);
-                color: #fff;
-                margin-left: auto;
-                border-radius: 16px 0px 16px 16px;
-              }
-              
-              .profile-picture {
-                margin-right: 0px;
-                margin-left: 12px;
-              }
-              
-              .name {
-                text-align: right;
-              }
-            }
-          }
-          
-          .message-file {
-            border: 1px solid var(--message-bg);
-            width: 100%;
-            margin-top: 16px;
-            border-radius: 4px;
-            padding: 8px;
-            display: flex;
-            
-            .sketch {
-              border-radius: 4px;
-              padding: 2px;
-              background-color: #fdeee2;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 32px;
-              height: 32px;
-              
-              svg {
-                width: 20px;
-                height: 20px;
-              }
-            }
-          }
-          
-          .file-info {
-            flex: 1;
-            padding: 0 40px 0 8px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23b8b8b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-download' viewBox='0 0 24 24'%3E%3Cpath d='M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3'/%3E%3C/svg%3E%0A");
-            background-position: center right 12px;
-            background-size: 20px;
-            background-repeat: no-repeat;
-            font-size: 12px;
-          }
-          
-          .file-name {
-            color: var(--message-text);
-          }
-          
-          .file-size {
-            color: #b8b8b8;
-          }
-          
-          .mention {
-            color: #7c80fd;
-          }
-          
-          .chat-typing-area-wrapper {
-            padding: 16px;
-          }
-          
-          .chat-typing-area {
-            display: flex;
-            border-radius: 10px;
-            padding: 8px;
-            box-shadow: var(--navigation-box-shadow);
-            background-color: var(--message-bg);
-            
-            .dark & {
-              box-shadow: none;
-            }
-          }
-          
-          .chat-input {
-            border: none;
-            font-size: 14px;
-            line-height: 24px;
-            outline: none;
-            color: var(--message-text);
-            flex: 1;
-            background-color: transparent;
-            
-            &:placeholder {
-              color: var(--placeholder-text);
-            }
-          }
-          
-          .send-button {
-            color: #fff;
-            background-color: var(--main-color);
-            border-radius: 8px;
-            border: none;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-            svg {
-              width: 20px;
-              height: 20px;
-            }
-          }
-          
-          .app-main {
-            flex: 1;
-            width: 100%;
-            padding: 72px 32px 16px 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          .video-call-wrapper {
-            width: 100%;
-            height: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-          }
-          
-          .video-participant {
-            width: 33.3%;
-            height: 50%;
-            position: relative;
-            
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-          }
-          
-          .name-tag {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            font-size: 12px;
-            color: #fff;
-            background-color: rgba(0,15,47,0.5);
-            border-radius: 4px;
-            padding: 4px 12px;
-          }
-          
-          .participant-actions {
-            position: absolute;
-            display: flex;
-            left: 12px;
-            top: 12px;
-          }
-          
-          .btn-mute, .btn-camera {
-            width: 32px;
-            height: 32px;
-            border-radius: 4px;
-            background-color: rgba(0,15,47,0.5);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 16px;
-            border: none;
-          }
-          
-          .btn-mute {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-mic-off' viewBox='0 0 24 24'%3E%3Cpath d='M1 1l22 22M9 9v3a3 3 0 005.12 2.12M15 9.34V4a3 3 0 00-5.94-.6'/%3E%3Cpath d='M17 16.95A7 7 0 015 12v-2m14 0v2a7 7 0 01-.11 1.23M12 19v4M8 23h8'/%3E%3C/svg%3E%0A");
-            margin-right: 4px;
-          }
-          
-          .btn-camera {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-camera-off' viewBox='0 0 24 24'%3E%3Cpath d='M1 1l22 22M21 21H3a2 2 0 01-2-2V8a2 2 0 012-2h3m3-3h6l2 3h4a2 2 0 012 2v9.34m-7.72-2.06a4 4 0 11-5.56-5.56'/%3E%3C/svg%3E%0A");
-          }
-          
-          .video-call-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 64px;
-            max-width: 500px;
-          }
-          
-          .video-action-button {
-            background-repeat: no-repeat;
-            background-size: 24px;
-            border: none;
-            height: 48px;
-            margin: 0 8px;
-            box-shadow: var(--navigation-box-shadow);
-            border-radius: 8px;
-            width: 48px;
-            cursor: pointer;
-            outline: none;
-            background-color: var(--button-bg);
-            
-            &.mic {
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232c303a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-mic-off' viewBox='0 0 24 24'%3E%3Cpath d='M1 1l22 22M9 9v3a3 3 0 005.12 2.12M15 9.34V4a3 3 0 00-5.94-.6'/%3E%3Cpath d='M17 16.95A7 7 0 015 12v-2m14 0v2a7 7 0 01-.11 1.23M12 19v4M8 23h8'/%3E%3C/svg%3E%0A");
-              background-position: center;
-            }
-            
-            &.camera {
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232c303a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-camera-off' viewBox='0 0 24 24'%3E%3Cpath d='M1 1l22 22M21 21H3a2 2 0 01-2-2V8a2 2 0 012-2h3m3-3h6l2 3h4a2 2 0 012 2v9.34m-7.72-2.06a4 4 0 11-5.56-5.56'/%3E%3C/svg%3E%0A");
-              background-position: center;
-            }
-            
-            &.maximize {
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232c303a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-maximize' viewBox='0 0 24 24'%3E%3Cpath d='M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3'/%3E%3C/svg%3E%0A");
-              background-position: center;
-            }
-            
-            &.endcall {
-              color: #ff1932;
-              width: auto;
-              font-size: 14px;
-              padding-left: 42px;
-              padding-right: 12px;
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff1932' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-phone-missed'%3E%3Cline x1='23' y1='1' x2='17' y2='7'/%3E%3Cline x1='17' y1='1' x2='23' y2='7'/%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E");
-              background-size: 20px;
-              background-position: center left 12px;
-            }
-            
-            &.magnifier {
-              padding: 0 12px;
-              display: flex;
-              align-items: center;
-              width: auto;
-              flex-grow: 0;
-              color: #2c303a;
-              
-              svg {
-                width: 20px;
-                flex-shrink: 0;
-              }
-              
-              span {
-                display: block;
-                margin: 0 16px;
-              }
-            }
-          }
-          
-          .participants {
-            display: flex;
-            background-color: var(--button-bg);
-            box-shadow: var(--navigation-box-shadow);
-            margin-top: 16px;
-            padding: 12px;
-            border-radius: 8px;
-            max-width: 232px;
-            margin-left: auto;
-          }
-          
-          .participant-more {
-            background-color: #e1e0e1;
-            font-size: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #636181;
-            font-weight: 700;
-            border-radius: 8px;
-            min-width: 32px;
-          }
-          
-          .mode-switch  {
-            z-index: 1;
-            position: absolute;
-            top: 20px;
-            left: 36px;
-            background-color: var(--chat-background);
-            border: none;
-            color: #ddd;
-            outline: none;
-            cursor: pointer;
-            box-shadow: var(--navigation-box-shadow);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 36px;
-            height: 36px;
-            transform-origin: center;
-            
-            svg {
-              width:0;
-              height: 24px;
-              transition: all .3s ease-in;
-              transform-origin: center;
-            }
-            
-            .moon { opacity: 0; }
-            .sun { width: 24px; }
-          }
-          
-          .dark .moon {
-            opacity: 1;
-            width: 24px;
-          }
-          
-          .dark .sun {
-            opacity: 0;
-            width: 0;
-          }
-          
-          .expand-btn {
-            position: absolute;
-            right: 32px;
-            top: 24px;
-            border: none;
-            background-color: var(--chat-background);
-            border-radius: 4px;
-            padding: none;
-            color: var(--message-text);
-            width: 40px;
-            height: 40px;
-            justify-content: center;
-            align-items: center;
-            
-            display: none;
-            
-            &.show {
-              display: flex;
-            }
-          }
-          
-          .btn-close-right {
-            border: none;
-            background-color: transparent;
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            color: var(--light-font);
-            outline: none;
-            cursor: pointer;
-            
-            display: none;
-          }
-          
-          @media screen and (max-width: 900px) {
-            .expand-btn {
-              display: block;
-            }
-            
-            .right-side {
-              position: absolute;
-              right: 0px;
-              background-color: var(--chat-background);
-              transform: translateX(100%);
-              z-index: 2;
-              width: 100%;
-              
-              &.show {
-                transform: translateX(0);
-              }
-            }
-            
-            .btn-close-right {
-              display: block;
-            }
-          }
-          
-          @media screen and (max-width: 520px) {
-            .left-side {
-              display: none;
-            }
-            
-            .app-main {
-              padding: 72px 16px 16px 16px;
-            }
-            
-            .expand-btn {
-              right: 16px;
-            }
-            
-            .mode-switch {
-              left: 16px;
-            }
-            
-            .video-call-actions {
-              padding-top: 32px;
-            }
-            
-            .video-action-button {
-              width: 32px;
-              height: 32px;
-              background-size: 14px;
-              margin: 0 4px;
-            }
-            
-            .video-action-button.endcall {
-              background-size: 14px;
-              font-size: 12px;
-              padding-left: 36px;
-            }
-            
-            .video-action-button.magnifier svg {
-              width: 14px;
-            }
-            
-            .video-action-button.magnifier span {
-              margin: 0 4px;
-              font-size: 12px;
-            }
-          }
-          
-          @media screen and (max-width: 520px) and (max-height: 720px) {
-            .video-participant {
-              width: 50%;
-              height: 33.3%;
-            }
-          }
-        </style> -->
-    </div>
 
     <section class="services">
       <div class="service">
-        <img src="./icon-compas.svg" alt="Sur Mesure" class="icon" />
+        <img src="./icons/icon-compas.svg" alt="Sur Mesure" class="icon" />
         <h3>SUR MESURE</h3>
         <p>
           Nous allons bien au-delà de la simple création d’un site qui convertit. Nous concevons un
@@ -926,7 +600,7 @@
         </p>
       </div>
       <div class="service">
-        <img src="./icon-keys.svg" alt="Clé en Main" class="icon" />
+        <img src="./icons/icon-keys.svg" alt="Clé en Main" class="icon" />
         <h3>CLÉ EN MAIN</h3>
         <p>
           Nous concevons votre site pour que vous puissiez le gérer facilement, en toute autonomie.
@@ -934,7 +608,7 @@
         </p>
       </div>
       <div class="service">
-        <img src="./icon-horse.svg" alt="Stratégie" class="icon" />
+        <img src="./icons/icon-horse.svg" alt="Stratégie" class="icon" />
         <h3>STRATÉGIQUE</h3>
         <p>
           On est là pour vous accompagner. On vous aide à prendre les meilleures décisions pour que
@@ -1156,15 +830,15 @@
     <section class="expertise-section">
       <div class="expertise-section__item expertise-section__item--green">
         <div class="expertise-section__item-icon">
-          <img src="./folder-green.png" alt="Shopify & Webflow Folder Icon" />
+          <img src="./images/folder-green.png" alt="Shopify & Webflow Folder Icon" />
           <p>Développement Shopify/Liquid</p>
         </div>
         <div class="expertise-section__item-icon">
-          <img src="./folder-green.png" alt="Landing Page Folder Icon" />
+          <img src="./images/folder-green.png" alt="Landing Page Folder Icon" />
           <p>Création de <br />Landing Pages</p>
         </div>
         <div class="expertise-section__item-icon" style="margin-top: -100px">
-          <img src="./folder-green.png" alt="Web Redesign Folder Icon" />
+          <img src="./images/folder-green.png" alt="Web Redesign Folder Icon" />
           <p>Refonte de site web</p>
         </div>
       </div>
@@ -1226,17 +900,17 @@
 
       <div class="expertise-section__item expertise-section__item--purple">
         <div class="expertise-section__item-icon">
-          <img src="./folder-vio.png" alt="Branding Folder Icon" />
+          <img src="./images/folder-vio.png" alt="Branding Folder Icon" />
           <p>Branding et identité visuelle</p>
         </div>
       </div>
       <div class="expertise-section__item expertise-section__item--blue">
         <div class="expertise-section__item-icon">
-          <img src="./folder-bleu.png" alt="Web Maintenance Folder Icon" />
+          <img src="./images/folder-bleu.png" alt="Web Maintenance Folder Icon" />
           <p>Maintenance web</p>
         </div>
         <div class="expertise-section__item-icon">
-          <img src="./folder-bleu.png" alt="CRO Folder Icon" />
+          <img src="./images/folder-bleu.png" alt="CRO Folder Icon" />
           <p>A/B test CRO</p>
         </div>
       </div>
@@ -1247,17 +921,17 @@
       </div>
       <div class="expertise-section__item expertise-section__item--yellow">
         <div class="expertise-section__item-icon">
-          <img src="./folder-jaune.png" alt="CRO Audit Folder Icon" />
+          <img src="./images/folder-jaune.png" alt="CRO Audit Folder Icon" />
           <p>Audit CRO</p>
         </div>
         <div class="expertise-section__item-icon">
-          <img src="./folder-jaune.png" alt="UI/UX Audit Folder Icon" />
+          <img src="./images/folder-jaune.png" alt="UI/UX Audit Folder Icon" />
           <p>Audit UI/UX</p>
         </div>
       </div>
       <div class="expertise-section__item expertise-section__item--red">
         <div class="expertise-section__item-icon">
-          <img src="./folder-rouge.png" alt="Strategic Consulting Folder Icon" />
+          <img src="./images/folder-rouge.png" alt="Strategic Consulting Folder Icon" />
           <p>Consulting<br />stratégique</p>
         </div>
       </div>
@@ -1560,7 +1234,6 @@
       }
     </style>
 
-
     <div style="height: 100px; width: 100%"></div>
 
     <div style="width: 100%; display: flex; justify-content: center">
@@ -1583,17 +1256,17 @@
         width: 95%;
       ">
       <div id="div-img-qui-sommes">
-        <img src="./qui-sommes-nous.png" />
+        <img src="./images/qui-sommes-nous.png" />
         <div class="logos">
           <div class="logos-slide">
-            <img src="./logo shopify CRO.png" />
-            <img src="./Logo Hotjar CRO.png" />
-            <img src="./Logo cal.com CRO.png" />
-            <img src="./Logo G suite CRO.png" />
-            <img src="./Logo stripe CRO.png" />
-            <img src="./Logo trello CRO.png" />
-            <img src="./Logo VWO CRO.png" />
-            <img src="./Logo webflow CRO.png" />
+            <img src="./images/logo shopify CRO.png" />
+            <img src="./images/Logo Hotjar CRO.png" />
+            <img src="./images/Logo cal.com CRO.png" />
+            <img src="./images/Logo G suite CRO.png" />
+            <img src="./images/Logo stripe CRO.png" />
+            <img src="./images/Logo trello CRO.png" />
+            <img src="./images/Logo VWO CRO.png" />
+            <img src="./images/Logo webflow CRO.png" />
           </div>
         </div>
 
@@ -1737,13 +1410,15 @@
           <div class="carte-div-droite">
             <div class="avis-client-real">
               <div class="avis-gauche">
-                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de emilie.png" />
+                <img
+                  style="max-width: 100%; border-radius: 0.5rem"
+                  src="./images/photo de emilie.png" />
               </div>
               <div class="avis-droit">
                 <h4>Emilie</h4>
                 <p>Fondatrice de Crochetmilie</p>
                 <div class="etoile-avis">
-                  <img src="./etoile-avis-real.svg" />
+                  <img src="./icons/etoile-avis-real.svg" />
                 </div>
               </div>
             </div>
@@ -1790,7 +1465,7 @@
           <div class="carte-div-gauche">
             <img
               style="max-width: calc(100% - 20px); padding-left: 20px"
-              src="./carte-real-crochetmilie.png" />
+              src="./images/carte-real-crochetmilie.png" />
             <div class="texte-carte-gauche">
               <div>
                 <h3 style="margin-bottom: 10px !important; margin-top: 30px">
@@ -1821,13 +1496,15 @@
           <div class="carte-div-droite">
             <div class="avis-client-real">
               <div class="avis-gauche">
-                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de emmanuel.png" />
+                <img
+                  style="max-width: 100%; border-radius: 0.5rem"
+                  src="./images/photo de emmanuel.png" />
               </div>
               <div class="avis-droit">
                 <h4>Emmanuel</h4>
                 <p>Fondateur de Arico</p>
                 <div class="etoile-avis">
-                  <img src="./etoile-avis-real.svg" />
+                  <img src="./icons/etoile-avis-real.svg" />
                 </div>
               </div>
             </div>
@@ -1864,19 +1541,22 @@
           <div class="carte-div-gauche">
             <img
               style="max-width: calc(100% - 20px); padding-left: 20px"
-              src="./carte-real-arico.png" />
+              src="./images/carte-real-arico.png" />
             <div class="texte-carte-gauche">
               <div>
                 <h3 style="margin-bottom: 10px !important; margin-top: 30px">
                   Refonte complète + Optimisation CRO
                 </h3>
                 <p>
-                  L'objectif pour ARICO était clair: multiplier le nombre de produits par 4! Pour y parvenir, une refonte complète et, surtout, une navigation optimisée pour améliorer l'expérience client s'imposait. Nous avons décidé de tout repenser à partir de zéro, et aujourd’hui, les résultats parlent d’eux-mêmes.
+                  L'objectif pour ARICO était clair: multiplier le nombre de produits par 4! Pour y
+                  parvenir, une refonte complète et, surtout, une navigation optimisée pour
+                  améliorer l'expérience client s'imposait. Nous avons décidé de tout repenser à
+                  partir de zéro, et aujourd’hui, les résultats parlent d’eux-mêmes.
                 </p>
               </div>
               <button
                 class="button"
-                style="background-color: #077bff; color: black; padding-bottom: 10px"
+                style="background-color: #077bff; color: white; padding-bottom: 10px"
                 onclick="location.href='./Realisations/Arico.html';">
                 Voir le projet en details
               </button>
@@ -1890,13 +1570,15 @@
           <div class="carte-div-droite">
             <div class="avis-client-real">
               <div class="avis-gauche">
-                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de nicolas.png" />
+                <img
+                  style="max-width: 100%; border-radius: 0.5rem"
+                  src="./images/photo de nicolas.png" />
               </div>
               <div class="avis-droit">
                 <h4>Nicolas</h4>
                 <p>Fondateur de MTLbboard</p>
                 <div class="etoile-avis">
-                  <img src="./etoile-avis-real.svg" />
+                  <img src="./icons/etoile-avis-real.svg" />
                 </div>
               </div>
             </div>
@@ -1939,7 +1621,7 @@
           <div class="carte-div-gauche">
             <img
               style="max-width: calc(100% - 20px); padding-left: 20px"
-              src="./carte-real-mtlbboard.png" />
+              src="./images/carte-real-mtlbboard.png" />
             <div class="texte-carte-gauche">
               <div>
                 <h3 style="margin-bottom: 10px !important; margin-top: 30px">Refonte complète</h3>
@@ -1966,13 +1648,15 @@
           <div class="carte-div-droite">
             <div class="avis-client-real">
               <div class="avis-gauche">
-                <img style="max-width: 100%; border-radius: 0.5rem" src="./photo de Fredrik.png" />
+                <img
+                  style="max-width: 100%; border-radius: 0.5rem"
+                  src="./images/photo de Fredrik.png" />
               </div>
               <div class="avis-droit">
                 <h4>Fredrik</h4>
                 <p>Co-Fondateur de Colourwear</p>
                 <div class="etoile-avis">
-                  <img src="./etoile-avis-real.svg" />
+                  <img src="./icons/etoile-avis-real.svg" />
                 </div>
               </div>
             </div>
@@ -2018,7 +1702,7 @@
           <div class="carte-div-gauche">
             <img
               style="max-width: calc(100% - 20px); padding-left: 20px"
-              src="./carte-real-colourwear.png" />
+              src="./images/carte-real-colourwear.png" />
             <div class="texte-carte-gauche">
               <div>
                 <h3 style="margin-bottom: 10px !important; margin-top: 30px">
@@ -2050,13 +1734,13 @@
               <div class="avis-gauche">
                 <img
                   style="max-width: 100%; border-radius: 0.5rem"
-                  src="./photo de Ekaterina.png" />
+                  src="./images/photo de Ekaterina.png" />
               </div>
               <div class="avis-droit">
                 <h4>Ekaterina</h4>
                 <p>Fondatrice de Volzhenka</p>
                 <div class="etoile-avis">
-                  <img src="./etoile-avis-real.svg" />
+                  <img src="./icons/etoile-avis-real.svg" />
                 </div>
               </div>
             </div>
@@ -2102,7 +1786,7 @@
           <div class="carte-div-gauche">
             <img
               style="max-width: calc(100% - 20px); padding-left: 20px"
-              src="./carte-real-volzhenka.png" />
+              src="./images/carte-real-volzhenka.png" />
             <div class="texte-carte-gauche">
               <div>
                 <h3 style="margin-bottom: 10px !important; margin-top: 30px">Refonte complète</h3>
@@ -2134,17 +1818,17 @@
         margin: auto;
         width: calc(95% - 10px);
         max-width: 1000px;
-        background-color: #1A1A1A;
+        background-color: #1a1a1a;
         border-radius: 1rem;
         display: flex;
         flex-wrap: wrap;
         padding: 20px;
         border: 3px solid #404040;
       }
-      .etoile-avis>img{
+      .etoile-avis > img {
         filter: invert();
       }
-      .carte-real>*{
+      .carte-real > * {
         color: white;
       }
       .carte-div-gauche {
@@ -2375,70 +2059,70 @@
             messages: [
               "Arthur et son équipe ont été une véritable trouvaille pour notre entreprise lors de la mise à jour de notre site web, notamment notre boutique en ligne. Nous avions besoin de quelqu'un de disponible et fiable, capable de nous guider et de nous conseiller. Et nous avons trouvé la perle rare ! Il se montre à l'écoute, incroyablement réactif et extrêmement compétent. La vraie paix d'esprit ! Nous continuons désormais à travailler ensemble pour la maintenance du site et pour des projets annexes comme les courriels automatisés. C'est un partenaire précieux pour notre croissance en ligne.",
             ],
-            imagePath: "./1.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/1.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Gabrielle Gagnon",
             messages: [
               "Un immense merci à Arthur de LEC MEDIA pour son travail incroyable ! Arthur, tu es non seulement extrêmement aimable et agréable à travailler avec, mais tu fournis aussi un accompagnement de qualité qui dépasse mes attentes. Chaque conseil et stratégie que tu mets en place est réfléchi, innovant et parfaitement aligné avec nos objectifs. Ta capacité à créer des interactions authentiques avec notre audience est remarquable. Ce n'est pas seulement ton savoir-faire qui nous impressionne, mais aussi ta manière de travailler : toujours avec le sourire, une écoute attentive et une réelle compréhension de nos besoins. On sent que tu mets du cœur dans ce que tu fais, et ça se voit dans les résultats.",
             ],
-            imagePath: "./2.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/2.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Jason Ayoub",
             messages: [
               "Votre agence a transformé notre activité en passant d'aucune présence en ligne à plus de 300k$ cette année. C'est un défi énorme d'avoir accepté nos objectifs et ils ont réussi, merci !",
             ],
-            imagePath: "./3.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/3.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Nicolas Loiselle",
             messages: [
               "Ayant eu une mauvaise expérience avec une agence dans le passé, j'avais quelques appréhensions en recevant une proposition de la part de Lëc Média. Cependant, au fil du temps, Arthur a su me rassurer et dans l'ensemble mon expérience a été plus que satisfaisante. Un grand merci à toute l'équipe pour leur travail!",
             ],
-            imagePath: "./11.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/11.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Marc-André Bélanger",
             messages: [
               "Lëc Média m'a été recommandé par un ami pour optimiser mon site e-commerce, et je dois dire que je ne regrette pas d'avoir fait appel à eux. L’équipe a pris le temps de comprendre mes besoins et de me guider à travers les différentes étapes de l'optimisation. Les résultats ne sont peut-être pas fulgurants, mais je vois une amélioration constante dans mes performances en ligne. Si vous recherchez une équipe compétente et attentive, Lëc Média est un bon choix.",
             ],
-            imagePath: "./4.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/4.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Bodyfence",
             messages: [
               "Après avoir été déçu par le travail de deux freelances, j'ai décidé de faire appel à Lëc Média. L'équipe a pris le temps d'analyser ma boutique pendant plusieurs mois afin de répondre à mes exigences. Collaborer avec eux a été un véritable plaisir, et je continue de solliciter leur expertise pour maintenir ma boutique au fait des nouvelles tendances.",
             ],
-            imagePath: "./5.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/5.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Columbus",
             messages: [
               "Je suis content d'avoir choisi Lëc Média pour m'aider à optimiser ma boutique e-commerce. Arthur a été professionnel et disponible tout au long du processus. J'ai remarqué une grande amélioration dans mes ventes depuis que nous avons commencé à travailler ensemble. Merci l’équipe!",
             ],
-            imagePath: "./6.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/6.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Colourwear",
             messages: [
               "J'ai été agréablement surprise par l'approche humaine et l'accompagnement personnalisé que j'ai reçus de la part de Lëc Média. Travailler avec Arthur et son équipe a été une expérience vraiment enrichissante. Ils ont pris le temps de comprendre mes besoins et mes objectifs, et ont élaboré une stratégie sur mesure pour ma boutique. Ce que j'ai particulièrement apprécié, c'est la disponibilité d'Arthur et son écoute attentive à chaque étape du processus.Je recommande vivement Lëc Média à tous ceux qui recherchent un suivi humain.",
             ],
-            imagePath: "./7.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/7.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "HEXIS",
             messages: [
               "Lëc Média a été un partenaire précieux dans l'optimisation de mon site e-commerce. Arthur et son équipe ont fait preuve de compétence et de sérieux tout au long du processus. Leurs recommandations ont été utiles pour améliorer la visibilité de ma boutique en ligne. Très satisfait dans l’ensemble.",
             ],
-            imagePath: "./8.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/8.png", // Assurez-vous que ce chemin est correct
           },
           {
             name: "Votre avis",
             messages: [
               "Laissez-nous votre avis par email : info@lec-media.agency. Nous avons peut-être une surprise pour vous.",
             ],
-            imagePath: "./9.png", // Assurez-vous que ce chemin est correct
+            imagePath: "./images/9.png", // Assurez-vous que ce chemin est correct
           },
           // Vous pouvez ajouter d'autres contacts ici avec leur propre tableau de messages.
         ];
@@ -3032,12 +2716,12 @@
         style="display: flex; justify-content: space-evenly; flex-wrap: wrap; align-items: center">
         <a href="https://www.designrush.com/agency/conversion-optimization/trends" target="_blank">
           <img
-            src="./Services d'optimisation des taux de conversion - 2025.png"
+            src="./images/Services d'optimisation des taux de conversion - 2025.png"
             alt="CRO"
             style="max-width: 120px" />
         </a>
-        <img src="./shopify-partner-expertime.png" alt="Shopify Partner" />
-        <img src="./ShopifyPlusPartner.webp" alt="Shopify Partner" />
+        <img src="./images/shopify-partner-expertime.png" alt="Shopify Partner" />
+        <img src="./images/ShopifyPlusPartner.webp" alt="Shopify Partner" />
         <div
           style="transform: scale(0.8)"
           id="badges-container"
@@ -3077,7 +2761,10 @@
     <footer>
       <div class="parent3">
         <div class="div13">
-          <img src="./logo-lec-media-blanc.png" alt="logo lec media agency" style="height: 60px" />
+          <img
+            src="./images/logo-lec-media-blanc.png"
+            alt="logo lec media agency"
+            style="height: 60px" />
         </div>
         <div class="div23">
           Depuis 2022, nous aidons les e-commerçants à doubler leur chiffre d'affaires mensuel.

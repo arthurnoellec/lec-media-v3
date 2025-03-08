@@ -1,0 +1,92 @@
+---
+// Méthode 2: Importation dynamique avec l'API d'importation d'Astro
+// Utile pour importer plusieurs fichiers d'un même dossier
+const partenaireLogos = await Astro.glob("../../../partenaire/*.{png,jpg,svg}");
+---
+
+<section class="client-logos">
+  <div class="section-header">
+    <h2>Ils nous ont fait <span class="gradient-text">confiance</span></h2>
+  </div>
+
+  <div class="logos">
+    <div class="logos-slide">
+      {
+        partenaireLogos.map((logo) => (
+          <img src={logo.default.src} alt={logo.default.src.split("/").pop().split(".")[0]} />
+        ))
+      }
+    </div>
+  </div>
+
+  <script>
+    const logosSlide = document.querySelector(".logos-slide");
+    if (logosSlide) {
+      var copy = logosSlide.cloneNode(true);
+      const logosContainer = document.querySelector(".logos");
+      if (logosContainer) {
+        logosContainer.appendChild(copy);
+      }
+    }
+  </script>
+</section>
+
+<style>
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .logos {
+    overflow: hidden;
+    padding: 20px 0;
+    white-space: nowrap;
+    position: relative;
+    background-color: var(--surface-light);
+    border-radius: var(--radius-lg);
+  }
+
+  .logos:before,
+  .logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+  }
+
+  .logos:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), #161616);
+    border-radius: var(--radius-lg);
+  }
+
+  .logos:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #161616);
+    border-radius: var(--radius-lg);
+  }
+
+
+  .logos-slide {
+    display: inline-block;
+    animation: 80s slide infinite linear;
+    padding: 20px 0px;
+    margin-right: 20px;
+    gap: 30px;
+  }
+
+  .logos-slide img {
+    height: 90px;
+    margin: 0 20px;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 20px 30px;
+    border: 1px solid var(--border);
+  }
+</style>

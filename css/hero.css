@@ -24,7 +24,7 @@
   font-size: xxx-large;
   color: #fcfcff;
   text-transform: uppercase;
-  background-color: rgb(47 86 223 / 37%);
+  background-color: rgba(8, 247, 145, 0.5);
   /* blue background for the highlight */
   padding: 0.1em 0.2em;
   /* adjust padding to control the spacing */
@@ -70,9 +70,9 @@
   width: 20px;
   /* Width of the stick */
   height: 100%;
-  transform: translate(-85%, -50%) scale(0.9);
+  transform: translate(-95%, -56%) scale(0.9);
   /* Adjusts the position to before the element */
-  background: url("../stick\ top.png") no-repeat center center;
+  background: url("../images/stick\ top.png") no-repeat center center;
 }
 
 .hl2::after {
@@ -86,7 +86,7 @@
   height: 100%;
   transform: translate(90%, -50%) scale(0.9);
   /* Adjusts the position to after the element */
-  background: url("../stick\ bottom.png") no-repeat center center;
+  background: url("../images/stick\ bottom.png") no-repeat center center;
 }
 
 .Hero_header_gauche {

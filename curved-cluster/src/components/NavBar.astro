@@ -1,0 +1,536 @@
+---
+// src/components/NavBar.astro
+---
+
+<nav class="navbar">
+  <div class="nav-menu">
+    <div class="nav-left">
+      <div class="nav-item">
+        <div class="nav-link" data-dropdown="services">Services</div>
+        <div class="dropdown" id="services-dropdown">
+          <a href="/services/cro" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20.24 12.24a6 6 0 0 1-8.49 8.49 6 6 0 1 1 8.49-8.49z"></path>
+              <path d="M8 14H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">CRO</div>
+              <div class="dropdown-description">Optimisez vos conversions</div>
+            </div>
+          </a>
+          <a href="/services/shopify-creation" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Création site Shopify</div>
+              <div class="dropdown-description">Développement de boutique en ligne</div>
+            </div>
+          </a>
+          <a href="/services/shopify-refonte" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+              ></path>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Refonte Shopify</div>
+              <div class="dropdown-description">Modernisation de votre boutique</div>
+            </div>
+          </a>
+          <a href="/services/formation" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 11v5"></path>
+              <path d="M9 18h6"></path>
+              <path d="m10 8 2-2 2 2"></path>
+              <circle cx="12" cy="5" r="3"></circle>
+              <path d="M3 22h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"
+              ></path>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Formation en entreprise</div>
+              <div class="dropdown-description">Cours Shopify personnalisés</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <div class="nav-link" data-dropdown="cases">Cas d'usage</div>
+        <div class="dropdown" id="cases-dropdown">
+          <a href="/cas-usage/b2b" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">B2B</div>
+              <div class="dropdown-description">Solutions professionnelles</div>
+            </div>
+          </a>
+          <a href="/cas-usage/b2c" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="7" y1="12" x2="17" y2="12"></line>
+              <line x1="12" y1="7" x2="12" y2="17"></line>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">B2C</div>
+              <div class="dropdown-description">Solutions grand public</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <div class="nav-link" data-dropdown="blog">Blog</div>
+        <div class="dropdown" id="blog-dropdown">
+          <a href="/blog" class="dropdown-item">
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <div class="dropdown-content">
+              <div class="dropdown-title">Articles</div>
+              <div class="dropdown-description">Nos dernières publications</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a href="/" class="logo">
+      <img src="../../public/logo-lec-media-blanc.png" alt="LEC Media Logo" />
+    </a>
+
+    <div class="nav-right">
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round">
+            <svg
+              class="sun-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg
+              class="moon-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </div>
+        </label>
+      </div>
+
+      <a href="/contact" class="contact-btn">
+        <span>Nous contacter</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 32rem;
+    max-width: 1200px;
+    transition: background-color 0.3s ease;
+  }
+
+  [data-theme="light"] .navbar {
+    background-color: rgba(240, 240, 240, 0.8);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-left {
+    display: flex;
+    width: 30%;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .logo img {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition:
+      color 0.3s,
+      background-color 0.3s;
+    cursor: pointer;
+  }
+
+  [data-theme="light"] .nav-link {
+    color: #555;
+  }
+
+  .nav-link:hover {
+    color: #4ca6ff;
+  }
+
+  .nav-link.active {
+    color: #4ca6ff;
+    background-color: rgba(76, 166, 255, 0.1);
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2a2a2a;
+    min-width: 250px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+  }
+
+  [data-theme="light"] .dropdown {
+    background-color: #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .dropdown.show {
+    display: block;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: background-color 0.3s;
+  }
+
+  [data-theme="light"] .dropdown-item {
+    color: #333;
+  }
+
+  .dropdown-item:hover {
+    background-color: rgba(76, 166, 255, 0.1);
+  }
+
+  .dropdown-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    stroke: #4ca6ff;
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .dropdown-title {
+    color: #4ca6ff;
+    font-weight: 600;
+    margin-bottom: 3px;
+    font-size: 0.9rem;
+  }
+
+  .dropdown-description {
+    color: #a0a0a0;
+    font-size: 0.7rem;
+  }
+
+  [data-theme="light"] .dropdown-description {
+    color: #666;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 30%;
+    justify-content: end;
+  }
+
+  .contact-btn {
+    background-color: #02f791;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-btn:hover {
+    background-color: #1e4bff;
+  }
+
+  .contact-btn svg {
+    stroke: rgb(0, 0, 0);
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Theme Switch Styles */
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #333;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+  }
+
+  [data-theme="light"] .slider {
+    background-color: #f0f0f0;
+  }
+
+  .slider:before {
+    background-color: #1fbe7c;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s;
+    width: 26px;
+    z-index: 2;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .sun-icon,
+  .moon-icon {
+    width: 16px;
+    height: 16px;
+    color: #fff;
+    z-index: 1;
+  }
+
+  [data-theme="light"] .sun-icon {
+    color: #f39c12;
+  }
+
+  [data-theme="light"] .moon-icon {
+    color: #555;
+  }
+
+  .sun-icon {
+    margin-left: 5px;
+  }
+
+  .moon-icon {
+    margin-right: 5px;
+  }
+
+  /* Media Queries pour la responsivité */
+  @media (max-width: 992px) {
+    .navbar {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      width: 95%;
+      border-radius: 16px;
+      margin-top: 10px;
+    }
+
+    .nav-menu {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .nav-left {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .nav-right {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .dropdown {
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 280px;
+    }
+  }
+</style>
+
+<script>
+  // Gestion des dropdowns
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".nav-link[data-dropdown]");
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const dropdownId = `${link.getAttribute("data-dropdown")}-dropdown`;
+        const dropdown = document.getElementById(dropdownId);
+
+        // Ferme tous les autres dropdowns
+        document.querySelectorAll(".dropdown").forEach((d) => {
+          if (d.id !== dropdownId) {
+            d.classList.remove("show");
+          }
+        });
+
+        // Toggle le dropdown actuel
+        dropdown.classList.toggle("show");
+        e.stopPropagation();
+      });
+    });
+
+    // Ferme les dropdowns quand on clique ailleurs
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.classList.remove("show");
+      });
+    });
+
+    // Empêche la fermeture quand on clique sur le dropdown lui-même
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
+      dropdown.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    });
+
+    // Gestion du thème sombre/clair
+    const themeSwitch = document.getElementById("checkbox");
+
+    // Vérifie si un thème est enregistré dans localStorage
+    const currentTheme = localStorage.getItem("theme") || "dark";
+
+    // Applique le thème initial
+    document.documentElement.setAttribute("data-theme", currentTheme);
+
+    // Met à jour l'état du switch selon le thème
+    if (currentTheme === "light") {
+      themeSwitch.checked = true;
+    }
+
+    // Écoute les changements du switch
+    themeSwitch.addEventListener("change", function () {
+      if (this.checked) {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+      }
+    });
+  });
+</script>

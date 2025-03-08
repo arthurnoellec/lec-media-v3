@@ -1,0 +1,397 @@
+---
+// Hero.astro
+
+import baskets from '../assets/baskets.png';
+import casquette from '../assets/casquette.png';
+import tshirt from '../assets/t-shirt.png';
+---
+
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>
+      Votre Boutique <span class="gradient-text">Shopify</span> Clé en Main
+    </h1>
+
+    <p class="hero-subtitle">
+      Transformez votre passion en business en ligne avec une boutique Shopify professionnelle, 
+      entièrement personnalisée et optimisée pour maximiser vos ventes.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#forfaits" class="btn btn-primary btn-lg">Découvrir nos forfaits</a>
+      <a href="#contact" class="btn btn-secondary btn-lg">Consultation gratuite</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">+50</span>
+        <span class="stat-label">boutiques créées</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">+1M€</span>
+        <span class="stat-label">de chiffre d'affaires généré</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">satisfaction clients</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="bento-box main-box">
+      <div class="product-grid">
+        <div class="product-item">
+          <img src={tshirt.src} alt="T-shirt" />
+          <div class="product-details">
+            <span class="product-name">T-shirt</span>
+            <span class="product-price">29.90€</span>
+          </div>
+        </div>
+        <div class="product-item">
+          <img src={baskets.src} alt="Sneakers" />
+          <div class="product-details">
+            <span class="product-name">Sneakers</span>
+            <span class="product-price">89.00€</span>
+          </div>
+        </div>
+        <div class="product-item">
+          <img src={casquette.src} alt="Casquette" />
+          <div class="product-details">
+            <span class="product-name">Casquette</span>
+            <span class="product-price">45.50€</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-box accent-box">
+      <div class="pulse-circle"></div>
+      <span class="box-text">Design Personnalisé</span>
+    </div>
+    <div class="bento-box data-box">
+      <div class="data-item">
+        <div class="data-icon">🛍️</div>
+        <div class="data-text">
+          <span class="data-label">Conversion</span>
+          <span class="data-value">3.6%</span>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-icon">💳</div>
+        <div class="data-text">
+          <span class="data-label">Panier Moyen</span>
+          <span class="data-value">65€</span>
+        </div>
+      </div>
+      <div class="data-item">
+        <div class="data-icon">🌐</div>
+        <div class="data-text">
+          <span class="data-label">Visites/Mois</span>
+          <span class="data-value">5 000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    min-height: calc(100vh - 80px);
+    padding-top: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .hero-image {
+    position: relative;
+    height: 600px;
+  }
+
+  .bento-box {
+    position: absolute;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition);
+  }
+
+  .bento-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(57, 255, 20, 0.15);
+    border-color: var(--accent);
+  }
+
+  .main-box {
+    width: 80%;
+    height: 70%;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .product-item {
+    background-color: var(--surface-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .product-item:hover {
+    transform: scale(1.05);
+  }
+
+  .product-item img {
+    width: 50px;
+    object-fit: cover;
+  }
+
+  .product-details {
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 5px;
+  }
+
+  .product-price {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .accent-box {
+    width: 40%;
+    height: 180px;
+    bottom: 40px;
+    left: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--surface-light);
+  }
+
+  .data-box {
+    width: 50%;
+    bottom: 70px;
+    right: 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--surface-light);
+  }
+
+  .pulse-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(57, 255, 20, 0.2);
+    position: relative;
+  }
+
+  @keyframes heroCirclePulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(57, 255, 20, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(57, 255, 20, 0);
+    }
+  }
+
+  .pulse-circle::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+    animation: heroCirclePulse 2s infinite;
+  }
+
+  .box-text {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .data-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .data-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+  }
+
+  .data-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .data-value {
+    display: block;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 992px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero-image {
+      height: 500px;
+      order: -1;
+    }
+
+    .accent-box {
+      height: 130px;
+    }
+
+    .pulse-circle::after {
+      width: 20px;
+      height: 20px;
+    }
+
+    .pulse-circle {
+      width: 30px;
+      height: 30px;
+    }
+
+    .main-box {
+      width: 100% !important;
+      height: 50% !important;
+    }
+
+    .product-item img {
+      height: 120px;
+    }
+
+    .data-item:nth-child(3) {
+      display: none;
+    }
+
+    .hero-image {
+      height: 340px;
+    }
+
+    .accent-box {
+      bottom: 60px;
+      left: -10px;
+    }
+
+    .data-box {
+      right: -10px;
+      bottom: 25px;
+      width: 70%;
+    }
+
+    .box-text {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

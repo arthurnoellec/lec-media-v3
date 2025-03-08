@@ -1,0 +1,271 @@
+---
+---
+
+<section id="contact" class="cta-section">
+    <div class="cta-content">
+      <h2>Prêt à <span class="gradient-text">booster</span> vos conversions ?</h2>
+      <p>Planifiez une consultation gratuite avec nos experts CRO et découvrez comment notre abonnement peut transformer votre e-commerce.</p>
+      
+      <form class="cta-form">
+        <div class="form-group">
+          <input type="text" placeholder="Nom" required />
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email professionnel" required />
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Téléphone" />
+        </div>
+        <div class="form-group">
+          <input type="url" placeholder="URL de votre site" required />
+        </div>
+        <div class="form-group full-width">
+          <select required>
+            <option value="" disabled selected>Chiffre d'affaires mensuel</option>
+            <option value="moins-10k">Moins de 10K€</option>
+            <option value="10k-50k">10K€ - 50K€</option>
+            <option value="50k-100k">50K€ - 100K€</option>
+            <option value="100k-500k">100K€ - 500K€</option>
+            <option value="plus-500k">Plus de 500K€</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <textarea placeholder="Parlez-nous de vos objectifs de conversion"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-lg">Obtenir ma consultation gratuite</button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="cta-image">
+      <div class="glow-effect"></div>
+      <div class="cta-card">
+        <div class="card-header">
+          <h4>Résultats moyens après 3 mois</h4>
+        </div>
+        <div class="card-content">
+          <div class="result-item">
+            <div class="result-label">Taux de conversion</div>
+            <div class="result-bar">
+              <div class="result-progress" style="width: 43%;">+43%</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Panier moyen</div>
+            <div class="result-bar">
+              <div class="result-progress" style="width: 27%;">+27%</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Taux de rebond</div>
+            <div class="result-bar">
+              <div class="result-progress" style="width: 32%;">-32%</div>
+            </div>
+          </div>
+          <div class="result-divider"></div>
+          <div class="result-item total">
+            <div class="result-label">ROI moyen</div>
+            <div class="result-value">+680%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .cta-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 6rem 2rem;
+      background-color: var(--surface-light);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 5rem;
+    }
+    
+    .cta-content h2 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-content p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+    
+    .cta-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    
+    .form-group {
+      position: relative;
+    }
+    
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+    
+    .cta-form input,
+    .cta-form select,
+    .cta-form textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: var(--radius);
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+    
+    .cta-form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    
+    .cta-form input:focus,
+    .cta-form select:focus,
+    .cta-form textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(57, 255, 20, 0.1);
+    }
+    
+    .form-submit {
+      grid-column: span 2;
+      margin-top: 1rem;
+    }
+    
+    .cta-image {
+      position: relative;
+    }
+    
+    .glow-effect {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(57, 255, 20, 0.2) 0%, rgba(57, 255, 20, 0) 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      animation: glow 4s infinite alternate;
+    }
+    
+    .cta-card {
+      position: relative;
+      z-index: 1;
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .card-header {
+      background-color: var(--surface-light);
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .card-header h4 {
+      margin-bottom: 0;
+      font-size: 1.25rem;
+    }
+    
+    .card-content {
+      padding: 1.5rem;
+    }
+    
+    .result-item {
+      margin-bottom: 1.5rem;
+    }
+    
+    .result-label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .result-bar {
+      height: 20px;
+      background-color: var(--surface-light);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .result-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--background);
+    }
+    
+    .result-divider {
+      height: 1px;
+      width: 100%;
+      background-color: var(--border);
+      margin: 2rem 0;
+    }
+    
+    .result-item.total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .result-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    
+    @keyframes glow {
+      0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      100% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .cta-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin: 4rem 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cta-form {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-group.full-width {
+        grid-column: span 1;
+      }
+      
+      .form-submit {
+        grid-column: span 1;
+      }
+    }
+
+  </style>
