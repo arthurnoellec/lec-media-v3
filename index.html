@@ -496,7 +496,7 @@
             </div>
           </div>
 
-          <div class="nav-item">
+          <!-- <div class="nav-item">
             <div class="nav-link" onclick="toggleDropdown(this)">Blogs</div>
             <div class="dropdown">
               <a href="/les-blogs" class="dropdown-item">
@@ -513,7 +513,7 @@
                 </div>
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Logo - centered on mobile -->
@@ -549,28 +549,6 @@
         hamburger.classList.toggle("active");
       }
 
-      function toggleDropdown(element) {
-        // Close all dropdowns first
-        document.querySelectorAll(".dropdown").forEach((dropdown) => {
-          if (dropdown !== element.nextElementSibling) {
-            dropdown.classList.remove("show");
-          }
-        });
-
-        // Toggle the clicked dropdown
-        const dropdown = element.nextElementSibling;
-        dropdown.classList.toggle("show");
-
-        // On mobile, if we're showing a dropdown, we want to make sure it's visible
-        if (window.innerWidth <= 768 && dropdown.classList.contains("show")) {
-          // Keep the dropdown visible within the viewport
-          const dropdownRect = dropdown.getBoundingClientRect();
-          if (dropdownRect.bottom > window.innerHeight) {
-            dropdown.style.top = "auto";
-            dropdown.style.bottom = "100%";
-          }
-        }
-      }
 
       // Close dropdowns when clicking outside
       document.addEventListener("click", function (event) {
@@ -588,23 +566,28 @@
           document.querySelector(".hamburger").classList.remove("active");
         });
       });
+
+
+
     </script>
     <script>
-      function toggleDropdown(element) {
-        // Close all dropdowns
-        document.querySelectorAll(".dropdown").forEach((dropdown) => {
-          if (dropdown !== element.nextElementSibling) {
-            dropdown.classList.remove("show");
-            element.classList.remove("active");
-          }
-        });
+// Remplacez la deuxième définition de toggleDropdown par celle-ci
+function toggleDropdown(element) {
+  // 1. D'abord, retirer la classe active de TOUS les nav-links
+  document.querySelectorAll(".nav-link").forEach(navLink => {
+    navLink.classList.remove("active");
+  });
+  
+  // 2. Fermer tous les dropdowns
+  document.querySelectorAll(".dropdown").forEach(dropdown => {
+    dropdown.classList.remove("show");
+  });
 
-        // Toggle current dropdown
-        const dropdown = element.nextElementSibling;
-        dropdown.classList.toggle("show");
-        element.classList.toggle("active");
-      }
-
+  // 3. Ouvrir le dropdown actuel et ajouter active à l'élément cliqué
+  const dropdown = element.nextElementSibling;
+  dropdown.classList.toggle("show");
+  element.classList.add("active"); // Utiliser add au lieu de toggle pour garantir l'état actif
+}
       // Close dropdowns when clicking outside
       document.addEventListener("click", function (event) {
         if (!event.target.closest(".navbar")) {
@@ -1700,7 +1683,7 @@
                 </p>
               </div>
               <button
-                class="button"
+                class="button emilie"
                 style="background-color: #ffb792; color: black; padding-bottom: 10px"
                 onclick="location.href='./Realisations/Crochetmilie.html';">
                 Voir le projet en details
@@ -1774,7 +1757,7 @@
                 </p>
               </div>
               <button
-                class="button"
+                class="button arico"
                 style="background-color: #077bff; color: white; padding-bottom: 10px"
                 onclick="location.href='./Realisations/Arico.html';">
                 Voir le projet en details
@@ -2424,130 +2407,904 @@
       });
     </script>
     <div id="calculateur"></div>
-    <section
-      class="calculateur_container"
-      onload="updateCalculations()"
-      style="z-index: 2; flex-wrap: wrap">
-      <div style="width: 90%; display: flex; justify-content: center">
-        <h2 class="titre-section" style="margin: 20px auto; width: 90%; text-align: center">
-          Calculateur d'optimisation
-        </h2>
-      </div>
-      <div style="width: 100%; display: flex; justify-content: center">
-        <h3
-          class="titre-section sous-titre-calculateur"
-          style="
-            text-align: center;
-            font-size: 1.2em;
-            max-width: 1000px;
-            margin-top: 0;
-            width: 90%;
-            text-align: center;
-          ">
-          Faites une estimation des résultats que vous pouvez obtenir suite à notre intervention.
-        </h3>
-      </div>
-      <div class="calculateur">
-        <div class="les_inputs_calculateur" style="z-index: 2">
-          <!-- Utilisateurs mensuels -->
-          <div class="input_1_users input_du_calc">
-            <div class="gauche_calc">
-              <p>Chiffre d'affaires mensuel</p>
-              <input
-                type="range"
-                id="chiffreAffairesActuelRange"
-                min="2000"
-                max="1000000"
-                value="50000.00"
-                oninput="chiffreAffairesActuel.value = chiffreAffairesActuelRange.value"
-                onchange="updateCalculations()" />
+    <style>
+      :root {
+        --background: #f8f9fa;
+        --surface: #ffffff;
+        --surface-light: #f1f3f5;
+        --surface-lighter: #e9ecef;
+        --text: #212529;
+        --text-secondary: #6c757d;
+        --accent: #0066ff;
+        --accent-light: #4d94ff;
+        --border: #dee2e6;
+        --radius: 0.5rem;
+        --radius-lg: 1rem;
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.04), 0 4px 6px rgba(0, 0, 0, 0.02);
+        --transition: all 0.3s ease;
+      }
+  
+      .calculateur-section {
+        padding: 6rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+  
+      .section-header {
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+      }
+  
+      .section-header h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+  
+      .gradient-text {
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+  
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto 2rem;
+      }
+  
+      .calculateur-container {
+        max-width: 1200px;
+        margin: 4rem auto 0;
+        position: relative;
+      }
+  
+      .calculator-box {
+        position: relative;
+        background-color: var(--surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        z-index: 1;
+      }
+  
+      .calculator-box:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 102, 255, 0.1);
+        border-color: var(--accent);
+      }
+  
+      .calculator-content {
+        display: grid;
+        grid-template-columns: 1fr 0fr;
+        gap: 0;
+        padding: 0;
+        position: relative;
+        z-index: 2;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+  
+      .calculator-content.expanded {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+  
+      .inputs-container {
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        transition: all 0.4s ease;
+        border-right: 1px solid transparent;
+      }
+  
+      .calculator-content.expanded .inputs-container {
+        border-right-color: var(--border);
+      }
+  
+      .inputs-container h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+  
+      .input-slider-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+  
+      .input-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .input-label span {
+        font-weight: 500;
+        font-size: 1rem;
+      }
+  
+      .value-display {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        background-color: var(--surface-light);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        font-weight: 600;
+        color: var(--accent);
+      }
+  
+      .unit {
+        color: var(--text-secondary);
+        font-weight: normal;
+      }
+  
+      .slider-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: relative;
+      }
+  
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 6px;
+        border-radius: 3px;
+        background: linear-gradient(to right, var(--accent) 0%, var(--accent) 50%, var(--surface-light) 50%, var(--surface-light) 100%);
+        outline: none;
+        transition: var(--transition);
+      }
+  
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 102, 255, 0.4);
+        transition: var(--transition);
+      }
+  
+      .slider::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 102, 255, 0.4);
+        transition: var(--transition);
+      }
+  
+      .slider::-webkit-slider-thumb:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 102, 255, 0.6);
+      }
+  
+      .slider::-moz-range-thumb:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 102, 255, 0.6);
+      }
+  
+      .slider-values {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        width: 90%;
+      }
+  
+      .btn-calculer {
+        position: relative;
+        margin-top: 1.5rem;
+        padding: 1rem 0;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: var(--radius);
+        transition: var(--transition);
+      }
+  
+      .btn-calculer.pulse {
+        animation: pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+  
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+  
+      .btn-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--surface);
+      }
+  
+      .btn-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--accent), var(--accent-light));
+        z-index: 1;
+        transition: var(--transition);
+      }
+  
+      .btn-calculer:hover .btn-shine {
+        filter: brightness(1.1);
+        box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
+      }
+  
+      .btn-calculer:hover .btn-content {
+        transform: scale(1.02);
+      }
+  
+      .results-container {
+        padding: 2.5rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s 0.6s;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        overflow: hidden;
+      }
+  
+      .results-container.hidden {
+        display: none;
+      }
+  
+      .results-container.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s;
+      }
+  
+      .result-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+  
+      .result-header h3 {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+  
+      .accent-divider {
+        height: 3px;
+        width: 60px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        border-radius: 1.5px;
+      }
+  
+      .price-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem 0;
+      }
+  
+      .price-box {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+  
+      .price-value {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+      }
+  
+      .price-period {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+      }
+  
+      .price-badge {
+        margin-top: 0.75rem;
+        background-color: rgba(0, 102, 255, 0.1);
+        color: var(--accent);
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.25rem 1rem;
+        border-radius: 1rem;
+      }
+  
+      .metrics-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+  
+      .metric-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: var(--surface-light);
+        border-radius: var(--radius);
+        transition: var(--transition);
+      }
+  
+      .metric-item:hover {
+        background-color: var(--surface-lighter);
+        transform: translateX(5px);
+      }
+  
+      .metric-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius);
+        background-color: rgba(0, 102, 255, 0.1);
+        color: var(--accent);
+      }
+  
+      .metric-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+  
+      .metric-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+  
+      .metric-value {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+  
+      .calculation-details {
+        margin-top: 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+      }
+  
+      .calculation-details h4 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+  
+      .calculation-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+      }
+  
+      .calculation-item.total {
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border);
+        font-weight: 600;
+        color: var(--text);
+      }
+  
+      .btn-reserve {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1rem 2rem;
+        border: none;
+        background: linear-gradient(45deg, var(--accent), var(--accent-light));
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+  
+      .btn-reserve:hover {
+        filter: brightness(1.1);
+        box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
+      }
+  
+      .btn-reserve svg {
+        transition: transform 0.3s ease;
+      }
+  
+      .btn-reserve:hover svg {
+        transform: translateX(5px);
+      }
+  
+      .glow-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      input[type="range"] {
+        color: var(--accent);
+      }
+  
+      .glow-effect {
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        top: -25%;
+        left: -25%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(0, 102, 255, 0.08) 0%,
+          rgba(0, 102, 255, 0.05) 25%,
+          rgba(0, 102, 255, 0.01) 50%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        pointer-events: none;
+        animation: rotateGlow 15s linear infinite;
+      }
+  
+      @keyframes rotateGlow {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+  
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .calculator-content, 
+        .calculator-content.expanded {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+  
+        .inputs-container {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+        
+        .calculator-content.expanded .inputs-container {
+          border-right-color: transparent;
+          border-bottom-color: var(--border);
+        }
+        
+        .results-container {
+          transform: translateY(30px);
+        }
+        
+        .results-container.show {
+          transform: translateY(0);
+        }
+      }
+  
+      @media (max-width: 768px) {
+        .calculateur-section {
+          padding: 4rem 1.5rem;
+        }
+  
+        .inputs-container,
+        .results-container {
+          padding: 2rem 1.5rem;
+        }
+  
+        .price-value {
+          font-size: 3rem;
+        }
+      }
+  
+      @media (max-width: 480px) {
+        .input-label {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+  
+        .value-display {
+          align-self: flex-start;
+        }
+      }
+  </style>
+
+      <section id="calculateur" class="calculateur-section">
+        <div style="width: 100%; display: flex; justify-content: center">
+          <h2 class="titre-section" style="text-align: center; width: fit-content; margin: 0">
+            Calculateur d'optimisation
+          </h2>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: center">
+          <h3 class="titre-section" style="text-align: center; font-size: 1.8em">
+            Faites une estimation des résultats que vous pouvez obtenir suite à notre intervention.
+          </h3>
+        </div>
+    
+        <div class="calculateur-container">
+          <div class="calculator-box">
+            <div class="calculator-content" id="calculator-content">
+              <div class="inputs-container">
+                <h3>Entrez vos données</h3>
+                
+                <div class="input-slider-group">
+                  <div class="input-label">
+                    <span>Chiffre d'affaires mensuel</span>
+                    <div class="value-display">
+                      <span id="chiffre-value">50000</span>
+                      <span class="unit">€</span>
+                    </div>
+                  </div>
+                  <div class="slider-container">
+                    <input 
+                      type="range" 
+                      id="chiffre-slider" 
+                      min="2000" 
+                      max="1000000" 
+                      value="50000" 
+                      step="1000" 
+                      class="slider"
+                    />
+                    <div class="slider-values">
+                      <span>2k€</span>
+                      <span>500k€</span>
+                      <span>1M€</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="input-slider-group">
+                  <div class="input-label">
+                    <span>Taux de conversion actuel</span>
+                    <div class="value-display">
+                      <span id="conversion-value">1.61</span>
+                      <span class="unit">%</span>
+                    </div>
+                  </div>
+                  <div class="slider-container">
+                    <input 
+                      type="range" 
+                      id="conversion-slider" 
+                      min="0.1" 
+                      max="15" 
+                      value="1.61" 
+                      step="0.01" 
+                      class="slider"
+                    />
+                    <div class="slider-values">
+                      <span>0.1%</span>
+                      <span>7.5%</span>
+                      <span>15%</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="input-slider-group">
+                  <div class="input-label">
+                    <span>Valeur du panier moyen</span>
+                    <div class="value-display">
+                      <span id="panier-value">74.54</span>
+                      <span class="unit">€</span>
+                    </div>
+                  </div>
+                  <div class="slider-container">
+                    <input 
+                      type="range" 
+                      id="panier-slider" 
+                      min="5" 
+                      max="2000" 
+                      value="74.54" 
+                      step="0.01" 
+                      class="slider"
+                    />
+                    <div class="slider-values">
+                      <span>5€</span>
+                      <span>1000€</span>
+                      <span>2000€</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <button id="calculer-btn" class="btn-calculer">
+                  <div class="btn-content">
+                    <span>Calculer mes résultats</span>
+                  </div>
+                  <div class="btn-shine"></div>
+                </button>
+              </div>
+              
+              <div class="results-container hidden" id="results-container">
+                <div class="result-header">
+                  <h3>Vos futurs résultats</h3>
+                  <div class="accent-divider"></div>
+                </div>
+                
+                <div class="price-container">
+                  <div class="price-box">
+                    <div class="price-value" id="nouveau-ca">0</div>
+                    <div class="price-period">€</div>
+                  </div>
+                  <div class="price-badge">chiffre d'affaires</div>
+                </div>
+                
+                <div class="metrics-container">
+                  <div class="metric-item">
+                    <div class="metric-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20V10"></path>
+                        <path d="M18 20V4"></path>
+                        <path d="M6 20V16"></path>
+                      </svg>
+                    </div>
+                    <div class="metric-content">
+                      <div class="metric-label">Nouvelle valeur du panier moyen</div>
+                      <div class="metric-value" id="nouveau-panier">0€</div>
+                    </div>
+                  </div>
+                  
+                  <div class="metric-item">
+                    <div class="metric-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                    </div>
+                    <div class="metric-content">
+                      <div class="metric-label">Nouveau taux de conversion</div>
+                      <div class="metric-value" id="nouveau-taux">0%</div>
+                    </div>
+                  </div>
+                  
+                  <div class="metric-item">
+                    <div class="metric-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                      </svg>
+                    </div>
+                    <div class="metric-content">
+                      <div class="metric-label">Augmentation minimum</div>
+                      <div class="metric-value" id="augmentation">+0%</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="calculation-details" id="calculation-details">
+                  <!-- Le détail du calcul sera inséré ici par JavaScript -->
+                </div>
+                
+                <a href="https://cal.com/arthur-noellec/appel-decouverte" target="_blank" class="btn-reserve">
+                  <span>Réserver ma consultation gratuite</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div class="droite_calc">
-              <input
-                type="number"
-                id="chiffreAffairesActuel"
-                min="2000"
-                max="1000000"
-                value="50000.00"
-                oninput="chiffreAffairesActuelRange.value = chiffreAffairesActuel.value"
-                onchange="updateCalculations()" />
-            </div>
-          </div>
-          <!-- Taux de conversion -->
-          <div class="input_2_conversion input_du_calc">
-            <div class="gauche_calc">
-              <p>Taux de conversion actuel (%)</p>
-              <input
-                type="range"
-                id="tauxConversionRange"
-                min="0.01"
-                max="15"
-                step="0.01"
-                value="1.61"
-                oninput="tauxConversion.value = tauxConversionRange.value"
-                onchange="updateCalculations()" />
-            </div>
-            <div class="droite_calc">
-              <input
-                type="number"
-                id="tauxConversion"
-                min="0.01"
-                max="15"
-                step="0.01"
-                value="1.61"
-                oninput="tauxConversionRange.value = tauxConversion.value"
-                onchange="updateCalculations()" />
-            </div>
-          </div>
-          <!-- Valeur du panier moyen -->
-          <div class="input_3_panier_moyen input_du_calc">
-            <div class="gauche_calc">
-              <p>Valeur du panier moyen</p>
-              <input
-                type="range"
-                id="valeurPanierMoyenRange"
-                min="5"
-                max="2000"
-                value="74.54"
-                oninput="valeurPanierMoyen.value = valeurPanierMoyenRange.value"
-                onchange="updateCalculations()" />
-            </div>
-            <div class="droite_calc">
-              <input
-                type="number"
-                id="valeurPanierMoyen"
-                min="5"
-                max="2000"
-                value="70.80"
-                oninput="valeurPanierMoyenRange.value = valeurPanierMoyen.value"
-                onchange="updateCalculations()" />
+            
+            <div class="glow-container">
+              <div class="glow-effect"></div>
             </div>
           </div>
         </div>
-        <div class="les_resultats_calculateur" style="z-index: 2">
-          <h6>VOS FUTURS RESULTATS :</h6>
-          <div class="les_resultats_div parentCalc">
-            <!-- Résultats -->
-            <div class="div_resultats div1Calc">
-              <p>Nouvelle valeur du panier moyen:</p>
-              <span id="nouvelleValeurPanierMoyen">500.00$</span>
-            </div>
-            <div class="div_resultats div2Calc">
-              <p>Nouveau Chiffre d'affaires:</p>
-              <span id="nouveauChiffreAffaires">...</span>
-            </div>
-            <div class="div_resultats div3Calc">
-              <p>Nouveau taux de conversion:</p>
-              <span id="nouveauTauxConversion">1,2%</span>
-            </div>
-            <div class="div_resultats div4Calc">
-              <p>Soit une augmentation minimum de:</p>
-              <span id="augmentationMinimale">20%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Éléments d'entrée
+          const chiffreSlider = document.getElementById('chiffre-slider');
+          const conversionSlider = document.getElementById('conversion-slider');
+          const panierSlider = document.getElementById('panier-slider');
+          
+          // Éléments d'affichage des valeurs
+          const chiffreValue = document.getElementById('chiffre-value');
+          const conversionValue = document.getElementById('conversion-value');
+          const panierValue = document.getElementById('panier-value');
+          
+          // Bouton et conteneurs
+          const calculerBtn = document.getElementById('calculer-btn');
+          const calculatorContent = document.getElementById('calculator-content');
+          const resultsContainer = document.getElementById('results-container');
+          
+          // Éléments de résultat
+          const nouveauCA = document.getElementById('nouveau-ca');
+          const nouveauPanier = document.getElementById('nouveau-panier');
+          const nouveauTaux = document.getElementById('nouveau-taux');
+          const augmentation = document.getElementById('augmentation');
+          const calculationDetails = document.getElementById('calculation-details');
+          
+          // État initial - la partie résultat est masquée au démarrage
+          let resultsVisible = false;
+          
+          // Mettre à jour les valeurs affichées lors du déplacement des sliders
+          function updateSliderDisplays() {
+            if (chiffreSlider && chiffreValue) {
+              chiffreValue.textContent = formatNumber(chiffreSlider.value);
+            }
+            
+            if (conversionSlider && conversionValue) {
+              conversionValue.textContent = parseFloat(conversionSlider.value).toFixed(2);
+            }
+            
+            if (panierSlider && panierValue) {
+              panierValue.textContent = parseFloat(panierSlider.value).toFixed(2);
+            }
+          }
+          
+          // Formater les nombres pour un affichage plus lisible
+          function formatNumber(num) {
+            num = parseFloat(num);
+            if (num >= 1000000) {
+              return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+              return (num / 1000).toFixed(0) + 'k';
+            }
+            return num.toString();
+          }
+          
+          // Animation des nombres qui s'incrémentent
+          function animateValue(element, start, end, duration, format = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+              if (!startTimestamp) startTimestamp = timestamp;
+              const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+              let currentValue = progress * (end - start) + start;
+              
+              // Arrondir pour les nombres entiers
+              if (Number.isInteger(end)) {
+                currentValue = Math.floor(currentValue);
+              } else {
+                // Pour les décimales
+                currentValue = parseFloat(currentValue.toFixed(2));
+              }
+              
+              // Formatage selon le type d'élément
+              if (format === 'currency') {
+                element.textContent = formatNumber(currentValue);
+              } else if (format === 'percentage') {
+                element.textContent = currentValue.toFixed(2) + '%';
+              } else if (format === 'plusPercentage') {
+                element.textContent = '+' + currentValue.toFixed(0) + '%';
+              } else if (format === 'currencyComplete') {
+                element.textContent = currentValue.toFixed(2) + '€';
+              } else {
+                element.textContent = currentValue;
+              }
+              
+              if (progress < 1) {
+                window.requestAnimationFrame(step);
+              }
+            };
+            window.requestAnimationFrame(step);
+          }
+          
+          // Animation d'ouverture du conteneur de résultats
+          function expandResultsContainer() {
+            // Premièrement, ajouter la classe pour développer le conteneur
+            calculatorContent.classList.add('expanded');
+            
+            // Après une légère pause pour l'animation d'expansion
+            setTimeout(() => {
+              // Retirer la classe "hidden" pour afficher les résultats
+              resultsContainer.classList.remove('hidden');
+              // Ajouter la classe "show" pour l'animation d'entrée
+              resultsContainer.classList.add('show');
+            }, 400); // Délai correspondant à la transition d'expansion
+            
+            // Mise à jour de l'état
+            resultsVisible = true;
+          }
+          
+          // Calcul des résultats d'optimisation
+          function calculerOptimisation() {
+            // Ajouter l'animation de pulsation sur le bouton pour le feedback visuel
+            calculerBtn.classList.add('pulse');
+            setTimeout(() => calculerBtn.classList.remove('pulse'), 600);
+            
+            // Récupération des valeurs des sliders
+            const chiffreAffaires = parseFloat(chiffreSlider.value);
+            const tauxConversion = parseFloat(conversionSlider.value);
+            const panierMoyen = parseFloat(panierSlider.value);
+            
+            // Calcul des nouvelles valeurs
+            const nouveauPanierValue = panierMoyen * 1.12; // Augmentation de 12%
+            const nouveauTauxValue = tauxConversion * 1.25; // Augmentation de 25%
+            
+            // Calcul du nouveau chiffre d'affaires
+            const nouveauChiffreAffaires = chiffreAffaires * 1.4; // Augmentation de 40%
+            
+            // Augmentation en pourcentage
+            const augmentationValue = 40; // 40%
+            
+            // Si les résultats ne sont pas visibles, afficher le conteneur de résultats
+            if (!resultsVisible) {
+              expandResultsContainer();
+            } else {
+              // Réinitialiser les animations si déjà visible
+              resultsContainer.classList.remove('show');
+              setTimeout(() => {
+                resultsContainer.classList.add('show');
+              }, 50);
+            }
+            
+            // Animation des nombres après un court délai pour correspondre à l'animation d'ouverture
+            setTimeout(() => {
+              animateValue(nouveauCA, 0, nouveauChiffreAffaires, 1500, 'currency');
+              animateValue(nouveauPanier, 0, nouveauPanierValue, 1500, 'currencyComplete');
+              animateValue(nouveauTaux, 0, nouveauTauxValue, 1500, 'percentage');
+              animateValue(augmentation, 0, augmentationValue, 1500, 'plusPercentage');
+            }, 500);
+            
+            // Affichage du détail du calcul
+            calculationDetails.innerHTML = `
+              <h4>Détail du calcul</h4>
+              <div class="calculation-item">
+                <span>Chiffre d'affaires actuel</span>
+                <span>${formatNumber(chiffreAffaires)}€</span>
+              </div>
+              <div class="calculation-item">
+                <span>Taux de conversion actuel</span>
+                <span>${tauxConversion.toFixed(2)}%</span>
+              </div>
+              <div class="calculation-item">
+                <span>Panier moyen actuel</span>
+                <span>${panierMoyen.toFixed(2)}€</span>
+              </div>
+              <div class="calculation-item">
+                <span>Amélioration du taux de conversion</span>
+                <span>+25%</span>
+              </div>
+              <div class="calculation-item">
+                <span>Amélioration du panier moyen</span>
+                <span>+12%</span>
+              </div>
+              <div class="calculation-item total">
+                <span>Augmentation globale du CA</span>
+                <span>+40%</span>
+              </div>
+            `;
+          }
+          
+          // Ajout des écouteurs d'événements
+          if (chiffreSlider) chiffreSlider.addEventListener('input', updateSliderDisplays);
+          if (conversionSlider) conversionSlider.addEventListener('input', updateSliderDisplays);
+          if (panierSlider) panierSlider.addEventListener('input', updateSliderDisplays);
+          if (calculerBtn) calculerBtn.addEventListener('click', calculerOptimisation);
+          
+          // Initialisation de l'affichage
+          updateSliderDisplays();
+        });
+      </script>
+
     <section
       style="
         display: flex;

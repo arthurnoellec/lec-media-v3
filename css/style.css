@@ -1033,7 +1033,7 @@ footer {
   background-color: #ffffff;
   transition: all 0.2s ease;
   z-index: 10;
-  border: solid black 1px;
+  border: none !important;
 }
 
 .button-off {
@@ -1077,6 +1077,41 @@ footer {
     radial-gradient(circle, #08f791 20%, transparent 20%);
   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
   background-position: 50% 120%;
+  opacity: 0;
+  animation: greentopBubbles 0.6s ease;
+}
+
+.button.emilie:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #ffb792 20%, transparent 30%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #ffb792 15%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  opacity: 0;
+  animation: greentopBubbles 0.6s ease;
+}
+
+.button.arico:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #097bff 20%, transparent 30%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #097bff 15%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  opacity: 0;
   animation: greentopBubbles 0.6s ease;
 }
 
@@ -1084,6 +1119,7 @@ footer {
   0% {
     background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%,
       70% 90%;
+    opacity: 1;
   }
 
   50% {
@@ -1092,6 +1128,7 @@ footer {
   }
 
   100% {
+    opacity: 1;
     background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%,
       90% 20%;
     background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
@@ -1109,21 +1146,55 @@ footer {
     radial-gradient(circle, #08f791 20%, transparent 20%);
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
   background-position: 50% 0%;
+  opacity: 0;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+.button.emilie:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #ffb792 15%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%),
+    radial-gradient(circle, #ffb792 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  opacity: 0;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+.button.arico:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #097bff 15%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%),
+    radial-gradient(circle, #097bff 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  opacity: 0;
   animation: greenbottomBubbles 0.6s ease;
 }
 
 @keyframes greenbottomBubbles {
   0% {
     background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+    opacity: 1;
   }
 
   50% {
     background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    opacity: 1;
   }
 
   100% {
     background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
     background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    opacity: 1;
   }
 }
 
@@ -1140,4 +1211,28 @@ p.card__job-title {
 .card__footer .button {
   background: #151515;
   color: white;
+}
+
+@media screen and (max-height: 685px) {
+  .expertise-section__item {
+    min-height: 200px;
+  }
+  .expertise-section__item.expertise-section__item--stat,
+  .expertise-section__item.expertise-section__item--clients {
+    min-height: 160px;
+  }
+
+  .expertise-section__item--yellow,
+  .expertise-section__item--red,
+  .expertise-section__item.expertise-section__item--clients {
+    margin-top: 3rem;
+  }
+
+  .expertise-section__item--green {
+    min-height: 420px;
+  }
+
+  section.expertise-section {
+    min-height: 450px;
+  }
 }
