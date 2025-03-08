@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lec-media.agency/sitemap.xml
+Sitemap: https://lec-media.agency/sitemap-0.xml
