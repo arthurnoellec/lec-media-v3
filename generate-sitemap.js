@@ -42,7 +42,7 @@ function findHtmlFiles(dir, fileList = [], basePath = "") {
 
 // Fonction pour trouver toutes les pages Astro
 function findAstroPages() {
-  // Liste des pages Astro déjà connues (basée sur le contenu du dossier dist)
+  // Liste des pages Astro déjà connues (basée sur ce que le build a généré)
   const astroPages = [
     "/",
     "/agence-cro",
@@ -93,8 +93,16 @@ function generateSitemap() {
 
   xml += "</urlset>";
 
-  // Écrire le fichier
-  const outputPath = path.join("curved-cluster/dist", outputFile);
+  // Écrire le fichier - ici, nous utilisons un chemin absolu
+  const outputPath = path.join(process.cwd(), "curved-cluster", "dist", outputFile);
+
+  // S'assurer que le répertoire existe
+  const outputDir = path.dirname(outputPath);
+  if (!fs.existsSync(outputDir)) {
+    console.log(`Création du répertoire: ${outputDir}`);
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
   fs.writeFileSync(outputPath, xml);
 
   console.log(`Sitemap généré avec succès: ${outputPath}`);
