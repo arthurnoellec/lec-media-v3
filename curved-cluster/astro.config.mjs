@@ -5,6 +5,9 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://lec-media.agency",
+  outDir: "./dist",
+  publicDir: "./public",
   integrations: [
     icon({
       include: {
@@ -12,4 +15,10 @@ export default defineConfig({
       },
     }),
   ],
+  output: "static",
+  adapter: netlify(),
+  trailingSlash: "never",
+  build: {
+    format: "directory",
+  },
 });
