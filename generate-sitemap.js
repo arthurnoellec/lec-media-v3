@@ -1,111 +1,77 @@
-// Placez ce fichier à la racine de votre projet sous le nom generate-sitemap.js
+// Placez ce fichier à la racine de votre projet
 const fs = require("fs");
 const path = require("path");
-const glob = require("glob");
 
 // Configuration
 const baseUrl = "https://lec-media.agency";
 const outputFile = "sitemap.xml";
-const excludeDirs = [
-  "node_modules",
-  ".git",
-  ".vscode",
-  ".netlify",
-  "archive",
-  "curved-cluster/node_modules",
-];
-const excludePatterns = ["**/XXXX-*", "**/XXXX *", "**/.DS_Store"];
 
-// Fonction pour trouver tous les fichiers HTML statiques
-function findStaticHtmlFiles() {
-  const htmlFiles = [];
+// Fonction pour explorer récursivement un répertoire et trouver les fichiers HTML
+function findHtmlFiles(dir, fileList = [], basePath = "") {
+  if (!fs.existsSync(dir)) return fileList;
 
-  // Construire les motifs à exclure
-  const ignorePatterns = [
-    ...excludeDirs.map((dir) => `**/${dir}/**`),
-    ...excludePatterns,
-    "**/curved-cluster/dist/**", // Exclure le dossier de sortie d'Astro
-    "**/curved-cluster/src/**", // Exclure les sources Astro
-  ];
+  const files = fs.readdirSync(dir);
 
-  // Options pour glob
-  const options = {
-    ignore: ignorePatterns,
-    nodir: true,
-    cwd: process.cwd(),
-  };
-
-  // Rechercher tous les fichiers HTML
-  const files = glob.sync("**/*.html", options);
-
-  // Filtrer et convertir en URLs
   files.forEach((file) => {
-    // Vérifier si le nom du fichier ne contient pas "XXXX"
-    if (!file.includes("XXXX")) {
-      const url = `${baseUrl}/${file}`;
-      htmlFiles.push(url);
+    const filePath = path.join(dir, file);
+    const relativePath = path.join(basePath, file);
+    const stat = fs.statSync(filePath);
+
+    // Si c'est un répertoire, explorer récursivement
+    if (stat.isDirectory()) {
+      // Ignorer certains répertoires
+      if (
+        !file.startsWith(".") &&
+        file !== "node_modules" &&
+        file !== "curved-cluster" &&
+        file !== "archive"
+      ) {
+        findHtmlFiles(filePath, fileList, relativePath);
+      }
+    }
+    // Si c'est un fichier HTML
+    else if (file.endsWith(".html") && !file.startsWith("XXXX")) {
+      // Convertir le chemin du fichier en URL
+      const url = `${baseUrl}/${relativePath}`;
+      fileList.push(url);
     }
   });
 
-  return htmlFiles;
+  return fileList;
 }
 
 // Fonction pour trouver toutes les pages Astro
 function findAstroPages() {
-  const astroPages = [];
+  // Liste des pages Astro déjà connues (basée sur le contenu du dossier dist)
+  const astroPages = [
+    "/",
+    "/agence-cro",
+    "/creation-boutique-shopify",
+    "/formation-intervention-entreprise-shopify",
+    "/integration-3dvue",
+    "/refonte-site-ecommerce",
+    "/blog",
+    "/blog/article1",
+    "/blog/article2",
+  ];
 
-  // Options pour glob
-  const options = {
-    ignore: ["**/node_modules/**", "**/_*.astro"],
-    nodir: true,
-    cwd: path.join(process.cwd(), "curved-cluster/src/pages"),
-  };
-
-  // Rechercher tous les fichiers Astro
-  const files = glob.sync("**/*.astro", options);
-
-  // Convertir les chemins de fichiers en URLs
-  files.forEach((file) => {
-    // Transformer le chemin de fichier en URL
-    let url = file
-      .replace(/\.astro$/, "") // Supprimer l'extension .astro
-      .replace(/\/index$/, "/") // Remplacer /index par /
-      .replace(/\[([^\]]+)\]/g, ":$1"); // Remplacer [param] par :param pour les routes dynamiques
-
-    // Si ce n'est pas un fichier index et ne se termine pas par /
-    if (!file.endsWith("index.astro") && !url.endsWith("/")) {
-      url = `/${url}`;
-    }
-
-    // Ajouter l'URL de base
-    url = url === "" ? baseUrl : `${baseUrl}${url}`;
-
-    // Éviter les doubles slashes
-    url = url.replace(/\/\//g, "/").replace("https:/", "https://");
-
-    astroPages.push(url);
-  });
-
-  return astroPages;
+  return astroPages.map((page) => `${baseUrl}${page}`);
 }
 
 // Fonction principale pour générer le sitemap
 function generateSitemap() {
   console.log("Démarrage de la génération du sitemap...");
 
-  // Trouver tous les fichiers
-  const staticHtmlFiles = findStaticHtmlFiles();
+  // Trouver tous les fichiers HTML statiques
+  const staticHtmlFiles = findHtmlFiles(".");
   console.log(`Nombre de fichiers HTML statiques trouvés: ${staticHtmlFiles.length}`);
 
+  // Obtenir les pages Astro
   const astroPages = findAstroPages();
   console.log(`Nombre de pages Astro trouvées: ${astroPages.length}`);
 
-  // Générer les URLs de pages dynamiques spécifiques
-  const dynamicPages = [];
-
   // Combiner toutes les URLs
-  const allUrls = [...staticHtmlFiles, ...astroPages, ...dynamicPages];
-  console.log(`Nombre total d'URLs: ${allUrls.length}`);
+  const allUrls = [...staticHtmlFiles, ...astroPages];
 
   // Trier et enlever les doublons
   const uniqueUrls = [...new Set(allUrls)].sort();
@@ -128,20 +94,12 @@ function generateSitemap() {
   xml += "</urlset>";
 
   // Écrire le fichier
-  const outputPath = path.join(process.cwd(), "curved-cluster/dist", outputFile);
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  const outputPath = path.join("curved-cluster/dist", outputFile);
   fs.writeFileSync(outputPath, xml);
 
-  // Afficher les URLs pour vérification
-  console.log("URLs incluses dans le sitemap:");
-  uniqueUrls.forEach((url) => console.log(` - ${url}`));
-
-  console.log(`\nSitemap généré avec succès: ${outputPath}`);
-
-  // Retourner le nombre d'URLs pour vérification
-  return uniqueUrls.length;
+  console.log(`Sitemap généré avec succès: ${outputPath}`);
+  console.log(`Le sitemap contient ${uniqueUrls.length} URLs.`);
 }
 
 // Exécuter la génération
-const urlCount = generateSitemap();
-console.log(`Sitemap généré avec ${urlCount} URLs.`);
+generateSitemap();

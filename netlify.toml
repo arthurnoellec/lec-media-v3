@@ -1,5 +1,5 @@
 [build]
-  command = "cd curved-cluster && npm install && npm install glob && npm run build && cp -r ../index.html ../an_carte.html ../calc.html ../calculateur.html ../les-blogs.html ../robots.txt ../Blogs ../Leads ../Realisations ../Teko ../almarena-neue-font-family ../css ../helvetica-neue ../icons ../images ../img_pub ../js ../partenaire ./dist/ && node ../generate-sitemap.js"
+  command = "cd curved-cluster && npm install && npm run build && cp -r ../index.html ../an_carte.html ../calc.html ../calculateur.html ../les-blogs.html ../robots.txt ../Blogs ../Leads ../Realisations ../Teko ../almarena-neue-font-family ../css ../helvetica-neue ../icons ../images ../img_pub ../js ../partenaire ./dist/ && node ../generate-sitemap.js"
   publish = "curved-cluster/dist"
 
 [build.environment]
