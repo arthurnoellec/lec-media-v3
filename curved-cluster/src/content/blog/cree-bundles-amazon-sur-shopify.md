@@ -3,7 +3,7 @@ title: "Comment Créer des Bundles 'Fréquemment Achetés Ensemble' comme sur Am
 date: 2024-12-11
 author: "Arthur Noëllec"
 description: "Imaginez une boutique Shopify qui propose des suggestions de produits comme Amazon : un casque avec des écouteurs, ou un téléphone avec sa coque et un chargeur. Ces bundles 'Fréquemment achetés ensemble' sont de puissants leviers pour augmenter les ventes. Cet article vous guide pour mettre en place cette stratégie, à l'aide d'outils performants, en maximisant vos chances de succès."
-image: "/images/bg-comment-creer-bundles-amazon-shopify-gratuitement.png"
+image: "https://cdn.sell2.brightspotcdn.com/dims4/default/a0fb1dd/2147483647/strip/false/crop/3200x1800+0+167/resize/1200x675!/quality/90/?url=https%3A%2F%2Fsell2-production-sell2.s3.us-west-2.amazonaws.com%2Fbrightspot%2F09%2Fcf%2F3d75658346289ac5fa26d6766efb%2Fproduct-bundle-lofi-lede.jpg"
 tags: ["shopify", "e-commerce", "bundles", "amazon", "conversion"]
 ---
 
@@ -19,7 +19,7 @@ Les bundles "Fréquemment achetés ensemble" sur Amazon sont devenus un standard
 
 ### Exemples de bundles efficaces :
 
-![Pourquoi les bundles Amazon séduisent autant ?](/images/Bundle-amazon.png)
+![Pourquoi les bundles Amazon séduisent autant ?](../images/Bundle-amazon.png)
 *Crédit : Amazon.*
 
 ### L'impact psychologique
@@ -30,7 +30,7 @@ Proposer des articles complémentaires incite à l'achat impulsif tout en simpli
 
 Créer des bundles sur Shopify ne doit pas être compliqué. Certaines applications, comme MW Product Bundles, rendent cette tâche accessible à tous les commerçants, sans avoir besoin de connaissances techniques.
 
-![MW Product Bundles & Add‑ons](/images/presentation-MW-Product-Bundle.webp)
+![Pourquoi les bundles Amazon séduisent autant ?](../images/presentation-MW-Product-Bundle.webp)
 *Crédit : MW Product Bundles & Add‑ons.*
 
 L'objectif est de maximiser vos ventes tout en rendant l'expérience fluide pour vos clients.
@@ -47,7 +47,7 @@ Les bundles les plus efficaces répondent à un besoin ou simplifient le choix p
 
 Analyser l'historique de vos commandes est une méthode essentielle pour identifier les produits fréquemment achetés ensemble. Mais ce processus peut être fastidieux. C'est ici qu'intervient Addly: Bundle Upsell, l'application qui révolutionne la création de bundles grâce à l'intelligence artificielle.
 
-![Comment créer un bundle efficace avec IA sur shopify](/images/Addly-AI-bundles.png)
+![Pourquoi les bundles Amazon séduisent autant ?](../images/Addly-AI-bundles.png)
 *Crédit : Addly • AI Bundles & Upsells.*
 
 Addly analyse automatiquement les comportements d'achat de vos clients, identifie les combinaisons les plus pertinentes et vous propose des idées de bundles optimisés pour maximiser vos ventes. En quelques clics, vous pouvez mettre en place des offres attractives qui correspondent parfaitement aux attentes de votre clientèle.
@@ -71,17 +71,17 @@ Addly analyse automatiquement les comportements d'achat de vos clients, identifi
 
 Frequently Bought Together : Idéal pour les suggestions automatiques basées sur les comportements d'achat.
 
-![Frequently Bought Together](/images/Frequently-Bought-Together.png)
+![Pourquoi les bundles Amazon séduisent autant ?](../images/Frequently-Bought-Together.png)
 *Crédit : Frequently Bought Together.*
 
 Bundler - Product Bundles : Une solution gratuite pour les débutants avec des options de base.
 
-![BUNDLE solution gratuite](/images/Bundler-Product-Bundles.png)
+![Pourquoi les bundles Amazon séduisent autant ?](../images/Bundler-Product-Bundles.png)
 *Crédit : Bundler - Product Bundles.*
 
 Bold Bundles : Connu pour sa flexibilité et ses fonctionnalités avancées.
 
-![shopify bundle amazon gratuit](/images/Bold-Bundles.png)
+![Pourquoi les bundles Amazon séduisent autant ?](../images/Bold-Bundles.png)
 *Crédit : Bold Bundles.*
 
 Comparez ces alternatives pour choisir celle qui correspond le mieux à vos besoins.

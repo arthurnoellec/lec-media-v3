@@ -206,7 +206,7 @@ const { Content } = await entry.render();
   [data-theme="dark"] .share-section p {
     color: var(--text-primary, #e0e0e0);
   }
-  
+
   /* Ajustements responsive */
   @media (max-width: 480px) {
     .share-buttons {
@@ -226,6 +226,12 @@ const { Content } = await entry.render();
 </style>
     </footer>
   </article>
+  <style>
+    p > img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  </style>
 </Layout>
 
 <style>
@@ -300,6 +306,7 @@ const { Content } = await entry.render();
     max-height: 500px;
     overflow: hidden;
     margin-bottom: 50px;
+    display: flex;
   }
   
   .post-featured-image img {
