@@ -1,14 +1,66 @@
 ---
-// src/components/NavBar.astro
+// src/components/Header.astro
+import logo from '../assets/logo-lec-media-blanc.png';
 ---
-
+<div style="height: 80px;"></div>
 <nav class="navbar">
   <div class="nav-menu">
-    <div class="nav-left">
+    <!-- Hamburger menu for mobile -->
+    <button class="hamburger" id="hamburgerBtn">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Mobile menu container -->
+    <div class="nav-items-container" id="mobileMenu">
+      <!-- Theme Switcher pour l'affichage en mobile -->
+      <div class="theme-switch-wrapper-mobile">
+        <label class="theme-switch" for="checkbox-mobile">
+          <input type="checkbox" id="checkbox-mobile" />
+          <div class="slider round">
+            <svg
+              class="sun-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg
+              class="moon-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </div>
+        </label>
+      </div>
+      
       <div class="nav-item">
-        <div class="nav-link" data-dropdown="services">Services</div>
-        <div class="dropdown" id="services-dropdown">
-          <a href="/services/cro" class="dropdown-item">
+        <div class="nav-link" id="servicesLink">Services</div>
+        <div class="dropdown" id="servicesDropdown">
+          <a href="/agence-cro" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M20.24 12.24a6 6 0 0 1-8.49 8.49 6 6 0 1 1 8.49-8.49z"></path>
               <path d="M8 14H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path>
@@ -18,7 +70,7 @@
               <div class="dropdown-description">Optimisez vos conversions</div>
             </div>
           </a>
-          <a href="/services/shopify-creation" class="dropdown-item">
+          <a href="/creation-boutique-shopify" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="3" y1="9" x2="21" y2="9"></line>
@@ -29,10 +81,9 @@
               <div class="dropdown-description">Développement de boutique en ligne</div>
             </div>
           </a>
-          <a href="/services/shopify-refonte" class="dropdown-item">
+          <a href="/refonte-site-ecommerce" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-              ></path>
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
               <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
             </svg>
             <div class="dropdown-content">
@@ -40,14 +91,13 @@
               <div class="dropdown-description">Modernisation de votre boutique</div>
             </div>
           </a>
-          <a href="/services/formation" class="dropdown-item">
+          <a href="/formation-intervention-entreprise-shopify" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M12 11v5"></path>
               <path d="M9 18h6"></path>
               <path d="m10 8 2-2 2 2"></path>
               <circle cx="12" cy="5" r="3"></circle>
-              <path d="M3 22h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"
-              ></path>
+              <path d="M3 22h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path>
             </svg>
             <div class="dropdown-content">
               <div class="dropdown-title">Formation en entreprise</div>
@@ -58,21 +108,9 @@
       </div>
 
       <div class="nav-item">
-        <div class="nav-link" data-dropdown="cases">Cas d'usage</div>
-        <div class="dropdown" id="cases-dropdown">
-          <a href="/cas-usage/b2b" class="dropdown-item">
-            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            <div class="dropdown-content">
-              <div class="dropdown-title">B2B</div>
-              <div class="dropdown-description">Solutions professionnelles</div>
-            </div>
-          </a>
-          <a href="/cas-usage/b2c" class="dropdown-item">
+        <div class="nav-link" id="casLink">Cas d'usage</div>
+        <div class="dropdown" id="casDropdown">
+          <a href="/Realisations/Crochetmilie.html" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="7" y1="12" x2="17" y2="12"></line>
@@ -85,11 +123,10 @@
           </a>
         </div>
       </div>
-
       <div class="nav-item">
-        <div class="nav-link" data-dropdown="blog">Blog</div>
-        <div class="dropdown" id="blog-dropdown">
-          <a href="/blog" class="dropdown-item">
+        <div class="nav-link" id="blogsLink">Blogs</div>
+        <div class="dropdown" id="blogsDropdown">
+          <a href="/les-blogs" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
@@ -106,11 +143,14 @@
       </div>
     </div>
 
+    <!-- Logo - centered on mobile -->
     <a href="/" class="logo">
-      <img src="../../public/logo-lec-media-blanc.png" alt="LEC Media Logo" />
+      <img src={logo.src} alt="LEC Media Logo" />
     </a>
 
-    <div class="nav-right">
+    <!-- Theme Switcher & Contact button -->
+    <div class="contact-button-container">
+      <!-- Theme Switcher -->
       <div class="theme-switch-wrapper">
         <label class="theme-switch" for="checkbox">
           <input type="checkbox" id="checkbox" />
@@ -152,42 +192,58 @@
           </div>
         </label>
       </div>
-
-      <a href="/contact" class="contact-btn">
-        <span>Nous contacter</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round">
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
+      
+      <!-- Contact Button -->
+      <a href="/agence-cro#contact">
+        <button class="button" style="background-color: #08f791; border-radius: 50px; padding: 10px 20px; border: none; font-weight: 700; cursor: pointer;">
+          Nous contacter
+        </button>
       </a>
     </div>
   </div>
 </nav>
 
 <style>
+  :root {
+    --primary-bg: rgba(30, 30, 30, 0.8);
+    --primary-text: #b0b0b0;
+    --primary-shadow: rgba(0, 0, 0, 0.3);
+    --primary-accent: #08f791;
+    --dropdown-bg: #2a2a2a;
+    --dropdown-text: #e0e0e0;
+    --dropdown-desc: #a0a0a0;
+    --dropdown-shadow: rgba(0, 0, 0, 0.5);
+  }
+
+  [data-theme="light"] {
+    --primary-bg: rgba(240, 240, 240, 0.8);
+    --primary-text: #555;
+    --primary-shadow: rgba(0, 0, 0, 0.1);
+    --primary-accent: #08f791;
+    --dropdown-bg: #f0f0f0;
+    --dropdown-text: #333;
+    --dropdown-desc: #666;
+    --dropdown-shadow: rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="light"] .logo{
+    filter: invert();
+  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: rgba(30, 30, 30, 0.8);
+    background-color: var(--primary-bg);
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-    width: 75%;
+    box-shadow: 0 2px 15px var(--primary-shadow);
+    width: 90%;
     margin: auto;
     margin-top: 20px;
     border-radius: 32rem;
@@ -195,27 +251,11 @@
     transition: background-color 0.3s ease;
   }
 
-  [data-theme="light"] .navbar {
-    background-color: rgba(240, 240, 240, 0.8);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .nav-left {
-    display: flex;
-    width: 30%;
-  }
-
   .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
+    width: 30%;
   }
 
   .logo img {
@@ -223,33 +263,46 @@
     margin-right: 10px;
   }
 
+  .logo-text {
+    color: #4ca6ff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .nav-items-container {
+    display: flex;
+    width: 30%;
+  }
+
   .nav-item {
     position: relative;
   }
 
   .nav-link {
-    color: #b0b0b0;
+    color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
     padding: 10px 15px;
     border-radius: 8px;
-    transition:
-      color 0.3s,
-      background-color 0.3s;
+    transition: color 0.3s, background-color 0.3s;
     cursor: pointer;
   }
 
-  [data-theme="light"] .nav-link {
-    color: #555;
-  }
-
   .nav-link:hover {
-    color: #4ca6ff;
+    color: var(--primary-accent);
   }
 
   .nav-link.active {
-    color: #4ca6ff;
-    background-color: rgba(76, 166, 255, 0.1);
+    color: var(--primary-accent);
+    background-color: rgba(8, 247, 145, 0.1);
   }
 
   .dropdown {
@@ -257,19 +310,13 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #2a2a2a;
+    background-color: var(--dropdown-bg);
     min-width: 250px;
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px var(--dropdown-shadow);
     z-index: 1000;
     margin-top: 25px;
-    transition: background-color 0.3s ease;
-  }
-
-  [data-theme="light"] .dropdown {
-    background-color: #f0f0f0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
   .dropdown.show {
@@ -282,54 +329,43 @@
     padding: 10px;
     border-radius: 8px;
     text-decoration: none;
-    color: #e0e0e0;
+    color: var(--dropdown-text);
     transition: background-color 0.3s;
   }
 
-  [data-theme="light"] .dropdown-item {
-    color: #333;
-  }
-
   .dropdown-item:hover {
-    background-color: rgba(76, 166, 255, 0.1);
+    background-color: rgba(8, 247, 145, 0.1);
   }
 
   .dropdown-icon {
     width: 24px;
     height: 24px;
     margin-right: 12px;
-    stroke: #4ca6ff;
+    stroke: var(--primary-accent);
     fill: none;
     stroke-width: 2;
   }
 
+  .dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }
+
   .dropdown-title {
-    color: #4ca6ff;
+    color: var(--primary-accent);
     font-weight: 600;
     margin-bottom: 3px;
     font-size: 0.9rem;
   }
 
   .dropdown-description {
-    color: #a0a0a0;
+    color: var(--dropdown-desc);
     font-size: 0.7rem;
   }
 
-  [data-theme="light"] .dropdown-description {
-    color: #666;
-  }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: 30%;
-    justify-content: end;
-  }
-
   .contact-btn {
-    background-color: #02f791;
-    color: rgb(0, 0, 0);
+    background-color: var(--primary-accent);
+    color: #121212;
     padding: 10px 20px;
     border-radius: 30px;
     text-decoration: none;
@@ -341,19 +377,20 @@
   }
 
   .contact-btn:hover {
-    background-color: #1e4bff;
+    background-color: #08f78f8a;
   }
 
   .contact-btn svg {
-    stroke: rgb(0, 0, 0);
-    width: 16px;
-    height: 16px;
+    stroke: #121212;
+    width: 20px;
+    height: 20px;
   }
 
   /* Theme Switch Styles */
   .theme-switch-wrapper {
     display: flex;
     align-items: center;
+    margin-right: 15px;
   }
 
   .theme-switch {
@@ -387,7 +424,7 @@
   }
 
   .slider:before {
-    background-color: #1fbe7c;
+    background-color: var(--primary-accent);
     bottom: 4px;
     content: "";
     height: 26px;
@@ -434,82 +471,264 @@
     margin-right: 5px;
   }
 
-  /* Media Queries pour la responsivité */
-  @media (max-width: 992px) {
-    .navbar {
-      width: 90%;
+  /* Mobile menu */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: var(--primary-accent);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .contact-button-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .theme-switch-wrapper-mobile {
+    display: none;
+    margin: 15px auto;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .theme-switch-wrapper-mobile {
+      display: flex;
     }
   }
 
-  @media (max-width: 768px) {
+  /* Media queries for responsive design */
+  @media screen and (max-width: 992px) {
     .navbar {
       width: 95%;
-      border-radius: 16px;
+      padding: 8px 15px;
+      border-radius: 20px;
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+      background-color: rgba(8, 247, 143, 0);
+    }
+  }
+
+  /* Tablet and smaller screens */
+  @media screen and (max-width: 768px) {
+    .navbar {
       margin-top: 10px;
     }
 
+    .hamburger {
+      display: block;
+      order: 1;
+      z-index: 1100;
+    }
+
+    .logo {
+      order: 2;
+      margin: 0 auto;
+    }
+
     .nav-menu {
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .nav-items-container {
+      position: fixed;
+      top: 0;
+      left: -100%;
       flex-direction: column;
-      gap: 15px;
+      width: 80%;
+      height: 100vh;
+      padding: 70px 20px 20px;
+      background-color: var(--primary-bg);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+      z-index: 1050;
+      border-radius: 2rem;
     }
 
-    .nav-left {
-      width: 100%;
-      justify-content: center;
+    .nav-items-container.active {
+      left: 0;
+      width: calc(100% - 40px);
     }
 
-    .nav-right {
+    .nav-item {
       width: 100%;
-      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 15px;
+      font-size: 18px;
     }
 
     .dropdown {
-      left: 50%;
-      transform: translateX(-50%);
-      min-width: 280px;
+      position: static;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-shadow: none;
+    }
+
+    .contact-button-container {
+      order: 3;
+    }
+
+    button.button {
+      padding: 8px 12px !important;
+      font-size: 14px;
+    }
+  }
+
+      /* Small mobile screens */
+  @media screen and (max-width: 480px) {
+    .navbar {
+      width: 90%;
+      padding: 8px 10px;
+      border-radius: 15px;
+    }
+
+    .logo img {
+      height: 30px;
+    }
+
+    button.button {
+      padding: 6px 10px !important;
+      font-size: 12px;
+    }
+
+    .dropdown {
+      padding: 10px;
+    }
+
+    /* Adjust hamburger menu when open */
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .contact-button-container {
+      display: none;
+    }
+
+    .logo {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: -30px;
     }
   }
 </style>
 
 <script>
-  // Gestion des dropdowns
-  document.addEventListener("DOMContentLoaded", () => {
-    const navLinks = document.querySelectorAll(".nav-link[data-dropdown]");
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const dropdownId = `${link.getAttribute("data-dropdown")}-dropdown`;
-        const dropdown = document.getElementById(dropdownId);
-
-        // Ferme tous les autres dropdowns
-        document.querySelectorAll(".dropdown").forEach((d) => {
-          if (d.id !== dropdownId) {
-            d.classList.remove("show");
+  // Attendre que le DOM soit chargé
+  document.addEventListener('DOMContentLoaded', () => {
+    // Éléments du menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    // Éléments des dropdowns
+    const servicesLink = document.getElementById('servicesLink');
+    const casLink = document.getElementById('casLink');
+    const blogsLink = document.getElementById('blogsLink');
+    
+    const servicesDropdown = document.getElementById('servicesDropdown');
+    const casDropdown = document.getElementById('casDropdown');
+    const blogsDropdown = document.getElementById('blogsDropdown');
+    
+    // Gérer le menu mobile
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        if (mobileMenu) {
+          mobileMenu.classList.toggle('active');
+        }
+      });
+    }
+    
+    // Fonction pour fermer tous les dropdowns
+    const closeAllDropdowns = () => {
+      const allDropdowns = document.querySelectorAll('.dropdown');
+      const allNavLinks = document.querySelectorAll('.nav-link');
+      
+      allDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+      
+      allNavLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+    };
+    
+    // Gérer les dropdowns
+    const setupDropdown = (linkElement, dropdownElement) => {
+      if (linkElement && dropdownElement) {
+        linkElement.addEventListener('click', (event) => {
+          event.stopPropagation();
+          
+          // Si ce dropdown est déjà ouvert, le fermer
+          if (dropdownElement.classList.contains('show')) {
+            dropdownElement.classList.remove('show');
+            linkElement.classList.remove('active');
+            return;
           }
+          
+          // Fermer tous les dropdowns d'abord
+          closeAllDropdowns();
+          
+          // Afficher le dropdown actuel
+          dropdownElement.classList.add('show');
+          linkElement.classList.add('active');
         });
-
-        // Toggle le dropdown actuel
-        dropdown.classList.toggle("show");
-        e.stopPropagation();
+      }
+    };
+    
+    // Configurer chaque dropdown
+    setupDropdown(servicesLink, servicesDropdown);
+    setupDropdown(casLink, casDropdown);
+    setupDropdown(blogsLink, blogsDropdown);
+    
+    // Fermer les dropdowns quand on clique ailleurs sur la page
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.nav-item')) {
+        closeAllDropdowns();
+      }
+    });
+    
+    // Fermer le menu mobile quand on clique sur un lien
+    const mobileLinks = document.querySelectorAll('.nav-items-container a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu) {
+          mobileMenu.classList.remove('active');
+        }
+        if (hamburgerBtn) {
+          hamburgerBtn.classList.remove('active');
+        }
       });
     });
-
-    // Ferme les dropdowns quand on clique ailleurs
-    document.addEventListener("click", () => {
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        dropdown.classList.remove("show");
-      });
-    });
-
-    // Empêche la fermeture quand on clique sur le dropdown lui-même
-    document.querySelectorAll(".dropdown").forEach((dropdown) => {
-      dropdown.addEventListener("click", (e) => {
-        e.stopPropagation();
-      });
-    });
-
+    
     // Gestion du thème sombre/clair
     const themeSwitch = document.getElementById("checkbox");
+    const themeSwitchMobile = document.getElementById("checkbox-mobile");
 
     // Vérifie si un thème est enregistré dans localStorage
     const currentTheme = localStorage.getItem("theme") || "dark";
@@ -517,20 +736,37 @@
     // Applique le thème initial
     document.documentElement.setAttribute("data-theme", currentTheme);
 
-    // Met à jour l'état du switch selon le thème
+    // Met à jour l'état des switchs selon le thème
     if (currentTheme === "light") {
       themeSwitch.checked = true;
+      if (themeSwitchMobile) themeSwitchMobile.checked = true;
     }
 
-    // Écoute les changements du switch
-    themeSwitch.addEventListener("change", function () {
-      if (this.checked) {
+    // Fonction pour changer le thème
+    const toggleTheme = function(isLight) {
+      if (isLight) {
         document.documentElement.setAttribute("data-theme", "light");
         localStorage.setItem("theme", "light");
       } else {
         document.documentElement.setAttribute("data-theme", "dark");
         localStorage.setItem("theme", "dark");
       }
+    };
+
+    // Écoute les changements des switchs
+    themeSwitch.addEventListener("change", function() {
+      toggleTheme(this.checked);
+      if (themeSwitchMobile) themeSwitchMobile.checked = this.checked;
     });
+    
+    if (themeSwitchMobile) {
+      themeSwitchMobile.addEventListener("change", function() {
+        toggleTheme(this.checked);
+        themeSwitch.checked = this.checked;
+      });
+    }
+    
+    // Nous avons retiré l'ajout automatique du switcher au menu mobile
+    // Le switcher reste uniquement dans la zone "Nous contacter"
   });
 </script>

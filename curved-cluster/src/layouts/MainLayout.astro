@@ -1,7 +1,7 @@
 ---
 // src/layouts/MainLayout.astro
 const { title, theme = "light" } = Astro.props;
-import NavBar from "../components/NavBar.astro";
+import Header from '../components/NavBar.astro';
 import Footer from "../components/Footer.astro";
 ---
 
@@ -13,9 +13,8 @@ import Footer from "../components/Footer.astro";
   <title>{title} | Mon Site</title>
 </head>
 <body>
-  <header>
-<NavBar />
-  </header>
+    <Header />
+
   
   <main>
     <slot />
@@ -172,6 +171,9 @@ nav .container {
 [data-theme="dark"] .light-icon {
   display: none;
 }
+
+
+
 
 /* Main content */
 main {
@@ -335,6 +337,8 @@ code {
     justify-content: center;
   }
 }
+
+
   </style>
 </body>
 </html>

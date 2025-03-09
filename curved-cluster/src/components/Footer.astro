@@ -127,11 +127,30 @@ import logo from '../assets/logo-lec-media-blanc.png';
     border-top: 1px solid rgba(57, 255, 20, 0.1);
   }
 
+
+
   .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+  display: grid;
+  /* Changement ici : au lieu d'utiliser repeat(auto-fit), définir explicitement les colonnes */
+  grid-template-columns: minmax(300px, 1.5fr) repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-links {
+  padding-left: 0px;
+}
+
+footer > .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Assurez-vous que la grille s'adapte bien sur mobile */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr; /* Sur mobile, une seule colonne */
   }
+}
 
   .footer-title {
     font-size: 1.2rem;

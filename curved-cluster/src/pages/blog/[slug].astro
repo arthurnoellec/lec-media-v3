@@ -67,19 +67,163 @@ const { Content } = await entry.render();
     </div>
     
     <footer class="post-footer">
-      <div class="container">
-        <div class="post-nav">
-          <a href="/blog" class="back-to-blog">← Retour aux articles</a>
-        </div>
-        
-        <div class="share-section">
-          <p>Partager cet article</p>
-          <div class="share-buttons">
-            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(entry.data.title)}&url=${encodeURIComponent(`https://votresite.com/blog/${entry.slug}`)}`} target="_blank" rel="noopener noreferrer" class="share-button twitter">Twitter</a>
-            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://votresite.com/blog/${entry.slug}`)}`} target="_blank" rel="noopener noreferrer" class="share-button linkedin">LinkedIn</a>
-          </div>
-        </div>
-      </div>
+<!-- Bouton retour aux articles avec style personnalisé -->
+<div class="post-nav">
+  <a href="/blog" class="back-to-blog">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5"></path>
+      <path d="M12 19l-7-7 7-7"></path>
+    </svg>
+    Retour aux articles
+  </a>
+</div>
+
+<!-- Section de partage avec icônes -->
+<div class="share-section">
+  <p>Partager cet article</p>
+  <div class="share-buttons">
+    <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://votresite.com/blog/${entry.slug}`)}`} target="_blank" rel="noopener noreferrer" class="share-button linkedin">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+        <rect x="2" y="9" width="4" height="12"></rect>
+        <circle cx="4" cy="4" r="2"></circle>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://votresite.com/blog/${entry.slug}`)}`} target="_blank" rel="noopener noreferrer" class="share-button facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+      </svg>
+      <span>Facebook</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  /* Styles pour le bouton de retour */
+  .post-nav {
+    margin-bottom: 30px;
+  }
+  
+  .back-to-blog {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--text-primary, #333);
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border, #e0e0e0);
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+  
+  .back-to-blog:hover {
+    color: var(--primary, #08f791);
+    border-color: var(--primary, #08f791);
+    background-color: rgba(8, 247, 145, 0.05);
+    transform: translateX(-5px);
+  }
+  
+  .back-to-blog svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .back-to-blog:hover svg {
+    transform: translateX(-3px);
+  }
+  
+  /* Styles pour les boutons de partage */
+  .share-section {
+    margin-top: 40px;
+    border-top: 1px solid var(--border, #e0e0e0);
+    padding-top: 25px;
+  }
+  
+  .share-section p {
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary, #333);
+  }
+  
+  .share-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .share-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: white;
+  }
+  
+  .share-button span {
+    position: relative;
+    top: 1px;
+  }
+  
+  .share-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .twitter {
+    background-color: #1DA1F2;
+  }
+  
+  .linkedin {
+    background-color: #0077B5;
+  }
+  
+  .facebook {
+    background-color: #1877F2;
+  }
+  
+  /* Style pour le mode sombre */
+  [data-theme="dark"] .back-to-blog {
+    color: var(--text-primary, #e0e0e0);
+    border-color: var(--border, #444);
+  }
+  
+  [data-theme="dark"] .back-to-blog:hover {
+    background-color: rgba(8, 247, 145, 0.1);
+  }
+  
+  [data-theme="dark"] .share-section {
+    border-color: var(--border, #444);
+  }
+  
+  [data-theme="dark"] .share-section p {
+    color: var(--text-primary, #e0e0e0);
+  }
+  
+  /* Ajustements responsive */
+  @media (max-width: 480px) {
+    .share-buttons {
+      gap: 10px;
+    }
+    
+    .share-button {
+      padding: 8px 12px;
+      font-size: 0.8rem;
+    }
+    
+    .share-button svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+</style>
     </footer>
   </article>
 </Layout>
@@ -233,6 +377,9 @@ const { Content } = await entry.render();
   .post-footer {
     border-top: 1px solid var(--border);
     padding: 40px 0 60px;
+    max-width: 1000px;
+    margin: auto;
+    width: 100%;
   }
   
   .post-nav {
@@ -252,6 +399,12 @@ const { Content } = await entry.render();
   
   .share-section {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
   }
   
   .share-section p {

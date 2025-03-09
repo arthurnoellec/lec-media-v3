@@ -903,6 +903,8 @@ function toggleDropdown(element) {
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
+
+
   
       .logos {
         overflow: hidden;
@@ -943,7 +945,7 @@ function toggleDropdown(element) {
       }
   
       .logos-slide img {
-        height: 90px;
+        height: 50px;
         margin: 0 20px;
         background-color: #242424;
         border-radius: var(--radius-lg);
@@ -1443,8 +1445,8 @@ function toggleDropdown(element) {
       ">
       <div id="div-img-qui-sommes">
         <img src="./images/qui-sommes-nous.png" />
-        <div class="logos">
-          <div class="logos-slide">
+        <div class="logo-carousel">
+          <div class="logo-carousel-slide">
             <img src="./images/logo shopify CRO.png" />
             <img src="./images/Logo Hotjar CRO.png" />
             <img src="./images/Logo cal.com CRO.png" />
@@ -1455,14 +1457,14 @@ function toggleDropdown(element) {
             <img src="./images/Logo webflow CRO.png" />
           </div>
         </div>
-
+        
         <script>
-          var copy = document.querySelector(".logos-slide").cloneNode(true);
-          document.querySelector(".logos").appendChild(copy);
+          var copy = document.querySelector(".logo-carousel-slide").cloneNode(true);
+          document.querySelector(".logo-carousel").appendChild(copy);
         </script>
-
+        
         <style>
-          @keyframes slide {
+          @keyframes logo-slide {
             from {
               transform: translateX(0);
             }
@@ -1470,15 +1472,16 @@ function toggleDropdown(element) {
               transform: translateX(-100%);
             }
           }
-
-          .logos {
+        
+          .logo-carousel {
             overflow: hidden;
             white-space: nowrap;
             position: relative;
+            margin-top: 35px;
           }
-
-          .logos:before,
-          .logos:after {
+        
+          .logo-carousel:before,
+          .logo-carousel:after {
             position: absolute;
             top: 0;
             width: 250px;
@@ -1486,31 +1489,26 @@ function toggleDropdown(element) {
             content: "";
             z-index: 2;
           }
-
-          .logos:before {
+        
+          .logo-carousel:before {
             left: 0;
             background: linear-gradient(to left, rgba(255, 255, 255, 0), #161616);
           }
-
-          .logos:after {
+        
+          .logo-carousel:after {
             right: 0;
             background: linear-gradient(to right, rgba(255, 255, 255, 0), #161616);
           }
-
-
-          .logos-slide {
+        
+          .logo-carousel-slide {
             display: inline-block;
-            animation: 35s slide infinite linear;
+            animation: 35s logo-slide infinite linear;
           }
-
-          .logos-slide img {
+        
+          .logo-carousel-slide img {
             height: 50px;
             margin: 0 15px;
           }
-
-
-        
-
         </style>
       </div>
       <div id="div-txt-qui-sommes">
