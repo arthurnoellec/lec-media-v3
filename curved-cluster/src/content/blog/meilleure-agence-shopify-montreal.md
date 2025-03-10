@@ -11,12 +11,10 @@ tags: ["montréal", "e-commerce", "boutique en ligne", "agence web", "shopify"]
 
 ## Introduction
 
-Bienvenue dans l'univers de LËC MEDIA, votre phare dans l'océan tumultueux du e-commerce à Montréal. Dans ce monde digital en perpétuelle évolution, posséder une boutique en ligne unique et efficace n'est pas seulement un avantage, c'est une nécessité. LËC MEDIA, avec son expertise pointue et son approche sur mesure, se présente comme le partenaire idéal pour la réalisation de votre projet e-commerce.
+Bienvenue dans l'univers de LËC MEDIA, votre phare dans l'océan tumultueux du e-commerce à Montréal. Dans ce monde digital en perpétuelle évolution. Posséder une boutique en ligne unique et efficace n'est pas seulement un avantage, c'est une nécessité. LËC MEDIA, avec son expertise pointue et son approche sur mesure, se présente comme le partenaire idéal pour la réalisation de votre projet e-commerce.
 
-![Programme canadien d'adoption du numérique](/images/PCAN-1.png)
-![logo PCAN](/images/PCAN.png)
-![Canada](/images/PCAN.jpg)
-*Nous pouvons vous aider à obtenir votre subvention PCAN*
+![Programme canadien d'adoption du numérique](../images/Lec-Media-agence-agence-shopify-montreal-quebec.png)
+
 
 ## Pourquoi choisir LËC MEDIA pour votre projet e-commerce ?
 
@@ -26,14 +24,14 @@ Avec une expérience avérée dans le domaine du e-commerce, notre équipe combi
 
 L'élaboration d'un site e-commerce chez LËC MEDIA est un art où la fonctionnalité rencontre l'esthétique. Chaque site est conçu pour être non seulement attrayant et engageant, mais aussi efficace dans son rôle principal : convertir les visiteurs en clients fidèles. Notre expertise en SEO et en optimisation de la performance garantit que votre boutique en ligne ne sera pas seulement belle, mais aussi puissamment visible et performante.
 
-![Succes de votre boutique en ligne montreal](/images/Succes-de-votre-boutique-en-ligne-montreal.png)
+![Succes de votre boutique en ligne montreal](../images/Resultat-lec-media-agency.png)
 *Comprendre vos besoins et vous conseiller. Crédit : Lëc Média.*
 
 ## Branding: Forger une Identité de Marque Forte
 
 Chez LËC MEDIA, nous croyons que le branding est le cœur battant de toute entreprise prospère. Notre mission est de créer pour vous une identité de marque qui résonne avec votre public cible, une marque qui ne se contente pas d'exister, mais qui vit, respire et communique votre essence unique.
 
-[Nos réalisations](https://lec-media.agency/branding)
+[Nos réalisations](https://lec-media.agency/#nos-realisation-ancre)
 
 ## Techniques avancées de SEO pour une meilleure visibilité en ligne
 
@@ -47,7 +45,7 @@ Dans le monde volatile du e-commerce, la réputation en ligne est un joyau préc
 
 Nos clients, nos plus grands ambassadeurs, témoignent de l'impact profond et positif de nos services sur leurs entreprises. Leur satisfaction et leur réussite sont la preuve concrète de l'efficacité de notre approche.
 
-![Avis agence lec media](/images/avis-agence-lec-media.png)
+![Avis agence lec media](../images/avis-lec-media.png)
 *Vos commentaires en disent beaucoup. Crédit : Lëc Média.*
 
 ## L'Expérience Utilisateur au Cœur de nos Préoccupations

@@ -29,7 +29,7 @@ const allTags = [...new Set(sortedEntries.flatMap((entry) => entry.data.tags || 
 <Layout title="Blog" theme="dark">
   <div class="blog-container">
     <header class="blog-header">
-      <h1 class="gradient-text test-light">Le Blog</h1>
+      <h1 class="gradient-text">Le Blog</h1>
       <p class="blog-subtitle">Découvrez nos derniers articles et actualités</p>
     </header>
 
@@ -185,11 +185,10 @@ const allTags = [...new Set(sortedEntries.flatMap((entry) => entry.data.tags || 
   }
 
   .blog-header h1 {
-    background: linear-gradient(90deg, #02f791, #00ffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+
+
+
+
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 15px;

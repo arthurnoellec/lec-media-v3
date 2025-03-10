@@ -19,3 +19,8 @@
   max-width: 100% !important;
   height: auto !important;
 }
+
+p > strong > a,
+p > a {
+  color: var(--primary);
+}

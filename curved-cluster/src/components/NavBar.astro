@@ -1,7 +1,8 @@
 ---
 // src/components/Header.astro
-import logo from '../assets/logo-lec-media-blanc.png';
+import logo from "../assets/logo-lec-media-blanc.png";
 ---
+
 <div style="height: 80px;"></div>
 <nav class="navbar">
   <div class="nav-menu">
@@ -56,7 +57,7 @@ import logo from '../assets/logo-lec-media-blanc.png';
           </div>
         </label>
       </div>
-      
+
       <div class="nav-item">
         <div class="nav-link" id="servicesLink">Services</div>
         <div class="dropdown" id="servicesDropdown">
@@ -83,7 +84,8 @@ import logo from '../assets/logo-lec-media-blanc.png';
           </a>
           <a href="/refonte-site-ecommerce" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+              ></path>
               <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
             </svg>
             <div class="dropdown-content">
@@ -97,7 +99,8 @@ import logo from '../assets/logo-lec-media-blanc.png';
               <path d="M9 18h6"></path>
               <path d="m10 8 2-2 2 2"></path>
               <circle cx="12" cy="5" r="3"></circle>
-              <path d="M3 22h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path>
+              <path d="M3 22h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"
+              ></path>
             </svg>
             <div class="dropdown-content">
               <div class="dropdown-title">Formation en entreprise</div>
@@ -126,7 +129,7 @@ import logo from '../assets/logo-lec-media-blanc.png';
       <div class="nav-item">
         <div class="nav-link" id="blogsLink">Blogs</div>
         <div class="dropdown" id="blogsDropdown">
-          <a href="/les-blogs" class="dropdown-item">
+          <a href="/blog" class="dropdown-item">
             <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
@@ -192,10 +195,12 @@ import logo from '../assets/logo-lec-media-blanc.png';
           </div>
         </label>
       </div>
-      
+
       <!-- Contact Button -->
       <a href="/agence-cro#contact">
-        <button class="button" style="background-color: #08f791; border-radius: 50px; padding: 10px 20px; border: none; font-weight: 700; cursor: pointer;">
+        <button
+          class="button"
+          style="background-color: #08f791; border-radius: 50px; padding: 10px 20px; border: none; font-weight: 700; cursor: pointer;">
           Nous contacter
         </button>
       </a>
@@ -226,7 +231,7 @@ import logo from '../assets/logo-lec-media-blanc.png';
     --dropdown-shadow: rgba(0, 0, 0, 0.1);
   }
 
-  [data-theme="light"] .logo{
+  [data-theme="light"] .logo {
     filter: invert();
   }
 
@@ -256,6 +261,7 @@ import logo from '../assets/logo-lec-media-blanc.png';
     align-items: center;
     text-decoration: none;
     width: 30%;
+    justify-content: center;
   }
 
   .logo img {
@@ -292,7 +298,9 @@ import logo from '../assets/logo-lec-media-blanc.png';
     font-weight: 500;
     padding: 10px 15px;
     border-radius: 8px;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+      color 0.3s,
+      background-color 0.3s;
     cursor: pointer;
   }
 
@@ -494,13 +502,18 @@ import logo from '../assets/logo-lec-media-blanc.png';
     display: flex;
     align-items: center;
   }
-  
+
   .theme-switch-wrapper-mobile {
     display: none;
     margin: 15px auto;
     justify-content: center;
   }
-  
+  .contact-button-container {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   @media screen and (max-width: 480px) {
     .theme-switch-wrapper-mobile {
       display: flex;
@@ -591,7 +604,7 @@ import logo from '../assets/logo-lec-media-blanc.png';
     }
   }
 
-      /* Small mobile screens */
+  /* Small mobile screens */
   @media screen and (max-width: 480px) {
     .navbar {
       width: 90%;
@@ -640,92 +653,92 @@ import logo from '../assets/logo-lec-media-blanc.png';
 
 <script>
   // Attendre que le DOM soit chargé
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Éléments du menu
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
     // Éléments des dropdowns
-    const servicesLink = document.getElementById('servicesLink');
-    const casLink = document.getElementById('casLink');
-    const blogsLink = document.getElementById('blogsLink');
-    
-    const servicesDropdown = document.getElementById('servicesDropdown');
-    const casDropdown = document.getElementById('casDropdown');
-    const blogsDropdown = document.getElementById('blogsDropdown');
-    
+    const servicesLink = document.getElementById("servicesLink");
+    const casLink = document.getElementById("casLink");
+    const blogsLink = document.getElementById("blogsLink");
+
+    const servicesDropdown = document.getElementById("servicesDropdown");
+    const casDropdown = document.getElementById("casDropdown");
+    const blogsDropdown = document.getElementById("blogsDropdown");
+
     // Gérer le menu mobile
     if (hamburgerBtn) {
-      hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('active');
+      hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("active");
         if (mobileMenu) {
-          mobileMenu.classList.toggle('active');
+          mobileMenu.classList.toggle("active");
         }
       });
     }
-    
+
     // Fonction pour fermer tous les dropdowns
     const closeAllDropdowns = () => {
-      const allDropdowns = document.querySelectorAll('.dropdown');
-      const allNavLinks = document.querySelectorAll('.nav-link');
-      
-      allDropdowns.forEach(dropdown => {
-        dropdown.classList.remove('show');
+      const allDropdowns = document.querySelectorAll(".dropdown");
+      const allNavLinks = document.querySelectorAll(".nav-link");
+
+      allDropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("show");
       });
-      
-      allNavLinks.forEach(link => {
-        link.classList.remove('active');
+
+      allNavLinks.forEach((link) => {
+        link.classList.remove("active");
       });
     };
-    
+
     // Gérer les dropdowns
     const setupDropdown = (linkElement, dropdownElement) => {
       if (linkElement && dropdownElement) {
-        linkElement.addEventListener('click', (event) => {
+        linkElement.addEventListener("click", (event) => {
           event.stopPropagation();
-          
+
           // Si ce dropdown est déjà ouvert, le fermer
-          if (dropdownElement.classList.contains('show')) {
-            dropdownElement.classList.remove('show');
-            linkElement.classList.remove('active');
+          if (dropdownElement.classList.contains("show")) {
+            dropdownElement.classList.remove("show");
+            linkElement.classList.remove("active");
             return;
           }
-          
+
           // Fermer tous les dropdowns d'abord
           closeAllDropdowns();
-          
+
           // Afficher le dropdown actuel
-          dropdownElement.classList.add('show');
-          linkElement.classList.add('active');
+          dropdownElement.classList.add("show");
+          linkElement.classList.add("active");
         });
       }
     };
-    
+
     // Configurer chaque dropdown
     setupDropdown(servicesLink, servicesDropdown);
     setupDropdown(casLink, casDropdown);
     setupDropdown(blogsLink, blogsDropdown);
-    
+
     // Fermer les dropdowns quand on clique ailleurs sur la page
-    document.addEventListener('click', (event) => {
-      if (!event.target.closest('.nav-item')) {
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".nav-item")) {
         closeAllDropdowns();
       }
     });
-    
+
     // Fermer le menu mobile quand on clique sur un lien
-    const mobileLinks = document.querySelectorAll('.nav-items-container a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    const mobileLinks = document.querySelectorAll(".nav-items-container a");
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
         if (mobileMenu) {
-          mobileMenu.classList.remove('active');
+          mobileMenu.classList.remove("active");
         }
         if (hamburgerBtn) {
-          hamburgerBtn.classList.remove('active');
+          hamburgerBtn.classList.remove("active");
         }
       });
     });
-    
+
     // Gestion du thème sombre/clair
     const themeSwitch = document.getElementById("checkbox");
     const themeSwitchMobile = document.getElementById("checkbox-mobile");
@@ -743,7 +756,7 @@ import logo from '../assets/logo-lec-media-blanc.png';
     }
 
     // Fonction pour changer le thème
-    const toggleTheme = function(isLight) {
+    const toggleTheme = function (isLight) {
       if (isLight) {
         document.documentElement.setAttribute("data-theme", "light");
         localStorage.setItem("theme", "light");
@@ -754,18 +767,18 @@ import logo from '../assets/logo-lec-media-blanc.png';
     };
 
     // Écoute les changements des switchs
-    themeSwitch.addEventListener("change", function() {
+    themeSwitch.addEventListener("change", function () {
       toggleTheme(this.checked);
       if (themeSwitchMobile) themeSwitchMobile.checked = this.checked;
     });
-    
+
     if (themeSwitchMobile) {
-      themeSwitchMobile.addEventListener("change", function() {
+      themeSwitchMobile.addEventListener("change", function () {
         toggleTheme(this.checked);
         themeSwitch.checked = this.checked;
       });
     }
-    
+
     // Nous avons retiré l'ajout automatique du switcher au menu mobile
     // Le switcher reste uniquement dans la zone "Nous contacter"
   });
