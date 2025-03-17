@@ -1,0 +1,1285 @@
+---
+// TestimonialsGrid.astro
+interface Image {
+  url: string;
+  alt: string;
+}
+
+interface Testimonial {
+  id: number;
+  name: string;
+  company: string;
+  position: string;
+  avatar: string;
+  rating: number;
+  source: 'HelloDarwin' | 'Google' | 'Malt' | 'Direct' | 'LinkedIn';
+  sourceUrl?: string;
+  linkedin?: string;
+  website?: string;
+  content: string;
+  images?: string[];
+  highlightQuote?: string;
+  industry?: string;
+  projectType?: string;
+  verifiedBadge?: boolean;
+  size?: 'small' | 'medium' | 'large'; // Taille de la carte
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+
+// Assigner des tailles aléatoires aux témoignages s'ils n'en ont pas
+const testimonialsWithSizes = testimonials.map((testimonial, index) => {
+  if (!testimonial.size) {
+    // Assigner une taille en fonction de l'index pour une distribution équilibrée
+    const sizes = ['small', 'medium', 'large'];
+    testimonial.size = sizes[index % 3] as 'small' | 'medium' | 'large';
+    
+    // Si un témoignage a une citation mise en évidence ou des images, le rendre plus grand
+    if (testimonial.highlightQuote && testimonial.images && testimonial.images.length > 0) {
+      testimonial.size = 'large';
+    } else if (testimonial.highlightQuote || (testimonial.images && testimonial.images.length > 0)) {
+      testimonial.size = 'medium';
+    }
+  }
+  return testimonial;
+});
+
+// Définir les couleurs par source
+const sourceColors = {
+  Google: "#4285F4",
+  Malt: "#FC5656",
+  HelloDarwin: "#00BFA5",
+  LinkedIn: "#0077B5",
+  Direct: "#673AB7"
+};
+
+// Organiser les témoignages par source pour le filtrage
+const sourceGroups = {
+  all: testimonialsWithSizes,
+  google: testimonialsWithSizes.filter(t => t.source === 'Google'),
+  malt: testimonialsWithSizes.filter(t => t.source === 'Malt'),
+  hellodarwin: testimonialsWithSizes.filter(t => t.source === 'HelloDarwin'),
+  linkedin: testimonialsWithSizes.filter(t => t.source === 'LinkedIn'),
+  direct: testimonialsWithSizes.filter(t => t.source === 'Direct')
+};
+
+// Calculer le nombre de témoignages par source
+const countBySource = {
+  all: testimonialsWithSizes.length,
+  google: sourceGroups.google.length,
+  malt: sourceGroups.malt.length,
+  hellodarwin: sourceGroups.hellodarwin.length,
+  linkedin: sourceGroups.linkedin.length,
+  direct: sourceGroups.direct.length
+};
+---
+
+<section class="testimonials-section">
+  <!-- Filtres -->
+  <div class="filter-bar">
+    <div class="filter-sources">
+      <button class="filter-btn active" data-source="all">
+        <span class="filter-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          </svg>
+        </span>
+        <span class="filter-text">Tous <span class="count">({countBySource.all})</span></span>
+      </button>
+      
+      <button class="filter-btn google-btn" data-source="google">
+        <span class="filter-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+        </span>
+        <span class="filter-text">Google <span class="count">({countBySource.google})</span></span>
+      </button>
+      
+      <button class="filter-btn malt-btn" data-source="malt">
+        <span class="filter-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+            <rect width="24" height="24" fill="#FC5656" rx="4"/>
+            <path fill="#FFFFFF" d="M7 7h4v4H7z M13 7h4v4h-4z M7 13h4v4H7z M13 13h4v4h-4z"/>
+          </svg>
+        </span>
+        <span class="filter-text">Malt <span class="count">({countBySource.malt})</span></span>
+      </button>
+      
+      <button class="filter-btn hellodarwin-btn" data-source="hellodarwin">
+        <span class="filter-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+            <circle cx="12" cy="12" r="11" fill="#00BFA5"/>
+            <path fill="#FFFFFF" d="M8 12l3 3 6-6-1.4-1.4-4.6 4.6-1.6-1.6z"/>
+          </svg>
+        </span>
+        <span class="filter-text">HelloDarwin <span class="count">({countBySource.hellodarwin})</span></span>
+      </button>
+      
+      <!-- <button class="filter-btn linkedin-btn" data-source="linkedin">
+        <span class="filter-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+            <rect width="24" height="24" fill="#0077B5" rx="4"/>
+            <path fill="#FFFFFF" d="M8 19H5V9h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.388-1.521 1.165V19h-3V9h3v1.541c.721-1.076 1.85-1.615 3.394-1.615 2.039 0 3.606 1.241 3.606 4.047V19z"/>
+            <circle fill="#FFFFFF" cx="6.5" cy="6.5" r="1.5"/>
+          </svg>
+        </span>
+        <span class="filter-text">LinkedIn <span class="count">({countBySource.linkedin})</span></span>
+      </button> -->
+      
+      <button class="filter-btn direct-btn" data-source="direct">
+        <span class="filter-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+            <circle cx="12" cy="12" r="11" fill="#673AB7"/>
+            <path fill="#FFFFFF" d="M12 6v6l4 4-1.4 1.4-4.6-4.6V6z"/>
+          </svg>
+        </span>
+        <span class="filter-text">Direct <span class="count">({countBySource.direct})</span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Grille de témoignages en colonnes -->
+  <div class="testimonials-columns">
+    <!-- Colonne 1 -->
+    <div class="testimonial-column">
+      {testimonialsWithSizes.filter((_, i) => i % 3 === 0).map((testimonial) => (
+        <div class={`testimonial-item source-${testimonial.source.toLowerCase()} size-${testimonial.size}`} data-source={testimonial.source.toLowerCase()}>
+<div class={`testimonial-card ${!testimonial.content ? 'empty-content' : ''}`}>
+  <div class="card-header">
+              <div class="source-badge">
+                {testimonial.source === 'Google' && (
+                  <div class="google-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <span>Google</span>
+                  </div>
+                )}
+                {testimonial.source === 'Malt' && (
+                  <div class="malt-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <rect width="24" height="24" fill="#FC5656" rx="4"/>
+                      <path fill="#FFFFFF" d="M7 7h4v4H7z M13 7h4v4h-4z M7 13h4v4H7z M13 13h4v4h-4z"/>
+                    </svg>
+                    <span>Malt</span>
+                  </div>
+                )}
+                {testimonial.source === 'HelloDarwin' && (
+                  <div class="hellodarwin-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <circle cx="12" cy="12" r="11" fill="#00BFA5"/>
+                      <path fill="#FFFFFF" d="M8 12l3 3 6-6-1.4-1.4-4.6 4.6-1.6-1.6z"/>
+                    </svg>
+                    <span>HelloDarwin</span>
+                  </div>
+                )}
+                {testimonial.source === 'LinkedIn' && (
+                  <div class="linkedin-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <rect width="24" height="24" fill="#0077B5" rx="4"/>
+                      <path fill="#FFFFFF" d="M8 19H5V9h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.388-1.521 1.165V19h-3V9h3v1.541c.721-1.076 1.85-1.615 3.394-1.615 2.039 0 3.606 1.241 3.606 4.047V19z"/>
+                      <circle fill="#FFFFFF" cx="6.5" cy="6.5" r="1.5"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                  </div>
+                )}
+                {testimonial.source === 'Direct' && (
+                  <div class="direct-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <circle cx="12" cy="12" r="11" fill="#673AB7"/>
+                      <path fill="#FFFFFF" d="M12 6v6l4 4-1.4 1.4-4.6-4.6V6z"/>
+                    </svg>
+                    <span>Client Direct</span>
+                  </div>
+                )}
+              </div>
+              <div class="rating">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span class={`star ${i < testimonial.rating ? 'filled' : ''}`}>★</span>
+                ))}
+              </div>
+            </div>
+            
+            <div class="card-body">
+              <p class="testimonial-text">{testimonial.content}</p>
+              
+              {testimonial.images && testimonial.images.length > 0 && (
+                <div class="testimonial-images">
+                  <div class="carousel-container">
+                    <div class="carousel-track" style={`--total-slides: ${testimonial.images.length}`}>
+                      {testimonial.images.map(img => (
+                        <div class="carousel-slide">
+                          <img src={img} alt={`Projet ${testimonial.company}`} />
+                        </div>
+                      ))}
+                    </div>
+                    {testimonial.images.length > 1 && (
+                      <div class="carousel-dots">
+                        {testimonial.images.map((_, i) => (
+                          <button class="carousel-dot" data-index={i} aria-label={`Image ${i+1}`}></button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              
+              {testimonial.highlightQuote && (
+                <div class="highlight-quote">
+                  <blockquote>
+                    <span class="quote-mark">"</span>
+                    {testimonial.highlightQuote}
+                    <span class="quote-mark">"</span>
+                  </blockquote>
+                </div>
+              )}
+            </div>
+            
+            <div class="card-footer">
+              <div class="client-profile">
+                <div class="client-avatar">
+                  <img src={testimonial.avatar} alt={testimonial.name} />
+                  {testimonial.verifiedBadge && (
+                    <div class="verified-badge" title="Client vérifié">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                <div class="client-info">
+                  <div class="client-name">{testimonial.name}</div>
+                  <div class="client-position">{testimonial.position}, {testimonial.company}</div>
+                </div>
+              </div>
+              
+              <div class="client-links">
+                {testimonial.linkedin && (
+                  <a href={testimonial.linkedin} target="_blank" rel="noopener noreferrer" class="client-link linkedin" aria-label="Profil LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </a>
+                )}
+                {testimonial.website && (
+                  <a href={testimonial.website} target="_blank" rel="noopener noreferrer" class="client-link website" aria-label="Site web">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                  </a>
+                )}
+                {testimonial.sourceUrl && (
+                  <a href={testimonial.sourceUrl} target="_blank" rel="noopener noreferrer" class="client-link source" aria-label={`Voir l'avis sur ${testimonial.source}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Colonne 2 -->
+    <div class="testimonial-column">
+      {testimonialsWithSizes.filter((_, i) => i % 3 === 1).map((testimonial) => (
+        <div class={`testimonial-item source-${testimonial.source.toLowerCase()} size-${testimonial.size}`} data-source={testimonial.source.toLowerCase()}>
+<div class={`testimonial-card ${!testimonial.content ? 'empty-content' : ''}`}>
+  <!-- Contenu identique au précédent, répété pour chaque colonne -->
+            <div class="card-header">
+              <div class="source-badge">
+                {testimonial.source === 'Google' && (
+                  <div class="google-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <span>Google</span>
+                  </div>
+                )}
+                {testimonial.source === 'Malt' && (
+                  <div class="malt-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <rect width="24" height="24" fill="#FC5656" rx="4"/>
+                      <path fill="#FFFFFF" d="M7 7h4v4H7z M13 7h4v4h-4z M7 13h4v4H7z M13 13h4v4h-4z"/>
+                    </svg>
+                    <span>Malt</span>
+                  </div>
+                )}
+                {testimonial.source === 'HelloDarwin' && (
+                  <div class="hellodarwin-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <circle cx="12" cy="12" r="11" fill="#00BFA5"/>
+                      <path fill="#FFFFFF" d="M8 12l3 3 6-6-1.4-1.4-4.6 4.6-1.6-1.6z"/>
+                    </svg>
+                    <span>HelloDarwin</span>
+                  </div>
+                )}
+                {testimonial.source === 'LinkedIn' && (
+                  <div class="linkedin-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <rect width="24" height="24" fill="#0077B5" rx="4"/>
+                      <path fill="#FFFFFF" d="M8 19H5V9h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.388-1.521 1.165V19h-3V9h3v1.541c.721-1.076 1.85-1.615 3.394-1.615 2.039 0 3.606 1.241 3.606 4.047V19z"/>
+                      <circle fill="#FFFFFF" cx="6.5" cy="6.5" r="1.5"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                  </div>
+                )}
+                {testimonial.source === 'Direct' && (
+                  <div class="direct-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                      <circle cx="12" cy="12" r="11" fill="#673AB7"/>
+                      <path fill="#FFFFFF" d="M12 6v6l4 4-1.4 1.4-4.6-4.6V6z"/>
+                    </svg>
+                    <span>Client Direct</span>
+                  </div>
+                )}
+              </div>
+              <div class="rating">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span class={`star ${i < testimonial.rating ? 'filled' : ''}`}>★</span>
+                ))}
+              </div>
+            </div>
+            
+            <div class="card-body">
+              <p class="testimonial-text">{testimonial.content}</p>
+              
+              {testimonial.images && testimonial.images.length > 0 && (
+                <div class="testimonial-images">
+                  <div class="carousel-container">
+                    <div class="carousel-track" style={`--total-slides: ${testimonial.images.length}`}>
+                      {testimonial.images.map(img => (
+                        <div class="carousel-slide">
+                          <img src={img} alt={`Projet ${testimonial.company}`} />
+                        </div>
+                      ))}
+                    </div>
+                    {testimonial.images.length > 1 && (
+                      <div class="carousel-dots">
+                        {testimonial.images.map((_, i) => (
+                          <button class="carousel-dot" data-index={i} aria-label={`Image ${i+1}`}></button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              
+              {testimonial.highlightQuote && (
+                <div class="highlight-quote">
+                  <blockquote>
+                    <span class="quote-mark">"</span>
+                    {testimonial.highlightQuote}
+                    <span class="quote-mark">"</span>
+                  </blockquote>
+                </div>
+              )}
+            </div>
+            
+            <div class="card-footer">
+              <div class="client-profile">
+                <div class="client-avatar">
+                  <img src={testimonial.avatar} alt={testimonial.name} />
+                  {testimonial.verifiedBadge && (
+                    <div class="verified-badge" title="Client vérifié">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                <div class="client-info">
+                  <div class="client-name">{testimonial.name}</div>
+                  <div class="client-position">{testimonial.position}, {testimonial.company}</div>
+                </div>
+              </div>
+              
+              <div class="client-links">
+  {testimonial.linkedin && (
+    <a href={testimonial.linkedin} target="_blank" rel="noopener noreferrer" class="client-link linkedin" aria-label="Profil LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+    </a>
+  )}
+  {testimonial.website && (
+    <a href={testimonial.website} target="_blank" rel="noopener noreferrer" class="client-link website" aria-label="Site web">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+    </a>
+  )}
+  {testimonial.sourceUrl && (
+    <a href={testimonial.sourceUrl} target="_blank" rel="noopener noreferrer" class="client-link source" aria-label={`Voir l'avis sur ${testimonial.source}`}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+    </a>
+  )}
+</div>
+</div>
+</div>
+</div>
+))}
+</div>
+
+<!-- Colonne 3 -->
+<div class="testimonial-column">
+{testimonialsWithSizes.filter((_, i) => i % 3 === 2).map((testimonial) => (
+  <div class={`testimonial-item source-${testimonial.source.toLowerCase()} size-${testimonial.size}`} data-source={testimonial.source.toLowerCase()}>
+<div class={`testimonial-card ${!testimonial.content ? 'empty-content' : ''}`}>
+  <!-- Contenu identique au précédent, répété pour chaque colonne -->
+      <div class="card-header">
+        <div class="source-badge">
+          {testimonial.source === 'Google' && (
+            <div class="google-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              <span>Google</span>
+            </div>
+          )}
+          {testimonial.source === 'Malt' && (
+            <div class="malt-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                <rect width="24" height="24" fill="#FC5656" rx="4"/>
+                <path fill="#FFFFFF" d="M7 7h4v4H7z M13 7h4v4h-4z M7 13h4v4H7z M13 13h4v4h-4z"/>
+              </svg>
+              <span>Malt</span>
+            </div>
+          )}
+          {testimonial.source === 'HelloDarwin' && (
+            <div class="hellodarwin-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                <circle cx="12" cy="12" r="11" fill="#00BFA5"/>
+                <path fill="#FFFFFF" d="M8 12l3 3 6-6-1.4-1.4-4.6 4.6-1.6-1.6z"/>
+              </svg>
+              <span>HelloDarwin</span>
+            </div>
+          )}
+          {testimonial.source === 'LinkedIn' && (
+            <div class="linkedin-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                <rect width="24" height="24" fill="#0077B5" rx="4"/>
+                <path fill="#FFFFFF" d="M8 19H5V9h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.388-1.521 1.165V19h-3V9h3v1.541c.721-1.076 1.85-1.615 3.394-1.615 2.039 0 3.606 1.241 3.606 4.047V19z"/>
+                <circle fill="#FFFFFF" cx="6.5" cy="6.5" r="1.5"/>
+              </svg>
+              <span>LinkedIn</span>
+            </div>
+          )}
+          {testimonial.source === 'Direct' && (
+            <div class="direct-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                <circle cx="12" cy="12" r="11" fill="#673AB7"/>
+                <path fill="#FFFFFF" d="M12 6v6l4 4-1.4 1.4-4.6-4.6V6z"/>
+              </svg>
+              <span>Client Direct</span>
+            </div>
+          )}
+        </div>
+        <div class="rating">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <span class={`star ${i < testimonial.rating ? 'filled' : ''}`}>★</span>
+          ))}
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <p class="testimonial-text">{testimonial.content}</p>
+        
+        {testimonial.images && testimonial.images.length > 0 && (
+          <div class="testimonial-images">
+            <div class="carousel-container">
+              <div class="carousel-track" style={`--total-slides: ${testimonial.images.length}`}>
+                {testimonial.images.map(img => (
+                  <div class="carousel-slide">
+                    <img src={img} alt={`Projet ${testimonial.company}`} />
+                  </div>
+                ))}
+              </div>
+              {testimonial.images.length > 1 && (
+                <div class="carousel-dots">
+                  {testimonial.images.map((_, i) => (
+                    <button class="carousel-dot" data-index={i} aria-label={`Image ${i+1}`}></button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+        
+        {testimonial.highlightQuote && (
+          <div class="highlight-quote">
+            <blockquote>
+              <span class="quote-mark">"</span>
+              {testimonial.highlightQuote}
+              <span class="quote-mark">"</span>
+            </blockquote>
+          </div>
+        )}
+      </div>
+      
+      <div class="card-footer">
+        <div class="client-profile">
+          <div class="client-avatar">
+            <img src={testimonial.avatar} alt={testimonial.name} />
+            {testimonial.verifiedBadge && (
+              <div class="verified-badge" title="Client vérifié">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+            )}
+          </div>
+          <div class="client-info">
+            <div class="client-name">{testimonial.name}</div>
+            <div class="client-position">{testimonial.position}, {testimonial.company}</div>
+          </div>
+        </div>
+        
+        <div class="client-links">
+          {testimonial.linkedin && (
+            <a href={testimonial.linkedin} target="_blank" rel="noopener noreferrer" class="client-link linkedin" aria-label="Profil LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+          )}
+          {testimonial.website && (
+            <a href={testimonial.website} target="_blank" rel="noopener noreferrer" class="client-link website" aria-label="Site web">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </a>
+          )}
+          {testimonial.sourceUrl && (
+            <a href={testimonial.sourceUrl} target="_blank" rel="noopener noreferrer" class="client-link source" aria-label={`Voir l'avis sur ${testimonial.source}`}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+</div>
+</div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: 2rem 1.5rem 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Filter Bar */
+  .filter-bar {
+    position: sticky;
+    top: 80px;
+    z-index: 90;
+    background-color: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .filter-sources {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 100px;
+    background-color: var(--surface-light);
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    transform: translateY(-2px);
+  }
+  
+  .filter-btn.active {
+    border-color: var(--accent);
+    background-color: rgba(2, 247, 145, 0.15);
+    color: var(--accent);
+  }
+  
+  .count {
+    opacity: 0.7;
+    font-size: 0.8rem;
+  }
+  
+  .google-btn:hover, .google-btn.active {
+    border-color: #4285F4;
+    background-color: rgba(66, 133, 244, 0.15);
+    color: #4285F4;
+  }
+  
+  .malt-btn:hover, .malt-btn.active {
+    border-color: #FC5656;
+    background-color: rgba(252, 86, 86, 0.15);
+    color: #FC5656;
+  }
+  
+  .hellodarwin-btn:hover, .hellodarwin-btn.active {
+    border-color: #00BFA5;
+    background-color: rgba(0, 191, 165, 0.15);
+    color: #00BFA5;
+  }
+  
+  .linkedin-btn:hover, .linkedin-btn.active {
+    border-color: #0077B5;
+    background-color: rgba(0, 119, 181, 0.15);
+    color: #0077B5;
+  }
+  
+  .direct-btn:hover, .direct-btn.active {
+    border-color: #673AB7;
+    background-color: rgba(103, 58, 183, 0.15);
+    color: #673AB7;
+  }
+  
+  /* Colonnes de témoignages */
+  .testimonials-columns {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .testimonial-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .testimonial-item {
+    transition: var(--transition);
+  }
+  
+  /* Tailles différentes pour les cartes */
+  .size-small .testimonial-card .card-body {
+    padding-bottom: 1rem;
+  }
+  
+  .size-small .testimonial-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .size-medium .testimonial-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .size-large .testimonial-card {
+    border-width: 2px;
+  }
+  
+  /* Source-specific styling */
+  .source-google .testimonial-card {
+    border-top: 3px solid #4285F4;
+  }
+  
+  .source-malt .testimonial-card {
+    border-top: 3px solid #FC5656;
+  }
+  
+  .source-hellodarwin .testimonial-card {
+    border-top: 3px solid #00BFA5;
+  }
+  
+  .source-linkedin .testimonial-card {
+    border-top: 3px solid #0077B5;
+  }
+  
+  .source-direct .testimonial-card {
+    border-top: 3px solid #673AB7;
+  }
+  
+  .testimonial-card {
+    height: 100%;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .source-badge div {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  .google-badge {
+    background-color: rgba(66, 133, 244, 0.15);
+    color: #4285F4;
+  }
+  
+  .malt-badge {
+    background-color: rgba(252, 86, 86, 0.15);
+    color: #FC5656;
+  }
+  
+  .hellodarwin-badge {
+    background-color: rgba(0, 191, 165, 0.15);
+    color: #00BFA5;
+  }
+  
+  .linkedin-badge {
+    background-color: rgba(0, 119, 181, 0.15);
+    color: #0077B5;
+  }
+  
+  .direct-badge {
+    background-color: rgba(103, 58, 183, 0.15);
+    color: #673AB7;
+  }
+  
+  .rating {
+    color: #666;
+    font-size: 1.25rem;
+  }
+  
+  .star.filled {
+    color: var(--accent);
+  }
+  
+  .source-google .star.filled {
+    color: #FBBC05;
+  }
+  
+  .source-malt .star.filled {
+    color: #FBBC05;
+  }
+  
+  .source-hellodarwin .star.filled {
+    color: #FBBC05;
+  }
+  
+  .source-linkedin .star.filled {
+    color: #FBBC05;
+  }
+  
+  .source-direct .star.filled {
+    color: #FBBC05;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  
+  .testimonial-images {
+    margin-top: auto;
+  }
+  
+  .carousel-container {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
+  
+  .carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius);
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--border);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .carousel-dot.active {
+    background-color: var(--accent);
+    transform: scale(1.2);
+  }
+  
+  .source-google .carousel-dot.active {
+    background-color: #4285F4;
+  }
+  
+  .source-malt .carousel-dot.active {
+    background-color: #FC5656;
+  }
+  
+  .source-hellodarwin .carousel-dot.active {
+    background-color: #00BFA5;
+  }
+  
+  .source-linkedin .carousel-dot.active {
+    background-color: #0077B5;
+  }
+  
+  .source-direct .carousel-dot.active {
+    background-color: #673AB7;
+  }
+  
+  .highlight-quote {
+    margin-top: auto;
+  }
+  
+  .highlight-quote blockquote {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+  }
+  
+  .source-google .highlight-quote blockquote {
+    color: #4285F4;
+  }
+  
+  .source-malt .highlight-quote blockquote {
+    color: #FC5656;
+  }
+  
+  .source-hellodarwin .highlight-quote blockquote {
+    color: #00BFA5;
+  }
+  
+  .source-linkedin .highlight-quote blockquote {
+    color: #0077B5;
+  }
+  
+  .source-direct .highlight-quote blockquote {
+    color: #673AB7;
+  }
+  
+  .quote-mark {
+    font-size: 1.4rem;
+    font-style: normal;
+    opacity: 0.5;
+  }
+  
+  .card-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .client-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .client-avatar {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .client-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .verified-badge {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--surface);
+  }
+  
+  .source-google .verified-badge {
+    background-color: #4285F4;
+  }
+  
+  .source-malt .verified-badge {
+    background-color: #FC5656;
+  }
+  
+  .source-hellodarwin .verified-badge {
+    background-color: #00BFA5;
+  }
+  
+  .source-linkedin .verified-badge {
+    background-color: #0077B5;
+  }
+  
+  .source-direct .verified-badge {
+    background-color: #673AB7;
+  }
+  
+  .client-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .client-name {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .client-position {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+  
+  .client-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .client-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--surface-light);
+    color: var(--text-secondary);
+    transition: var(--transition);
+  }
+  
+  .client-link:hover {
+    transform: translateY(-3px);
+  }
+  
+  .source-google .client-link:hover {
+    background-color: #4285F4;
+    color: white;
+  }
+  
+  .source-malt .client-link:hover {
+    background-color: #FC5656;
+    color: white;
+  }
+  
+  .source-hellodarwin .client-link:hover {
+    background-color: #00BFA5;
+    color: white;
+  }
+  
+  .source-linkedin .client-link:hover {
+    background-color: #0077B5;
+    color: white;
+  }
+  
+  .source-direct .client-link:hover {
+    background-color: #673AB7;
+    color: white;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .testimonials-columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonial-column:last-child {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .filter-bar {
+      position: static;
+      margin-top: 1rem;
+    }
+    
+    .filter-sources {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      justify-content: flex-start;
+      scrollbar-width: none;
+    }
+    
+    .filter-sources::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .filter-text {
+      display: none;
+    }
+    
+    .filter-btn {
+      padding: 0.6rem;
+    }
+    
+    .testimonials-columns {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .testimonial-column:last-child {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  /* Style pour les cartes minimales - uniquement avec rating */
+.testimonial-card.empty-content .card-body,
+.testimonial-card.empty-content .card-footer {
+  display: none;
+}
+
+.testimonial-card.empty-content {
+  min-height: auto;
+}
+
+.testimonial-card.empty-content .card-header {
+  border-bottom: none;
+  padding-bottom: 1.5rem;
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialiser les filtres
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const testimonialItems = document.querySelectorAll('.testimonial-item');
+    
+    function filterTestimonials(source) {
+      testimonialItems.forEach(item => {
+        if (source === 'all' || item.getAttribute('data-source') === source) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+    
+    filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Supprimer la classe active de tous les boutons
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Ajouter la classe active au bouton cliqué
+    button.classList.add('active');
+    
+    // Filtrer les témoignages
+    filterTestimonials(button.getAttribute('data-source'));
+  });
+});
+
+// Initialiser les carousels
+const carousels = document.querySelectorAll('.carousel-container');
+
+carousels.forEach(carousel => {
+  const track = carousel.querySelector('.carousel-track');
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const dots = carousel.querySelectorAll('.carousel-dot');
+  
+  if (slides.length <= 1) return;
+  
+  // Initialiser le premier point comme actif
+  if (dots.length > 0) {
+    dots[0].classList.add('active');
+  }
+  
+  let currentIndex = 0;
+  
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+  
+  // Navigation par points
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+  });
+  
+  // Ajout de la navigation tactile (swipe)
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  carousel.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  
+  carousel.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swipe vers la gauche (image suivante)
+      currentIndex = Math.min(currentIndex + 1, slides.length - 1);
+      updateCarousel();
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      // Swipe vers la droite (image précédente)
+      currentIndex = Math.max(currentIndex - 1, 0);
+      updateCarousel();
+    }
+  }
+  
+  // Rotation automatique pour les carousels avec plusieurs images
+  if (slides.length > 1) {
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }, 5000);
+  }
+});
+
+// Animation au défilement pour les cartes
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+const animateOnScroll = () => {
+  testimonialCards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    
+    if (cardTop < windowHeight * 0.9) {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }
+  });
+};
+
+// Appliquer l'animation initiale
+window.addEventListener('DOMContentLoaded', () => {
+  testimonialCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+  });
+  
+  // Déclencher l'animation après un court délai
+  setTimeout(animateOnScroll, 100);
+});
+
+// Continuer à animer pendant le défilement
+window.addEventListener('scroll', animateOnScroll);
+});
+</script>

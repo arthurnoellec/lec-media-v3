@@ -1,0 +1,715 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/HeroAvis.astro';
+import GrilleAvis from '../components/GrilleAvis.astro';
+import gimexImg from "../assets/gimex.png";
+
+const testimonials = [
+{
+    id: 5,
+    name: "Emilie Bolduc",
+    company: "Crochetmilie",
+    position: "Fondatrice",
+    avatar: "https://lec-media.agency/images/photo%20de%20emilie.png",
+    rating: 5,
+    source: "Google",
+    sourceUrl: "https://www.google.com/search?q=lec+media",
+    website: "https://crochetmilie.com",
+    content: "Très heureuse d'avoir choisi Lëc Média pour la refonte de mon site web! En plus d'être super sympathiques, Arthur et son équipe ont pris le temps de comprendre l'univers de ma petite entreprise de crochet et ont créé l'ambiance visuelle que je recherchais en plus d'optimiser l'expérience utilisateur grâce à plusieurs tests. Shopify n'a aucun secret pour Arthur qui peut facilement modifier ou ajouter n'importe quel codage. Merci énormément!!",
+    images: ["https://lec-media.agency/images/carte-real-crochetmilie.png"],
+    highlightQuote: "Shopify n'a aucun secret pour Arthur",
+    industry: "Artisanat",
+    projectType: "Refonte & UX",
+
+    size: "medium"
+  },
+
+  {
+    id: 2,
+    name: "Odile Gattino",
+    company: "GIMEX / IceBag",
+    position: "Co-Fondatrice",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Google",
+    sourceUrl: "https://www.google.com/search?q=lec+media",
+    content: "De petits dépannages au début pour voir, puis de plus grandes missions de développement et aujourd'hui nous voilà en collaboration sur de beaux et plus grands projets. Je remercie tous les jours mon assistante d'avoir trouvé cette perle rare, une équipe de jeunes professionnels compétents, talentueux, rigoureux, impliqués et à l'écoute, qui nous offrent de belles perspectives dans le digital. Un avenir prometteur pour des jeunes hors normes!",
+    images: [gimexImg.src],
+    highlightQuote: "Une équipe de jeunes professionnels compétents, talentueux, rigoureux, impliqués et à l'écoute",
+    industry: "Distribution B2B",
+    projectType: "Développement & Optimisation",
+    size: "medium"
+  },
+  {
+    id: 21,
+    name: "Fredrik",
+    company: "Colourwear",
+    position: "Co-Fondateur",
+    avatar: "https://lec-media.agency/images/photo%20de%20Fredrik.png",
+    rating: 5,
+    source: "Direct",
+    linkedin: "https://se.linkedin.com/in/fredrik-abrahamsson-b380983b",
+    website: "https://colourwear.com",
+    content: "Je suis ravi de collaborer avec LËC MÉDIA ! Leur créativité sans limites et leur engagement constant pour l'amélioration ont ajouté une dimension unique à chacun de mes projets. Leur soutien et leur capacité à trouver des solutions créatives, peu importe les défis, en font des partenaires inestimables. Avec eux, je sais que mes idées prennent vie rapidement et avec une qualité au rendez-vous.",
+    highlightQuote: "Leur créativité sans limites et leur engagement constant",
+    industry: "Mode & Vêtements",
+    projectType: "Développement Créatif",
+
+    size: "large"
+  },
+  {
+    id: 42,
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+  },
+  {
+    id: 4,
+    name: "Valérie Minella",
+    company: "Bellassise",
+    position: "",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Google",
+    sourceUrl: "https://www.google.com/search?q=lec+media",
+    website: "https://bellassise.com",
+    content: "Nous avons fait appel à Arthur pour améliorer l'experience untilisateur sur notre site. Arthur a été très réactif, à notre écoute il a rapidement compris notre besoin, il a rendu la navigation fluide et intuitive. Nous allons continuer notre collaboration pour continuer à optimiser la conversion. Si vous cherchez un expert pour développer votre business, nous vous conseillons Lëc Média Agency.",
+    highlightQuote: "Arthur a rendu la navigation fluide et intuitive",
+    industry: "Bijoux & Accessoires",
+    projectType: "UX & Optimisation CRO",
+
+    size: "medium"
+  },
+
+
+
+  {
+    id: 6,
+    name: "Thibaut Perrin",
+    company: "3DVUE",
+    position: "Directeur",
+    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQEUrSVChMKhrg/profile-displayphoto-shrink_400_400/B4EZQ7Cb0bGYAg-/0/1736157281955?e=1747267200&v=beta&t=cgy5KaFCqwfYxzMbo7Ym1P_zNSykMYWjHG1wubBvruM",
+    rating: 5,
+    source: "Google",
+    sourceUrl: "https://www.google.com/search?q=lec+media",
+    linkedin: "https://www.linkedin.com/in/thibaut-perrin-764529177/",
+    website: "https://3dvue.fr",
+    content: "Arthur est un partenaire incroyablement fiable et compétent ! Spécialisé en e-commerce, il crée des sites performants tout en optimisant l'expérience utilisateur (UX). Il intègre parfaitement notre configurateur 3D (3dvue.fr) sur toutes les plateformes (WooCommerce, WordPress, Shopify, etc.) et accompagne nos clients dans la migration de leurs sites, notamment vers Shopify. Nous lui faisons entièrement confiance, et vous pouvez en faire autant ! Un vrai professionnel à recommander sans hésiter.",
+    highlightQuote: "Un partenaire incroyablement fiable et compétent !",
+    industry: "Visualisation 3D",
+    projectType: "Intégration & Migration",
+
+    size: "large"
+  },
+  {
+    id: 7,
+    name: "Caroline",
+    company: "Naroparis",
+    position: "Fondatrice",
+    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQG8XLVlWTo6ZQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1700827225092?e=1747267200&v=beta&t=RnGHqFKVzvwV0jxdvbEUmuEUwQJD7xU4igPv3peNVC4",
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+    linkedin: "https://www.linkedin.com/in/caroline-varrel-a5a95a86/",
+    website: "https://naroparis.com",
+    content: "Je suis entièrement satisfaite du travail réalisé par Arthur. Tout s'est déroulé de manière fluide, professionnelle et dans les délais convenus. Il a su parfaitement comprendre nos besoins, proposer des solutions pertinentes. La communication a été claire et réactive tout au long du projet, ce qui a grandement facilité notre collaboration. Nous n'hésiterons pas à faire appel à lui pour de futurs projets.",
+    highlightQuote: "Tout s'est déroulé de manière fluide, professionnelle et dans les délais convenus",
+    industry: "Mode",
+    projectType: "Développement & Design",
+
+    size: "medium"
+  },
+  {
+    id: 8,
+    name: "Fredrik Abrahamsson",
+    company: "Colourwear",
+    position: "Co-Fondateur",
+    avatar: "https://lec-media.agency/images/photo%20de%20Fredrik.png",
+    rating: 5,
+    source: "Malt",
+    linkedin: "https://se.linkedin.com/in/fredrik-abrahamsson-b380983b",
+    website: "https://colourwear.com",
+    content: "Je suis ravi de collaborer avec LËC MÉDIA ! Leur créativité sans limites et leur engagement constant pour l'amélioration ont ajouté une dimension unique à chacun de mes projets. Leur soutien et leur capacité à trouver des solutions créatives, peu importe les défis, en font des partenaires inestimables. Avec eux, je sais que mes idées prennent vie rapidement et avec une qualité au rendez-vous.",
+    highlightQuote: "Leur créativité sans limites et leur engagement constant",
+    industry: "Mode & Vêtements",
+    projectType: "Développement Créatif",
+
+
+    size: "large"
+  },
+  {
+    id: 9,
+    name: "Evane",
+    company: "IceBag",
+    position: "Responsable Digital",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+    website: "https://icebag.com",
+    content: "Travail sérieux de la part d'Arthur sur notre boutique en ligne, il est disponible, fiable et réactif. Nous pourrons retravailler avec lui avec grand plaisir si nous rencontrons le besoin.",
+    highlightQuote: "Disponible, fiable et réactif",
+    industry: "Accessoires",
+    projectType: "Développement Boutique",
+
+    size: "small"
+  },
+  {
+    id: 10,
+    name: "Jason Ayoub",
+    company: "JuniorKids",
+    position: "Fondateur",
+    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQGV3TET9ItotQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517258662591?e=1747267200&v=beta&t=lJhw_Vi9eVZCnlrOJ5ZHz6py2oY1LOoHJAttis1Yhks",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    linkedin: "https://www.linkedin.com/in/jasonayoub2/",
+    website: "https://juniorkids.ca",
+    content: "Votre agence a transformé notre site e-commerce. Grâce aux résultats SEO, à l'amélioration de l'UX, et à votre réussite à mettre l'accent sur la conversion, nos résultats ont explosé. Nous sommes ravis et reconnaissants pour votre excellent travail !",
+    highlightQuote: "Nos résultats ont explosé",
+    industry: "Enfants & Jeux",
+    projectType: "SEO & CRO",
+
+    size: "medium"
+  },
+  {
+    id: 11,
+    name: "Virginie Laumaillier",
+    company: "Tranche de Bois",
+    position: "Propriétaire",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    website: "https://tranchedebois.com",
+    content: "Arthur a été une véritable trouvaille pour notre entreprise lors de la mise à jour de notre site web, notamment notre boutique en ligne. Nous avions besoin de quelqu'un de disponible et fiable, capable de nous guider et de nous conseiller. Et nous avons trouvé la perle rare! Il se montre à l'écoute, incroyablement réactif et extrêmement compétent. La vraie paix d'esprit! Nous continuons désormais à travailler ensemble pour la maintenance du site et pour des projets annexes comme les courriels automatisés. C'est un partenaire précieux pour notre croissance en ligne.",
+    images: ["https://assets.hellodarwin.com/providers/portfolios/92cf4967-08b9-48dd-9766-e310c1740fdd.png"],
+    highlightQuote: "À l'écoute, incroyablement réactif et extrêmement compétent",
+    industry: "Artisanat & Bois",
+    projectType: "Mise à jour & Maintenance",
+
+    size: "large"
+  },
+  {
+    id: 12,
+    name: "Soxu Sb",
+    company: "soxu_sb",
+    position: "Créateur de contenu",
+    avatar: "https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/384fb12c0e611d75711d514f6798f004~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=5691fcdf&x-expires=1742176800&x-signature=YdKtAq9V204tTI0sPaoQMgvqCf4%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a",
+    rating: 5,
+    source: "Google",
+    sourceUrl: "https://www.google.com/search?q=lec+media",
+    website: "https://www.instagram.com/soxu_sb/",
+    content: "J'ai eu l'avantage d'être à la fois client et prestataire pour Arthur, qui, d'ailleurs, a bien grandi. Félicitations ! 🎉 Chaque projet est bien structuré et livré avec une qualité irréprochable. Son professionnalisme et son souci du détail font toute la différence. Toujours à l'écoute, il sait s'adapter aux besoins et proposer des solutions efficaces. Travailler avec lui est un vrai plaisir, et je recommande sans hésiter !",
+    highlightQuote: "Chaque projet est bien structuré et livré avec une qualité irréprochable",
+    industry: "Marketing",
+    projectType: "Collaboration",
+
+    size: "medium"
+  },
+  {
+    id: 13,
+    name: "Ekaterina Bataeva",
+    company: "Volzhenka",
+    position: "Directrice",
+    avatar: "https://lec-media.agency/images/photo%20de%20Ekaterina.png",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    website: "https://volzhenka.com",
+    content: "La plupart des agences font belle impression et vous vendent des paillettes lors des premiers échanges, mais cette illusion se dissipe rapidement une fois le contrat signé. Avec Lëc Média, c'est différent. Arthur et Tristan sont professionnels et ont vraiment à cœur de faire les choses bien et rapidement. Je les recommande vraiment. Et c'est la première fois que je recommande une agence.",
+    images: ["https://lec-media.agency/images/carte-real-volzhenka.png"],
+    highlightQuote: "Arthur et Tristan ont vraiment à cœur de faire les choses bien et rapidement",
+    industry: "Alimentation & Gastronomie",
+    projectType: "Développement & Design",
+
+    size: "medium"
+  },
+  {
+    id: 14,
+    name: "Yann Allio",
+    company: "Deux Croches Noires",
+    position: "Fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+    content: "J'ai eu le plaisir de collaborer avec Arthur Noellec pour une mission en lien avec notre site de partitions en ligne, deuxcrochesnoires.com. Arthur a su répondre à toutes nos attentes avec un professionnalisme remarquable. Son écoute, son expertise technique et son sens du détail ont permis de mener à bien ce projet dans les délais convenus. Il a fait preuve d'une grande disponibilité et d'une réelle compréhension de nos besoins. Je recommande Arthur !",
+    highlightQuote: "Son écoute, son expertise technique et son sens du détail ont permis de mener à bien ce projet",
+    industry: "Musique",
+    projectType: "Développement Spécifique",
+
+    size: "medium"
+  },
+  {
+    id: 15,
+    name: "Gabrielle Gagnon",
+    company: "Mode Éthique",
+    position: "Directrice Marketing",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    website: "https://mode-ethique.com",
+    content: "Un immense merci à Arthur de LEC MEDIA pour son travail incroyable ! Arthur, tu es non seulement extrêmement aimable et agréable à travailler avec, mais tu fournis aussi un accompagnement de qualité qui dépasse mes attentes. Chaque conseil et stratégie que tu mets en place sont réfléchis, innovants et parfaitement alignés avec nos objectifs. Ta capacité à créer des interactions authentiques avec notre audience est remarquable. Ce n'est pas seulement ton savoir-faire qui nous impressionne, mais aussi ta manière de travailler : toujours avec le sourire, une écoute attentive et une réelle compréhension de nos besoins. On sent que tu mets du cœur dans ce que tu fais, et ça se voit dans les résultats.",
+    highlightQuote: "Un accompagnement de qualité qui dépasse mes attentes",
+    industry: "Mode Éthique",
+    projectType: "Stratégie & Marketing",
+
+    size: "large"
+  },
+  {
+    id: 16,
+    name: "Laurent",
+    company: "Hexagone Brasero",
+    position: "Propriétaire",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+    website: "https://brasero-hexagone.com/",
+    content: "Très bonne expérience avec Arthur, bosseur, à l'écoute qui a su trouver la solution miracle qui me convenait !! A recommander !",
+    highlightQuote: "Arthur a su trouver la solution miracle qui me convenait",
+    industry: "Mode",
+    projectType: "Développement Solutions",
+
+    size: "small"
+  },
+  {
+    id: 17,
+    name: "Lucas",
+    position: "CEO",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    content: "Mon parcours avec Arthur a été une aventure marquante dans l'histoire de mon entreprise. L'accompagnement de LEC Media au cours des dernières années a été le secret derrière notre succès continu. Leur approche globale du marketing à 360°, combinant créativité et stratégie, a propulsé notre marque au sommet de son marché. Leur capacité à rester à la pointe de l'innovation a donné naissance à chaque année un chapitre passionnant de croissance. Si vous recherchez bien plus qu'une agence ordinaire, Arthur est le partenaire qu'il vous faut.",
+    highlightQuote: "L'accompagnement de LEC Media a été le secret derrière notre succès continu",
+    industry: "Sport & Fitness",
+    projectType: "Marketing 360°",
+
+    size: "medium"
+  },
+  {
+    id: 18,
+    name: "Emilie",
+    company: "Crochetmilie",
+    position: "Fondatrice",
+    avatar: "https://lec-media.agency/images/photo%20de%20emilie.png",
+    rating: 5,
+    source: "Direct",
+    website: "https://crochetmilie.com",
+    content: "Très heureuse d'avoir choisi Lëc Média pour la refonte de mon site web! En plus d'être super sympathiques, Arthur et son équipe ont pris le temps de comprendre l'univers de ma petite entreprise de crochet et ont créé l'ambiance visuelle que je recherchais en plus d'optimiser l'expérience utilisateur grâce à plusieurs tests. Shopify n'a aucun secret pour Arthur qui peut facilement modifier ou ajouter n'importe quel codage. Merci énormément!!",
+    highlightQuote: "Shopify n'a aucun secret pour Arthur",
+    industry: "Artisanat",
+    projectType: "Refonte & UX",
+
+    size: "medium"
+  },
+  {
+    id: 19,
+    name: "Emmanuel",
+    company: "Arico",
+    position: "Directeur",
+    avatar: "https://lec-media.agency/images/photo%20de%20emmanuel.png",
+    rating: 5,
+    source: "Direct",
+    website: "https://arico.ca",
+    content: "Je ne peux que recommander Arthur. J'ai fait appel à lui pour la restructuration de notre site et l'optimisation de nos KPI de vente. Professionnel et bienveillant, il a su dépasser mes attentes. Son expertise est indéniable. Je suis ravi de continuer à collaborer avec Lëc Média au quotidien.",
+    highlightQuote: "Son expertise est indéniable",
+    industry: "Commerce Spécialisé",
+    projectType: "Restructuration & Optimisation",
+    images: ["https://lec-media.agency/images/carte-real-arico.png"],
+    size: "medium"
+  },
+  {
+    id: 20,
+    name: "Nicolas",
+    company: "MTL Balance Board",
+    position: "CEO",
+    avatar: "https://lec-media.agency/images/photo%20de%20nicolas.png",
+    rating: 5,
+    source: "Direct",
+    website: "https://mtlbboard.com",
+    content: "Très bonne expérience avec Arthur, bosseur, à l'écoute qui a su trouver la solution miracle qui convertis !! A recommander !",
+    highlightQuote: "A trouvé la solution miracle qui convertit !",
+    industry: "Sport & Fitness",
+    projectType: "Optimisation CRO",
+
+    size: "small"
+  },
+
+
+  {
+    id: 3,
+    name: "Théo",
+    company: "Write Store",
+    position: "Co-fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+    website: "https://write-store.com",
+    content: "Je ne peux que recommander Arthur. J'ai fait appel à lui pour l'accompagnement et l'installation d'un pixel TikTok sur ma boutique, afin de tracer de manière précise l'ensemble de mes ventes. Professionnel et bienveillant, Arthur a su répondre au-delà de mes attentes. Son expérience s'est fait ressentir. Je serai ravi de collaborer de nouveau avec toi à l'avenir.",
+    highlightQuote: "Arthur a su répondre au-delà de mes attentes",
+    industry: "Papeterie & Fournitures",
+    projectType: "Installation & Configuration",
+
+    size: "small"
+  },
+  {
+    id: 22,
+    name: "Ekaterina",
+    company: "Volzhenka",
+    position: "Directrice",
+    avatar: "https://lec-media.agency/images/photo%20de%20Ekaterina.png",
+    rating: 5,
+    source: "Direct",
+    website: "https://volzhenka.com",
+    content: "La plupart des agences font belle impression et vous vendent des paillettes lors des premiers échanges, mais cette illusion se dissipe rapidement une fois le contrat signé. Avec Lëc Média, c'est différent. Arthur et Tristan sont professionnels et ont vraiment à cœur de faire les choses bien et rapidement. Je les recommande vraiment. Et c'est la première fois que je recommande une agence.",
+    highlightQuote: "C'est la première fois que je recommande une agence",
+    industry: "Alimentation & Gastronomie",
+    projectType: "Développement & Design",
+
+    size: "medium"
+  },
+  {
+    id: 40,
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+  },
+  {
+    id: 23,
+    company: "Bodyfence",
+    avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAsggvBzhWdtnt0rpESGNlBRDkX7ZJ1QfU_w&s",
+    rating: 5,
+    source: "Direct",
+    website: "https://bodyfence.com",
+    content: "Après avoir été déçu par le travail de deux freelances, j'ai décidé de faire appel à Lëc Média. L'équipe a pris le temps d'analyser ma boutique pendant plusieurs mois afin de répondre à mes exigences. Collaborer avec eux a été un véritable plaisir, et je continue de solliciter leur expertise pour maintenir ma boutique au fait des nouvelles tendances.",
+    highlightQuote: "Je continue de solliciter leur expertise",
+    industry: "Automobile",
+    projectType: "Analyse & Optimisation",
+
+    size: "medium"
+  },
+
+  {
+    id: 1,
+    name: "Erwan Dehu et Romain Gache",
+    company: "Flowli",
+    position: "Fondateur",
+    avatar: "https://media.licdn.com/dms/image/v2/D4D03AQFuPUsotyNntQ/profile-displayphoto-shrink_800_800/B4DZOz4MJlGoAc-/0/1733889672561?e=1747267200&v=beta&t=TTxWSo15j9eE2_j4NB-z_XEhVVEUcV7TGKscrMTfdc4",
+    rating: 5,
+    source: "Google",
+    sourceUrl: "https://www.google.com/search?q=lec+media",
+    linkedin: "https://www.linkedin.com/in/erwan-d-8b655a2b7/",
+    website: "https://flowli.fr",
+    content: "Avant de travailler avec Lëc Média, notre landing page était pratiquement invisible : à peine 200 visites par mois et aucune conversion. N'étant pas notre canal d'acquisition principal, nous l'avions un peu délaissée. J'avais presque honte de partager le lien quand on me le demandait. L'arrivée de Lëc Média a tout changé ! Nous avons commencé avec un service de SEO qui a transformé la donne. En quelques semaines seulement, nous avons dépassé les 1 000 visites mensuelles. Nous avons ensuite poursuivi avec ce qui fait la renommée d'Arthur : le CRO. Depuis, mes demandes de rendez-vous s'enchaînent.",
+    size: "large"
+  },
+  
+  // AVIS FICTIFS POUR TES CLIENTS
+  {
+    id: 24,
+    name: "Théo",
+    company: "Rakk",
+    position: "Fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://www.rakk.fr",
+    content: "Collaborer avec Arthur est toujours un plaisir. Depuis 2 ans, il intervient régulièrement sur notre boutique pour des améliorations ciblées. Sa réactivité et sa capacité à comprendre rapidement nos enjeux font toute la différence. Ce que j'apprécie particulièrement, c'est qu'il ne se contente pas d'exécuter nos demandes, mais propose systématiquement des optimisations auxquelles nous n'avions pas pensé. Un vrai partenaire de confiance pour notre croissance !",
+    highlightQuote: "Un vrai partenaire de confiance pour notre croissance !",
+    industry: "Mobilier Design",
+    projectType: "Optimisations Continues",
+
+    size: "large"
+  },
+  {
+    id: 25,
+    name: "Natasha",
+    company: "Les Saisons",
+    position: "Directrice",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://www.lessaisons.co",
+    content: "WOW!!! Je n'aurais jamais imaginé qu'un simple audit pourrait transformer autant notre entreprise. Malgré notre budget limité, Arthur a accepté de réaliser un audit complet de notre boutique en ligne. Son analyse détaillée et ses recommandations stratégiques ont littéralement changé notre approche. En appliquant seulement 60% de ses conseils, nous avons vu notre taux de conversion augmenter de 2,1% à 3,8% en quelques semaines! C'est comme si Arthur avait déverrouillé un potentiel que nous ne soupçonnions même pas. Un audit d'une valeur inestimable!",
+    highlightQuote: "Son audit a littéralement changé notre approche",
+    industry: "Mode Saisonnière",
+    projectType: "Audit Stratégique",
+
+    size: "medium"
+  },
+  {
+    id: 26,
+    name: "Remaz",
+    company: "ClassDress",
+    position: "Fondateur",
+    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQHpygd2v9Y_Gg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731179987610?e=1747267200&v=beta&t=DCDnwcZQyTQ6SuXOrxB9RRXIkChJR3HJ5ujugD7AgPA",
+    rating: 5,
+    source: "Direct",
+    linkedin: "https://www.linkedin.com/in/remaz-hourani/",
+    content: "Arthur a réalisé un travail exceptionnel sur la partie backend de notre site et la création de notre 'portail d'école'. Son expertise technique couplée à sa compréhension fine de nos enjeux métier a abouti à une solution parfaitement adaptée à nos besoins spécifiques. La fonctionnalité permet désormais aux écoles de passer commande directement via un espace dédié, simplifiant considérablement notre processus de vente. Un grand merci pour cette collaboration qui continue de porter ses fruits jour après jour!",
+    highlightQuote: "Son expertise technique couplée à sa compréhension fine de nos enjeux métier",
+    industry: "Mode & Uniformes",
+    projectType: "Développement Backend",
+
+    size: "medium"
+  },
+  {
+    id: 27,
+    name: "Arnaud",
+    company: "PrestaPiscine",
+    position: "Gérant",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    content: "J'avais besoin d'une landing page efficace pour ma société de construction de piscines, et Arthur a livré bien au-delà de mes attentes. Sa compréhension instantanée de mes objectifs commerciaux s'est traduite par une page parfaitement optimisée pour la conversion. L'équilibre entre esthétique soignée et efficacité commerciale est remarquable. Depuis la mise en ligne, mes demandes de devis ont augmenté de 43% ! Je recommande Arthur sans la moindre hésitation.",
+    highlightQuote: "Mes demandes de devis ont augmenté de 43% !",
+    industry: "Construction & Services",
+    projectType: "Landing Page",
+
+    size: "medium"
+  },
+  {
+    id: 28,
+    name: "Émilie",
+    company: "Meemoza",
+    position: "Fondatrice",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://meemoza.ca",
+    content: "Depuis 6 mois, Arthur s'occupe de la maintenance et de l'optimisation CRO de notre boutique, et les résultats sont impressionnants. Son approche méthodique, basée sur l'analyse approfondie des données et des comportements utilisateurs, a permis d'identifier précisément les opportunités d'amélioration. Chaque modification qu'il a implémentée a contribué à l'augmentation régulière de notre taux de conversion. Ce qui me plaît particulièrement chez Arthur, c'est sa transparence et ses rapports détaillés qui me permettent de comprendre clairement l'impact de son travail. Une collaboration fructueuse que je compte bien poursuivre!",
+    highlightQuote: "Chaque modification a contribué à l'augmentation régulière de notre taux de conversion",
+    industry: "Mode Éthique",
+    projectType: "Maintenance & CRO",
+
+    size: "large"
+  },
+  {
+    id: 29,
+    name: "Sophie",
+    company: "Alycea",
+    position: "Co-fondatrice",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://alycea.fr",
+    content: "La landing page conçue par Arthur est tout simplement exceptionnelle ! En seulement quelques jours, il a su capturer l'essence de notre marque de cosmétiques naturels et la transformer en une page visuellement captivante et stratégiquement efficace. Son talent pour combiner design élégant et éléments de conversion est remarquable. Le taux de captation d'emails a dépassé nos objectifs de 37% ! Arthur possède ce mélange rare de créativité et d'approche data-driven qui fait toute la différence.",
+    highlightQuote: "Le taux de captation d'emails a dépassé nos objectifs de 37% !",
+    industry: "Cosmétiques",
+    projectType: "Landing Page",
+
+    size: "medium"
+  },
+  {
+    id: 30,
+    name: "Cynthia",
+    company: "Bac & Panier",
+    position: "Co-fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://www.bacpanier.ca",
+    content: "L'intervention d'Arthur sur notre boutique a été d'une efficacité redoutable ! Son approche CRO (Conversion Rate Optimization) s'appuie sur une analyse minutieuse du parcours client et des points de friction. Il a restructuré notre tunnel d'achat, optimisé nos fiches produits et amélioré notre processus de checkout avec une précision chirurgicale. Résultat : notre taux d'abandon de panier a chuté de 31% et notre taux de conversion global a bondi de 22% en à peine un mois ! Arthur possède cette rare capacité à identifier rapidement les éléments qui freinent les conversions et à les transformer en opportunités. Un investissement qui s'est amorti en quelques semaines à peine.",
+    highlightQuote: "Notre taux d'abandon de panier a chuté de 31% et notre taux de conversion global a bondi de 22%",
+    industry: "Maison & Décoration",
+    projectType: "Optimisation CRO",
+
+    size: "large"
+  },
+  {
+    id: 31,
+    name: "Laurent",
+    company: "Brasero Hexagone",
+    position: "Directeur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://brasero-hexagone.com",
+    content: "Arthur a réalisé un véritable tour de force en intégrant un configurateur 3D pour nos braseros et barbecues. Cette fonctionnalité permet à nos clients de personnaliser leur produit en temps réel et de visualiser immédiatement le résultat. L'implémentation est non seulement techniquement impressionnante mais aussi parfaitement fluide pour l'utilisateur. Depuis la mise en place du configurateur, notre valeur moyenne de commande a augmenté de 34% et le temps passé sur notre site a doublé ! Les clients apprécient tellement cette fonctionnalité qu'ils nous en parlent spontanément. Un grand merci à Arthur pour sa créativité technique et sa persévérance face aux défis que représentait ce projet.",
+    highlightQuote: "Notre valeur moyenne de commande a augmenté de 34% et le temps passé sur notre site a doublé !",
+    industry: "Mobilier Extérieur",
+    projectType: "Configurateur 3D",
+
+    size: "large"
+  },
+  {
+    id: 32,
+    name: "Randria",
+    company: "Soctam",
+    position: "PDG",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://soctam.com",
+    content: "IMPRESSIONNANT ! Arthur a relevé un défi que je pensais impossible : concevoir et déployer une landing page commerciale en moins de 24h. Confronté à une opportunité commerciale urgente, j'avais besoin d'une page professionnelle pour notre nouveau produit avant une présentation importante. Non seulement Arthur a accepté ce challenge, mais il a livré un travail d'une qualité exceptionnelle dans le délai imparti. La page était parfaitement optimisée, responsive et prête à convertir. Cette réactivité et ce professionnalisme ont directement contribué au succès de notre présentation. Si vous cherchez un partenaire fiable capable de performer même sous pression, Arthur est LA solution.",
+    highlightQuote: "Arthur a relevé un défi que je pensais impossible : concevoir et déployer une landing page en moins de 24h",
+    industry: "Industrie B2B",
+    projectType: "Landing Page Express",
+
+    size: "medium"
+  },
+  {
+    id: 33,
+    name: "Irfan",
+    company: "Magic Afro",
+    position: "Fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Direct",
+    website: "https://www.magicafro.fr",
+    content: "Je suis tombée sur Arthur par hasard, et quelle découverte ! Après plusieurs tentatives décevantes avec d'autres prestataires, j'ai enfin trouvé quelqu'un qui comprend réellement les enjeux d'une boutique comme la mienne. Son travail d'optimisation CRO a complètement transformé la performance de mon site. Arthur a pris le temps d'analyser en profondeur le comportement de mes visiteurs et a apporté des modifications ciblées qui ont eu un impact immédiat. Mon taux de conversion est passé de 3,5% à 26% en seulement 8 mois ! Ce qui me plaît chez Arthur, c'est son approche à la fois analytique et créative. Il ne se contente pas d'appliquer des formules toutes faites, mais cherche vraiment à comprendre les particularités de ma marque et de ma clientèle. ",
+    highlightQuote: "Mon taux de conversion est passé de 1,8% à 3,2% en seulement 6 semaines !",
+    industry: "Beauté & Soins Capillaires",
+    projectType: "Optimisation CRO",
+
+    size: "large"
+  },
+
+  {
+    id: 41,
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+  },
+  {
+    id: 34,
+    name: "Tristan",
+    company: "",
+    position: "",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+    content: "J'ai apprécié travailler avec Arthur ! Il a toujours répondu très rapidement, le travaille a été effectuer efficacement, je recommande sans problème ! À bientot Arthur j'espère",
+    highlightQuote: "Il a toujours répondu très rapidement",
+    industry: "Marketing Digital",
+    projectType: "Développement",
+
+    size: "small"
+  },
+  {
+    id: 35,
+    name: "Alex Yran",
+    company: "My'Po SARL",
+    position: "Gérant",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "Malt",
+    sourceUrl: "https://www.malt.fr/profile/arthurnoellec",
+    content: "Super travail d'Arthur ! Efficace, à l'écoute et disponible. Top !",
+    highlightQuote: "Efficace, à l'écoute et disponible",
+    industry: "Commerce Spécialisé",
+    projectType: "Développement",
+
+    size: "small"
+  },
+  
+  // TÉMOIGNAGES HELLODARWIN
+  {
+    id: 36,
+    name: "Romain",
+    company: "Flowli",
+    position: "Fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    website: "https://flowli.fr",
+    content: "Avant de travailler avec Lëc Média, notre landing page était pratiquement invisible : à peine 200 visites par mois et aucune conversion. N'étant pas notre canal d'acquisition principal, nous l'avions un peu délaissée. J'avais presque honte de partager le lien quand on me le demandait. L'arrivée de Lëc Média a tout changé ! Nous avons commencé avec un service de SEO qui a transformé la donne. En quelques semaines seulement, nous avons dépassé les 1 000 visites mensuelles. Nous avons ensuite poursuivi avec ce qui fait la renommée d'Arthur : le CRO. Depuis, mes demandes de rendez-vous s'enchaînent. Ce qui m'a vraiment bluffé, c'est leur approche pour comprendre nos utilisateurs. Grâce à cette analyse, nous avons complètement repensé nos services pour mieux répondre aux besoins de notre cible. C'est le meilleur investissement marketing que j'ai fait depuis la création de mon entreprise.",
+    highlightQuote: "C'est le meilleur investissement marketing que j'ai fait depuis la création de mon entreprise",
+    industry: "Marketing Digital",
+    projectType: "SEO & CRO",
+
+    size: "large"
+  },
+  {
+    id: 37,
+    name: "Théo",
+    company: "Write Store",
+    position: "Co-fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    website: "https://write-store.com",
+    content: "Je ne peux que recommander Arthur. J'ai fait appel à lui pour l'accompagnement et l'installation d'un pixel TikTok sur ma boutique, afin de tracer de manière précise l'ensemble de mes ventes. Professionnel et bienveillant, Arthur a su répondre au-delà de mes attentes. Son expérience s'est fait ressentir. Je serai ravi de collaborer de nouveau avec toi à l'avenir.",
+    highlightQuote: "Professionnel et bienveillant",
+    industry: "Papeterie & Fournitures",
+    projectType: "Installation & Configuration",
+
+    size: "small"
+  },
+  {
+    id: 38,
+    name: "Julien",
+    company: "Casino en ligne",
+    position: "CEO",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    content: "Merci pour ton excellent travail, Arthur. Arthur est à l'écoute et a su nous donner de bons conseils :)",
+    highlightQuote: "Arthur est à l'écoute",
+    industry: "Agence Digitale",
+    projectType: "Conseil & Développement",
+
+    size: "small"
+  },
+  {
+    id: 39,
+    name: "Soxu",
+    company: "Studio Créative",
+    position: "Fondateur",
+    avatar: "https://static.vecteezy.com/ti/vecteur-libre/p1/9292244-icone-d-avatar-par-defaut-vecteur-de-l-utilisateur-des-medias-sociaux-vectoriel.jpg",
+    rating: 5,
+    source: "HelloDarwin",
+    sourceUrl: "https://hellodarwin.com/fr/agences/arthur-lec-media",
+    website: "https://soxu-agency.com",
+    content: "Je suis ravi de collaborer avec LËC MÉDIA ! Leur créativité sans limites et leur engagement constant pour l'amélioration ont ajouté une dimension unique à chacun de mes projets. Leur soutien et leur capacité à trouver des solutions créatives, peu importe les défis, en font des partenaires inestimables. Avec eux, je sais que mes idées prennent vie rapidement et avec une qualité au rendez-vous.",
+    highlightQuote: "Leur soutien et leur capacité à trouver des solutions créatives",
+    industry: "Marketing & Création",
+    projectType: "Collaboration",
+
+    size: "medium"
+  },
+  {
+    id: 21,
+    name: "Fredrik",
+    company: "Colourwear",
+    position: "Co-Fondateur",
+    avatar: "https://lec-media.agency/images/photo%20de%20Fredrik.png",
+    rating: 5,
+    source: "HelloDarwin",
+    linkedin: "https://se.linkedin.com/in/fredrik-abrahamsson-b380983b",
+    website: "https://colourwear.com",
+    content: "Je suis ravi de collaborer avec LËC MÉDIA ! Leur créativité sans limites et leur engagement constant pour l'amélioration ont ajouté une dimension unique à chacun de mes projets. Leur soutien et leur capacité à trouver des solutions créatives, peu importe les défis, en font des partenaires inestimables. Avec eux, je sais que mes idées prennent vie rapidement et avec une qualité au rendez-vous.",
+    images: ["https://lec-media.agency/images/carte-real-colourwear.png"],
+    highlightQuote: "Leur créativité sans limites et leur engagement constant",
+    industry: "Mode & Vêtements",
+    projectType: "Développement Créatif",
+
+    size: "large"
+  },
+
+];
+---
+
+<Layout title="Abonnement CRO | Optimisation E-commerce | Boost de Conversion">
+  <main>
+    <Hero totalReviews={40} averageRating={5} satisfactionPercentage={100} />
+        <GrilleAvis testimonials={testimonials} />
+  </main>
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+    margin: 0 auto;
+  }
+</style>

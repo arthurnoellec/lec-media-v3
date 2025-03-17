@@ -1,0 +1,154 @@
+---
+// TestimonialsHero.astro
+interface Props {
+  totalReviews: number;
+  averageRating: number;
+  satisfactionPercentage: number;
+}
+
+const { totalReviews, averageRating, satisfactionPercentage } = Astro.props;
+---
+
+<section class="testimonials-hero">
+  <div class="stats-bar">
+    <div class="stats-item">
+      <div class="stats-value">{averageRating.toFixed(1)}</div>
+      <div class="stats-label">Note Moyenne</div>
+    </div>
+    <div class="stats-divider"></div>
+    <div class="stats-item">
+      <div class="stats-value">{totalReviews}+</div>
+      <div class="stats-label">Témoignages</div>
+    </div>
+    <div class="stats-divider"></div>
+    <div class="stats-item">
+      <div class="stats-value">{satisfactionPercentage.toFixed(0)}%</div>
+      <div class="stats-label">Satisfaction</div>
+    </div>
+  </div>
+  
+  <div class="hero-content">
+    <h1>Ils <span class="gradient-text">Témoignent</span></h1>
+    <p class="hero-subtitle">Découvrez comment nous transformons des e-commerces en machines à convertir</p>
+  </div>
+  
+  <div class="hero-background">
+    <div class="hero-glow"></div>
+  </div>
+</section>
+
+<style>
+  .testimonials-hero {
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.25rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.5;
+  }
+  
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .hero-glow {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(2, 247, 145, 0.15), transparent 70%);
+    filter: blur(40px);
+    opacity: 0.8;
+  }
+  
+  .stats-bar {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.75rem;
+    max-width: fit-content;
+    margin: 0 auto 4rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+  
+  .stats-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+  
+  .stats-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+  
+  .stats-divider {
+    width: 1px;
+    height: 30px;
+    background-color: var(--border);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .testimonials-hero {
+      padding: 5rem 1.5rem 3rem;
+    }
+    
+    .stats-bar {
+      flex-direction: column;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .stats-item {
+      padding: 0.75rem 0;
+    }
+    
+    .stats-divider {
+      width: 80%;
+      height: 1px;
+    }
+  }
+</style>
