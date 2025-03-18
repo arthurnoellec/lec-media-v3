@@ -1,73 +1,71 @@
+.IconContainer,
+.bookmarkBtn {
+  align-items: center;
+  overflow: hidden;
+}
+.IconContainer,
+.bookmarkBtn,
+.text {
+  display: flex;
+  transition-duration: 0.3s;
+}
+.IconContainer,
+.bookmarkBtn,
+.bookmarkBtn:active,
+.bookmarkBtn:hover .text,
+.text {
+  transition-duration: 0.3s;
+}
 .bookmarkBtn {
   width: 300px;
   height: 40px;
   border-radius: 40px;
   border: none;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  align-items: center;
+  background-color: #fff;
   justify-content: center;
   cursor: pointer;
-  transition-duration: 0.3s;
-  overflow: hidden;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.062);
 }
-
 .IconContainer {
   width: 35px;
   height: 30px;
   background-color: #08f791;
   border-radius: 200px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
   z-index: 2;
-  transition-duration: 0.3s;
 }
-
 .icon {
   border-radius: 1px;
 }
-
 .text {
   height: 100%;
   width: 300px;
-  display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(26, 26, 26);
+  color: #1a1a1a;
   z-index: 1;
-  transition-duration: 0.3s;
   font-size: 1.04em;
   font-weight: 600;
 }
-
 .bookmarkBtn:hover .IconContainer {
   width: 330px;
-  /* taille de l'icon deplier*/
   border-radius: 40px;
   transition-duration: 0.3s;
 }
-
 .bookmarkBtn:hover .text {
   transform: translate(10px);
   width: 0;
   font-size: 0;
-  transition-duration: 0.3s;
 }
-
 .bookmarkBtn:active {
   transform: scale(0.95);
-  transition-duration: 0.3s;
 }
-
 @media screen and (max-width: 500px) {
   .bookmarkBtn:hover .IconContainer {
     width: 35px;
   }
   .bookmarkBtn:hover .text {
-    transform: translate(0px);
+    transform: translate(0);
     width: 100%;
     font-size: 0;
   }

@@ -16,7 +16,7 @@
   padding: 0.5rem 3rem 0.5rem 1rem;
   min-height: 3.5rem;
   line-height: 1.25rem;
-  font-weight: bold;
+  font-weight: 700;
   display: flex;
   align-items: center;
   position: relative;
@@ -43,7 +43,6 @@
   border-top: 1px solid;
   border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
 }
-
 @media (max-width: 767px) {
   html {
     font-size: 14px;

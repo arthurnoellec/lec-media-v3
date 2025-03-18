@@ -13,25 +13,21 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 0px 30px;
+  padding: 0 30px;
   border: none;
-  color: white;
+  color: #fff;
   position: relative;
-  cursor: pointer;
   font-weight: 700;
-  transition-duration: 0.2s;
   background-color: var(--ch-black);
   cursor: pointer;
   text-transform: uppercase;
   transition: background-color 0.5s;
 }
-
 .button:hover {
   background-color: #3ad078;
 }
-
-.button:before,
-.button:after {
+.button:after,
+.button:before {
   content: "";
   position: absolute;
   left: -2px;
@@ -39,7 +35,7 @@
   border-radius: 10px;
   background: linear-gradient(
     45deg,
-    var(--ch-black) 0%,
+    var(--ch-black) 0,
     var(--eer-black) 10%,
     var(--night-rider) 11%,
     var(--ch-white) 15%,
@@ -51,23 +47,17 @@
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   z-index: -1;
-  animation: steam 20s linear infinite;
+  animation: 20s linear infinite steam;
 }
-
 @keyframes steam {
-  0% {
-    background-position: 0 0;
-  }
-
-  50% {
-    background-position: 400% 0;
-  }
-
+  0%,
   100% {
     background-position: 0 0;
   }
+  50% {
+    background-position: 400% 0;
+  }
 }
-
 .button:after {
   filter: blur(10px);
 }
