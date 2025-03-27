@@ -1,0 +1,45 @@
+---
+// Importer les composants et styles
+import './styles/hero-content.css';
+import ShopifyBadge from './ShopifyBadge.astro';
+import CTAButton from './CTAButton.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const { 
+  title = "Transformez chaque visite en CONVERSION!", 
+  description = "Nous optimisons votre e-commerce grâce au CRO. Dites adieu aux paniers abandonnés, aux taux de rebond élevés et aux coûts d'acquisition en constante augmentation.",
+  ctaText = "Prendre un rendez-vous",
+  ctaHref = "https://cal.com/arthur-noellec/appel-decouverte"
+} = Astro.props;
+
+// Préparation du titre avec mise en forme spéciale
+// Nous devons extraire le premier mot et le dernier pour ajouter les classes highlight
+const words = title.split(' ');
+const firstWord = words[0];
+const lastWord = words[words.length - 1];
+const middleWords = words.slice(1, words.length - 1).join(' ');
+---
+
+<div class="Hero_header_gauche">
+  <div>
+    <ShopifyBadge />
+    
+    <h1>
+      <span class="highlight hl1">{firstWord} </span>
+      {middleWords}
+      <span class="highlight hl2"> {lastWord}</span>
+    </h1>
+  </div>
+  
+  <!-- <div>
+    <p>{description}</p>
+  </div> -->
+  
+  <CTAButton href={ctaHref} text={ctaText} />
+</div>

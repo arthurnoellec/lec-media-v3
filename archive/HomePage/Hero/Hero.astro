@@ -1,0 +1,62 @@
+---
+// Importer les composants et styles
+import './styles/hero.css';
+import HeroContent from './HeroContent.astro';
+import ReadyToWork from './ReadyToWork.astro';
+import NotificationList from './NotificationSystem/NotificationList.astro';
+
+// Props pour personnaliser le hero
+interface Props {
+  title?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const { 
+  title, 
+  description, 
+  ctaText, 
+  ctaHref 
+} = Astro.props;
+---
+
+<section class="features_hero-wrapper">
+  <!-- Gradient background -->
+  <div class="features_gradient-wrapper" style="transform: scale(0.7) translate(0px, -60px)">
+    <div class="features_gradient features_gradient-1"></div>
+    <div class="features_gradient features_gradient-2"></div>
+    <div class="features_gradient features_gradient-3"></div>
+  </div>
+  
+  <!-- Main content -->
+  <div>
+    <div class="body_hero">
+      <div class="Hero_Header" style="width: 90%; max-width: 1200px">
+        <!-- Left side with content -->
+        <HeroContent 
+          title={title}
+          description={description}
+          ctaText={ctaText}
+          ctaHref={ctaHref}
+        />
+        
+        <!-- Right side with notifications -->
+        <NotificationList />
+      </div>
+    </div>
+  </div>
+  
+  <!-- Ready to work floating button -->
+  <ReadyToWork />
+</section>
+
+<script>
+  // Import des fonctions d'initialisation des notifications
+  import { initNotifications } from './NotificationSystem/notifications.js';
+  
+  // Initialiser les notifications lorsque le DOM est chargé
+  document.addEventListener('DOMContentLoaded', () => {
+    initNotifications();
+  });
+</script>

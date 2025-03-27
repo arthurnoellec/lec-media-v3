@@ -1,0 +1,16 @@
+---
+// Importer les styles et le composant
+import './notifications.css';
+import Notification from './Notification.astro';
+
+// Les notifications seront générées par JavaScript
+---
+
+<div class="Notifications">
+  <ul class="Notifications__List" id="notifications-list">
+    <!-- Template pour les notifications (caché) -->
+    <Notification isTemplate={true} />
+  </ul>
+</div>
+
+<script src="./notifications.js"></script>

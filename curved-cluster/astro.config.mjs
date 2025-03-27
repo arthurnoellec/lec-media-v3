@@ -9,6 +9,9 @@ export default defineConfig({
   site: "https://lec-media.agency",
   outDir: "./dist",
   publicDir: "./public",
+  devToolbar: {
+    enabled: false, // Désactive la barre d'outils pendant les tests
+  },
   integrations: [
     icon({
       include: {

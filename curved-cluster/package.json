@@ -16,5 +16,8 @@
     "@iconify-json/tabler": "^1.2.16",
     "astro": "^5.3.1",
     "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "terser": "^5.39.0"
   }
 }

@@ -1,0 +1,81 @@
+.Hero_header_gauche > div > h1 {
+  font-size: 2.5rem;
+  color: #fcfcff;
+  text-transform: uppercase;
+  background-color: rgba(8, 247, 145, 0.5);
+  padding: 0.1em 0.2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  display: inline;
+  line-height: 1.55;
+  position: relative;
+}
+
+.Hero_header_gauche > div > p {
+  color: white;
+  font-size: 18px;
+  position: relative;
+  margin-top: 1rem;
+  max-width: 500px;
+}
+
+.highlight {
+  position: relative;
+  display: inline;
+  padding: 0.5em 0em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.hl1 {
+  position: relative;
+}
+
+.hl2 {
+  color: white;
+  position: relative;
+}
+
+.hl1::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 42%;
+  width: 20px;
+  height: 100%;
+  transform: translate(-95%, -56%) scale(0.9);
+  background: url("/images/stick-top.png") no-repeat center center;
+  background-size: contain;
+}
+
+.hl2::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 58%;
+  width: 20px;
+  height: 100%;
+  transform: translate(90%, -50%) scale(0.9);
+  background: url("/images/stick-bottom.png") no-repeat center center;
+  background-size: contain;
+}
+
+@media screen and (max-width: 900px) {
+  .Hero_header_gauche > div > h1 {
+    font-size: 40px;
+  }
+
+  .highlight {
+    padding: 30px 0em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Hero_header_gauche > div > h1 {
+    font-size: 29px;
+  }
+
+  .Hero_header_gauche > div > p {
+    font-size: 15px;
+  }
+}

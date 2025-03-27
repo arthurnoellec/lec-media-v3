@@ -1,0 +1,47 @@
+---
+// Composant pour une notification individuelle
+// Il sera utilisé comme template par le JavaScript, mais peut aussi être rendu côté serveur
+
+interface Props {
+  name?: string;
+  icon?: string;
+  time?: string;
+  title?: string;
+  content?: string;
+  isTemplate?: boolean;
+}
+
+const { 
+  name = '', 
+  icon = '/images/shopify_logo_apple.png', 
+  time = 'Now', 
+  title = '', 
+  content = '',
+  isTemplate = false 
+} = Astro.props;
+
+// Si c'est un template, on ajoute les classes de fermeture et d'optimisation
+const className = isTemplate 
+  ? 'Notification Notification--Close Notification--Optimize' 
+  : 'Notification';
+---
+
+<li class={className}>
+  <div class="Notification__Container">
+    <div class="Notification__Icon">
+      <img src={icon} alt="logo notification" width="56" height="56"/>
+    </div>
+    <div class="Notification__Contente">
+      <div class="Notification__Header">
+        <div class="Notification__App">
+          <div class="Notification__Name">{name}</div>
+        </div>
+        <div class="Notification__Time">{time}</div>
+      </div>
+      <div class="Notification__Body">
+        <div class="Notification__Title" style={title ? '' : 'display: none'}>{title}</div>
+        <div class="Notification__Content">{content}</div>
+      </div>
+    </div>
+  </div>
+</li>

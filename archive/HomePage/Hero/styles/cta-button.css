@@ -1,0 +1,82 @@
+.btn_call_hero {
+  width: fit-content;
+  margin-top: 1.5rem;
+}
+
+.bookmarkBtn {
+  position: relative;
+  background-color: transparent;
+  color: #e1e1e1;
+  border: 1px solid rgba(8, 247, 145, 0.5);
+  border-radius: 50px;
+  padding: 13px 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: auto;
+}
+
+.bookmarkBtn:hover {
+  background: rgba(8, 247, 145, 0.08);
+  color: #fff;
+}
+
+.bookmarkBtn .IconContainer {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: #08f791;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.bookmarkBtn:hover .IconContainer {
+  transform: translateX(5px);
+}
+
+.bookmarkBtn .text {
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 900px) {
+  .btn_call_hero {
+    width: 100% !important;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bookmarkBtn,
+  .text {
+    width: 100%;
+    max-width: 439px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .btn_call_hero > a {
+    width: 100%;
+  }
+
+  .bookmarkBtn {
+    padding: 10px 20px;
+  }
+
+  .bookmarkBtn .IconContainer {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bookmarkBtn .text {
+    font-size: 0.9rem;
+  }
+}

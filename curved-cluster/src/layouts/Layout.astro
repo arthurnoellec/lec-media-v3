@@ -1,40 +1,73 @@
 ---
 export interface Props {
   title: string;
+  description?: string;
 }
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { title } = Astro.props;
+const { title, description = "Boostez vos conversions e-commerce grâce à notre service d'abonnement mensuel de CRO. Nos experts optimisent votre site pour convertir plus de visiteurs en clients." } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
+    <!-- Préchargement critique CSS -->
+    <style>
+      /* Style minimal pour éviter le FOUC (Flash of Unstyled Content) */
+      body {
+        background-color: #161616;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Styles critiques pour le texte du Hero (LCP) */
+      .Hero_header_gauche > div > p {
+        color: white;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+    </style>
+    
+    <!-- Préconnexion aux domaines tiers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Font avec display=swap pour un rendu non-bloquant -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- Fallback si le chargement asynchrone échoue -->
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    
     <!-- SEO -->
     <title>{title}</title>
-    <meta name="description" content="Boostez vos conversions e-commerce grâce à notre service d'abonnement mensuel de CRO. Nos experts optimisent votre site pour convertir plus de visiteurs en clients." />
+    <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="CRO, optimisation taux de conversion, e-commerce, audit CRO, test A/B, UX, UI, analytics, abonnement CRO, ROI e-commerce" />
     
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
-    <meta property="og:description" content="Boostez vos conversions e-commerce grâce à notre service d'abonnement mensuel de CRO. Nos experts optimisent votre site pour convertir plus de visiteurs en clients." />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://votredomaine.com/cro-optimisation" />
-    <meta property="og:image" content="https://votredomaine.com/images/og-image-cro.jpg" />
+    <meta property="og:url" content="https://lec-media.agency" />
+    <meta property="og:image" content="/images/og-image-cro.jpg" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content="Boostez vos conversions e-commerce grâce à notre service d'abonnement mensuel de CRO. Nos experts optimisent votre site pour convertir plus de visiteurs en clients." />
-    <meta name="twitter:image" content="https://votredomaine.com/images/twitter-image-cro.jpg" />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/twitter-image-cro.jpg" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -45,8 +78,8 @@ const { title } = Astro.props;
         "description": "Service d'optimisation du taux de conversion pour e-commerce, incluant audits CRO, tests A/B, optimisation UI/UX et analyse de données.",
         "provider": {
           "@type": "Organization",
-          "name": "Votre Entreprise",
-          "url": "https://votredomaine.com"
+          "name": "LËC Media",
+          "url": "https://lec-media.agency"
         },
         "offers": {
           "@type": "Offer",
@@ -56,38 +89,35 @@ const { title } = Astro.props;
         }
       }
     </script>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        <!-- Hotjar Tracking Code for Site 5020473 (nom manquant) -->
-        <script>
-          (function (h, o, t, j, a, r) {
-            h.hj =
-              h.hj ||
-              function () {
-                (h.hj.q = h.hj.q || []).push(arguments);
-              };
-            h._hjSettings = { hjid: 5020473, hjsv: 6 };
-            a = o.getElementsByTagName("head")[0];
-            r = o.createElement("script");
-            r.async = 1;
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-            a.appendChild(r);
-          })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-        </script>
+     <!-- Balise Google (gtag.js) --> <script async src=" https://www.googletagmanager.com/gtag/js?id=AW-16957231355 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-16957231355'); </script> 
   </head>
   <body>
     <div class="noise"></div>
     
-    <!-- Remplacer l'ancien header par le composant Header -->
     <Header />
     
     <slot />
     
     <Footer />
+    
+    <!-- Scripts non-bloquants -->
+    <script defer>
+      // Hotjar Tracking Code
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 5020473, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
   </body>
 </html>
 
@@ -103,7 +133,7 @@ const { title } = Astro.props;
     --accent: #02f791; /* Vert fluo */
     --accent-dark: #00cb76;
     --accent-light: #37ffab;
-    --font-sans: 'Inter', sans-serif;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
     --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.3);
@@ -130,7 +160,6 @@ const { title } = Astro.props;
     position: relative;
     overflow-x: hidden;
   }
-
 
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
@@ -169,8 +198,6 @@ const { title } = Astro.props;
     max-width: 1400px;
     margin: 0 auto;
   }
-
-
 
   /* Buttons */
   .btn {
@@ -238,8 +265,6 @@ const { title } = Astro.props;
     color: transparent;
   }
 
-
-
   /* Dividers */
   .divider {
     width: 100%;
@@ -249,14 +274,14 @@ const { title } = Astro.props;
   }
 
   ::selection {
-  background-color: rgba(2, 247, 145, 0.3); /* Vert fluo semi-transparent */
-  color: white; /* Couleur du texte sélectionné */
-}
+    background-color: rgba(2, 247, 145, 0.3); /* Vert fluo semi-transparent */
+    color: white; /* Couleur du texte sélectionné */
+  }
 
-::-moz-selection {
-  background-color: rgba(2, 247, 145, 0.3); /* Pour Firefox */
-  color: white;
-}
+  ::-moz-selection {
+    background-color: rgba(2, 247, 145, 0.3); /* Pour Firefox */
+    color: white;
+  }
 
   /* Media Queries */
   @media (max-width: 768px) {    
