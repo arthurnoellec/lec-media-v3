@@ -4,31 +4,39 @@ export interface Props {
   description?: string;
 }
 
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-const { title, description = "Boostez vos conversions e-commerce grâce à notre service d'abonnement mensuel de CRO. Nos experts optimisent votre site pour convertir plus de visiteurs en clients." } = Astro.props;
+const {
+  title,
+  description = "Boostez vos conversions e-commerce grâce à notre service d'abonnement mensuel de CRO. Nos experts optimisent votre site pour convertir plus de visiteurs en clients.",
+} = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
     <!-- Préchargement critique CSS -->
     <style>
       /* Style minimal pour éviter le FOUC (Flash of Unstyled Content) */
       body {
         background-color: #161616;
         color: #ffffff;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
         margin: 0;
         padding: 0;
       }
-      
+
       /* Styles critiques pour le texte du Hero (LCP) */
       .Hero_header_gauche > div > p {
         color: white;
@@ -37,38 +45,49 @@ const { title, description = "Boostez vos conversions e-commerce grâce à notre
         margin-bottom: 1rem;
       }
     </style>
-    
+
     <!-- Préconnexion aux domaines tiers -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Font avec display=swap pour un rendu non-bloquant -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+
     <!-- Fallback si le chargement asynchrone échoue -->
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
     </noscript>
-    
+
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="CRO, optimisation taux de conversion, e-commerce, audit CRO, test A/B, UX, UI, analytics, abonnement CRO, ROI e-commerce" />
-    
+    <meta
+      name="keywords"
+      content="CRO, optimisation taux de conversion, e-commerce, audit CRO, test A/B, UX, UI, analytics, abonnement CRO, ROI e-commerce"
+    />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lec-media.agency" />
     <meta property="og:image" content="/images/og-image-cro.jpg" />
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/images/twitter-image-cro.jpg" />
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
@@ -90,51 +109,59 @@ const { title, description = "Boostez vos conversions e-commerce grâce à notre
       }
     </script>
 
-     <!-- Balise Google (gtag.js) --> <script async src=" https://www.googletagmanager.com/gtag/js?id=AW-16957231355 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-16957231355'); </script> 
+    <!-- Balise Google (gtag.js) -->
+    <script async src=" https://www.googletagmanager.com/gtag/js?id=AW-16957231355 "></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-16957231355");
+    </script>
 
-     <!-- Extrait d'événement pour la page de conversion de contact Formulaire
-Dans votre page HTML, ajoutez l'extrait et appelez gtag_report_conversion lorsque quelqu'un clique sur le lien ou le bouton choisi. -->
+    <!-- Event snippet for Formulaire contact conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
-  fonction gtag_report_conversion(url) {
-  var callback = fonction () {
-  si (typeof(url) != 'indéfini') {
-  fenêtre.emplacement = url;
-  }
-  };
-  gtag('événement', 'conversion', {
-  'envoyer_à' : 'AW-16957231355/Zb4XCLKIqrAaEPuh65U_',
-  'event_callback' : rappel
-  });
-  renvoie faux ;
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-16957231355/Zb4XCLKIqrAaEPuh65U_',
+        'event_callback': callback
+    });
+    return false;
   }
   </script>
 
-  <!-- Extrait d'événement pour la page de conversion Prise de rendez-vous
-Dans votre page HTML, ajoutez l'extrait et appelez gtag_report_conversion lorsque quelqu'un clique sur le lien ou le bouton choisi. -->
+  <!-- Event snippet for Prise de rendez-vous conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
-  fonction gtag_report_conversion(url) {
-  var callback = fonction () {
-  si (typeof(url) != 'indéfini') {
-  fenêtre.emplacement = url;
-  }
-  };
-  gtag('événement', 'conversion', {
-  'envoyer_à' : 'AW-16957231355/M4D-CNeHvrAaEPuh65U_',
-  'event_callback' : rappel
-  });
-  renvoie faux ;
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-16957231355/M4D-CNeHvrAaEPuh65U_',
+        'event_callback': callback
+    });
+    return false;
   }
   </script>
+
   </head>
   <body>
     <div class="noise"></div>
-    
+
     <Header />
-    
+
     <slot />
-    
+
     <Footer />
-    
+
     <!-- Scripts non-bloquants -->
     <script defer>
       // Hotjar Tracking Code
@@ -167,7 +194,7 @@ Dans votre page HTML, ajoutez l'extrait et appelez gtag_report_conversion lorsqu
     --accent: #02f791; /* Vert fluo */
     --accent-dark: #00cb76;
     --accent-light: #37ffab;
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
     --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.3);
@@ -195,7 +222,12 @@ Dans votre page HTML, ajoutez l'extrait et appelez gtag_report_conversion lorsqu
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     line-height: 1.2;
     font-weight: 700;
   }
@@ -318,7 +350,7 @@ Dans votre page HTML, ajoutez l'extrait et appelez gtag_report_conversion lorsqu
   }
 
   /* Media Queries */
-  @media (max-width: 768px) {    
+  @media (max-width: 768px) {
     section {
       padding: 4rem 1.5rem;
     }
