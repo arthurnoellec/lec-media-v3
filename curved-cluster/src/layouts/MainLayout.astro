@@ -31,6 +31,40 @@ import "../styles/markdown.css";
       </script>
 
        <!-- Balise Google (gtag.js) --> <script async src=" https://www.googletagmanager.com/gtag/js?id=AW-16957231355 "></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-16957231355'); </script> 
+
+       <!-- Extrait d'événement pour la page de conversion de contact Formulaire
+Dans votre page HTML, ajoutez l'extrait et appelez gtag_report_conversion lorsque quelqu'un clique sur le lien ou le bouton choisi. -->
+<script>
+  fonction gtag_report_conversion(url) {
+  var callback = fonction () {
+  si (typeof(url) != 'indéfini') {
+  fenêtre.emplacement = url;
+  }
+  };
+  gtag('événement', 'conversion', {
+  'envoyer_à' : 'AW-16957231355/Zb4XCLKIqrAaEPuh65U_',
+  'event_callback' : rappel
+  });
+  renvoie faux ;
+  }
+  </script>
+
+  <!-- Extrait d'événement pour la page de conversion Prise de rendez-vous
+Dans votre page HTML, ajoutez l'extrait et appelez gtag_report_conversion lorsque quelqu'un clique sur le lien ou le bouton choisi. -->
+<script>
+  fonction gtag_report_conversion(url) {
+  var callback = fonction () {
+  si (typeof(url) != 'indéfini') {
+  fenêtre.emplacement = url;
+  }
+  };
+  gtag('événement', 'conversion', {
+  'envoyer_à' : 'AW-16957231355/M4D-CNeHvrAaEPuh65U_',
+  'event_callback' : rappel
+  });
+  renvoie faux ;
+  }
+  </script>
 </head>
 <body>
     <Header />
