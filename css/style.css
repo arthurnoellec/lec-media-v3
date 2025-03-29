@@ -2,6 +2,7 @@ body {
   margin: 0;
   background-color: #161616;
   transition: background-color 1s ease-in-out;
+  font-family: Helvetica, sans-serif;
 }
 .features_hero-wrapper {
   position: relative;

@@ -1,0 +1,872 @@
+---
+// src/components/AvisClientsOptimized.astro
+---
+
+<section class="avis-clients-section">
+    <div class="section-header">
+      <h2>Nos <span class="gradient-text">avis clients</span></h2>
+      <p>Découvrez ce que nos clients disent de notre expertise UI/UX</p>
+      <div class="rating-summary">
+        <div class="rating-stars">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <div class="rating-score">
+          <span class="score">5</span>/5 - basé sur <span class="review-count">47 avis</span>
+        </div>
+        <div class="rating-provider">
+          <div class="google-badge" data-astro-cid-wdak4zcv=""> <svg style="
+              margin-top: 10px;
+              margin-bottom: -4px;
+              margin-right: 7px;
+          " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" data-astro-cid-wdak4zcv=""> <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" data-astro-cid-wdak4zcv=""></path> <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" data-astro-cid-wdak4zcv=""></path> <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" data-astro-cid-wdak4zcv=""></path> <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" data-astro-cid-wdak4zcv=""></path> </svg> <span data-astro-cid-wdak4zcv="">Google</span> </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Navigation pour mobile uniquement -->
+    <div class="carousel-navigation">
+      <button class="carousel-arrow prev-arrow" aria-label="Avis précédent">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="carousel-arrow next-arrow" aria-label="Avis suivant">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="carousel-container">
+      <!-- Flèche gauche (desktop) -->
+      <button class="carousel-arrow prev-arrow desktop-arrow" aria-label="Avis précédent">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      
+      <div class="reviews-carousel">
+        <div class="reviews-track">
+          <!-- Avis 1 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">
+                <div class="avatar-circle">EB</div>
+              </div>
+              <div class="reviewer-info">
+                <h4 class="reviewer-name">Emilie Bolduc</h4>
+                <div class="review-meta">
+                  <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                  <span class="review-date">il y a 2 semaines</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p class="review-text">Très heureuse d'avoir choisi Lëc Média pour la refonte de mon site web! En plus d'être super sympathiques, Arthur et son équipe ont pris le temps de comprendre l'univers de ma petite entreprise de crochet et ont créé l'ambiance visuelle que je recherchais...</p>
+              <button class="read-more-btn">Voir plus</button>
+              <div class="full-review hidden">
+                <p>Très heureuse d'avoir choisi Lëc Média pour la refonte de mon site web! En plus d'être super sympathiques, Arthur et son équipe ont pris le temps de comprendre l'univers de ma petite entreprise de crochet et ont créé l'ambiance visuelle que je recherchais en plus d'optimiser l'expérience utilisateur grâce à plusieurs améliorations techniques.</p>
+              </div>
+            </div>
+            <div class="review-image-container">
+              <img src="https://lec-media.agency/images/carte-real-crochetmilie.png" alt="Refonte e-commerce" class="review-image" />
+            </div>
+          </div>
+  
+          <!-- Avis 2 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">
+                <div class="avatar-circle">OG</div>
+              </div>
+              <div class="reviewer-info">
+                <h4 class="reviewer-name">Odile Gattino</h4>
+                <div class="review-meta">
+                  <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                  <span class="review-date">il y a 1 mois</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p class="review-text">De petits dépannages au début pour voir, puis de plus grandes missions de développement et aujourd'hui nous voilà en collaboration sur de beaux et plus grands projets. Je remercie tous les jours mon assistante d'avoir trouvé cette perle rare...</p>
+              <button class="read-more-btn">Voir plus</button>
+              <div class="full-review hidden">
+                <p>De petits dépannages au début pour voir, puis de plus grandes missions de développement et aujourd'hui nous voilà en collaboration sur de beaux et plus grands projets. Je remercie tous les jours mon assistante d'avoir trouvé cette perle rare, une équipe de jeunes professionnels compétents, talentueux, et qui sait répondre à mes attentes.</p>
+              </div>
+            </div>
+            <div class="review-image-container">
+              <img src="https://lec-media.agency/_astro/gimex.D6hSytWh.png" alt="Wireframes et prototypes" class="review-image" />
+            </div>
+          </div>
+  
+          <!-- Avis 3 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">
+                <div class="avatar-circle">EB</div>
+              </div>
+              <div class="reviewer-info">
+                <h4 class="reviewer-name">Ekaterina Bataeva</h4>
+                <div class="review-meta">
+                  <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                  <span class="review-date">il y a 2 mois</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p class="review-text">La plupart des agences font belle impression et vous vendent des paillettes lors des premiers échanges, mais cette illusion se dissipe rapidement une fois le contrat signé. Avec Lëc Média, c'est différent...</p>
+              <button class="read-more-btn">Voir plus</button>
+              <div class="full-review hidden">
+                <p>La plupart des agences font belle impression et vous vendent des paillettes lors des premiers échanges, mais cette illusion se dissipe rapidement une fois le contrat signé. Avec Lëc Média, c'est différent. Arthur et Tristan sont professionnels et ont vraiment à cœur de faire les choses bien et rapidement. Je les recommande vivement pour tous vos projets web.</p>
+              </div>
+            </div>
+            <div class="review-image-container">
+              <img src="https://lec-media.agency/images/carte-real-volzhenka.png" alt="Application avant" class="review-image" />
+            </div>
+          </div>
+  
+          <!-- Avis 4 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">
+                <div class="avatar-circle">VL</div>
+              </div>
+              <div class="reviewer-info">
+                <h4 class="reviewer-name">
+                    Virginie Laumaillier</h4>
+                <div class="review-meta">
+                  <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                  <span class="review-date">il y a 3 mois</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p class="review-text">Arthur a été une véritable trouvaille pour notre entreprise lors de la mise à jour de notre site web, notamment notre boutique en ligne. Nous avions besoin de quelqu'un de disponible et fiable, capable de nous guider...</p>
+              <button class="read-more-btn">Voir plus</button>
+              <div class="full-review hidden">
+                <p>Arthur a été une véritable trouvaille pour notre entreprise lors de la mise à jour de notre site web, notamment notre boutique en ligne. Nous avions besoin de quelqu'un de disponible et fiable, capable de nous guider et de nous conseiller. Et nous avons trouvé la perle rare! Il se montre à l'écoute, incroyablement réactif et extrêmement compétent. La vraie paix d'esprit! Nous continuons désormais à travailler ensemble pour la maintenance du site et pour des projets annexes comme les courriels automatisés. C'est un partenaire précieux pour notre croissance en ligne.</p>
+              </div>
+            </div>
+            <div class="review-image-container">
+              <img src="https://assets.hellodarwin.com/providers/portfolios/92cf4967-08b9-48dd-9766-e310c1740fdd.png" alt="Recherche utilisateur" class="review-image" />
+            </div>
+          </div>
+  
+          <!-- Avis 5 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">
+                <div class="avatar-circle">EL</div>
+              </div>
+              <div class="reviewer-info">
+                <h4 class="reviewer-name">Emmanuel Labbé</h4>
+                <div class="review-meta">
+                  <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                  <span class="review-date">il y a 3 mois</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p class="review-text">Je ne peux que recommander Arthur. J'ai fait appel à lui pour la restructuration de notre site et l'optimisation de nos KPI de vente. Professionnel et bienveillant, il a su dépasser mes attentes...</p>
+              <button class="read-more-btn">Voir plus</button>
+              <div class="full-review hidden">
+                <p>Je ne peux que recommander Arthur. J'ai fait appel à lui pour la restructuration de notre site et l'optimisation de nos KPI de vente. Professionnel et bienveillant, il a su dépasser mes attentes. Son expertise est indéniable. Je suis ravi de continuer à collaborer avec Lëc Média au quotidien.</p>
+              </div>
+            </div>
+            <div class="review-image-container">
+              <img src="https://lec-media.agency/images/carte-real-arico.png" alt="Plateforme SaaS" class="review-image" />
+            </div>
+          </div>
+  
+          <!-- Avis 6 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">
+                <div class="avatar-circle">ED</div>
+              </div>
+              <div class="reviewer-info">
+                <h4 class="reviewer-name">Erwan Dehu</h4>
+                <div class="review-meta">
+                  <div class="review-stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                  </div>
+                  <span class="review-date">il y a 4 mois</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p class="review-text">Avant de travailler avec Lëc Média, notre landing page était pratiquement invisible : à peine 200 visites par mois et aucune conversion. N'étant pas notre canal d'acquisition principal, nous l'avions un peu délaissée...</p>
+              <button class="read-more-btn">Voir plus</button>
+              <div class="full-review hidden">
+                <p>Avant de travailler avec Lëc Média, notre landing page était pratiquement invisible : à peine 200 visites par mois et aucune conversion. N'étant pas notre canal d'acquisition principal, nous l'avions un peu délaissée. J'avais presque honte de partager le lien quand on me le demandait. L'arrivée de Lëc Média a tout changé ! Nous avons commencé avec un service de SEO qui a transformé la donne. En quelques semaines seulement, nous avons dépassé les 1 000 visites mensuelles. Nous avons ensuite poursuivi avec ce qui fait la renommée d'Arthur : le CRO. Depuis, mes demandes de rendez-vous s'enchaînent.</p>
+              </div>
+            </div>
+            <div class="review-image-container">
+              <img src="https://lec-media.agency/_astro/flowli.CHP6_Ntj.png" alt="Système de design 1" class="review-image" />
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Flèche droite (desktop) -->
+      <button class="carousel-arrow next-arrow desktop-arrow" aria-label="Avis suivant">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  
+    <div class="carousel-indicators">
+      <div class="indicator active" data-index="0"></div>
+      <div class="indicator" data-index="1"></div>
+      <div class="indicator" data-index="2"></div>
+    </div>
+  
+    <div class="cta-container">
+      <a href="https://lec-media.agency/avis-lec-media-agency-agence-cro/" target="_blank" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" data-astro-cid-wdak4zcv=""> <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" data-astro-cid-wdak4zcv=""></path> <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" data-astro-cid-wdak4zcv=""></path> <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" data-astro-cid-wdak4zcv=""></path> <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" data-astro-cid-wdak4zcv=""></path> </svg>
+        Voir tous nos avis Google
+      </a>
+    </div>
+  </section>
+  
+  <style>
+    .avis-clients-section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+  
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+  
+    .section-header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+  
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+  
+    .rating-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+  
+    .rating-stars {
+      display: flex;
+      gap: 0.25rem;
+    }
+  
+    .rating-stars .star {
+      color: var(--accent);
+      font-size: 2rem;
+    }
+  
+    .rating-score {
+      font-size: 1.125rem;
+      color: var(--text);
+    }
+  
+    .score, .review-count {
+      font-weight: 600;
+      color: var(--text);
+    }
+  
+    .rating-provider {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+  
+    /* Navigation pour mobile (masquée sur desktop) */
+    .carousel-navigation {
+      display: none;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    /* Carousel styling */
+    .carousel-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 -1rem;
+    }
+  
+    .carousel-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 10;
+      flex-shrink: 0;
+    }
+  
+    .carousel-arrow:hover {
+      background-color: var(--accent);
+      color: var(--background);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(2, 247, 145, 0.3);
+    }
+  
+    .carousel-arrow svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  
+    .reviews-carousel {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      padding: 1rem 0;
+    }
+  
+    .reviews-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+  
+    .review-card {
+      flex: 0 0 calc(50% - 1.5rem);
+      max-width: calc(50% - 1.5rem);
+      min-height: 400px;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin: 0 0.75rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .review-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+  
+    .review-header {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+  
+    .reviewer-avatar {
+      flex-shrink: 0;
+    }
+  
+    .avatar-circle {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: var(--accent);
+      color: var(--background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+  
+    .reviewer-info {
+      flex: 1;
+    }
+  
+    .reviewer-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 0.25rem;
+    }
+  
+    .review-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  
+    .review-stars {
+      display: flex;
+    }
+  
+    .review-stars .star {
+      color: var(--accent);
+      font-size: 0.875rem;
+    }
+  
+    .half-star {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+  
+    .review-date {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+  
+    .review-content {
+      color: var(--text);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+  
+    .review-text {
+      margin-bottom: 0.5rem;
+    }
+  
+    .read-more-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s ease;
+    }
+  
+    .read-more-btn:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+  
+    .full-review {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+  
+    .full-review.active {
+      max-height: 500px;
+    }
+  
+    .hidden {
+      display: none;
+    }
+  
+    /* Image styling */
+    .review-image-container {
+      margin-top: auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+  
+    .review-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  
+    .review-card:hover .review-image {
+      transform: scale(1.05);
+    }
+  
+    /* Carousel indicators */
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+  
+    .indicator {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background-color: var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+  
+    .indicator.active {
+      width: 1.5rem;
+      border-radius: 0.25rem;
+      background-color: var(--accent);
+    }
+  
+    .cta-container {
+      margin-top: 3rem;
+      text-align: center;
+    }
+  
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+  
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--background);
+    }
+  
+    .btn-primary:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(2, 247, 145, 0.2);
+    }
+  
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .review-card {
+        flex: 0 0 calc(50% - 1.5rem);
+        max-width: calc(50% - 1.5rem);
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .avis-clients-section {
+        padding: 4rem 1.5rem;
+      }
+  
+      .section-header h2 {
+        font-size: 2rem;
+      }
+  
+      .section-header p {
+        font-size: 1.125rem;
+      }
+      
+      /* Afficher la navigation mobile */
+      .carousel-navigation {
+        display: flex;
+      }
+      
+      /* Masquer les flèches desktop */
+      .desktop-arrow {
+        display: none;
+      }
+      
+      /* Ajustements pour le carousel mobile */
+      .carousel-container {
+        margin: 0 auto;
+        width: 100%;
+      }
+  
+      .reviews-carousel {
+        width: 100%;
+      }
+  
+      .review-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 1.25rem;
+        min-height: 450px;
+        margin: 0;
+        box-sizing: border-box;
+      }
+  
+      .review-image {
+        height: 180px;
+      }
+    }
+  
+    @media (max-width: 576px) {
+      .section-header h2 {
+        font-size: 1.75rem;
+      }
+  
+      .review-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+  
+      .review-content {
+        font-size: 0.875rem;
+      }
+  
+      .carousel-arrow {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+  
+      .carousel-arrow svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+  
+      .review-image {
+        height: 150px;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Elements
+      const track = document.querySelector('.reviews-track');
+      const cards = document.querySelectorAll('.review-card');
+      const prevArrows = document.querySelectorAll('.prev-arrow');
+      const nextArrows = document.querySelectorAll('.next-arrow');
+      const indicators = document.querySelectorAll('.indicator');
+      const readMoreBtns = document.querySelectorAll('.read-more-btn');
+      
+      // Variables
+      let currentIndex = 0;
+      let cardWidth = 0;
+      let cardsPerView = 2; // Toujours afficher 2 avis par page sur desktop
+      let maxIndex = 0;
+  
+      // Calculer combien de cartes sont visibles et la largeur des cartes
+      function updateCardsPerView() {
+        if (window.innerWidth < 768) {
+          cardsPerView = 1;
+        } else {
+          cardsPerView = 2;
+        }
+        
+        // Mettre à jour maxIndex basé sur cardsPerView
+        maxIndex = Math.ceil(cards.length / cardsPerView) - 1;
+        
+        // Recalculer la largeur des cartes
+        if (track && cards.length > 0) {
+          const firstCard = cards[0];
+          
+          if (window.innerWidth < 768) {
+            // Sur mobile, on utilise la largeur totale de la carte
+            const containerWidth = document.querySelector('.reviews-carousel').offsetWidth;
+            cardWidth = containerWidth; // Utiliser la largeur complète du conteneur
+          } else {
+            // Sur desktop, calcul standard
+            const computedStyle = window.getComputedStyle(firstCard);
+            const margin = parseFloat(computedStyle.marginLeft) + parseFloat(computedStyle.marginRight);
+            cardWidth = firstCard.offsetWidth + margin;
+          }
+          
+          // Mettre à jour la position du track pour l'index actuel
+          updateTrackPosition();
+        }
+  
+        // Mettre à jour les indicateurs
+        updateIndicators();
+      }
+  
+      // Mettre à jour la position du track
+      function updateTrackPosition() {
+        if (track) {
+          track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+      }
+  
+      // Mettre à jour l'indicateur actif
+      function updateIndicators() {
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === currentIndex);
+        });
+      }
+  
+      // Diapositive suivante
+      function nextSlide() {
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateTrackPosition();
+          updateIndicators();
+        }
+      }
+  
+      // Diapositive précédente
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateTrackPosition();
+          updateIndicators();
+        }
+      }
+  
+      // Initialiser
+      updateCardsPerView();
+  
+      // Gestionnaires d'événements
+      window.addEventListener('resize', updateCardsPerView);
+      
+      // Attacher les événements à toutes les flèches (mobile et desktop)
+      prevArrows.forEach(arrow => {
+        arrow.addEventListener('click', prevSlide);
+      });
+      
+      nextArrows.forEach(arrow => {
+        arrow.addEventListener('click', nextSlide);
+      });
+      
+      // Gestion des indicateurs
+      document.querySelectorAll('.indicator').forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          currentIndex = index;
+          updateTrackPosition();
+          updateIndicators();
+        });
+      });
+      
+      // Fonctionnalité "Voir plus"
+      readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const content = this.parentElement;
+          const fullReview = content.querySelector('.full-review');
+          const reviewText = content.querySelector('.review-text');
+          
+          if (fullReview.classList.contains('hidden')) {
+            fullReview.classList.remove('hidden');
+            reviewText.style.display = 'none';
+            this.textContent = 'Voir moins';
+            
+            // Afficher progressivement le texte complet
+            setTimeout(() => {
+              fullReview.classList.add('active');
+            }, 10);
+          } else {
+            fullReview.classList.remove('active');
+            
+            // Attendre que l'animation se termine avant de cacher
+            setTimeout(() => {
+              fullReview.classList.add('hidden');
+              reviewText.style.display = 'block';
+              this.textContent = 'Voir plus';
+            }, 300);
+          }
+        });
+      });
+  
+      // Fonctionnalité de glissement pour les appareils tactiles
+      let touchStartX = 0;
+      let touchEndX = 0;
+  
+      const carousel = document.querySelector('.reviews-carousel');
+  
+      if (carousel) {
+        carousel.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        });
+      }
+  
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        
+        if (touchEndX < touchStartX - swipeThreshold) {
+          // Swipe left
+          nextSlide();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          // Swipe right
+          prevSlide();
+        }
+      }
+  
+      // Défilement automatique toutes les 5 secondes
+      let autoSlideInterval = setInterval(() => {
+        if (currentIndex < maxIndex) {
+          nextSlide();
+        } else {
+          currentIndex = 0;
+          updateTrackPosition();
+          updateIndicators();
+        }
+      }, 5000);
+  
+      // Mettre en pause le défilement automatique au survol
+      const carouselContainer = document.querySelector('.carousel-container');
+  
+      if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+          clearInterval(autoSlideInterval);
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+          autoSlideInterval = setInterval(() => {
+            if (currentIndex < maxIndex) {
+              nextSlide();
+            } else {
+              currentIndex = 0;
+              updateTrackPosition();
+              updateIndicators();
+            }
+          }, 5000);
+        });
+      }
+    });
+  </script>

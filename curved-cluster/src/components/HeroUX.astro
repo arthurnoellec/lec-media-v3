@@ -1,0 +1,806 @@
+---
+// HeroUX.astro
+---
+
+<section class="hero">
+    <div class="hero-content">
+      <h1>
+        Design <span class="gradient-text">UI/UX</span> qui convertit vos visiteurs en clients
+      </h1>
+  
+      <p class="hero-subtitle">
+        Nous créons des interfaces intuitives et engageantes qui améliorent l'expérience utilisateur 
+        et augmentent votre taux de conversion.
+      </p>
+  
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-primary btn-lg">Nos services</a>
+        <a href="#contact" class="btn btn-secondary btn-lg">Demander un devis</a>
+      </div>
+    </div>
+  
+    <div class="hero-visual">
+      <div class="browser-mockup">
+        <div class="browser-header">
+          <div class="browser-actions">
+            <span class="browser-action"></span>
+            <span class="browser-action"></span>
+            <span class="browser-action"></span>
+          </div>
+          <div class="browser-address">
+            <div class="browser-url">www.votre-boutique.fr</div>
+          </div>
+        </div>
+        <div class="browser-viewport">
+          <div class="site-mockup">
+            <!-- Navigation -->
+            <header class="mockup-nav">
+              <div class="mock-logo"></div>
+              <div class="mock-menu">
+                <div class="mock-menu-item"></div>
+                <div class="mock-menu-item"></div>
+                <div class="mock-menu-item"></div>
+                <div class="mock-menu-item"></div>
+              </div>
+              <div class="mock-cart"></div>
+            </header>
+            
+            <!-- Product showcase -->
+            <div class="mockup-product">
+              <div class="product-gallery">
+                <div class="product-main-image"></div>
+                <div class="product-thumbnails">
+                  <div class="product-thumbnail"></div>
+                  <div class="product-thumbnail"></div>
+                  <div class="product-thumbnail"></div>
+                </div>
+              </div>
+              <div class="product-info">
+                <div class="product-title"></div>
+                <div class="product-rating"></div>
+                <div class="product-price"></div>
+                <div class="product-description">
+                  <div class="description-line"></div>
+                  <div class="description-line"></div>
+                  <div class="description-line"></div>
+                </div>
+                <div class="product-variants">
+                  <div class="variant-option"></div>
+                  <div class="variant-option"></div>
+                  <div class="variant-option active"></div>
+                </div>
+                <div class="product-actions">
+                  <div class="quantity-selector"></div>
+                  <div id="addToCart" class="add-to-cart-button"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Related products -->
+            <div class="mockup-related">
+              <div class="section-heading"></div>
+              <div class="related-products">
+                <div class="related-product">
+                  <div class="related-product-image"></div>
+                  <div class="related-product-info"></div>
+                  <div class="related-product-price"></div>
+                </div>
+                <div class="related-product">
+                  <div class="related-product-image"></div>
+                  <div class="related-product-info"></div>
+                  <div class="related-product-price"></div>
+                </div>
+                <div class="related-product">
+                  <div class="related-product-image"></div>
+                  <div class="related-product-info"></div>
+                  <div class="related-product-price"></div>
+                </div>
+                <div id="relatedProduct" class="related-product">
+                  <div class="related-product-image"></div>
+                  <div class="related-product-info"></div>
+                  <div class="related-product-price"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Interactive cursor -->
+          <div class="cursor-element">
+            <div class="cursor-dot"></div>
+            <div class="cursor-ring"></div>
+            <div class="cursor-click"></div>
+          </div>
+          
+          <!-- Interaction points -->
+          <div class="interaction-point point-1">
+            <div class="hotspot"></div>
+            <div class="hotspot-label">+42% d'interactions</div>
+          </div>
+          <div class="interaction-point point-2">
+            <div class="hotspot"></div>
+            <div class="hotspot-label">-28% de rebond</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="metrics-card">
+        <div class="metrics-title">Performance UX</div>
+        <div class="metrics-container">
+          <div class="metric">
+            <div class="metric-value">0.3s</div>
+            <div class="metric-label">De chargement</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">87%</div>
+            <div class="metric-label">Satisfaction</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">+32%</div>
+            <div class="metric-label">Conversion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      min-height: calc(100vh - 100px);
+      padding: 2rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+  
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+  
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+      line-height: 1.6;
+    }
+  
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+  
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+  
+    .btn-primary {
+      background: var(--accent);
+      color: var(--background);
+      border: none;
+      box-shadow: 0 0 20px rgba(2, 247, 145, 0.3);
+    }
+  
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+  
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+  
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(2, 247, 145, 0.2);
+      background: var(--accent-dark);
+    }
+  
+    .btn-secondary:hover {
+      background-color: rgba(2, 247, 145, 0.05);
+      border-color: var(--accent);
+    }
+  
+    /* Browser mockup */
+    .hero-visual {
+      position: relative;
+      height: 580px;
+    }
+  
+    .browser-mockup {
+      position: absolute;
+      width: 100%;
+      height: 88%;
+      top: 0;
+      left: 0;
+      background-color: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      z-index: 1;
+    }
+  
+    .browser-header {
+      height: 40px;
+      background-color: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+    }
+  
+    .browser-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-right: 1rem;
+    }
+  
+    .browser-action {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+    }
+  
+    .browser-action:nth-child(1) {
+      background-color: #fc8181;
+    }
+  
+    .browser-action:nth-child(2) {
+      background-color: #f6e05e;
+    }
+  
+    .browser-action:nth-child(3) {
+      background-color: #68d391;
+    }
+  
+    .browser-address {
+      flex: 1;
+      height: 24px;
+      background-color: white;
+      border-radius: 0.25rem;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem;
+    }
+  
+    .browser-url {
+      font-size: 0.75rem;
+      color: #718096;
+    }
+  
+    .browser-viewport {
+      height: calc(100% - 40px);
+      position: relative;
+      overflow: hidden;
+    }
+  
+    /* Product page mockup */
+    .site-mockup {
+      padding: 1rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow-y: auto;
+    }
+  
+    .mockup-nav {
+      height: 3rem;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+  
+    .mock-logo {
+      width: 7rem;
+      height: 1.5rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+    }
+  
+    .mock-menu {
+      display: flex;
+      gap: 1rem;
+    }
+  
+    .mock-menu-item {
+      width: 3rem;
+      height: 0.75rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+    }
+  
+    .mock-cart {
+      width: 2rem;
+      height: 1.5rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+    }
+  
+    /* Product section */
+    .mockup-product {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  
+    .product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .product-main-image {
+      height: 18rem;
+      background-color: #f1f5f9;
+      border-radius: 0.5rem;
+    }
+  
+    .product-thumbnails {
+      display: flex;
+      gap: 0.75rem;
+    }
+  
+    .product-thumbnail {
+      width: 4rem;
+      height: 4rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+    }
+  
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+  
+    .product-title {
+      height: 2rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+      width: 80%;
+    }
+  
+    .product-rating {
+      height: 1rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+      width: 40%;
+    }
+  
+    .product-price {
+      height: 1.5rem;
+      background-color: rgba(101, 116, 255, 0.15);
+      border-radius: 0.25rem;
+      width: 30%;
+    }
+  
+    .product-description {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  
+    .description-line {
+      height: 0.75rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+    }
+  
+    .description-line:last-child {
+      width: 70%;
+    }
+  
+    .product-variants {
+      display: flex;
+      gap: 0.75rem;
+    }
+  
+    .variant-option {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.25rem;
+      background-color: #f1f5f9;
+    }
+  
+    .variant-option.active {
+      border: 2px solid var(--accent);
+      background-color: rgba(101, 116, 255, 0.1);
+    }
+  
+    .product-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  
+    .quantity-selector {
+      width: 6rem;
+      height: 2.5rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+    }
+  
+    .add-to-cart-button {
+      flex: 1;
+      height: 2.5rem;
+      background-color: var(--accent);
+      border-radius: 0.25rem;
+      transition: all 0.3s ease;
+    }
+  
+    .add-to-cart-button:hover {
+      background-color: var(--accent) ;
+    }
+  
+    /* Related products */
+    .mockup-related {
+      margin-top: 1rem;
+    }
+  
+    .section-heading {
+      height: 1.5rem;
+      width: 60%;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .related-products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+  
+    .related-product {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  
+    .related-product-image {
+      height: 8rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+    }
+  
+    .related-product-info {
+      height: 1rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+      width: 90%;
+    }
+  
+    .related-product-price {
+      height: 1rem;
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+      width: 40%;
+    }
+  
+    /* Cursor element */
+    .cursor-element {
+      position: absolute;
+      top: 40%;
+      left: 30%;
+      pointer-events: none;
+      z-index: 50;
+      animation: moveCursor 15s ease-in-out infinite;
+      transform-origin: center center;
+    }
+  
+    @keyframes moveCursor {
+      0% { top: 25%; left: 40%; } /* Départ */
+      10% { top: 50%; left: 40%; } /* Vers les variants */
+      15% { top: 50%; left: 40%; } /* Pause sur le variant */
+      16% { top: 50%; left: 41%; } /* Clic sur le variant */
+      20% { top: 50%; left: 40%; }
+      30% { top: 54%; left: 70%; } /* Vers le bouton d'ajout au panier */
+      35% { top: 54%; left: 70%; } /* Pause sur le bouton d'ajout au panier */
+      36% { top: 54%; left: 71%; } /* Clic sur le bouton d'ajout au panier */
+      40% { top: 54%; left: 70%; }
+      50% { top: 35%; left: 25%; } /* Vers la petite image produit (thumbnail) */
+      55% { top: 35%; left: 25%; } /* Pause sur la petite image */
+      56% { top: 35%; left: 26%; } /* Clic sur la petite image */
+      60% { top: 35%; left: 25%; }
+      70% { top: 35%; left: 33%; } /* Vers autre petite image */
+      75% { top: 35%; left: 33%; } /* Pause sur autre petite image */
+      76% { top: 35%; left: 34%; } /* Clic sur autre petite image */
+      80% { top: 35%; left: 33%; }
+      90% { top: 30%; left: 20%; }
+      100% { top: 25%; left: 40%; } /* Retour au départ */
+    }
+  
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background-color:var(--accent) ;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+  
+    .cursor-ring {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+    }
+  
+    .cursor-click {
+      width: 32px;
+      height: 32px;
+      background-color: rgba(101, 116, 255, 0.3);
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      animation: cursorClick 15s ease-out infinite;
+    }
+  
+    @keyframes cursorClick {
+      0%, 14.9%, 19.9%, 34.9%, 39.9%, 54.9%, 59.9%, 74.9%, 79.9%, 100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      15%, 16%, 35%, 36%, 55%, 56%, 75%, 76% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; }
+      16.1%, 36.1%, 56.1%, 76.1% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    }
+  
+    /* Interaction points */
+    .interaction-point {
+      position: absolute;
+      z-index: 40;
+    }
+  
+    .point-1 {
+      top: 35%;
+      left: 25%; /* Positionnée sur la petite image de gauche (thumbnail) */
+    }
+  
+    .point-2 {
+      top: 12%;
+      left: 50%; /* Positionnée sur la barre de navigation */
+    }
+  
+    .hotspot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(101, 116, 255, 0.15);
+      position: relative;
+      animation: pulse 2s infinite;
+    }
+  
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 0.3; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+  
+    .hotspot::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .hotspot-label {
+      position: absolute;
+      top: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent);
+      color: black;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 4px 8px rgba(101, 116, 255, 0.2);
+    }
+  
+    /* Metrics card */
+    .metrics-card {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80%;
+      background-color: var( --surface-lighter);
+      border-radius: 0.75rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      z-index: 20;
+    }
+  
+    .metrics-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+    }
+  
+    .metrics-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+  
+    .metric {
+      text-align: center;
+    }
+  
+    .metric-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+  
+    .metric-label {
+      font-size: 0.75rem;
+      color: white;
+    }
+  
+    /* Responsive styles */
+    @media (max-width: 1100px) {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  
+    @media (max-width: 992px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .hero-content {
+        width: 90%;
+        margin: auto;
+    }
+  
+      .hero-visual {
+        order: -1;
+        height: 520px;
+        width: 90%;
+        margin: auto;
+      }
+      
+      .metrics-card {
+        width: 90%;
+      }
+      
+      .mockup-product {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .related-products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+      }
+      
+      .hero-visual {
+        height: 480px;
+      }
+      
+      .mockup-nav {
+        padding: 0 0.5rem;
+      }
+      
+      .mock-menu {
+        display: none;
+      }
+      
+      .mock-cart {
+        width: 1.5rem;
+      }
+      
+      .product-main-image {
+        height: 12rem;
+      }
+      
+      .metrics-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .metrics-card {
+        padding: 1rem;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Obtenez la référence au viewport du navigateur
+      const browserViewport = document.querySelector('.browser-viewport');
+      
+      // Obtenez les références au curseur et à ses composants
+      const cursorElement = document.querySelector('.cursor-element');
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorRing = document.querySelector('.cursor-ring');
+      const cursorClick = document.querySelector('.cursor-click');
+      
+      // Repositionnez le curseur pour qu'il commence à se déplacer correctement
+      setTimeout(() => {
+        // Assurez-vous que le curseur est bien visible et animé
+        cursorElement.style.animation = 'none';
+        cursorElement.offsetHeight; // Force reflow
+        cursorElement.style.animation = 'moveCursor 15s ease-in-out infinite';
+        
+        // Assurez-vous que les éléments du curseur sont correctement positionnés
+        cursorDot.style.animation = 'none';
+        cursorDot.offsetHeight;
+        
+        cursorRing.style.animation = 'none';
+        cursorRing.offsetHeight;
+        
+        cursorClick.style.animation = 'none';
+        cursorClick.offsetHeight;
+        cursorClick.style.animation = 'cursorClick 15s ease-out infinite';
+      }, 500);
+      
+      // Mettre en évidence les éléments lorsque le curseur les survole
+      const addToCartButton = document.getElementById('addToCart');
+      const relatedProduct = document.getElementById('relatedProduct');
+      
+      // Vous pourriez ajouter des écouteurs d'événements pour les effets de survol si désiré
+    });
+  </script>

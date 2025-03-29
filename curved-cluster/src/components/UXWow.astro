@@ -1,0 +1,713 @@
+---
+// src/components/UXWow.astro
+---
+
+<section class="ux-wow-section">
+    <div class="section-header">
+      <h2>Découvrez l'<span class="gradient-text">Expérience Utilisateur</span></h2>
+      <p>Testez votre œil de designer avec notre petit jeu interactif</p>
+    </div>
+    
+    <div class="wow-container">
+      <div class="game-controls">
+        <div class="level-indicator">
+          <span>Niveau:</span>
+          <div class="level-dots">
+            <span class="level-dot active" data-level="1"></span>
+            <span class="level-dot" data-level="2"></span>
+            <span class="level-dot" data-level="3"></span>
+          </div>
+        </div>
+        <div class="score-display">
+          <span>Score:</span>
+          <span id="score-value">0</span>
+        </div>
+      </div>
+      
+      <div class="game-area">
+        <div class="game-message">
+          <h3>Trouvez l'élément qui ne respecte pas les principes UX</h3>
+          <p>Cliquez sur l'élément qui vous semble incorrect dans cette interface</p>
+        </div>
+        
+        <div class="game-interfaces">
+          <div class="interface-screen active" data-level="1">
+            <div class="interface-mockup">
+              <div class="mock-header">
+                <div class="mock-logo"></div>
+                <div class="mock-nav">
+                  <span class="mock-nav-item"></span>
+                  <span class="mock-nav-item"></span>
+                  <span class="mock-nav-item"></span>
+                  <span class="mock-nav-item wrong-element" data-points="10" data-reason="Contraste insuffisant: Le texte gris clair sur fond blanc ne respecte pas les normes d'accessibilité WCAG et réduit la lisibilité."></span>
+                </div>
+              </div>
+              <div class="mock-hero">
+                <div class="mock-headline"></div>
+                <div class="mock-subheadline"></div>
+                <div class="mock-cta"></div>
+              </div>
+              <div class="mock-content">
+                <div class="mock-card"></div>
+                <div class="mock-card wrong-element" data-points="20" data-reason="Incohérence visuelle: Ce composant utilise un style différent des autres cartes, créant une expérience utilisateur incohérente."></div>
+                <div class="mock-card"></div>
+              </div>
+              <div class="mock-footer">
+                <div class="mock-footer-links"></div>
+                <div class="mock-copyright"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="interface-screen" data-level="2">
+            <div class="interface-mockup">
+              <div class="mock-form">
+                <div class="mock-form-header"></div>
+                <div class="mock-input"></div>
+                <div class="mock-input wrong-element" data-points="15" data-reason="Formulaire sans label: Ce champ ne possède pas de label explicite, ce qui réduit l'accessibilité et crée de la confusion pour l'utilisateur."></div>
+                <div class="mock-input"></div>
+                <div class="mock-dropdown"></div>
+                <div class="mock-checkbox"></div>
+                <div class="mock-submit wrong-element" data-points="25" data-reason="Bouton d'action non distinct: Le bouton de soumission du formulaire ne se distingue pas suffisamment des autres éléments, créant une friction dans le parcours utilisateur."></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="interface-screen" data-level="3">
+            <div class="interface-mockup">
+              <div class="mock-product">
+                <div class="mock-product-gallery">
+                  <div class="mock-product-image"></div>
+                  <div class="mock-thumbnails">
+                    <div class="mock-thumbnail"></div>
+                    <div class="mock-thumbnail"></div>
+                    <div class="mock-thumbnail wrong-element" data-points="20" data-reason="Zone tactile trop petite: Cette miniature a une zone de clic trop petite, ne respectant pas les recommandations d'ergonomie pour les interfaces tactiles."></div>
+                  </div>
+                </div>
+                <div class="mock-product-info">
+                  <div class="mock-product-title"></div>
+                  <div class="mock-product-price"></div>
+                  <div class="mock-product-desc"></div>
+                  <div class="mock-variant-selector"></div>
+                  <div class="mock-quantity"></div>
+                  <div class="mock-product-actions">
+                    <div class="mock-wishlist wrong-element" data-points="30" data-reason="Icône ambiguë: Cette icône ne communique pas clairement sa fonction, et son placement près du bouton d'ajout au panier peut causer des erreurs utilisateur."></div>
+                    <div class="mock-add-to-cart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feedback-modal">
+          <div class="feedback-content">
+            <h3 class="feedback-title">Bien joué!</h3>
+            <p class="feedback-message"></p>
+            <div class="feedback-points">+<span class="points-value">10</span> points</div>
+            <button class="feedback-button">Continuer</button>
+          </div>
+        </div>
+        
+        <div class="game-over-modal">
+          <div class="game-over-content">
+            <h3>Félicitations!</h3>
+            <p>Vous avez terminé notre jeu UX avec un score de <span class="final-score">0</span> points.</p>
+            <p class="game-over-message"></p>
+            <button class="restart-button">Recommencer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .ux-wow-section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+  
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+  
+    .section-header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+  
+    .wow-container {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+  
+    /* Game Controls */
+    .game-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      background-color: var(--surface-light);
+      border-bottom: 1px solid var(--border);
+    }
+  
+    .level-indicator,
+    .score-display {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+  
+    .level-dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+  
+    .level-dot {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background-color: var(--surface-lighter);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+  
+    .level-dot.active {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(2, 247, 145, 0.2);
+    }
+  
+    #score-value {
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+  
+    /* Game Area */
+    .game-area {
+      position: relative;
+      padding: 2rem;
+    }
+  
+    .game-message {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  
+    .game-message h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+  
+    .game-message p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+  
+    /* Interface Screens */
+    .game-interfaces {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      background-color: var(--surface-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+  
+    .interface-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      padding: 2rem;
+    }
+  
+    .interface-screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  
+    /* Mockup Styles */
+    .interface-mockup {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  
+    .mock-header {
+      height: 4rem;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+  
+    .mock-logo {
+      width: 8rem;
+      height: 2rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+  
+    .mock-nav-item {
+      width: 4rem;
+      height: 1rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-hero {
+      height: 12rem;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  
+    .mock-headline {
+      width: 60%;
+      height: 2rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-subheadline {
+      width: 40%;
+      height: 1rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-cta {
+      width: 8rem;
+      height: 2.5rem;
+      background-color: var(--accent);
+      border-radius: var(--radius);
+    }
+  
+    .mock-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      flex: 1;
+    }
+  
+    .mock-card {
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      height: 100%;
+    }
+  
+    .mock-footer {
+      height: 6rem;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .mock-footer-links {
+      height: 1rem;
+      width: 80%;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-copyright {
+      height: 0.75rem;
+      width: 40%;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    /* Form Mockup */
+    .mock-form {
+      width: 60%;
+      margin: 0 auto;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  
+    .mock-form-header {
+      height: 2rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+      width: 60%;
+      margin-bottom: 1rem;
+    }
+  
+    .mock-input {
+      height: 3rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-dropdown {
+      height: 3rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+      position: relative;
+    }
+  
+    .mock-dropdown::after {
+      content: "";
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 0.5rem solid transparent;
+      border-right: 0.5rem solid transparent;
+      border-top: 0.5rem solid var(--border);
+    }
+  
+    .mock-checkbox {
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  
+    .mock-checkbox::before {
+      content: "";
+      width: 1.25rem;
+      height: 1.25rem;
+      background-color: var(--surface-lighter);
+      border-radius: 0.25rem;
+      border: 1px solid var(--border);
+    }
+  
+    .mock-checkbox::after {
+      content: "";
+      flex: 1;
+      height: 0.75rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-submit {
+      height: 3rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+      margin-top: 1rem;
+    }
+  
+    /* Product Mockup */
+    .mock-product {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      height: 100%;
+    }
+  
+    .mock-product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .mock-product-image {
+      flex: 1;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+    }
+  
+    .mock-thumbnails {
+      display: flex;
+      gap: 1rem;
+      height: 4rem;
+    }
+  
+    .mock-thumbnail {
+      flex: 1;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+    }
+  
+    .mock-product-info {
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .mock-product-title {
+      height: 2rem;
+      width: 80%;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-product-price {
+      height: 1.5rem;
+      width: 30%;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-product-desc {
+      height: 6rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-variant-selector {
+      height: 3rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-quantity {
+      height: 3rem;
+      width: 50%;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-product-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+    }
+  
+    .mock-wishlist {
+      width: 3rem;
+      height: 3rem;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+    }
+  
+    .mock-add-to-cart {
+      flex: 1;
+      height: 3rem;
+      background-color: var(--accent);
+      border-radius: var(--radius);
+    }
+  
+    /* Wrong Elements */
+    .wrong-element {
+      position: relative;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+  
+    .wrong-element:hover {
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    
+    /* Modals */
+    .feedback-modal,
+    .game-over-modal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+  
+    .feedback-content,
+    .game-over-content {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: var(--shadow-lg);
+    }
+  
+    .feedback-title,
+    .game-over-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+  
+    .feedback-message,
+    .game-over-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+  
+    .feedback-points {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+  
+    .feedback-button,
+    .restart-button {
+      background-color: var(--accent);
+      color: var(--text-on-accent);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+  
+    .feedback-button:hover,
+    .restart-button:hover {
+      opacity: 0.9;
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const gameInterfaces = document.querySelectorAll('.interface-screen');
+      const levelDots = document.querySelectorAll('.level-dot');
+      const scoreValue = document.getElementById('score-value');
+      const wrongElements = document.querySelectorAll('.wrong-element');
+      const feedbackModal = document.querySelector('.feedback-modal');
+      const gameOverModal = document.querySelector('.game-over-modal');
+      const feedbackMessage = document.querySelector('.feedback-message');
+      const feedbackPointsValue = document.querySelector('.points-value');
+      const feedbackButton = document.querySelector('.feedback-button');
+      const restartButton = document.querySelector('.restart-button');
+      const finalScore = document.querySelector('.final-score');
+      const gameOverMessage = document.querySelector('.game-over-message');
+  
+      let currentLevel = 1;
+      let totalScore = 0;
+  
+      function updateLevel() {
+        // Hide all interfaces
+        gameInterfaces.forEach(screen => {
+          screen.classList.remove('active');
+        });
+  
+        // Update level dots
+        levelDots.forEach(dot => {
+          dot.classList.remove('active');
+          if (parseInt(dot.dataset.level) <= currentLevel) {
+            dot.classList.add('active');
+          }
+        });
+  
+        // Show current level interface
+        const currentInterface = document.querySelector(`.interface-screen[data-level="${currentLevel}"]`);
+        if (currentInterface) {
+          currentInterface.classList.add('active');
+        }
+      }
+  
+      function showFeedbackModal(points, reason) {
+        feedbackPointsValue.textContent = points;
+        feedbackMessage.textContent = reason;
+        feedbackModal.style.display = 'flex';
+      }
+  
+      function showGameOverModal() {
+        finalScore.textContent = totalScore;
+  
+        // Customize game over message based on score
+        if (totalScore < 30) {
+          gameOverMessage.textContent = "Il y a encore du travail! Continuez à apprendre les principes UX.";
+        } else if (totalScore < 60) {
+          gameOverMessage.textContent = "Bon début! Vous commencez à comprendre les bases de l'UX.";
+        } else {
+          gameOverMessage.textContent = "Excellent! Vous avez une excellente compréhension des principes UX.";
+        }
+  
+        gameOverModal.style.display = 'flex';
+      }
+  
+      // Add click event to wrong elements
+      wrongElements.forEach(element => {
+        element.addEventListener('click', (e) => {
+          const points = parseInt(element.dataset.points);
+          const reason = element.dataset.reason;
+  
+          // Update score
+          totalScore += points;
+          scoreValue.textContent = totalScore;
+  
+          // Show feedback modal
+          showFeedbackModal(points, reason);
+        });
+      });
+  
+      // Feedback button click
+      feedbackButton.addEventListener('click', () => {
+        feedbackModal.style.display = 'none';
+        
+        // Move to next level or end game
+        currentLevel++;
+        if (currentLevel > 3) {
+          showGameOverModal();
+        } else {
+          updateLevel();
+        }
+      });
+  
+      // Restart button click
+      restartButton.addEventListener('click', () => {
+        // Reset game state
+        currentLevel = 1;
+        totalScore = 0;
+        scoreValue.textContent = '0';
+        gameOverModal.style.display = 'none';
+        updateLevel();
+      });
+  
+      // Initial level setup
+      updateLevel();
+    });
+  </script>
