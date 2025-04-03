@@ -1,0 +1,2567 @@
+---
+// ABTestingPage.astro
+// Page principale qui intègre tous les composants pour la page de tests A/B
+
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HeroSection from "../components/Hero-AB-testing.astro";
+import CTAButton from "../components/CTAButton.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
+import FAQAccordion from "../components/FAQAccordion.astro";
+
+// Données des études de cas
+const caseStudies = [
+  {
+    title: "Refonte de la page produit pour Fred.com",
+    category: "Page produit",
+    context: "E-commerce de bijouterie de luxe avec un taux de conversion initial de 1,8%",
+    problem: "Taux d'abandon élevé sur les pages produit (68%)",
+    solution: [
+      "Ajout de vidéos 360° des bijoux",
+      "Témoignages clients spécifiques au produit",
+      "Indication de stock en temps réel",
+      "Garantie de satisfaction mise en avant"
+    ],
+    results: [
+      { metric: "Conversion", before: "1,8%", after: "2,7%", improvement: "+50%" },
+      { metric: "Taux d'abandon", before: "68%", after: "42%", improvement: "-38%" },
+      { metric: "Panier moyen", before: "87€", after: "112€", improvement: "+29%" }
+    ],
+    roi: "1580% sur 6 mois"
+  },
+  {
+    title: "Optimisation du tunnel d'achat pour Rakk.fr",
+    category: "Tunnel d'achat",
+    context: "E-commerce d'articles de sport avec un taux d'abandon de panier de 72%",
+    problem: "Processus de commande trop complexe en 5 étapes",
+    solution: [
+      "Réduction à 3 étapes",
+      "Option d'achat invité",
+      "Barre de progression visible",
+      "Estimation du temps restant",
+      "Conservation des informations en cas d'erreur"
+    ],
+    results: [
+      { metric: "Abandon de panier", before: "72%", after: "51%", improvement: "-29%" },
+      { metric: "Taux de conversion", before: "2,2%", after: "3,4%", improvement: "+55%" },
+      { metric: "Chiffre d'affaires mensuel", before: "127 000€", after: "196 000€", improvement: "+54%" }
+    ],
+    roi: "2450% sur 12 mois"
+  },
+  {
+    title: "Test de la page d'accueil pour Manomano.fr",
+    category: "Page d'accueil",
+    context: "E-commerce de mobilier et accessoires de jardin avec un taux de rebond de 65%",
+    problem: "Faible taux de clic vers les catégories de produits (22%)",
+    solution: [
+      "Présentation des catégories principales avec visuels inspirationnels",
+      "Segmentation claire par espace (terrasse, balcon, grand jardin)",
+      "Mise en avant des best-sellers par catégorie",
+      "Affichage conditionnel selon la météo locale de l'utilisateur"
+    ],
+    results: [
+      { metric: "Taux de rebond", before: "65%", after: "48%", improvement: "-26%" },
+      { metric: "Taux de clic vers les catégories", before: "22%", after: "37%", improvement: "+68%" },
+      { metric: "Temps moyen sur site", before: "1:45", after: "3:12", improvement: "+83%" },
+      { metric: "Taux de conversion global", before: "1,5%", after: "2,1%", improvement: "+40%" }
+    ],
+    roi: "1870% sur 9 mois"
+  }
+];
+
+// Données FAQ
+const faqs = [
+  {
+    question: "Combien de temps doit durer un test A/B ?",
+    answer: "La durée idéale d'un test A/B dépend de votre trafic et de votre taux de conversion. Pour obtenir des résultats statistiquement significatifs, il faut généralement atteindre au moins 100 conversions par variante. Pour un e-commerce moyen, cela représente 2 à 4 semaines de test. Nous utilisons des calculateurs de signification statistique pour déterminer la durée optimale de chaque test."
+  },
+  {
+    question: "Quel trafic minimum est nécessaire pour des résultats fiables ?",
+    answer: "Pour obtenir des résultats fiables, nous recommandons un minimum de 1000 visiteurs uniques par semaine sur la page testée. En dessous de ce seuil, il peut être préférable d'opter pour des tests séquentiels ou des méthodes qualitatives comme les tests utilisateurs."
+  },
+  {
+    question: "Comment éviter les biais statistiques ?",
+    answer: "Nous utilisons des méthodologies rigoureuses pour éviter les biais : définition préalable de la durée du test, exclusion des périodes atypiques (soldes, promotions exceptionnelles), segmentation des données, et utilisation de tests statistiques robustes (test de Student, intervalle de confiance à 95%). Nous vérifions également l'absence de fuites entre les variantes."
+  },
+  {
+    question: "Les tests A/B affectent-ils le référencement ?",
+    answer: "Non, lorsqu'ils sont correctement implémentés. Nous utilisons des techniques conformes aux recommandations de Google comme le rel=canonical, l'implémentation côté serveur ou l'utilisation de JavaScript asynchrone. Google encourage même explicitement les tests A/B comme méthode d'amélioration de l'expérience utilisateur."
+  },
+  {
+    question: "Comment prioriser les éléments à tester ?",
+    answer: "Nous utilisons le framework PIE (Potential, Importance, Ease) pour prioriser les tests. Nous évaluons le potentiel d'amélioration basé sur les données analytiques, l'importance de l'élément dans le parcours d'achat, et la facilité de mise en œuvre. Cette approche nous permet de maximiser le ROI de votre programme de tests."
+  }
+];
+---
+
+<Layout 
+  title="Tests A/B pour E-commerce | Optimisation du Taux de Conversion | LËC Media"
+  description="Améliorez votre taux de conversion e-commerce grâce à nos tests A/B scientifiques. Découvrez comment nous avons généré +47% de conversion en moyenne pour nos clients."
+>
+  <Header />
+  
+  <main>
+    <HeroSection />
+    
+    <section id="introduction" class="intro-section">
+      <div class="section-header">
+        <h2>Optimisez scientifiquement votre e-commerce</h2>
+        <p class="section-subtitle">Votre site perd des ventes chaque jour. Les tests A/B vous permettent d'identifier et corriger les points de friction qui empêchent vos visiteurs de devenir des clients.</p>
+      </div>
+      <div class="intro-cards">
+        <div class="card intro-card">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3>Comprenez vos utilisateurs</h3>
+          <p>Les tests A/B révèlent ce que vos utilisateurs préfèrent vraiment, au-delà des opinions subjectives. Prenez des décisions basées sur des données concrètes plutôt que sur des intuitions.</p>
+        </div>
+        <div class="card intro-card">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+          </div>
+          <h3>Optimisez méticuleusement</h3>
+          <p>En testant systématiquement chaque élément de votre tunnel de conversion, nous identifions les modifications qui maximisent vos résultats commerciaux avec un ROI mesurable.</p>
+        </div>
+        <div class="card intro-card">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+          </div>
+          <h3>Itérez continuellement</h3>
+          <p>L'optimisation est un processus continu. Notre approche agile des tests A/B permet d'améliorer constamment votre site en capitalisant sur chaque apprentissage pour les tests suivants.</p>
+        </div>
+      </div>
+      <div class="stat-banner">
+        <div class="stat">
+          <span class="stat-value">85%</span>
+          <span class="stat-description">des entreprises e-commerce du TOP 100 français utilisent les tests A/B comme outil principal d'optimisation</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">347%</span>
+          <span class="stat-description">de ROI moyen mesuré sur l'ensemble de nos projets d'optimisation e-commerce</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">+42%</span>
+          <span class="stat-description">d'augmentation moyenne du chiffre d'affaires après 6 mois de tests A/B</span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="methodology" class="methodology-section">
+      <div class="section-header">
+        <h2>Notre méthodologie scientifique des tests A/B</h2>
+        <p class="section-subtitle">Une approche rigoureuse et éprouvée pour maximiser vos résultats</p>
+      </div>
+      <div class="methodology-grid">
+        <div class="methodology-steps">
+          <div class="methodology-step">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              <div class="step-number">01</div>
+            </div>
+            <div class="step-content">
+              <h3>Analyse des données</h3>
+              <p>Nous identifions les opportunités d'optimisation grâce à l'analyse comportementale (heatmaps, enregistrements de session, entonnoirs de conversion), aux entretiens utilisateurs et à l'analyse quantitative.</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <div class="step-number">02</div>
+            </div>
+            <div class="step-content">
+              <h3>Formulation d'hypothèses</h3>
+              <p>Nous créons des hypothèses testables basées sur les données recueillies. Chaque hypothèse suit le format "Si nous [changement], alors [résultat attendu] parce que [justification]".</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <div class="step-number">03</div>
+            </div>
+            <div class="step-content">
+              <h3>Conception et mise en place</h3>
+              <p>Nous concevons et implémentons les variantes de test, en veillant à ce qu'elles soient correctement configurées pour une mesure précise et sans impact sur le SEO.</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <div class="step-number">04</div>
+            </div>
+            <div class="step-content">
+              <h3>Analyse des résultats</h3>
+              <p>Nous analysons les résultats avec une rigueur statistique pour garantir la fiabilité des conclusions. Nous n'arrêtons jamais un test avant d'atteindre la signification statistique.</p>
+            </div>
+          </div>
+          
+          <div class="methodology-step">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+              <div class="step-number">05</div>
+            </div>
+            <div class="step-content">
+              <h3>Itération continue</h3>
+              <p>Nous transformons chaque test en connaissances actionnables qui alimentent notre roadmap d'optimisation, créant un cycle vertueux d'amélioration continue.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="methodology-visual">
+          <div class="methodology-animation">
+            <div class="website-comparison">
+              <div class="website website-a">
+                <div class="website-label">Version A</div>
+                <div class="website-mockup">
+                  <div class="website-header"></div>
+                  <div class="website-hero">
+                    <div class="website-headline"></div>
+                    <div class="website-subheadline"></div>
+                    <div class="website-button"></div>
+                  </div>
+                  <div class="website-sections">
+                    <div class="website-section"></div>
+                    <div class="website-section"></div>
+                    <div class="website-section"></div>
+                  </div>
+                </div>
+                <div class="conversion-rate">
+                  <div class="rate-label">Conv. Rate</div>
+                  <div class="rate-value">2.4%</div>
+                </div>
+              </div>
+              
+              <div class="vs-badge">VS</div>
+              
+              <div class="website website-b">
+                <div class="website-label">Version B</div>
+                <div class="website-mockup">
+                  <div class="website-header"></div>
+                  <div class="website-hero">
+                    <div class="website-headline website-change"></div>
+                    <div class="website-subheadline"></div>
+                    <div class="website-button website-change"></div>
+                  </div>
+                  <div class="website-sections">
+                    <div class="website-section"></div>
+                    <div class="website-section"></div>
+                    <div class="website-section"></div>
+                  </div>
+                </div>
+                <div class="conversion-rate">
+                  <div class="rate-label">Conv. Rate</div>
+                  <div class="rate-value winner">3.7%</div>
+                  <div class="winner-badge">+54%</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Niveau de confiance</div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="stat-number">14</div>
+                <div class="stat-label">Jours de test</div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="stat-number">5k+</div>
+                <div class="stat-label">Visiteurs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="case-studies" class="case-studies-section">
+      <div class="section-header">
+        <h2>Études de cas concrètes avec résultats chiffrés</h2>
+        <p class="section-subtitle">Découvrez comment nos tests A/B ont transformé les performances de ces e-commerces</p>
+      </div>
+      
+      <div class="case-studies-grid">
+        {caseStudies.map((caseStudy) => (
+          <CaseStudyCard 
+            title={caseStudy.title}
+            category={caseStudy.category}
+            context={caseStudy.context}
+            problem={caseStudy.problem}
+            solution={caseStudy.solution}
+            results={caseStudy.results}
+            roi={caseStudy.roi}
+          />
+        ))}
+      </div>
+      
+      <div class="case-studies-cta">
+        <CTAButton href="https://lec-media.agency/#nos-realisation-ancre" text="Voir toutes nos études de cas" primary={false} large={true} />
+      </div>
+    </section>
+    
+<!-- Section Éléments à tester -->
+<section id="elements" class="elements-section">
+    <div class="section-header">
+      <h2>Éléments clés à tester en e-commerce</h2>
+      <p class="section-subtitle">Optimisez ces éléments critiques pour maximiser votre taux de conversion</p>
+    </div>
+    
+    <div class="elements-tabs-container">
+      <div class="element-tabs">
+        <button class="element-tab active" data-tab="product-page">Page produit</button>
+        <button class="element-tab" data-tab="checkout">Tunnel d'achat</button>
+        <button class="element-tab" data-tab="homepage">Page d'accueil</button>
+      </div>
+      
+      <div class="element-content-container">
+        <!-- Onglet Page produit -->
+        <div id="product-page" class="element-content active">
+          <div class="element-grid">
+            <div class="element-visual">
+              <!-- Mockup page produit -->
+              <div class="product-mockup">
+                <div class="product-gallery">
+                  <div class="product-image"></div>
+                  <div class="product-thumbnails">
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-title"></div>
+                  <div class="product-price"></div>
+                  <div class="product-description"></div>
+                  <div class="product-variants">
+                    <div class="variant"></div>
+                    <div class="variant"></div>
+                    <div class="variant"></div>
+                  </div>
+                  <div class="product-button"></div>
+                  <div class="product-reviews">
+                    <div class="review-header"></div>
+                    <div class="review-content"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Points d'intérêt -->
+              <div class="hotspots">
+                <div class="hotspot" data-element="gallery" style="top: 25%; left: 20%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Photos et médias</div>
+                </div>
+                <div class="hotspot" data-element="description" style="top: 31%; left: 70%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Description</div>
+                </div>
+                <div class="hotspot" data-element="price" style="top: 17%; left: 57%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Prix</div>
+                </div>
+                <div class="hotspot" data-element="button" style="top: 64%; left: 73%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">CTA</div>
+                </div>
+                <div class="hotspot" data-element="reviews" style="top: 81%; left: 58%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Avis clients</div>
+                </div>
+                <div class="hotspot" data-element="variants" style="top: 45%; left: 63%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Variantes</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="element-list">
+              <ul>
+                <li data-element="gallery">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Photos et médias</span>
+                </li>
+                <li data-element="description">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Description et contenu</span>
+                </li>
+                <li data-element="price">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Prix et promotions</span>
+                </li>
+                <li data-element="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Bouton d'action (CTA)</span>
+                </li>
+                <li data-element="reviews">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Avis clients</span>
+                </li>
+                <li data-element="variants">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Options et variantes</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Onglet Tunnel d'achat -->
+        <div id="checkout" class="element-content">
+          <div class="element-grid">
+            <div class="element-visual">
+              <!-- Mockup tunnel d'achat -->
+              <div class="checkout-mockup">
+                <div class="checkout-header">
+                  <div class="checkout-logo"></div>
+                  <div class="checkout-progress">
+                    <div class="progress-step active"></div>
+                    <div class="progress-step"></div>
+                    <div class="progress-step"></div>
+                  </div>
+                </div>
+                <div class="checkout-body">
+                  <div class="checkout-form">
+                    <div class="form-title"></div>
+                    <div class="form-fields">
+                      <div class="form-field"></div>
+                      <div class="form-field"></div>
+                      <div class="form-field"></div>
+                    </div>
+                    <div class="form-actions">
+                      <div class="back-button"></div>
+                      <div class="next-button"></div>
+                    </div>
+                  </div>
+                  <div class="checkout-summary">
+                    <div class="summary-title"></div>
+                    <div class="summary-items">
+                      <div class="summary-item"></div>
+                      <div class="summary-item"></div>
+                    </div>
+                    <div class="summary-total"></div>
+                    <div class="summary-security"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Points d'intérêt -->
+              <div class="hotspots">
+                <div class="hotspot" data-element="steps" style="top: 4%; left: 84%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Nombre d'étapes</div>
+                </div>
+                <div class="hotspot" data-element="fields" style="top: 40%; left: 30%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Formulaires</div>
+                </div>
+                <div class="hotspot" data-element="summary" style="top: 40%; left: 80%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Récapitulatif</div>
+                </div>
+                <div class="hotspot" data-element="navigation" style="top: 88%; left: 50%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Navigation</div>
+                </div>
+                <div class="hotspot" data-element="security" style="top: 86%; left: 80%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Sécurité</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="element-list">
+              <ul>
+                <li data-element="steps">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Nombre d'étapes</span>
+                </li>
+                <li data-element="fields">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Formulaires et champs</span>
+                </li>
+                <li data-element="delivery">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Options de livraison</span>
+                </li>
+                <li data-element="payment">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Méthodes de paiement</span>
+                </li>
+                <li data-element="summary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Récapitulatif de commande</span>
+                </li>
+                <li data-element="security">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Sécurité et confiance</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Onglet Page d'accueil -->
+        <div id="homepage" class="element-content">
+          <div class="element-grid">
+            <div class="element-visual">
+              <!-- Mockup page d'accueil -->
+              <div class="homepage-mockup">
+                <div class="homepage-header">
+                  <div class="header-logo"></div>
+                  <div class="header-menu">
+                    <div class="menu-item"></div>
+                    <div class="menu-item"></div>
+                    <div class="menu-item"></div>
+                  </div>
+                </div>
+                <div class="homepage-hero">
+                  <div class="hero-content">
+                    <div class="hero-title"></div>
+                    <div class="hero-text"></div>
+                    <div class="hero-button"></div>
+                  </div>
+                  <div class="hero-media"></div>
+                </div>
+                <div class="homepage-categories">
+                  <div class="category"></div>
+                  <div class="category"></div>
+                  <div class="category"></div>
+                </div>
+                <div class="homepage-products">
+                  <div class="products-title"></div>
+                  <div class="products-grid">
+                    <div class="product-card"></div>
+                    <div class="product-card"></div>
+                    <div class="product-card"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Points d'intérêt -->
+              <div class="hotspots">
+                <div class="hotspot" data-element="hero" style="top: 30%; left: 30%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Hero section</div>
+                </div>
+                <div class="hotspot" data-element="navigation" style="top: 10%; left: 80%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Navigation</div>
+                </div>
+                <div class="hotspot" data-element="categories" style="top: 60%; left: 50%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Catégories</div>
+                </div>
+                <div class="hotspot" data-element="products" style="top: 80%; left: 50%;">
+                  <div class="hotspot-dot"></div>
+                  <div class="hotspot-label">Produits mis en avant</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="element-list">
+              <ul>
+                <li data-element="hero">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Hero section</span>
+                </li>
+                <li data-element="navigation">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Navigation et menu</span>
+                </li>
+                <li data-element="layout">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Mise en page</span>
+                </li>
+                <li data-element="promotions">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Promotions et offres</span>
+                </li>
+                <li data-element="social">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Social proof</span>
+                </li>
+                <li data-element="categories">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Catégories mises en avant</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Gestion des onglets
+      const tabs = document.querySelectorAll('.element-tab');
+      const contents = document.querySelectorAll('.element-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Désactiver tous les onglets
+          tabs.forEach(t => t.classList.remove('active'));
+          // Activer l'onglet cliqué
+          tab.classList.add('active');
+          
+          // Cacher tous les contenus
+          contents.forEach(content => content.classList.remove('active'));
+          // Afficher le contenu correspondant
+          const tabId = tab.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+      
+      // Animation des hotspots
+      const hotspots = document.querySelectorAll('.hotspot');
+      hotspots.forEach((hotspot, index) => {
+        setTimeout(() => {
+          hotspot.classList.add('visible');
+        }, 300 * index);
+      });
+      
+      // Interaction liste et hotspots
+      const listItems = document.querySelectorAll('.element-list li');
+      listItems.forEach(item => {
+        const element = item.getAttribute('data-element');
+        
+        // Survol d'un élément de la liste
+        item.addEventListener('mouseenter', () => {
+          const hotspot = document.querySelector(`.hotspot[data-element="${element}"]`);
+          if (hotspot) hotspot.classList.add('highlight');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+          const hotspot = document.querySelector(`.hotspot[data-element="${element}"]`);
+          if (hotspot) hotspot.classList.remove('highlight');
+        });
+      });
+    });
+  </script>
+  
+  <style>
+    /* Section éléments à tester */
+    .elements-section {
+      padding: 5rem 2rem;
+      background-color: var(--surface-light);
+      border-radius: var(--radius-lg);
+      margin: auto;
+      overflow: hidden;
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+    
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Onglets */
+    .elements-tabs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .element-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .element-tab {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .element-tab:hover {
+      border-color: var(--accent);
+    }
+    
+    .element-tab.active {
+      background-color: var(--accent);
+      color: var(--background);
+      border-color: var(--accent);
+    }
+    
+    /* Conteneur des contenus d'onglet */
+    .element-content-container {
+      position: relative;
+      min-height: 450px;
+    }
+    
+    .element-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .element-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Grille deux colonnes pour chaque onglet */
+    .element-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    
+    /* Zone visuelle (mockups) */
+    .element-visual {
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Mockup Page Produit */
+    .product-mockup {
+      display: flex;
+      height: 100%;
+      gap: 1.5rem;
+    }
+    
+    .product-gallery {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .product-image {
+      flex-grow: 1;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .product-thumbnails {
+      display: flex;
+      gap: 0.5rem;
+      height: 60px;
+    }
+    
+    .thumbnail {
+      flex: 1;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .product-title {
+      height: 20px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 80%;
+    }
+    
+    .product-price {
+      height: 30px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 40%;
+    }
+    
+    .product-description {
+      height: 60px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+    }
+    
+    .product-variants {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .variant {
+      width: 30px;
+      height: 30px;
+      background-color: var(--border);
+      border-radius: 50%;
+    }
+    
+    .product-button {
+      height: 40px;
+      background-color: var(--accent);
+      border-radius: var(--radius);
+      margin-top: auto;
+    }
+    
+    .product-reviews {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .review-header {
+      height: 15px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 60%;
+      margin-bottom: 0.5rem;
+    }
+    
+    .review-content {
+      height: 30px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+    }
+    
+    /* Mockup Tunnel d'achat */
+    .checkout-mockup {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .checkout-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .checkout-logo {
+      width: 80px;
+      height: 30px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .checkout-progress {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .progress-step {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: var(--border);
+    }
+    
+    .progress-step.active {
+      background-color: var(--accent);
+    }
+    
+    .checkout-body {
+      display: flex;
+      gap: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .checkout-form {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .form-title {
+      height: 15px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 70%;
+    }
+    
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-grow: 1;
+    }
+    
+    .form-field {
+      height: 40px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+    
+    .back-button {
+      width: 80px;
+      height: 40px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .next-button {
+      width: 100px;
+      height: 40px;
+      background-color: var(--accent);
+      border-radius: var(--radius);
+    }
+    
+    .checkout-summary {
+      flex: 1;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .summary-title {
+      height: 15px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 60%;
+    }
+    
+    .summary-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-grow: 1;
+    }
+    
+    .summary-item {
+      height: 50px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .summary-total {
+      height: 30px;
+      background-color: var(--accent);
+      border-radius: var(--radius);
+      margin-top: auto;
+    }
+    
+    .summary-security {
+      height: 20px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 70%;
+      margin: 0.5rem auto 0;
+    }
+    
+    /* Mockup Page d'accueil */
+    .homepage-mockup {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .homepage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .header-logo {
+      width: 80px;
+      height: 20px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .header-menu {
+      display: flex;
+      gap: 0.75rem;
+    }
+    
+    .menu-item {
+      width: 50px;
+      height: 10px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .homepage-hero {
+      height: 150px;
+      display: flex;
+      background-color: var(--surface-lighter);
+      border-radius: var(--radius);
+      padding: 1rem;
+      gap: 1rem;
+    }
+    
+    .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    
+    .hero-title {
+      height: 20px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 70%;
+    }
+    
+    .hero-text {
+      height: 30px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+      width: 90%;
+    }
+    
+    .hero-button {
+      height: 30px;
+      width: 100px;
+      background-color: var(--accent);
+      border-radius: var(--radius);
+      margin-top: 0.25rem;
+    }
+    
+    .hero-media {
+      flex: 1;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .homepage-categories {
+      display: flex;
+      gap: 0.75rem;
+    }
+    
+    .category {
+      flex: 1;
+      height: 50px;
+      background-color: var(--border);
+      border-radius: var(--radius);
+    }
+    
+    .homepage-products {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .products-title {
+    height: 15px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 40%;
+  }
+  
+  .products-grid {
+    display: flex;
+    gap: 0.75rem;
+    flex-grow: 1;
+  }
+  
+  .product-card {
+    flex: 1;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  /* Points d'intérêt (hotspots) */
+  .hotspots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .hotspot {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .hotspot.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .hotspot.highlight .hotspot-dot {
+    background-color: var(--accent);
+    transform: scale(1.5);
+    box-shadow: 0 0 0 5px rgba(2, 247, 145, 0.2);
+  }
+  
+  .hotspot.highlight .hotspot-label {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  
+  .hotspot-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    animation: pulse 2s infinite;
+  }
+  
+  .hotspot-label {
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    transform: translateX(-5px);
+    pointer-events: none;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+    }
+    70% {
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+  
+  /* Liste des éléments */
+  .element-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .element-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .element-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+  }
+  
+  .element-list li:hover {
+    background-color: var(--surface-lighter);
+    border-color: var(--accent);
+    transform: translateX(5px);
+  }
+  
+  .element-list li svg {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .element-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .elements-section{
+      display: none;
+    }
+    
+    .element-visual {
+      height: 350px;
+    }
+    
+    .element-list {
+      height: auto;
+    }
+    
+    .element-list ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .element-list li:hover {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .elements-section {
+      padding: 3rem 1.5rem;
+      margin: 1.5rem;
+    }
+    
+    .element-tabs {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .element-tab {
+      flex: 1 0 calc(33.333% - 0.5rem);
+      padding: 0.75rem 0.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    .product-mockup,
+    .checkout-body,
+    .homepage-hero {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .element-list ul {
+      grid-template-columns: 1fr;
+    }
+    
+    .hotspot-label {
+      display: none;
+    }
+    
+    .hotspot.highlight .hotspot-label {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .elements-section {
+      padding: 2rem 1rem;
+      margin: 1rem;
+    }
+    
+    .section-header {
+      margin-bottom: 2rem;
+    }
+    
+    .element-visual {
+      height: 300px;
+      padding: 1rem;
+    }
+    
+    .element-tab {
+      flex: 1 0 calc(50% - 0.5rem);
+    }
+    
+    .homepage-categories,
+    .products-grid {
+      flex-wrap: wrap;
+    }
+    
+    .category,
+    .product-card {
+      flex: 1 0 calc(50% - 0.375rem);
+    }
+  }
+</style>
+
+
+    
+    <section id="faq" class="faq-section">
+      <div class="section-header">
+        <h2>Questions fréquentes sur les tests A/B</h2>
+        <p class="section-subtitle">Tout ce que vous devez savoir pour démarrer votre programme d'optimisation</p>
+      </div>
+      
+      <div class="faq-container">
+        {faqs.map((faq) => (
+          <FAQAccordion 
+            question={faq.question} 
+            answer={faq.answer} 
+          />
+        ))}
+      </div>
+    </section>
+    
+    <section id="cta" class="final-cta-section">
+      <div class="cta-content">
+        <h2>Prêt à booster vos conversions?</h2>
+        <p>Réservez un audit gratuit de votre site e-commerce et découvrez votre potentiel d'optimisation.</p>
+        <div class="cta-buttons">
+          <CTAButton href="https://lec-media.agency/#contact" text="Réserver mon audit gratuit" primary={true} large={true} onclick="gtag_report_conversion('/contact')" />
+          <!-- <CTAButton href="/ressources/guide-ab-testing.pdf" text="Télécharger notre guide des 50 tests A/B essentiels" primary={false} large={true} /> -->
+        </div>
+        <div class="cta-guarantee">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <p>Garantie de résultats : augmentation du taux de conversion ou remboursé</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Animation des tabs pour la section éléments
+  const elementTabs = document.querySelectorAll('.element-tab');
+  const elementContents = document.querySelectorAll('.element-content');
+  
+  elementTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Retirer la classe active de tous les tabs
+      elementTabs.forEach(t => t.classList.remove('active'));
+      
+      // Ajouter la classe active au tab cliqué
+      tab.classList.add('active');
+      
+      // Masquer tous les contenus
+      elementContents.forEach(content => content.classList.remove('active'));
+      
+      // Afficher le contenu correspondant
+      const targetId = tab.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      targetContent.classList.add('active');
+    });
+  });
+  
+  // Animation des hotspots
+  const hotspots = document.querySelectorAll('.hotspot');
+  
+  hotspots.forEach((hotspot, index) => {
+    setTimeout(() => {
+      hotspot.classList.add('pulse');
+    }, index * 300);
+  });
+  
+  // Effet de hover sur les éléments de la liste
+  const elementListItems = document.querySelectorAll('.element-list li');
+  
+  elementListItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const text = item.querySelector('span').textContent;
+      
+      // Trouver le hotspot correspondant
+      const hotspot = document.querySelector(`.hotspot[data-label="${text}"]`);
+      
+      if (hotspot) {
+        hotspot.classList.add('highlight');
+      }
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      const text = item.querySelector('span').textContent;
+      
+      // Trouver le hotspot correspondant
+      const hotspot = document.querySelector(`.hotspot[data-label="${text}"]`);
+      
+      if (hotspot) {
+        hotspot.classList.remove('highlight');
+      }
+    });
+  });
+  
+  // Animation du site web dans la section méthodologie
+  const websiteA = document.querySelector('.website-a');
+  const websiteB = document.querySelector('.website-b');
+  const conversionRates = document.querySelectorAll('.conversion-rate');
+  
+  // Observer pour démarrer l'animation quand visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        websiteA.classList.add('animate');
+        setTimeout(() => {
+          websiteB.classList.add('animate');
+        }, 1000);
+        
+        setTimeout(() => {
+          conversionRates.forEach(rate => {
+            rate.classList.add('animate');
+          });
+        }, 2000);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  observer.observe(document.querySelector('.methodology-animation'));
+</script>
+
+<style>
+  /* Intro Section */
+  .intro-section {
+    padding: 6rem 2rem;
+  }
+  
+  .section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+  }
+  
+  .intro-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .intro-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+  
+  .card-icon {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(2, 247, 145, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .accent-icon {
+    color: var(--accent);
+  }
+  
+  .stat-banner {
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    border: 1px solid var(--border);
+  }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .stat-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  /* Methodology Section */
+  .methodology-section {
+    padding: 6rem 2rem;
+    background-color: var(--surface-light);
+    border-radius: var(--radius-lg);
+    margin: auto;
+
+  }
+  
+  .methodology-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .methodology-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .methodology-step {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .step-icon {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(2, 247, 145, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .step-number {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--accent);
+    color: var(--background);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  
+  .step-content h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .step-content p {
+    color: var(--text-secondary);
+  }
+  
+  /* Methodology Visual */
+  .methodology-visual {
+    position: relative;
+  }
+  
+  .methodology-animation {
+    position: relative;
+  }
+  
+  .website-comparison {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .website {
+    width: 45%;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .website.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .website-label {
+    padding: 0.5rem 1rem;
+    background-color: var(--surface-lighter);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .website-mockup {
+    padding: 1rem;
+  }
+  
+  .website-header {
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+  }
+  
+  .website-hero {
+    height: 100px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .website-headline {
+    height: 15px;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    width: 80%;
+  }
+  
+  .website-subheadline {
+    height: 10px;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    width: 60%;
+  }
+  
+  .website-button {
+    height: 30px;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    width: 120px;
+    margin-top: 0.5rem;
+  }
+  
+  .website-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .website-section {
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .website-change {
+    background-color: var(--accent);
+    box-shadow: 0 0 10px rgba(2, 247, 145, 0.4);
+  }
+  
+  .conversion-rate {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .conversion-rate.animate {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .rate-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .rate-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  
+  .rate-value.winner {
+    color: var(--accent);
+    position: relative;
+  }
+  
+  .winner-badge {
+    background-color: var(--accent);
+    color: var(--background);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius);
+    margin-left: 0.5rem;
+  }
+  
+  .vs-badge {
+    width: 40px;
+    height: 40px;
+    background-color: var(--surface-lighter);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-secondary);
+    z-index: 2;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .stat-card {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .stat-icon {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: rgba(2, 247, 145, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  /* Case Studies Section */
+  .case-studies-section {
+    padding: 6rem 2rem;
+  }
+  
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .case-studies-cta {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Elements Section */
+  .elements-section {
+    padding: 6rem 2rem;
+    background-color: var(--surface-light);
+    border-radius: var(--radius-lg);
+    margin: 2rem;
+  }
+  
+  .elements-animation {
+    margin-top: 3rem;
+  }
+  
+  .element-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .element-tab {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .element-tab:hover {
+    border-color: var(--accent);
+  }
+  
+  .element-tab.active {
+    background-color: var(--accent);
+    color: var(--background);
+    border-color: var(--accent);
+  }
+  
+  .element-content-wrapper {
+    position: relative;
+    min-height: 400px;
+  }
+  
+  .element-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+  
+  .element-content.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+  }
+  
+  .element-visual {
+    position: relative;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    height: 400px;
+  }
+  
+  /* Product Page Mockup */
+  .product-page-mockup {
+    display: flex;
+    gap: 1.5rem;
+    height: 100%;
+  }
+  
+  .product-gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .product-image {
+    flex-grow: 1;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .product-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    height: 50px;
+  }
+  
+  .thumbnail {
+    flex: 1;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .product-title {
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 90%;
+  }
+  
+  .product-price {
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 40%;
+  }
+  
+  .product-description {
+    height: 60px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .product-variants {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .variant {
+    width: 30px;
+    height: 30px;
+    background-color: var(--border);
+    border-radius: 50%;
+  }
+  
+  .product-cta {
+    margin-top: auto;
+  }
+  
+  .product-button {
+    height: 40px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+  }
+  
+  .product-reviews {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .review-title {
+    height: 15px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 60%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .review-stars {
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 100px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .review-content {
+    height: 40px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  /* Checkout Mockup */
+  .checkout-mockup {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .checkout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  
+  .checkout-logo {
+    width: 80px;
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .checkout-steps {
+    display: flex;
+    align-items: center;
+  }
+  
+  .step {
+    width: 15px;
+    height: 15px;
+    background-color: var(--border);
+    border-radius: 50%;
+    margin: 0 0.5rem;
+  }
+  
+  .step.active {
+    background-color: var(--accent);
+  }
+  
+  .checkout-body {
+    flex-grow: 1;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .checkout-form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-title {
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 60%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-fields {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .field {
+    height: 40px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .checkout-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .back-button {
+    width: 100px;
+    height: 40px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .next-button {
+    width: 120px;
+    height: 40px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+  }
+  
+  .checkout-summary {
+    flex: 1;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .summary-title {
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 70%;
+  }
+  
+  .summary-items {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .summary-item {
+    height: 50px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .summary-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .total-line {
+    height: 15px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    align-self: flex-end;
+    width: 60%;
+  }
+  
+  .total-line.final {
+    height: 25px;
+    background-color: var(--accent);
+    margin-top: 0.5rem;
+  }
+  
+  .secure-badge {
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 50%;
+    margin-top: auto;
+    align-self: center;
+  }
+  
+  /* Homepage Mockup */
+  .homepage-mockup {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .homepage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-logo {
+    width: 80px;
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .header-nav {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-item {
+    width: 60px;
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .homepage-hero {
+    height: 150px;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .hero-title {
+    height: 25px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 80%;
+  }
+  
+  .hero-subtitle {
+    height: 15px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 60%;
+  }
+  
+  .hero-cta {
+    height: 40px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+    width: 120px;
+    margin-top: 0.5rem;
+  }
+  
+  .hero-image {
+    flex: 1;
+    height: 100%;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .homepage-categories {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .category-item {
+    flex: 1;
+    height: 60px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .homepage-featured {
+    flex-grow: 1;
+  }
+  
+  .featured-title {
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 40%;
+    margin-bottom: 1rem;
+  }
+  
+  .featured-products {
+    display: flex;
+    gap: 1rem;
+    height: calc(100% - 20px - 1rem);
+  }
+  
+  .featured-product {
+    flex: 1;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  /* Element hotspots */
+  .element-hotspots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .hotspot {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .hotspot.pulse {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .hotspot.highlight .hotspot-dot {
+    background-color: var(--accent);
+    box-shadow: 0 0 0 5px rgba(2, 247, 145, 0.3);
+  }
+  
+  .hotspot.highlight .hotspot-label {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  
+  .hotspot-dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  }
+  
+  .hotspot-label {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+  }
+  
+  /* Hotspot positions for Product Page */
+  .hs-gallery {
+    top: 30%;
+    left: 20%;
+  }
+  
+  .hs-description {
+    top: 40%;
+    left: 70%;
+  }
+  
+  .hs-price {
+    top: 20%;
+    left: 70%;
+  }
+  
+  .hs-cta {
+    top: 65%;
+    left: 70%;
+  }
+  
+  .hs-reviews {
+    top: 85%;
+    left: 70%;
+  }
+  
+  .hs-variants {
+    top: 55%;
+    left: 70%;
+  }
+  
+  /* Hotspot positions for Checkout */
+  .hs-steps {
+    top: 10%;
+    left: 70%;
+  }
+  
+  .hs-fields {
+    top: 40%;
+    left: 30%;
+  }
+  
+  .hs-summary {
+    top: 40%;
+    left: 80%;
+  }
+  
+  .hs-navigation {
+    top: 75%;
+    left: 30%;
+  }
+  
+  .hs-security {
+    top: 85%;
+    left: 80%;
+  }
+  
+  /* Hotspot positions for Homepage */
+  .hs-hero {
+    top: 25%;
+    left: 50%;
+  }
+  
+  .hs-navigation {
+    top: 10%;
+    left: 80%;
+  }
+  
+  .hs-categories {
+    top: 55%;
+    left: 50%;
+  }
+  
+  .hs-featured {
+    top: 80%;
+    left: 50%;
+  }
+  
+  .element-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .element-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .element-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .element-list li:hover {
+    background-color: var(--surface-lighter);
+    border-color: var(--accent);
+    transform: translateX(5px);
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    padding: 6rem 2rem;
+  }
+  
+  .faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Final CTA Section */
+  .final-cta-section {
+    padding: 6rem 2rem;
+    text-align: center;
+    background-color: var(--surface-light);
+    border-radius: var(--radius-lg);
+    margin: auto;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-content h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--accent);
+  }
+  
+  .cta-guarantee p {
+    color: var(--accent);
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  
+  /* Animations */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(2, 247, 145, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(2, 247, 145, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(2, 247, 145, 0);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .case-studies-grid,
+    .intro-cards,
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .methodology-grid {
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .methodology-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .element-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .website-comparison {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .website {
+      width: 100%;
+    }
+    
+    .vs-badge {
+      margin: 1rem 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .case-studies-grid,
+    .intro-cards,
+    .stats-grid,
+    .stat-banner {
+      grid-template-columns: 1fr;
+    }
+    
+    .element-tabs {
+      flex-wrap: wrap;
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .hotspot-label {
+      display: none;
+    }
+    
+    .hotspot.highlight .hotspot-label {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .checkout-body {
+      flex-direction: column;
+    }
+    
+    .product-page-mockup {
+      flex-direction: column;
+    }
+    
+    .homepage-hero {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .homepage-categories {
+      flex-wrap: wrap;
+    }
+    
+    .category-item {
+      flex: 1 0 45%;
+    }
+    
+    .featured-products {
+      flex-direction: column;
+    }
+  }
+</style>

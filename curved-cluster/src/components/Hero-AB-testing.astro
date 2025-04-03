@@ -1,0 +1,944 @@
+---
+// HeroSection.astro
+// Section d'accueil principale avec animation et métriques
+
+import CTAButton from './CTAButton.astro';
+---
+
+<section class="hero-section" style="margin-top: -80px;">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>Tests A/B en <br><span class="gradient-text">E-commerce</span></h1>
+      <p>Augmentez votre taux de conversion de <strong>15% à 30%</strong> grâce à notre méthodologie éprouvée et basée sur la donnée. Nos experts en CRO conçoivent, implémentent et analysent des tests A/B qui génèrent un ROI mesurable pour votre boutique en ligne.</p>
+      <div class="hero-cta">
+        <CTAButton href="https://lec-media.agency/#contact" text="Planifier un audit gratuit" primary={true} large={true} onclick="gtag_report_conversion('/contact')" />
+        <CTAButton href="https://lec-media.agency/#nos-realisation-ancre" text="Voir nos résultats" primary={false} large={true} />
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="dashboard-mockup">
+        <div class="dashboard-header">
+          <div class="dashboard-logo"></div>
+          <div class="dashboard-tabs">
+            <div class="dashboard-tab active"></div>
+            <div class="dashboard-tab"></div>
+            <div class="dashboard-tab"></div>
+          </div>
+          <div class="dashboard-controls"></div>
+        </div>
+        <div class="dashboard-body">
+          <div class="dashboard-sidebar">
+            <div class="sidebar-item active"></div>
+            <div class="sidebar-item"></div>
+            <div class="sidebar-item"></div>
+            <div class="sidebar-item"></div>
+            <div class="sidebar-item"></div>
+          </div>
+          <div class="dashboard-main">
+            <div class="dashboard-card conversion-chart">
+              <div class="card-header">
+                <div class="card-title"></div>
+                <div class="card-controls"></div>
+              </div>
+              <div class="chart-container">
+                <div class="chart-bar variant-a"></div>
+                <div class="chart-bar variant-b winner"></div>
+              </div>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <div class="legend-color variant-a"></div>
+                  <div class="legend-text"></div>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color variant-b"></div>
+                  <div class="legend-text"></div>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-metrics">
+              <div class="dashboard-metric">
+                <div class="metric-header"></div>
+                <div class="metric-value">+27.4%</div>
+                <div class="metric-trend positive"></div>
+              </div>
+              <div class="dashboard-metric">
+                <div class="metric-header"></div>
+                <div class="metric-value">-14.2%</div>
+                <div class="metric-trend negative"></div>
+              </div>
+              <div class="dashboard-metric">
+                <div class="metric-header"></div>
+                <div class="metric-value">+9.8%</div>
+                <div class="metric-trend positive"></div>
+              </div>
+            </div>
+            <div class="dashboard-row">
+              <div class="dashboard-card heatmap">
+                <div class="card-header">
+                  <div class="card-title"></div>
+                </div>
+                <div class="heatmap-container">
+                  <div class="website-mockup">
+                    <div class="website-header"></div>
+                    <div class="website-hero"></div>
+                    <div class="website-cta"></div>
+                    <div class="website-features"></div>
+                  </div>
+                  <div class="heatmap-overlay">
+                    <div class="heatmap-hotspot hs-1"></div>
+                    <div class="heatmap-hotspot hs-2"></div>
+                    <div class="heatmap-hotspot hs-3"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="dashboard-card funnel">
+                <div class="card-header">
+                  <div class="card-title"></div>
+                </div>
+                <div class="funnel-container">
+                  <div class="funnel-step fs-1">
+                    <div class="funnel-step-label"></div>
+                    <div class="funnel-bar"></div>
+                    <div class="funnel-value"></div>
+                  </div>
+                  <div class="funnel-step fs-2">
+                    <div class="funnel-step-label"></div>
+                    <div class="funnel-bar"></div>
+                    <div class="funnel-value"></div>
+                  </div>
+                  <div class="funnel-step fs-3">
+                    <div class="funnel-step-label"></div>
+                    <div class="funnel-bar"></div>
+                    <div class="funnel-value"></div>
+                  </div>
+                  <div class="funnel-step fs-4">
+                    <div class="funnel-step-label"></div>
+                    <div class="funnel-bar"></div>
+                    <div class="funnel-value"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="glow-effect"></div>
+    </div>
+  </div>
+  <div class="hero-particles">
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+    <div class="particle p5"></div>
+    <div class="particle p6"></div>
+    <div class="particle p7"></div>
+    <div class="particle p8"></div>
+  </div>
+</section>
+
+<script>
+  // Animation des compteurs
+  const counters = document.querySelectorAll('.counter');
+  
+  counters.forEach(counter => {
+    const target = +counter.innerText.replace(/[^\d.-]/g, '');
+    const duration = 2000; // Durée de l'animation en ms
+    const steps = 60; // Nombre d'étapes
+    const stepTime = duration / steps;
+    const increment = target / steps;
+    let current = 0;
+    
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        counter.innerText = Math.round(current);
+        setTimeout(updateCounter, stepTime);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    
+    // Démarrer l'animation quand l'élément est visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          updateCounter();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    observer.observe(counter);
+  });
+  
+  // Animation des barres du graphique
+  const chartBars = document.querySelectorAll('.chart-bar');
+  
+  chartBars.forEach(bar => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          bar.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    observer.observe(bar);
+  });
+  
+  // Animation du funnel
+  const funnelSteps = document.querySelectorAll('.funnel-bar');
+  
+  funnelSteps.forEach(step => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          step.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    observer.observe(step);
+  });
+  
+  // Animation des hotspots de la heatmap
+  const hotspots = document.querySelectorAll('.heatmap-hotspot');
+  
+  hotspots.forEach((hotspot, index) => {
+    setTimeout(() => {
+      hotspot.classList.add('pulse');
+    }, index * 700);
+  });
+  
+  // Animation des particules
+  const particles = document.querySelectorAll('.particle');
+  
+  particles.forEach(particle => {
+    // Position aléatoire
+    const posX = Math.random() * 100;
+    const posY = Math.random() * 100;
+    particle.style.left = `${posX}%`;
+    particle.style.top = `${posY}%`;
+    
+    // Animation aléatoire
+    const duration = 15 + Math.random() * 20;
+    const delay = Math.random() * 5;
+    particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+  });
+</script>
+
+<style>
+  .hero-section {
+    padding: 0rem 2rem 6rem;
+    overflow: hidden;
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-text {
+    z-index: 1;
+  }
+
+  .hero-text h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-metrics {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: inline;
+  }
+  
+  .metric-symbol {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  /* Dashboard mockup */
+  .hero-image {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .dashboard-mockup {
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    height: 450px;
+    position: relative;
+    transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+  
+  .dashboard-mockup:hover {
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) scale(1.02);
+    border-color: var(--accent);
+  }
+  
+  .dashboard-header {
+    height: 50px;
+    background-color: var(--surface-light);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .dashboard-logo {
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  
+  .dashboard-tabs {
+    display: flex;
+    gap: 1rem;
+    height: 50px;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .dashboard-tab {
+    height: 10px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .dashboard-tab:nth-child(1) {
+    width: 100px;
+  }
+  
+  .dashboard-tab:nth-child(2) {
+    width: 80px;
+  }
+  
+  .dashboard-tab:nth-child(3) {
+    width: 60px;
+  }
+  
+  .dashboard-tab.active {
+    background-color: var(--accent);
+  }
+  
+  .dashboard-controls {
+    width: 60px;
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .dashboard-body {
+    display: flex;
+    height: calc(100% - 50px);
+  }
+  
+  .dashboard-sidebar {
+    width: 60px;
+    background-color: var(--surface-lighter);
+    border-right: 1px solid var(--border);
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .sidebar-item {
+    width: 30px;
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .sidebar-item.active {
+    background-color: var(--accent);
+  }
+  
+  .dashboard-main {
+    flex-grow: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+  }
+  
+  .dashboard-card {
+    background-color: var(--surface-light);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 1rem;
+    height: 100%;
+  }
+  
+  .conversion-chart {
+    height: 150px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .card-title {
+    width: 100px;
+    height: 10px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .card-controls {
+    width: 50px;
+    height: 10px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .chart-container {
+    display: flex;
+    align-items: flex-end;
+    height: 80px;
+    gap: 3rem;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+  }
+  
+  .chart-bar {
+    width: 60px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius) var(--radius) 0 0;
+    position: relative;
+    height: 0;
+    transition: height 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .chart-bar.animate {
+    height: 50%;
+  }
+  
+  .chart-bar.variant-a {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .chart-bar.variant-b {
+    background-color: rgba(2, 247, 145, 0.2);
+  }
+  
+  .chart-bar.variant-b.winner {
+    height: 0;
+  }
+  
+  .chart-bar.variant-b.winner.animate {
+    height: 80%;
+  }
+  
+  .chart-bar.variant-b.winner::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(2, 247, 145, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease 1.5s;
+  }
+  
+  .chart-bar.variant-b.winner.animate::after {
+    opacity: 1;
+  }
+  
+  .chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .legend-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .legend-color.variant-a {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .legend-color.variant-b {
+    background-color: rgba(2, 247, 145, 0.7);
+  }
+  
+  .legend-text {
+    width: 50px;
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .dashboard-metrics {
+    display: flex;
+    gap: 1rem;
+    height: 80px;
+  }
+  
+  .dashboard-metric {
+    flex: 1;
+    background-color: var(--surface-light);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .metric-header {
+    width: 60px;
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .dashboard-metric .metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  
+  .metric-trend {
+    width: 40px;
+    height: 4px;
+    position: relative;
+  }
+  
+  .metric-trend::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  
+  .metric-trend.positive {
+    background-color: rgba(2, 247, 145, 0.7);
+  }
+  
+  .metric-trend.positive::before {
+    bottom: 100%;
+    right: 0;
+    border-width: 0 5px 5px 5px;
+    border-color: transparent transparent rgba(2, 247, 145, 0.7) transparent;
+  }
+  
+  .metric-trend.negative {
+    background-color: rgba(255, 50, 50, 0.7);
+  }
+  
+  .metric-trend.negative::before {
+    top: 100%;
+    right: 0;
+    border-width: 5px 5px 0 5px;
+    border-color: rgba(255, 50, 50, 0.7) transparent transparent transparent;
+  }
+  
+  .dashboard-row {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+  }
+  
+  .heatmap, .funnel {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .heatmap-container, .funnel-container {
+    flex-grow: 1;
+    position: relative;
+  }
+  
+  .website-mockup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .website-header {
+    height: 20px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+  }
+  
+  .website-hero {
+    height: 40px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+  }
+  
+  .website-cta {
+    height: 15px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 40%;
+    margin: 0 auto;
+  }
+  
+  .website-features {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .website-features::before, .website-features::after {
+    content: '';
+    flex: 1;
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .heatmap-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .heatmap-hotspot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,0,0,0.7) 0%, rgba(255,0,0,0) 70%);
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .heatmap-hotspot.pulse {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 2s infinite;
+  }
+  
+  .heatmap-hotspot.hs-1 {
+    top: 60%;
+    left: 50%;
+    background: radial-gradient(circle, rgba(255,0,0,0.7) 0%, rgba(255,0,0,0) 70%);
+  }
+  
+  .heatmap-hotspot.hs-2 {
+    top: 40%;
+    left: 70%;
+    background: radial-gradient(circle, rgba(255,165,0,0.7) 0%, rgba(255,165,0,0) 70%);
+  }
+  
+  .heatmap-hotspot.hs-3 {
+    top: 20%;
+    left: 30%;
+    background: radial-gradient(circle, rgba(255,255,0,0.7) 0%, rgba(255,255,0,0) 70%);
+  }
+  
+  .funnel-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .funnel-step-label {
+    width: 60px;
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    flex-shrink: 0;
+  }
+  
+  .funnel-bar {
+    height: 15px;
+    background-color: rgba(2, 247, 145, 0.7);
+    border-radius: var(--radius);
+    flex-grow: 1;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1s ease;
+  }
+  
+  .funnel-bar.animate {
+    transform: scaleX(1);
+  }
+  
+  .funnel-step.fs-1 .funnel-bar {
+    width: 100%;
+  }
+  
+  .funnel-step.fs-2 .funnel-bar {
+    width: 75%;
+  }
+  
+  .funnel-step.fs-3 .funnel-bar {
+    width: 50%;
+  }
+  
+  .funnel-step.fs-4 .funnel-bar {
+    width: 35%;
+  }
+  
+  .funnel-value {
+    width: 30px;
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    flex-shrink: 0;
+  }
+  
+  .glow-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at center, rgba(2, 247, 145, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+  }
+  
+  /* Particles */
+  .hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    opacity: 0.3;
+    filter: blur(1px);
+  }
+  
+  .particle.p1, .particle.p5 {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .particle.p3, .particle.p7 {
+    width: 4px;
+    height: 4px;
+    opacity: 0.5;
+  }
+  
+  .particle.p2, .particle.p6 {
+    background-color: #ffffff;
+    opacity: 0.2;
+  }
+  
+  .particle.p4, .particle.p8 {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    opacity: 0.15;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(10px, 10px);
+    }
+    50% {
+      transform: translate(-5px, 15px);
+    }
+    75% {
+      transform: translate(-10px, -5px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .hero-content {
+      gap: 2rem;
+    }
+    
+    .hero-metrics {
+      gap: 1.5rem;
+    }
+    
+    .metric-value, .metric-symbol {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-image {
+      order: -1;
+      margin-bottom: 2rem;
+    }
+    
+    .dashboard-mockup {
+      max-width: 600px;
+      margin: 0 auto;
+      transform: perspective(1000px) rotateY(0) rotateX(5deg);
+    }
+    
+    .dashboard-mockup:hover {
+      transform: perspective(1000px) rotateY(0) rotateX(2deg) scale(1.02);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .hero-text, .hero-image{
+      max-width: 80%;
+    }
+    
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero-text p {
+      font-size: 1rem;
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+    }
+    
+    .hero-metrics {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .metric {
+      flex-basis: 48%;
+      margin-bottom: 1rem;
+    }
+    
+    .dashboard-mockup {
+      height: 350px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .dashboard-mockup {
+      height: 300px;
+    }
+    
+    .dashboard-metrics {
+      flex-direction: column;
+      height: auto;
+      gap: 0.5rem;
+    }
+    
+    .dashboard-row {
+      flex-direction: column;
+    }
+    
+    .metric-value, .metric-symbol {
+      font-size: 1.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,776 @@
+---
+// CaseStudyCard.astro
+// Composant pour afficher une étude de cas avec graphiques et métriques
+
+interface ResultItem {
+  metric: string;
+  before: string;
+  after: string;
+  improvement: string;
+}
+
+interface Props {
+  title: string;
+  category: string;
+  image?: any;  // Peut être remplacé par un wireframe
+  context: string;
+  problem: string;
+  solution: string[];
+  results: ResultItem[];
+  roi: string;
+}
+
+const { 
+  title, 
+  category, 
+  image = null, 
+  context, 
+  problem, 
+  solution, 
+  results, 
+  roi 
+} = Astro.props;
+
+// Générer un ID unique pour les animations
+const cardId = `case-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class="case-study-card" id={cardId}>
+  <div class="case-header">
+    <div class="case-category">{category}</div>
+    <h3 class="case-title">{title}</h3>
+  </div>
+  
+  <div class="case-content">
+    <!-- Si pas d'image, on génère un wireframe -->
+    <div class="case-wireframe">
+      <div class="wireframe-header">
+        <div class="wireframe-logo"></div>
+        <div class="wireframe-menu">
+          <div class="wireframe-menu-item"></div>
+          <div class="wireframe-menu-item"></div>
+          <div class="wireframe-menu-item"></div>
+        </div>
+      </div>
+      
+      <div class="wireframe-content">
+        {category === "Page produit" && (
+          <div class="wireframe-product">
+            <div class="wireframe-gallery">
+              <div class="wireframe-main-image"></div>
+              <div class="wireframe-thumbnails">
+                <div class="wireframe-thumb"></div>
+                <div class="wireframe-thumb"></div>
+                <div class="wireframe-thumb"></div>
+              </div>
+            </div>
+            <div class="wireframe-product-info">
+              <div class="wireframe-product-title"></div>
+              <div class="wireframe-product-price"></div>
+              <div class="wireframe-product-desc"></div>
+              <div class="wireframe-product-options">
+                <div class="wireframe-option"></div>
+                <div class="wireframe-option"></div>
+                <div class="wireframe-option"></div>
+              </div>
+              <div class="wireframe-product-cta"></div>
+              <div class="wireframe-reviews">
+                <div class="wireframe-review"></div>
+                <div class="wireframe-review"></div>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {category === "Tunnel d'achat" && (
+          <div class="wireframe-checkout">
+            <div class="wireframe-steps">
+              <div class="wireframe-step active"></div>
+              <div class="wireframe-step"></div>
+              <div class="wireframe-step"></div>
+              <div class="wireframe-step"></div>
+              <div class="wireframe-step"></div>
+            </div>
+            <div class="wireframe-form">
+              <div class="wireframe-form-field"></div>
+              <div class="wireframe-form-field"></div>
+              <div class="wireframe-form-field"></div>
+              <div class="wireframe-form-next"></div>
+            </div>
+            <div class="wireframe-order-summary">
+              <div class="wireframe-summary-title"></div>
+              <div class="wireframe-summary-items">
+                <div class="wireframe-summary-item"></div>
+                <div class="wireframe-summary-item"></div>
+              </div>
+              <div class="wireframe-summary-total"></div>
+            </div>
+          </div>
+        )}
+        
+        {category === "Page d'accueil" && (
+          <div class="wireframe-homepage">
+            <div class="wireframe-hero">
+              <div class="wireframe-hero-text"></div>
+              <div class="wireframe-hero-cta"></div>
+            </div>
+            <div class="wireframe-categories">
+              <div class="wireframe-category"></div>
+              <div class="wireframe-category"></div>
+              <div class="wireframe-category"></div>
+              <div class="wireframe-category"></div>
+            </div>
+            <div class="wireframe-featured">
+              <div class="wireframe-featured-title"></div>
+              <div class="wireframe-products">
+                <div class="wireframe-product-card"></div>
+                <div class="wireframe-product-card"></div>
+                <div class="wireframe-product-card"></div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+    
+    <div class="case-details">
+      <div class="case-section">
+        <h4>Contexte</h4>
+        <p>{context}</p>
+      </div>
+      
+      <div class="case-section">
+        <h4>Problématique</h4>
+        <p>{problem}</p>
+      </div>
+      
+      <div class="case-section">
+        <h4>Solution testée</h4>
+        <ul class="solution-list">
+          {solution.map(item => (
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="accent-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="case-section">
+        <h4>Résultats</h4>
+        <div class="results-chart">
+          {results.map((result, index) => (
+            <div class="result-item">
+              <div class="result-metric">{result.metric}</div>
+              <div class="result-bars">
+                <div class="result-bar-container">
+                  <div class="result-bar result-bar-before" data-value={result.before}></div>
+                  <div class="result-value">{result.before}</div>
+                </div>
+                <div class="result-bar-container">
+                  <div class="result-bar result-bar-after" data-value={result.after}></div>
+                  <div class="result-value">{result.after}</div>
+                </div>
+              </div>
+              <div class={`result-improvement ${result.improvement.includes('+') ? 'positive' : 'negative'}`}>
+                {result.improvement}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="case-roi">
+        <div class="roi-label">ROI</div>
+        <div class="roi-value">{roi}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ cardId }}>
+  // Animation des barres de résultats quand la carte est visible
+  const card = document.getElementById(cardId);
+  
+  if (card) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Récupérer toutes les barres de résultats
+          const resultBars = card.querySelectorAll('.result-bar');
+          
+          // Animer chaque barre avec un délai progressif
+          resultBars.forEach((bar, index) => {
+            setTimeout(() => {
+              const value = parseFloat(bar.getAttribute('data-value')) || 0;
+              let width = '0%';
+              
+              // Calculer la largeur en fonction de la valeur
+              if (bar.classList.contains('result-bar-before')) {
+                width = '40%'; // Toujours 40% pour la barre "before"
+              } else {
+                // Pour la barre "after", calculer relativement à "before"
+                const beforeBar = bar.parentNode.parentNode.querySelector('.result-bar-before');
+                const beforeValue = parseFloat(beforeBar.getAttribute('data-value')) || 1;
+                const valueRatio = value / beforeValue;
+                
+                width = `${Math.min(100, 40 * valueRatio)}%`;
+              }
+              
+              bar.style.width = width;
+            }, 200 + (index * 100));
+          });
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    observer.observe(card);
+  }
+</script>
+
+<style>
+  .case-study-card {
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .case-study-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+  }
+  
+  .case-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .case-category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: rgba(2, 247, 145, 0.1);
+    color: var(--accent);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  
+  .case-title {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+  
+  .case-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  /* Wireframes */
+  .case-wireframe {
+    background-color: var(--surface-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 250px;
+  }
+  
+  .wireframe-header {
+    height: 40px;
+    background-color: var(--surface-lighter);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  
+  .wireframe-logo {
+    width: 24px;
+    height: 24px;
+    background-color: var(--accent);
+    border-radius: 50%;
+  }
+  
+  .wireframe-menu {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .wireframe-menu-item {
+    width: 40px;
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .wireframe-content {
+    padding: 1rem;
+    height: calc(100% - 40px);
+    overflow: hidden;
+  }
+  
+  /* Wireframe : Page produit */
+  .wireframe-product {
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+  }
+  
+  .wireframe-gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-main-image {
+    height: 120px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .wireframe-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-thumb {
+    width: 30px;
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .wireframe-product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .wireframe-product-title {
+    height: 14px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 90%;
+  }
+  
+  .wireframe-product-price {
+    height: 18px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+    width: 40%;
+  }
+  
+  .wireframe-product-desc {
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+  }
+  
+  .wireframe-product-options {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-option {
+    width: 30px;
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .wireframe-product-cta {
+    height: 36px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .wireframe-reviews {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-review {
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 90%;
+  }
+  
+  /* Wireframe : Tunnel d'achat */
+  .wireframe-checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+  }
+  
+  .wireframe-steps {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .wireframe-step {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--border);
+    position: relative;
+  }
+  
+  .wireframe-step.active {
+    background-color: var(--accent);
+  }
+  
+  .wireframe-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -14px;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 2px;
+    background-color: var(--border);
+  }
+  
+  .wireframe-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+  }
+  
+  .wireframe-form-field {
+    height: 30px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .wireframe-form-next {
+    height: 36px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+    width: 40%;
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
+  
+  .wireframe-order-summary {
+    padding: 0.5rem;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-summary-title {
+    height: 10px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 60%;
+  }
+  
+  .wireframe-summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-summary-item {
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+  }
+  
+  .wireframe-summary-total {
+    height: 14px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+    width: 40%;
+    align-self: flex-end;
+    margin-top: 0.25rem;
+  }
+  
+  /* Wireframe : Page d'accueil */
+  .wireframe-homepage {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+  }
+  
+  .wireframe-hero {
+    height: 80px;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-hero-text {
+    height: 10px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 80%;
+  }
+  
+  .wireframe-hero-cta {
+    height: 30px;
+    background-color: var(--accent);
+    border-radius: var(--radius);
+    width: 30%;
+  }
+  
+  .wireframe-categories {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+  
+  .wireframe-category {
+    flex: 1;
+    height: 40px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .wireframe-featured {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .wireframe-featured-title {
+    height: 10px;
+    background-color: var(--border);
+    border-radius: var(--radius);
+    width: 60%;
+  }
+  
+  .wireframe-products {
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  
+  .wireframe-product-card {
+    flex: 1;
+    background-color: var(--surface-lighter);
+    border-radius: var(--radius);
+  }
+  
+  /* Case details */
+  .case-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex-grow: 1;
+  }
+  
+  .case-section h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  
+  .case-section p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+  
+  .solution-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .solution-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .solution-list li .accent-icon {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  
+  /* Results chart */
+  .results-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .result-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .result-metric {
+    width: 80px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+  }
+  
+  .result-bars {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .result-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 20px;
+  }
+  
+  .result-bar {
+    height: 8px;
+    border-radius: var(--radius);
+    width: 0;
+    transition: width 1s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  
+  .result-bar-before {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .result-bar-after {
+    background-color: var(--accent);
+  }
+  
+  .result-value {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    width: 40px;
+  }
+  
+  .result-improvement {
+    font-size: 0.875rem;
+    font-weight: 700;
+    width: 60px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  
+  .result-improvement.positive {
+    color: var(--accent);
+  }
+  
+  .result-improvement.negative {
+    color: #ff4d4d;
+  }
+  
+  /* ROI */
+  .case-roi {
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .roi-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  
+  .roi-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+    background-color: rgba(2, 247, 145, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius);
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .case-wireframe {
+      height: 200px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .case-content {
+      gap: 1rem;
+    }
+    
+    .result-metric {
+      width: 60px;
+    }
+    
+    .result-improvement {
+      width: 50px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .case-header {
+      padding: 1rem;
+    }
+    
+    .case-content {
+      padding: 1rem;
+    }
+    
+    .case-wireframe {
+      height: 180px;
+    }
+    
+    .result-item {
+      flex-wrap: wrap;
+    }
+    
+    .result-metric {
+      width: 100%;
+      margin-bottom: 0.25rem;
+    }
+    
+    .result-bars {
+      width: calc(100% - 60px);
+    }
+  }
+</style>
