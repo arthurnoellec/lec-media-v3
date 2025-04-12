@@ -967,6 +967,17 @@ footer {
     radial-gradient(circle, #097bff 20%, transparent 20%),
     radial-gradient(circle, #097bff 20%, transparent 20%);
 }
+.button.nicolas:hover:before {
+  background-image: radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #fee8c5 20%, transparent 30%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #fee8c5 15%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%);
+}
 .button.arico:hover::after,
 .button.emilie:hover::after,
 .button:hover::after {
@@ -1018,6 +1029,15 @@ footer {
     radial-gradient(circle, #097bff 20%, transparent 20%),
     radial-gradient(circle, #097bff 20%, transparent 20%),
     radial-gradient(circle, #097bff 20%, transparent 20%);
+}
+.button.nicolas:hover::after {
+  background-image: radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #fee8c5 15%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%),
+    radial-gradient(circle, #fee8c5 20%, transparent 20%);
 }
 @keyframes greenbottomBubbles {
   0% {

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTLBoard - Étude de cas | Notre Réalisation</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #1e40af;
+        --text: #1f2937;
+        --text-light: #6b7280;
+        --bg-light: #f8fafc;
+        --accent: #fbbf24;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--bg-light);
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: auto;
+        display: flex; /* Change de grid à flex */
+        gap: 2.5rem;
+        padding: 0 2rem;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 0; /* Reste collé en haut une fois atteint */
+        align-self: flex-start; /* Pour assurer l'alignement */
+        padding-top: 2rem;
+      }
+
+      .main-content {
+        flex-grow: 1; /* Permet à la partie droite de prendre tout l'espace restant */
+      }
+
+      .sidebar-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        min-width: 300px;
+      }
+
+      .sidebar-box h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--bg-light);
+      }
+
+      .sidebar-box ul {
+        list-style: none;
+      }
+
+      .sidebar-box li {
+        margin-bottom: 0.5rem;
+      }
+
+      .sidebar-box a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s;
+        display: block;
+        border-radius: 0.5rem;
+      }
+
+      .sidebar-box a:hover {
+        color: var(--primary);
+        background: var(--bg-light);
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tech-icon {
+        background: var(--bg-light);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tech-icon img {
+        width: 40px;
+        opacity: 0.7;
+      }
+
+      /* Main Content */
+      .main-content {
+        padding-top: 2rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: white;
+        padding: 4rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+      }
+
+      .hero-image {
+        margin-top: 2rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Testimonial */
+      .avis-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 1rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+
+      .avis {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .star {
+        font-size: 2rem;
+        color: var(--accent);
+      }
+
+      /* Content Sections */
+      .content-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 1rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+
+      .content-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        scroll-margin-top: 2rem;
+      }
+
+      .content-section p {
+        margin-bottom: 1.5rem;
+        color: var(--text-light);
+      }
+
+      .content-section img {
+        width: 100%;
+        border-radius: 0.5rem;
+        margin: 2rem 0;
+      }
+
+      .image-block {
+        margin: 2rem 0;
+      }
+
+      /* Footer */
+      .footer {
+        background: white;
+        padding: 3rem;
+        border-radius: 1rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: relative;
+          height: auto;
+          border-right: none;
+          padding-right: 0;
+        }
+
+        .tech-stack {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .tech-stack {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero {
+          padding: 2rem;
+        }
+
+        .content-section {
+          padding: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column; /* Passe les éléments de la sidebar et du contenu principal en colonne */
+          gap: 0;
+          padding: 0 1rem;
+        }
+
+        .sidebar {
+          order: 1; /* Place la sidebar en premier */
+          width: 100%; /* Prend toute la largeur */
+        }
+
+        .main-content {
+          order: 2; /* Place le contenu principal en dessous de la sidebar */
+          width: 100%; /* Prend toute la largeur */
+        }
+
+        .sidebar-box {
+          margin-bottom: 1rem; /* Espacement entre les blocs de la sidebar */
+        }
+      }
+
+      .card {
+        background-color: #097bff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 20px 30px -20px rgba(5, 5, 5, 0.24);
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        grid-gap: 1rem;
+        gap: 1rem;
+      }
+
+      .header .image {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 9999px;
+        object-fit: cover;
+        background-image: url(https://lec-media.agency/images/photo%20de%20nicolas.png);
+        background-size: cover;
+        min-width: 70px;
+        min-height: 70px;
+      }
+
+      .stars {
+        display: flex;
+        justify-content: left;
+        grid-gap: 0.125rem;
+        gap: 0.125rem;
+        color: rgb(255, 243, 10);
+      }
+
+      .stars svg {
+        height: 1rem;
+        width: 1rem;
+      }
+
+      .name {
+        margin-top: 0.25rem;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        font-weight: 600;
+        --tw-text-opacity: 1;
+        color: rgb(255, 255, 255);
+      }
+
+      .message {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        margin-top: 1rem;
+        color: rgb(255, 255, 255);
+      }
+
+      /* Stats Section */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        padding: 4rem 0;
+        text-align: center;
+      }
+
+      .stat-item h4 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-item p {
+        color: #6b7280;
+      }
+
+      .side-service > ul > li {
+        background: #097bff1f;
+        width: fit-content;
+        border: solid 1px #097bff;
+        border-radius: 10px;
+        padding: 4px 10px;
+        font-size: 12px;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .side-service > ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .sidebar-box a.active {
+        color: var(--primary); /* Même effet que hover */
+        background: var(--bg-light); /* Ajoute un fond léger */
+        font-weight: bold; /* Optionnel : rendre le texte en gras */
+      }
+    </style>
+    <!-- Hotjar Tracking Code for Site 5020473 (nom manquant) -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 5020473, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <h3>Sommaire</h3>
+          <ul>
+            <li><a href="#ambition">Une histoire riche en rebondissements</a></li>
+            <li><a href="#aventure">Chaque aventure commence par une rencontre</a></li>
+            <li><a href="#chemin">Le chemin n'est jamais simple</a></li>
+            <li><a href="#transformation">Au cœur de la transformation</a></li>
+            <li><a href="#conclusion">Le mot de le fin</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-box side-service">
+          <h3>Services</h3>
+          <ul>
+            <li>Refonte de site e-commerce</li>
+            <li>Design UX/UI</li>
+            <li>Optimisation des conversions</li>
+            <li>Identité de marque</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Outils utilisés</h3>
+          <div class="tech-stack">
+            <div class="tech-icon">
+              <img
+                src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png"
+                alt="Shopify" />
+            </div>
+            <div class="tech-icon">
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/logos-brands-in-colors/3000/figma-logo-512.png"
+                alt="Figma" />
+            </div>
+            <div class="tech-icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968867.png" alt="Hotjar" />
+            </div>
+          </div>
+        </div>
+
+        <style>
+          .tech-icon {
+            position: relative;
+          }
+
+          .tooltip {
+            position: absolute;
+            bottom: -35px; /* Position sous l'icône */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            z-index: 2;
+          }
+
+          .tech-icon:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px); /* Légère animation vers le haut */
+          }
+        </style>
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            // Sélectionne toutes les icônes
+            const techIcons = document.querySelectorAll(".tech-icon img");
+
+            techIcons.forEach((icon) => {
+              // Crée un élément div pour le tooltip
+              const tooltip = document.createElement("div");
+              tooltip.classList.add("tooltip");
+              tooltip.textContent = icon.getAttribute("alt"); // Récupère le texte du alt
+
+              // Ajoute le tooltip en tant qu'enfant du parent
+              icon.parentElement.appendChild(tooltip);
+            });
+          });
+        </script>
+      </aside>
+
+      <main class="main-content">
+        <section class="hero">
+          <h1>Refonte du site e-commerce de MTLBoard</h1>
+          <p>
+            Un exemple parfait de transformation digitale réussie. Découvrez comment nous avons aidé 
+            cette entreprise québécoise à multiplier son taux de conversion par 8 et son chiffre d'affaires 
+            par 5 grâce à une refonte stratégique de sa présence en ligne.
+          </p>
+          <div class="hero-image">
+            <img src="./images/header-mtlbboard.png" alt="Aperçu du site MTLBoard" />
+          </div>
+        </section>
+
+        <div class="card">
+          <div class="header">
+            <div class="image"></div>
+            <div>
+              <div class="stars">
+                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+              <p class="name">— Nicolas, fondateur de MTLBoard</p>
+            </div>
+          </div>
+
+          <p class="message">
+            "Une collaboration créative et efficace. Très bonne expérience avec Arthur : bosseur, à l'écoute, qui a su trouver LA solution miracle qui convertit !! À recommander !"
+          </p>
+        </div>
+
+        <section id="ambition" class="content-section">
+          <h2>Une histoire riche en rebondissements</h2>
+          <p>
+            Nicolas, fondateur de MTLBoard, a transformé sa passion pour l'équilibre et le mouvement en une entreprise florissante. Après un passage remarqué dans l'émission <em>Dans l'œil du dragon</em>, MTLBoard est rapidement devenu une référence dans le domaine des balance boards écologiques fabriqués au Québec.
+          </p>
+          <p>
+            Mais avec la croissance rapide de la marque, le site web initial ne reflétait plus l'identité ni les valeurs de l'entreprise, entraînant une perte de visibilité… et de ventes, face à une concurrence de plus en plus présente.
+          </p>
+          <div class="image-block">
+            <img src="https://cdn.shopify.com/s/files/1/0474/7585/1422/files/MTLBB4_480x480.jpg?v=1639651262" alt="Nicolas de MTLBoard dans l'émission Dans l'œil du dragon" />
+          </div>
+        </section>
+
+        <section id="aventure" class="content-section">
+          <h2>Chaque aventure commence par une rencontre</h2>
+          <p>
+            J'ai rencontré Nicolas dans nos anciens bureaux du Crew Collective. Il est venu nous voir avec une idée claire de ce dont il avait besoin : repenser entièrement le site de MTLBoard. L'objectif était posé noir sur blanc : créer un e-commerce à l'image de la marque, améliorer l'expérience utilisateur et optimiser les conversions.
+          </p>
+          <p>
+            Mais au fond, l'objectif, ce n'était pas juste les 2 % de conversion visés. Moi, j'en voulais 5. Un défi un peu fou, surtout en partant d'un taux inférieur à 1 %. Mais j'y croyais vraiment.
+          </p>
+        </section>
+
+        <section class="stats">
+          <div class="stat-item">
+            <h4>+809%</h4>
+            <p>Taux de conversion</p>
+          </div>
+          <div class="stat-item">
+            <h4>+23%</h4>
+            <p>Panier moyen</p>
+          </div>
+          <div class="stat-item">
+            <h4>+516%</h4>
+            <p>Chiffre d'affaires</p>
+          </div>
+        </section>
+
+        <section id="chemin" class="content-section">
+          <h2>Le chemin n'est jamais simple</h2>
+          <p>
+            L'analyse du site existant a révélé plusieurs freins à la croissance :
+          </p>
+          <ul>
+            <li>Une navigation peu intuitive, qui compliquait le parcours utilisateur</li>
+            <li>Un design daté, qui ne mettait pas en valeur les produits artisanaux et écologiques</li>
+            <li>Un tunnel de conversion peu performant, qui freinait les ventes</li>
+          </ul>
+          <div class="image-block">
+            <img src="./images/UI-mtlbboard.png" alt="Problèmes identifiés sur l'ancien site" />
+          </div>
+          <p>Pour y remédier, Lëc Media a mis en place un plan d'action stratégique :</p>
+          <ol>
+            <li>Repenser l'identité visuelle du site pour refléter l'univers artisanal et écologique de MTLBoard</li>
+            <li>Améliorer la navigation pour une expérience plus fluide et intuitive</li>
+            <li>Optimiser le site pour les ventes, avec un tunnel de conversion repensé de A à Z</li>
+            <li>Mettre en avant l'histoire de Nicolas et les valeurs de la marque</li>
+          </ol>
+        </section>
+
+        <section id="transformation" class="content-section">
+          <h2>Au cœur de la transformation</h2>
+          <p>
+            Après 4 mois de collaboration intensive, le nouveau site de MTLBoard a été lancé. Et les résultats ne se sont pas fait attendre : 3 % de conversions dès le départ !
+            Mais on avait une idée en tête… et on l’a mise en œuvre.
+            Un an de CRO plus tard, les 5 % de taux de conversion étaient dépassés.
+          </p>
+          <div class="image-block">
+            <img src="./images/resultat-mtl.png" alt="Dashboard montrant les résultats" />
+          </div>
+        </section>
+
+        <section id="conclusion" class="content-section">
+          <h2>Le mot de la fin</h2>
+          <p>
+            Ce projet illustre parfaitement notre approche : comprendre en profondeur les besoins de nos clients, définir des objectifs ambitieux mais réalistes, et mettre en œuvre des solutions sur mesure qui génèrent des résultats tangibles.
+          </p>
+        </section>
+
+        <section
+          id="CTA"
+          class="work-with"
+          style="
+            background: #222531;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+          ">
+          <div class="cube-loader div1">
+            <div class="cube-top"></div>
+            <div class="cube-wrapper">
+              <span class="cube-span" style="--i: 0">
+                <div style="text-align: center; font-size: 50px" class="taco-container">
+                  <img style="max-width: 75px" src="./images/test-logo-carre.png" />
+                </div>
+              </span>
+              <span class="cube-span" style="--i: 1">
+                <div style="text-align: center; font-size: 50px" class="taco-container">
+                  <img style="max-width: 75px" src="./images/test-logo-carre.png" />
+                </div>
+              </span>
+              <span class="cube-span" style="--i: 2">
+                <div style="text-align: center; font-size: 50px" class="taco-container">
+                  <img style="max-width: 75px" src="./images/test-logo-carre.png" />
+                </div>
+              </span>
+              <span class="cube-span" style="--i: 3">
+                <div style="text-align: center; font-size: 50px" class="taco-container">
+                  <img style="max-width: 75px" src="./images/test-logo-carre.png" />
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="div2" style="padding-top: 20px; padding-bottom: 20px">
+            <h2 style="color: white">Travailler avec Lëc Média</h2>
+            <p style="color: white">Transformer votre site web en machine à convertir.</p>
+          </div>
+          <div class="div3" style="padding-right: 20px">
+            <button onclick="window.location.href='../index.html#contact';">On discute ?</button>
+          </div>
+          <style>
+            .cube-loader {
+              position: relative;
+              /* u can choose any size */
+              width: 75px;
+              height: 75px;
+              transform-style: preserve-3d;
+              transform: rotateX(-30deg);
+              animation: animate 4s linear infinite;
+              margin: 0 30px;
+            }
+
+            .CTA {
+              display: grid;
+              grid-template-columns: repeat(12, 1fr);
+              grid-template-rows: 1fr;
+              grid-column-gap: 0px;
+              grid-row-gap: 0px;
+            }
+
+            .div1 {
+              grid-area: 1 / 1 / 2 / 4;
+            }
+            .div2 {
+              grid-area: 1 / 4 / 2 / 10;
+            }
+            .div3 {
+              grid-area: 1 / 10 / 2 / 13;
+            }
+
+            @keyframes animate {
+              0% {
+                transform: rotateX(-30deg) rotateY(0);
+              }
+
+              100% {
+                transform: rotateX(-30deg) rotateY(360deg);
+              }
+            }
+
+            .cube-loader .cube-wrapper {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              /* top: 0;
+  left: 0; */
+              transform-style: preserve-3d;
+            }
+
+            .cube-loader .cube-wrapper .cube-span {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              /* top: 0;
+  left: 0; */
+              /* width 75px / 2 = 37.5px */
+              transform: rotateY(calc(90deg * var(--i))) translateZ(37.5px);
+              background: #097bff;
+            }
+
+            .cube-top {
+              position: absolute;
+              width: 75px;
+              height: 75px;
+              background-color: #097bff;
+              transform: rotateX(90deg) translateZ(37.5px);
+              transform-style: preserve-3d;
+            }
+
+            .cube-top::before {
+              content: "";
+              position: absolute;
+              /* u can choose any size */
+              width: 75px;
+              height: 75px;
+              background: #097cff6c;
+              transform: translateZ(-90px);
+              filter: blur(10px);
+              box-shadow: 0 0 10px #323232, 0 0 20px hsl(176.61, 42.28%, 40.7%) 19.6%,
+                0 0 30px #323232, 0 0 40px hsl(176.61, 42.28%, 40.7%) 19.6%;
+            }
+            button {
+              padding: 15px 30px;
+              border-radius: 10px;
+              border: none;
+              background: #097bff;
+              color: white;
+              font-size: 15px;
+              font-weight: 800;
+              text-transform: uppercase;
+              cursor: pointer;
+              transition: all 0.3s ease-in-out; /* Transition fluide */
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            button:hover {
+              background: #0056b3; /* Couleur plus sombre au survol */
+              transform: scale(1.05); /* Légère augmentation de taille */
+              box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+            }
+
+            @media screen and (max-width: 768px) {
+              #CTA {
+                flex-direction: column;
+              }
+              .cube-loader {
+                margin-bottom: 40px;
+              }
+              .div2 {
+                padding-bottom: 50px;
+              }
+              .div2 > h2,
+              .div2 > p {
+                text-align: center;
+                line-height: normal;
+                margin-bottom: 10px;
+              }
+              .div3 {
+                padding-right: 0 !important;
+                width: 100%;
+              }
+              .div3 > button {
+                width: 100%;
+              }
+              .hero {
+                padding: 1rem;
+                background: transparent;
+                box-shadow: none;
+              }
+              h1,
+              h2 {
+                line-height: normal;
+              }
+            }
+          </style>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".content-section");
+        const navLinks = document.querySelectorAll(".sidebar-box a");
+
+        const observerOptions = {
+          root: null, // Utilise le viewport comme racine
+          rootMargin: "0px",
+          threshold: 0.6, // Section considérée visible si 60% dans la vue
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            if (entry.isIntersecting) {
+              // Supprime la classe active de tous les liens
+              navLinks.forEach((link) => link.classList.remove("active"));
+              // Ajoute la classe active au lien correspondant
+              document.querySelector(`.sidebar-box a[href="#${id}"]`).classList.add("active");
+            }
+          });
+        }, observerOptions);
+
+        // Observe toutes les sections
+        sections.forEach((section) => observer.observe(section));
+      });
+    </script>
+  </body>
+</html>
