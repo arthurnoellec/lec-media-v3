@@ -1,0 +1,191 @@
+---
+// src/components/vsl.astro
+export interface Props {
+  videoDesktop: string;
+  videoMobile: string;
+  poster?: string;
+  autoplay?: boolean;
+  muted?: boolean;
+  loop?: boolean;
+  controls?: boolean;
+  preload?: 'auto' | 'metadata' | 'none';
+  className?: string;
+  badgeText?: string;
+}
+
+const {
+  videoDesktop,
+  videoMobile,
+  poster,
+  autoplay = true,
+  muted = true,
+  loop = true,
+  controls = true,
+  preload = 'auto',
+  className = '',
+  badgeText = '100% SUR MESURE'
+} = Astro.props;
+---
+
+<div class="vsl-section">
+  <div class={`video-container ${className}`}>
+    <div class="circular-badge">
+      <div class="rotating-text">
+        <svg viewBox="0 0 100 100" class="circular-text">
+          <defs>
+            <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
+          </defs>
+          <text>
+            <textPath xlink:href="#circle" class="text">
+              {badgeText} • {badgeText} •
+            </textPath>
+          </text>
+        </svg>
+        <div class="badge-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="rgba(0,0,0,1)"><path d="M8.49816 20.0048H15.5018C14.8432 21.5842 13.5794 22.848 12 23.5066C10.4206 22.848 9.15679 21.5842 8.49816 20.0048ZM18 14.8095L20 17.0778V19.0048H4V17.0778L6 14.8095V9.00481C6 5.52156 8.50442 2.55825 12 1.46002C15.4956 2.55825 18 5.52156 18 9.00481V14.8095ZM12 11.0048C13.1046 11.0048 14 10.1094 14 9.00481C14 7.90024 13.1046 7.00481 12 7.00481C10.8954 7.00481 10 7.90024 10 9.00481C10 10.1094 10.8954 11.0048 12 11.0048Z"></path></svg>               </div>
+      </div>
+    </div>
+    <video
+      class="video-player"
+      poster={poster}
+      autoplay={autoplay}
+      muted={muted}
+      loop={loop}
+      controls={controls}
+      preload={preload}
+      playsinline
+    >
+      <source
+        class="video-source-desktop"
+        src={videoDesktop}
+        media="(min-width: 768px)"
+        type="video/mp4"
+      />
+      <source
+        class="video-source-mobile"
+        src={videoMobile}
+        media="(max-width: 767px)"
+        type="video/mp4"
+      />
+      Votre navigateur ne prend pas en charge la lecture de vidéos.
+    </video>
+  </div>
+</div>
+
+<style>
+  .vsl-section {
+    padding: 3rem 0;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .video-container {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: var(--surface);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+
+  .video-container:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(2, 247, 145, 0.15);
+  }
+
+  .video-player {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .circular-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    width: 80px;
+    height: 80px;
+  }
+
+  .rotating-text {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: rotate 20s linear infinite;
+  }
+
+  .circular-text {
+    width: 100%;
+    height: 100%;
+    fill: white;
+  }
+
+  .text {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .badge-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #08f791;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .circular-badge {
+    background: black;
+    border-radius: 200px;
+}
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .vsl-section {
+      padding: 2rem 0;
+    }
+    
+    .video-container {
+      width: 95%;
+    }
+    
+    .circular-badge {
+      width: 70px;
+      height: 70px;
+      top: 15px;
+      right: 15px;
+    }
+    
+    .badge-icon {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .badge-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>

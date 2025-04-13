@@ -11,12 +11,27 @@ import UXFAQ from '../components/UXFAQ.astro';
 import CEOQuote from '../components/CEOQuote.astro';
 import PourquoiCollaborer from '../components/PourquoiCollaborer.astro';
 import UXAvisClients from '../components/UXAvisClients.astro';
+import Vsl from '../components/vsl.astro';
 ---
 
-<Layout title="Abonnement CRO | Optimisation E-commerce | Boost de Conversion">
+<Layout 
+title="Agence UI/UX | Optimisation de l’Expérience Utilisateur | LËC Media"
+description="Améliorez l’expérience utilisateur de votre site e-commerce grâce à une approche UX sur mesure. Identifiez les points de friction et boostez vos conversions."
+>
   <main>
     <Hero />
     <ClientLogos />
+    <Vsl
+    videoDesktop="/video/VSL-CRO.mp4"
+    videoMobile="/video/VSL-CRO-TEL.mp4"
+    poster="/images/video-thumbnail.jpg"
+    autoplay={true}
+    muted={true}
+    loop={true}
+    controls={true}
+    className="hero-video"
+    badgeText="Optimisation CRO - Test A/B - Audit"
+  />
     <UXProcess />
     <CEOQuote />
     <UXBenefits />  

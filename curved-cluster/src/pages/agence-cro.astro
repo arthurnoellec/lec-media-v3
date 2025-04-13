@@ -11,12 +11,26 @@ import ClientLogos from '../components/ClientLogos.astro';
 import FAQ from '../components/FAQ.astro';
 import CEOQuote from '../components/CEOQuote.astro';
 import DataExpertise from '../components/DataExpertise.astro';
+import Vsl from '../components/vsl.astro';
 ---
 
-<Layout title="Abonnement CRO | Optimisation E-commerce | Boost de Conversion">
+<Layout title="Abonnement CRO | Optimisation E-commerce | Boost de Conversion"
+description="Améliorez votre taux de conversion e-commerce grâce à nos tests A/B scientifiques. Découvrez comment nous avons généré +47% de conversion en moyenne pour nos clients."
+>
   <main>
     <Hero />
     <ClientLogos />
+    <Vsl
+      videoDesktop="/video/VSL-CRO.mp4"
+      videoMobile="/video/VSL-CRO-TEL.mp4"
+      poster="/images/video-thumbnail.jpg"
+      autoplay={true}
+      muted={true}
+      loop={true}
+      controls={true}
+      className="hero-video"
+      badgeText="Optimisation CRO - Test A/B - Audit"
+    />
     <Benefits />
     <CEOQuote />
     <Features />

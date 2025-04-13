@@ -8,12 +8,29 @@ import CreationProcess from '../components/CreationProcess.astro';
 import Portfolio from '../components/Portfolio.astro';
 import CTASection from '../components/CTASection.astro';
 import FAQ from '../components/FAQ.astro';
+import Vsl from '../components/vsl.astro';
+
+
 ---
 
-<Layout title="Abonnement CRO | Optimisation E-commerce | Boost de Conversion">
+<Layout 
+title="Création Boutique Shopify | E-commerce Clé en Main | LËC Media"
+description="Lancez votre boutique Shopify avec un site pensé pour convertir. Design personnalisé, configuration complète et stratégie e-commerce dès le départ."
+>
   <main>
     <Hero />
     <ClientLogos />
+    <Vsl
+    videoDesktop="/video/VSL-Creation.mp4"
+    videoMobile="/video/VSL-Creation-TEL.mp4"
+    poster="/images/video-thumbnail.jpg"
+    autoplay={true}
+    muted={true}
+    loop={true}
+    controls={true}
+    className="hero-video"
+    badgeText="Shopify – Clé en main & performant -"
+  />
     <ServicesCreationBoutique />
     <CreationProcess />
     <Portfolio />
