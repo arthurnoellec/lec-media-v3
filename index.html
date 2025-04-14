@@ -1075,412 +1075,201 @@ function toggleDropdown(element) {
         Nos services
       </h2>
     </div>
-    <section class="expertise-section">
-      <div class="expertise-section__item expertise-section__item--green">
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-green.png" alt="Shopify & Webflow Folder Icon" width="70" height="70" />
-          <p>Développement Shopify/Liquid</p>
-        </div>
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-green.png" alt="Landing Page Folder Icon" width="70" height="70"/>
-          <p>Création de <br />Landing Pages</p>
-        </div>
-        <div class="expertise-section__item-icon" style="margin-top: -100px">
-          <img src="./images/folder-green.png" alt="Web Redesign Folder Icon" width="70" height="70"/>
-          <p>Refonte de site web</p>
-        </div>
-      </div>
-      <div class="expertise-section__item expertise-section__item--stat">
-        <span id="stat-number">+0</span>
-        <p>Chiffre d'affaires</p>
-        <small>Suplementaire généré pour nos clients</small>
-        <div class="stat-icon">
-          <p style="color: #000">$</p>
-        </div>
-      </div>
 
-      <style>
-        #stat-number {
-          font-variant-numeric: tabular-nums; /* Align digits uniformly */
-          font-size: 40px;
-          font-weight: bold;
-          padding-right: 20px;
-        }
-      </style>
+    <section
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        flex-wrap: wrap;
+      ">
 
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const statSection = document.querySelector(".expertise-section__item");
-          const statNumber = document.getElementById("stat-number");
-          const targetNumber = 2980000;
-          const duration = 3000; // 3 seconds
-
-          const animateNumber = (end) => {
-            const startTime = performance.now();
-
-            const formatNumber = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); // Add spaces between groups
-
-            const update = (currentTime) => {
-              const elapsedTime = currentTime - startTime;
-              const progress = Math.min(elapsedTime / duration, 1);
-              const currentValue = Math.floor(progress * end);
-              statNumber.textContent = `+${formatNumber(currentValue)}`; // Add "+" in front
-              if (progress < 1) {
-                requestAnimationFrame(update);
-              }
-            };
-
-            requestAnimationFrame(update);
-          };
-
-          const onScroll = () => {
-            const rect = statSection.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.7) {
-              statSection.classList.add("visible");
-              animateNumber(targetNumber);
-              window.removeEventListener("scroll", onScroll); // Trigger once
-            }
-          };
-
-          window.addEventListener("scroll", onScroll);
-        });
-      </script>
-
-      <div class="expertise-section__item expertise-section__item--purple">
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-vio.png" alt="Branding Folder Icon" width="70" height="70"/>
-          <p>Branding et identité visuelle</p>
-        </div>
-      </div>
-      <div class="expertise-section__item expertise-section__item--blue">
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-bleu.png" alt="Web Maintenance Folder Icon" width="70" height="70"/>
-          <p>Maintenance web</p>
-        </div>
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-bleu.png" alt="CRO Folder Icon" width="70" height="70"/>
-          <p>A/B test CRO</p>
-        </div>
-      </div>
-      <div class="expertise-section__item expertise-section__item--clients">
-        <h3>+20 Sites</h3>
-        <p>Nous ont ait confiance</p>
-        <button class="button" id="scrollButton">Voir nos projets</button>
-      </div>
-      <div class="expertise-section__item expertise-section__item--yellow">
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-jaune.png" alt="CRO Audit Folder Icon" width="70" height="70"/>
-          <p>Audit CRO</p>
-        </div>
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-jaune.png" alt="UI/UX Audit Folder Icon" width="70" height="70"/>
-          <p>Audit UI/UX</p>
-        </div>
-      </div>
-      <div class="expertise-section__item expertise-section__item--red">
-        <div class="expertise-section__item-icon">
-          <img src="./images/folder-rouge.png" alt="Strategic Consulting Folder Icon" width="70" height="70"/>
-          <p>Consulting<br />stratégique</p>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      document.getElementById("scrollButton").addEventListener("click", function () {
-        const target = document.querySelector("#nos-realisation-ancre");
-        if (target) {
-          // Obtenir la position de l'élément
-          const offsetTop = target.getBoundingClientRect().top + window.scrollY;
-
-          // Calculer la position avec un décalage de 100px
-          const offset = 70; // Modifier cette valeur si nécessaire
-          window.scrollTo({
-            top: offsetTop - offset,
-            behavior: "smooth",
-          });
-        }
-      });
-    </script>
 
     <style>
-      /* Expertise Section */
-      .expertise-section {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr) 1.5fr 0.5fr 1.5fr 1fr 1.5fr;
-        grid-template-rows: repeat(2, 25vh);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        width: 95%; /* Largeur pleine */
-        color: #fff;
-        text-align: center;
-        margin: auto;
-        max-width: 1200px;
-        gap: 15px;
-      }
-
-      /* Items Styling */
-      .expertise-section__item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-radius: 1rem !important;
-        flex-wrap: wrap;
-      }
-
-      .expertise-section__item img {
-        width: 70px;
-        height: 70px;
-      }
-
-      .expertise-section__item h3 {
-        font-size: 1.5rem;
-      }
-
-      .expertise-section__item p {
-        margin: 0;
-        font-size: 13px;
-        color: #aaa;
-      }
-
-      /* Specific Items */
-      .expertise-section__item--green {
-        grid-area: 1 / 1 / 3 / 4;
-        background-color: #0d1117;
-        border: 2px dashed #04f791;
-        background-color: rgba(4, 247, 145, 0.08);
-      }
-
-      .expertise-section__item--stat {
-        grid-area: 1 / 8 / 2 / 10;
-      }
-
-      .expertise-section__item--stat {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: #ffffff24; /* Fond sombre */
-        border: 2px solid #ffffff; /* Bordure blanche */
-        border-radius: 10px; /* Coins arrondis */
-        padding: 20px; /* Espacement interne */
-        position: relative;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Ombre subtile */
-      }
-
-      .expertise-section__item--stat h3 {
-        font-size: 2.5rem; /* Taille du texte */
-        font-weight: bold; /* Texte gras */
-        margin: 0; /* Pas de marges */
-        color: #ffffff; /* Couleur blanche */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Effet d'ombre porté */
-        padding-right: 30px;
-      }
-
-      .expertise-section__item--stat p {
-        font-size: 1rem; /* Taille du texte du paragraphe */
-        margin: 10px 0; /* Marges verticales */
-        color: #d1d1d1; /* Texte gris clair */
-      }
-
-      .expertise-section__item--stat small {
-        font-size: 0.875rem; /* Taille du texte plus petit */
-        color: #aaa; /* Couleur gris clair */
-      }
-
-      .stat-icon {
-        position: absolute;
-        top: 36%;
-        right: 15px;
-        transform: translateY(-50%) scale(0.9);
-        background-color: #32ff7e; /* Fond vert */
-        width: 40px;
-        height: 40px;
-        border-radius: 50%; /* Cercle */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0px 0px 10px rgba(50, 255, 126, 0.8); /* Effet de lumière */
-      }
-
-      .arrow-up {
-        width: 10px;
-        height: 10px;
-        border-left: 2px solid #000;
-        border-bottom: 2px solid #000;
-        transform: rotate(135deg);
-        margin-bottom: -6px;
-      }
-
-      .expertise-section__item--purple {
-        grid-area: 1 / 7 / 2 / 8;
-        background-color: rgba(239, 40, 220, 0.08);
-        border: 2px dashed #ef28dc;
-      }
-
-      .expertise-section__item--blue {
-        grid-area: 1 / 4 / 2 / 7;
-        background-color: rgba(12, 123, 255, 0.08);
-        border: 2px dashed #0c7bff;
-        padding: 0 30px;
-      }
-
-      .expertise-section__item--clients {
-        grid-area: 2 / 4 / 3 / 6;
-      }
-
-      .expertise-section__item--clients {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: #ffffff24; /* Fond sombre */
-        border: 2px solid #fff; /* Bordure blanche */
-        border-radius: 8px; /* Coins arrondis */
-        padding: 20px; /* Espacement interne */
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Ombre */
-      }
-
-      .expertise-section__item--clients h3 {
-        font-size: 3rem; /* Taille du texte pour le titre */
-        font-weight: bold; /* Gras */
-        margin: 0; /* Supprime les marges */
-        color: #fff; /* Texte en blanc */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Effet d'ombre portée */
-        margin-bottom: -20px;
-      }
-      .expertise-section__item.expertise-section__item--clients > .button {
-        margin-top: 10px;
-      }
-
-      .expertise-section__item--clients p {
-        font-size: 1rem; /* Taille de la police du paragraphe */
-        margin: 10px 0; /* Espacement au-dessus et en dessous */
-        color: #aaa; /* Texte gris clair */
-      }
-
-      .expertise-section__item--yellow {
-        grid-area: 2 / 6 / 3 / 9;
-        background-color: rgba(255, 238, 0, 0.08);
-        border: 2px dashed #ffee00;
-        padding: 0 30px;
-      }
-
-      .expertise-section__item-icon > img {
-        margin-bottom: 10px;
-      }
-
-      .expertise-section__item--red {
-        grid-area: 2 / 9 / 3 / 10;
-        background-color: rgba(231, 59, 47, 0.08);
-        border: 2px dashed #e73b2f;
-      }
-      .expertise-section__item.expertise-section__item--green > .expertise-section__item-icon,
-      .expertise-section__item.expertise-section__item--blue > .expertise-section__item-icon,
-      .expertise-section__item.expertise-section__item--yellow > .expertise-section__item-icon {
-        width: 50%;
-      }
-
-      .expertise-section__item-icon p {
-        position: relative;
-        text-align: center;
-      }
-
-      .expertise-section__item-icon p::before {
-        content: "●"; /* Remplace par un symbole ou vide si nécessaire */
-        font-size: 13px; /* Taille du point */
-        line-height: 1; /* Alignement */
-        margin-right: 4px;
-      }
-
-      .expertise-section__item--blue p::before {
-        color: #0c7bff; /* Couleur du point */
-      }
-
-      .expertise-section__item--purple p::before {
-        color: #ef28dc; /* Couleur du point */
-      }
-
-      .expertise-section__item--yellow p::before {
-        color: #ffee02; /* Couleur du point */
-      }
-
-      .expertise-section__item--green p::before {
-        color: #08f791; /* Couleur du point */
-      }
-
-      .expertise-section__item--red p::before {
-        color: #e73a2f; /* Couleur du point */
-      }
-
-      @media (max-width: 1000px) {
-        .expertise-section {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-template-rows: repeat(10, 1fr);
-        }
-
-        .expertise-section__item--green {
-          grid-area: 1 / 1 / 3 / 6;
-        }
-        .expertise-section__item--blue {
-          grid-area: 3 / 1 / 5 / 4;
-        }
-        .expertise-section__item--purple {
-          grid-area: 3 / 4 / 5 / 6;
-        }
-        .expertise-section__item--stat {
-          grid-area: 5 / 1 / 7 / 6;
-        }
-        .expertise-section__item--yellow {
-          grid-area: 7 / 3 / 9 / 6;
-        }
-        .expertise-section__item--red {
-          grid-area: 7 / 1 / 9 / 3;
-        }
-        .expertise-section__item--clients {
-          grid-area: 9 / 1 / 11 / 6;
-        }
-
-        .expertise-section__item.expertise-section__item--green > .expertise-section__item-icon {
-          width: calc(100% / 3);
-          margin: 0 !important;
-        }
-
-        .expertise-section {
-          width: 95%;
-        }
-
-        .expertise-section__item--blue,
-        .expertise-section__item--yellow {
+      .service-container * {
+          margin: 0;
           padding: 0;
-        }
-        #stat-number {
-          font-size: 55px;
-        }
-        .stat-icon {
-          top: 33%;
-        }
-        .nav-header,
-        .nav.glow-on-hover {
+          box-sizing: border-box;
+      }
+      
+      .service-container {
+          color: #fff;
+          padding: 20px;
+          width: 100%;
+      }
+      
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    /* Placement selon la structure demandée */
+    .service-grid .service-card:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 3;
+    }
+    
+    .service-grid .service-card:nth-child(2) {
+        grid-area: 1 / 3 / 2 / 5;
+    }
+    
+    .service-grid .service-card:nth-child(3) {
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    
+    .service-grid .service-card:nth-child(4) {
+        grid-area: 2 / 1 / 3 / 4;
+    }
+    
+    .service-grid .service-card:nth-child(5) {
+        grid-area: 2 / 4 / 3 / 7;
+    }
+      
+      .service-card {
+          background-color: #2a2a2a;
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+          cursor: pointer;
+          position: relative;
           display: flex;
-          justify-content: center;
-        }
+          flex-direction: column;
+          height: 300px;
+          border: solid #404040 3px;
       }
-      @media (min-width: 1000px) and (max-width: 1100px) {
-        #stat-number {
-          font-size: 35px;
-        }
+      
+      .service-card:hover {
+          transform: translateY(-5px);
       }
+      
+      .service-card-title {
+          padding: 15px;
+          font-size: 24px;
+          font-weight: bold;
+          text-align: left;
+      }
+      
+      .service-card-content {
+          flex-grow: 1;
+          position: relative;
+          margin-top: auto;
+      }
+      
+      .service-card-image {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        height: auto;
+        object-fit: fill;
+        border-radius: 0 0 8px 8px;
+        transform: translate(-50%);
+    }
 
-      @media only screen and (max-width: 1200px) {
-        .stat-icon {
-          display: none;
-        }
+            /* Responsive adjustments */
+            @media (min-width: 768px) {
+            .service-card-image.tel{
+              display: none;
+            }
+          }
+      
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .service-grid {
+              grid-template-columns: 1fr;
+              grid-template-rows: repeat(5, auto);
+          }
+          
+          .service-grid .service-card:nth-child(1),
+          .service-grid .service-card:nth-child(2),
+          .service-grid .service-card:nth-child(3),
+          .service-grid .service-card:nth-child(4),
+          .service-grid .service-card:nth-child(5) {
+              grid-area: auto;
+          }
+
+          .service-card-image{
+            display: none;
+          }
+
+          .service-card-image.tel{
+            display: block;
+          }
+
+
       }
-    </style>
+  </style>
+
+  <div class="service-container">
+      <div class="service-grid">
+          <!-- Card 1: CRO -->
+          <div class="service-card" onclick="location.href='/agence-cro'">
+              <div class="service-card-title">CRO</div>
+              <div class="service-card-content">
+                  <img src="./images/cro-shopify-optimisation-conversion.png" alt="CRO" class="service-card-image">
+                  <img src="./images/cro-tel-agence.png" alt="CRO" class="service-card-image tel">
+              </div>
+          </div>
+          
+          <!-- Card 2: Agence UI/UX -->
+          <div class="service-card" onclick="location.href='/agence-ui-ux'">
+              <div class="service-card-title">Agence UI/UX</div>
+              <div class="service-card-content">
+                  <img src="./images/agence-ui-ux.png" alt="UI/UX" class="service-card-image">
+                  <img src="./images/ui:ux-agence-france-tel.png" alt="UI/UX" class="service-card-image tel">
+              </div>
+          </div>
+          
+          <!-- Card 3: Refonte -->
+          <div class="service-card" onclick="location.href='/refonte-site-ecommerce'">
+              <div class="service-card-title">Refonte</div>
+              <div class="service-card-content">
+                  <img src="./images/refonte-site-shopify.png" alt="Refonte" class="service-card-image">
+                  <img src="./images/refonte-tel.png" alt="Refonte" class="service-card-image tel">
+              </div>
+          </div>
+          
+          <!-- Card 4: Création e-com Shopify -->
+          <div class="service-card" onclick="location.href='/creation-boutique-shopify'"> 
+              <div class="service-card-title">Création e-com Shopify</div>
+              <div class="service-card-content">
+                  <img src="./images/creation-site-ecommerce-shopify.png" alt="Création Shopify" class="service-card-image">
+                  <img src="./images/creation-e-com-shopify-tel.png" alt="Création Shopify" class="service-card-image tel">
+              </div>
+          </div>
+          
+          <!-- Card 5: Migration vers Shopify -->
+          <div class="service-card" onclick="location.href='/refonte-site-ecommerce#contact'">
+              <div class="service-card-title">Migration vers Shopify</div>
+              <div class="service-card-content">
+                  <img src="./images/migration-ecommerce-shopify.png" alt="Migration Shopify" class="service-card-image">
+                  <img src="./images/migration-tel.png" alt="Migration Shopify" class="service-card-image tel">
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <script>
+      // Simple click handler
+      document.addEventListener('DOMContentLoaded', function() {
+          const serviceCards = document.querySelectorAll('.service-card');
+          
+          serviceCards.forEach(card => {
+              card.addEventListener('click', function() {
+                  const link = this.getAttribute('onclick').replace("location.href='", "").replace("')", "");
+                  window.location.href = link;
+              });
+          });
+      });
+  </script>
+
+
+    </section>
+
 
     <div style="height: 100px; width: 100%"></div>
 

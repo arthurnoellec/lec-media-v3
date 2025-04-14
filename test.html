@@ -1,0 +1,142 @@
+
+    <style>
+        .service-container * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .service-container {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 3 cards in top row, 2 cards in bottom row */
+        .service-grid .service-card:nth-child(4) {
+            grid-column: 1 / span 1;
+        }
+        
+        .service-grid .service-card:nth-child(5) {
+            grid-column: 2 / span 2;
+        }
+        
+        .service-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card-title {
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        .service-card-content {
+            flex-grow: 1;
+            position: relative;
+            margin-top: auto;
+        }
+        
+        .service-card-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-grid .service-card:nth-child(4),
+            .service-grid .service-card:nth-child(5) {
+                grid-column: auto;
+            }
+        }
+    </style>
+
+    <div class="service-container">
+        <div class="service-grid">
+            <!-- Card 1: CRO -->
+            <div class="service-card" onclick="location.href='#cro'">
+                <div class="service-card-title">CRO</div>
+                <div class="service-card-content">
+                    <img src="/api/placeholder/400/200" alt="CRO" class="service-card-image">
+                </div>
+            </div>
+            
+            <!-- Card 2: Agence UI/UX -->
+            <div class="service-card" onclick="location.href='#uiux'">
+                <div class="service-card-title">Agence UI/UX</div>
+                <div class="service-card-content">
+                    <img src="/api/placeholder/400/200" alt="UI/UX" class="service-card-image">
+                </div>
+            </div>
+            
+            <!-- Card 3: Refonte -->
+            <div class="service-card" onclick="location.href='#refonte'">
+                <div class="service-card-title">Refonte</div>
+                <div class="service-card-content">
+                    <img src="/api/placeholder/400/200" alt="Refonte" class="service-card-image">
+                </div>
+            </div>
+            
+            <!-- Card 4: Création e-com Shopify -->
+            <div class="service-card" onclick="location.href='#creation'">
+                <div class="service-card-title">Création e-com Shopify</div>
+                <div class="service-card-content">
+                    <img src="/api/placeholder/400/200" alt="Création Shopify" class="service-card-image">
+                </div>
+            </div>
+            
+            <!-- Card 5: Migration vers Shopify -->
+            <div class="service-card" onclick="location.href='#migration'">
+                <div class="service-card-title">Migration vers Shopify</div>
+                <div class="service-card-content">
+                    <img src="/api/placeholder/400/200" alt="Migration Shopify" class="service-card-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple click handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const link = this.getAttribute('onclick').replace("location.href='", "").replace("')", "");
+                    window.location.href = link;
+                });
+            });
+        });
+    </script>
