@@ -8,6 +8,7 @@ import ClientLogos from "../components/ClientLogos.astro";
 import Portfolio from "../components/Portfolio.astro";
 import ProblematiquesSection from "../components/ProblematiquesSection.astro";
 import EquipeSection from "../components/EquipeSection.astro";
+import Vsl from "../components/vsl.astro";
 ---
 
 <Layout 
@@ -17,6 +18,17 @@ description="Reprenez le contrôle de votre boutique en ligne avec une refonte o
   <>
     <Hero />
     <ClientLogos />
+    <Vsl
+    videoDesktop="/video/VSL-Refonte.mp4"
+    videoMobile="/video/VSL-Refonte-TEL.mp4"
+    poster="/images/video-thumbnail.jpg"
+    autoplay={true}
+    muted={true}
+    loop={true}
+    controls={true}
+    className="hero-video"
+    badgeText="Shopify – Clé en main & performant -"
+  />
     <ProblematiquesSection />
     <EquipeSection />
     <Portfolio />
